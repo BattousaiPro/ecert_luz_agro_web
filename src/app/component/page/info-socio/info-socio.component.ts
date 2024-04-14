@@ -12,6 +12,11 @@ export class InfoSocioComponent {
   socios: any[] = listaSocios;
 
   cambioEstado(index: any) {
+    if (!listaSocios[index].selected) {
+      for (let index = 0; index < listaSocios.length; index++) {
+        listaSocios[index].selected = false;
+      }
+    }
     listaSocios[index].selected = !listaSocios[index].selected;
   }
 }
