@@ -27,3 +27,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 3 vulnerabilities (1 low, 2 moderate)
+
+Empresa: luz agro
+
+npm install bootstrap --save
+npm install bootstrap-icons --save
