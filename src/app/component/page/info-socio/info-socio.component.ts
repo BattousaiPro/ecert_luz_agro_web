@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
-import { listaSocios } from './model/dataMock';
+import { DataSocio, listaSocios } from './model/dataMock';
+import { DetailSocioComponent } from '../detail-socio/detail-socio.component';
+import { SpinnerComponent } from '../../spinner/spinner.component';
 
 @Component({
   selector: 'app-info-socio',
   standalone: true,
-  imports: [],
+  imports: [DetailSocioComponent, SpinnerComponent],
   templateUrl: './info-socio.component.html',
   styleUrl: './info-socio.component.scss'
 })
 export class InfoSocioComponent {
-  socios: any[] = listaSocios;
+  socios: DataSocio[] = listaSocios;
+  cargar: boolean = false;
 
   cambioEstado(index: any) {
     if (!listaSocios[index].selected) {

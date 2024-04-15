@@ -96,7 +96,21 @@
                 </tr>
                 }
             </tbody>
-
         </table>
     </div>
 </div>
+
+<ng-template #visualizar let-modal>
+    <div class="modal-header">
+        <h2 class="modal-title">Vista Detalle Socio</h2>
+        <button type="button" class="btn-close" (click)="modal.dismiss( 'Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <app-detail-socio [item]="socios"></app-detail-socio>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss( 'Cross click')">Cerrar</button>
+    </div>
+</ng-template>
+
+<app-spinner [cargar]="cargar"></app-spinner>
