@@ -1,133 +1,151 @@
-<div class="container" style="margin-bottom: 25px;">
+<div class="container mb10">
     <div class="title">
         <h1>Datos Socios</h1>
     </div>
 
-    <div class="row">
+    <div class="row mb15">
         <div class="col-6">
             <div class="row">
                 <div class="col-4">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Rut Socio</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall"
+                    <label class="col-form-label col-form-label-sm" for="rut_cop">Rut Socio</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="rut_cop"
                         [value]="socio.rut_cop">
                 </div>
                 <div class="col-4">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Código Luzagro</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
+                    <label class="col-form-label col-form-label-sm" for="cod_cop">Código Luzagro</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="cod_cop"
+                    [value]="socio.cod_cop">
                 </div>
                 <div class="col-4">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Código Luzlinares</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
+                    <label class="col-form-label col-form-label-sm" for="cod_lli">Código Luzlinares</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="cod_lli"
+                    [value]="socio.cod_lli">
                 </div>
             </div>
         </div>
         <div class="col-6">
             <div class="row">
                 <div class="col-4">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Código Anterior</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
+                    <label class="col-form-label col-form-label-sm" for="cod_ant">Código Anterior</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="cod_ant"
+                    [value]="socio.cod_ant">
                 </div>
                 <div class="col-4">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Código Nuevo</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
+                    <label class="col-form-label col-form-label-sm" for="cod_nvo">Código Nuevo</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="cod_nvo"
+                    [value]="socio.cod_nvo">
                 </div>
                 <div class="col-4">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Código Original</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
+                    <label class="col-form-label col-form-label-sm" for="cod_ori">Código Original</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="cod_ori"
+                    [value]="socio.cod_ori">
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mb15">
         <div class="col-6">
             <div class="row">
                 <div class="col-12">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Nombre / Razón Social</label>
+                    <label class="col-form-label col-form-label-sm" for="nombres">Nombre</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="nombres"
+                        [value]="socio.nombres + ' ' + socio. ape_pat + ' ' +socio.ape_mat">
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-6">
+                    <label class="col-form-label col-form-label-sm" for="sec_cop">Sector</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="sec_cop"
+                    [value]="'validar valor' + socio.sec_cop">
+                </div>
+                <div class="col-6">
+                    <label class="col-form-label col-form-label-sm" for="com_pos">Comuna</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="com_pos"
+                    [value]="'validar valor' + socio.com_pos">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb15">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-3">
+                    <label class="col-form-label col-form-label-sm" for="ano_inc">Año Inscripción</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="ano_inc"
+                    [value]="socio.ano_inc">
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-form-label-sm" for="mto_inc">Monto Inscripción</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="mto_inc"
+                    [value]="socio.mto_inc">
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-form-label-sm" for="fec_inc">Fecha Inscripción</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="fec_inc"
+                    [value]="socio.fec_inc">
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-form-label-sm" for="ano_tra">Año Traspaso</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="ano_tra"
+                    [value]="socio.ano_tra">
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-3">
+                    <label class="col-form-label col-form-label-sm" for="kap_tra">Capital Traspaso</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="kap_tra"
+                    [value]="socio.kap_tra">
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-form-label-sm" for="fec_tra">Fecha Traspaso</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="fec_tra"
+                    [value]="socio.fec_tra">
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-form-label-sm" for="acc_tra">Acciones Traspaso</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="acc_tra"
+                    [value]="socio.acc_tra">
+                </div>
+                <div class="col-3">
+                    <label class="col-form-label col-form-label-sm" for="acc_apo">Acciones Aporte</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="acc_apo"
+                    [value]="socio.acc_apo">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb15">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-4">
+                    <label class="col-form-label col-form-label-sm" for="acc_ret">Acciones Retiro</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="acc_ret"
+                    [value]="socio.acc_ret">
+                </div>
+                <div class="col-4">
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">Total Acciones</label>
                     <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall"
-                        [value]="socio.nombres + ' ' + socio.ape_pat + ' ' + socio.ape_mat">
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="row">
-                <div class="col-6">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Sector</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-                <div class="col-6">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Comuna</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-6">
-            <div class="row">
-                <div class="col-3">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Año Inscripción</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-                <div class="col-3">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Monto Inscripción</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-                <div class="col-3">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Fecha Inscripción</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-                <div class="col-3">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Año Traspaso</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="row">
-                <div class="col-3">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Capital Traspaso</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-                <div class="col-3">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Fecha Traspaso</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-                <div class="col-3">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Acciones Traspaso</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-                <div class="col-3">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Acciones Aporte</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-6">
-            <div class="row">
-                <div class="col-4">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Acciones Retiro</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
+                    [value]="'Pndiente consultar'">
                 </div>
                 <div class="col-4">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Total Acciones</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
-                </div>
-                <div class="col-4">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Actualización</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall">
+                    <label class="col-form-label col-form-label-sm" for="fec_act">Actualización</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="fec_act"
+                    [value]="socio.fec_act">
                 </div>
             </div>
         </div>
         <div class="col-6">
             <div class="row">
                 <div class="col-12">
-                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Observación</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall" [value]="">
+                    <label class="col-form-label col-form-label-sm" for="obs_cap">Observación</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="" id="obs_cap" [value]="socio.obs_cap">
                 </div>
             </div>
         </div>
