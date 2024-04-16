@@ -18,11 +18,11 @@
   }
   
   .loading .spin {
-    border: 4px solid rgba(213, 215, 216, 0.5);
+    border: 10px solid rgba(213, 215, 216, 0.5);
     border-top-color: #055286;
     border-radius: 50%;
-    width: 3em;
-    height: 3em;
+    width: 5em;
+    height: 5em;
     animation: spin 1s linear infinite;
   }
   
