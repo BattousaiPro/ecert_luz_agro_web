@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DataSocio } from '../info-socio/model/dataMock';
 
 @Component({
   selector: 'app-detail-socio',
@@ -9,6 +10,6 @@ import { Component, Input } from '@angular/core';
 })
 export class DetailSocioComponent {
 
-  @Input() item: any;
+  @Input() socio!: DataSocio;
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataSocio, listaSocios } from './model/dataMock';
 import { DetailSocioComponent } from '../detail-socio/detail-socio.component';
 import { SpinnerComponent } from '../../spinner/spinner.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-info-socio',
@@ -12,14 +13,21 @@ import { SpinnerComponent } from '../../spinner/spinner.component';
 })
 export class InfoSocioComponent {
   socios: DataSocio[] = listaSocios;
+  socioModal!: DataSocio;
   cargar: boolean = false;
 
-  cambioEstado(index: any) {
-    if (!listaSocios[index].selected) {
-      for (let index = 0; index < listaSocios.length; index++) {
-        listaSocios[index].selected = false;
-      }
-    }
-    listaSocios[index].selected = !listaSocios[index].selected;
+  constructor(private modalService: NgbModal) { }
+
+  cambioEstado(socio: DataSocio, content: any) {
+    this.socioModal = socio;
+    this.openModalFunction(content);
+  }
+
+  openModalFunction(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
+  }
+
+  closeModalFunction() {
+    this.modalService.dismissAll();
   }
 }
