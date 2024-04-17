@@ -44,26 +44,31 @@
                     <th scope="col">acc_ret</th>
                     <th scope="col">acc_apo</th>
                     <th scope="col">fec_act</th>
+                    <th scope="col">est_tra</th>
                     <th scope="col">est_bon</th>
                     <th scope="col">dir_pos</th>
+                    <th scope="col">nro_te1</th>
+                    <th scope="col">nro_te2</th>
                     <th scope="col">nro_te3</th>
                     <th scope="col">nro_te4</th>
                     <th scope="col">com_pos</th>
                     <th scope="col">obs_cap</th>
                     <th scope="col">nro_sol</th>
+                    <th scope="col">fec_sol</th>
+                    <th scope="col">fec_apr</th>
+                    <th scope="col">fec_can</th>
                     <th scope="col">est_sol</th>
                     <th scope="col">sec_cte</th>
                     <th scope="col">area</th>
                     <th scope="col">sec_imp</th>
                     <th scope="col">est_reg</th>
+                    <th scope="col">acc_con</th>
                     <th scope="col">aju_acc</th>
-
                 </tr>
             </thead>
             <tbody>
                 @for (socio of socios; track socio; let index = $index) {
                 <tr (click)="cambioEstado(socio, myModalContent)">
-                    <!--openModalFunction(myModalContent)-->
                     <th scope="row">{{socio.id}}</th>
                     <td>{{ socio.rut_cop }}</td>
                     <td>{{ socio.ape_pat }}</td>
@@ -85,29 +90,27 @@
                     <td>{{ socio.acc_ret }}</td>
                     <td>{{ socio.acc_apo }}</td>
                     <td>{{ socio.fec_act }}</td>
+                    <td>{{ socio.est_tra }}</td>
                     <td>{{ socio.est_bon }}</td>
                     <td>{{ socio.dir_pos }}</td>
+                    <td>{{ socio.nro_te1 }}</td>
+                    <td>{{ socio.nro_te2 }}</td>
                     <td>{{ socio.nro_te3 }}</td>
                     <td>{{ socio.nro_te4 }}</td>
                     <td>{{ socio.com_pos }}</td>
                     <td>{{ socio.obs_cap }}</td>
                     <td>{{ socio.nro_sol }}</td>
+                    <td>{{ socio.fec_sol }}</td>
+                    <td>{{ socio.fec_apr }}</td>
+                    <td>{{ socio.fec_can }}</td>
                     <td>{{ socio.est_sol }}</td>
                     <td>{{ socio.sec_cte }}</td>
                     <td>{{ socio.area }}</td>
                     <td>{{ socio.sec_imp }}</td>
                     <td>{{ socio.est_reg }}</td>
+                    <td>{{ socio.acc_con }}</td>
                     <td>{{ socio.aju_acc }}</td>
                 </tr>
-                @if (socio.selected) {
-                <ng-container>
-                    <div class="col-12">
-                        <div class="title" style="border: 2px blue solid;width: 378px;">
-                            <label>Datos Socios</label>
-                        </div>
-                    </div>
-                </ng-container>
-                }
                 } @empty {
                 <tr>
                     <th scope="row">Empty list of users</th>
