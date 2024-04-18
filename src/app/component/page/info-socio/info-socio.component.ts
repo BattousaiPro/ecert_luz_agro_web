@@ -20,12 +20,10 @@ export class InfoSocioComponent {
   constructor(private modalService: NgbModal) { }
 
   cambioEstado(socio: DataSocio, content: any) {
-    if (!socio.selected) {
-      for (let index = 0; index < listaSocios.length; index++) {
-        socio.selected = false;
-      }
+    for (let index = 0; index < listaSocios.length; index++) {
+      listaSocios[index].selected = false;
     }
-    socio.selected = !socio.selected;
+    socio.selected = true;
 
     this.socioModal = socio;
     this.openModalFunction(content);

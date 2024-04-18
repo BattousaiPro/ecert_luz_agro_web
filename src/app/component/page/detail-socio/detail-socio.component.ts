@@ -11,5 +11,6 @@ import { DataSocio } from '../info-socio/model/dataMock';
 export class DetailSocioComponent {
 
   @Input() socio!: DataSocio;
+  constructor() { }
 
 }

@@ -68,8 +68,8 @@
             </thead>
             <tbody>
                 @for (socio of socios; track socio; let index = $index) {
-                <tr (click)="cambioEstado(socio, myModalContent)" 
-                [ngStyle]="{'background-color' : socio.selected ? 'blue' : 'red' }">
+                <tr (click)="cambioEstado(socio, myModalContent)"
+                    [ngClass]="{'selected' : socio.selected}">
                     <th scope="row">{{socio.id}}</th>
                     <td>{{ socio.rut_cop }}</td>
                     <td>{{ socio.ape_pat }}</td>
