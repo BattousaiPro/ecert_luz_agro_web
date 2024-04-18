@@ -31,7 +31,6 @@ export class InfoSocioComponent {
 
   validaSelected(): boolean {
     for (let index = 0; index < listaSocios.length; index++) {
-      listaSocios[index].selected = false;
       if (listaSocios[index].selected) {
         console.log('return true.');
         return true;
@@ -42,7 +41,6 @@ export class InfoSocioComponent {
   }
 
   seleccionar() {
-    debugger
     if (!this.validaSelected()) {
       alert('debes seleccionar un Socio.');
     } else {
@@ -51,7 +49,6 @@ export class InfoSocioComponent {
   }
 
   cerfificado() {
-    debugger
     if (!this.validaSelected()) {
       alert('debes seleccionar un Socio para cerfificado.');
     } else {
