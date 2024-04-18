@@ -3,11 +3,12 @@ import { DataSocio, listaSocios } from './model/dataMock';
 import { DetailSocioComponent } from '../detail-socio/detail-socio.component';
 import { SpinnerComponent } from '../../spinner/spinner.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-info-socio',
   standalone: true,
-  imports: [DetailSocioComponent, SpinnerComponent],
+  imports: [DetailSocioComponent, SpinnerComponent, CommonModule],
   templateUrl: './info-socio.component.html',
   styleUrl: './info-socio.component.scss'
 })
@@ -19,6 +20,13 @@ export class InfoSocioComponent {
   constructor(private modalService: NgbModal) { }
 
   cambioEstado(socio: DataSocio, content: any) {
+    if (!socio.selected) {
+      for (let index = 0; index < listaSocios.length; index++) {
+        socio.selected = false;
+      }
+    }
+    socio.selected = !socio.selected;
+
     this.socioModal = socio;
     this.openModalFunction(content);
   }
