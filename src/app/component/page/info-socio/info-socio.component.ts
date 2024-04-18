@@ -29,6 +29,36 @@ export class InfoSocioComponent {
     this.openModalFunction(content);
   }
 
+  validaSelected(): boolean {
+    for (let index = 0; index < listaSocios.length; index++) {
+      listaSocios[index].selected = false;
+      if (listaSocios[index].selected) {
+        console.log('return true.');
+        return true;
+      }
+    }
+    console.log('return false.');
+    return false;
+  }
+
+  seleccionar() {
+    debugger
+    if (!this.validaSelected()) {
+      alert('debes seleccionar un Socio.');
+    } else {
+      alert('ya esta seleccionado un Socio.');
+    }
+  }
+
+  cerfificado() {
+    debugger
+    if (!this.validaSelected()) {
+      alert('debes seleccionar un Socio para cerfificado.');
+    } else {
+      alert('ya esta seleccionado un Socio para cerfificado.');
+    }
+  }
+
   openModalFunction(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }

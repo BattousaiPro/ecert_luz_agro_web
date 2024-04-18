@@ -25,8 +25,12 @@
             <div class="col-12">
                 <div class="row"
                     style="border: 1px solid #d6d7de;margin-right: 0;margin-left: 0;border-radius: 10px;padding-top: 20px;padding-bottom: 10px;">
-                    <div class="col-4"><button> Seleccionar </button></div>
-                    <div class="col-4"><button> Cerfificado </button></div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-primary" (click)="seleccionar()">Seleccionar</button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-primary" (click)="cerfificado()">Cerfificado</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,8 +85,7 @@
             </thead>
             <tbody>
                 @for (socio of socios; track socio; let index = $index) {
-                <tr (click)="cambioEstado(socio, myModalContent)"
-                    [ngClass]="{'selected' : socio.selected}">
+                <tr (click)="cambioEstado(socio, myModalContent)" [ngClass]="{'selected' : socio.selected}">
                     <th scope="row">{{socio.id}}</th>
                     <td>{{ socio.rut_cop }}</td>
                     <td>{{ socio.ape_pat }}</td>
