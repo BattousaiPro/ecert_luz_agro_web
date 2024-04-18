@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { DataSocio, listaSocios } from './model/dataMock';
 import { DetailSocioComponent } from '../detail-socio/detail-socio.component';
 import { SpinnerComponent } from '../../spinner/spinner.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-info-socio',
   standalone: true,
-  imports: [DetailSocioComponent, SpinnerComponent, CommonModule],
+  imports: [FormsModule, DetailSocioComponent, SpinnerComponent, CommonModule, NgbPaginationModule],
   templateUrl: './info-socio.component.html',
   styleUrl: './info-socio.component.scss'
 })
@@ -17,7 +18,23 @@ export class InfoSocioComponent {
   socioModal!: DataSocio;
   cargar: boolean = false;
 
-  constructor(private modalService: NgbModal) { }
+  collectionSize: number = this.socios.length;
+  page = 1;
+  pageSize = 5;
+
+  refreshCountries(texto: string) {
+    console.log(texto);
+    for (let index = 0; index < listaSocios.length; index++) {
+      listaSocios[index].visibility = false;
+      if (index < this.pageSize) {
+        listaSocios[index].visibility = true;
+      }
+    }
+  }
+  
+  constructor(private modalService: NgbModal) {
+    this.refreshCountries('Init');
+  }
 
   cambioEstado(socio: DataSocio, content: any) {
     for (let index = 0; index < listaSocios.length; index++) {
