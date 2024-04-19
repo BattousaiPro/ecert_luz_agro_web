@@ -9,12 +9,12 @@
             <div class="col-12">
                 <div class="row"
                     style="border: 1px solid #d6d7de;margin-right: 0;margin-left: 0;border-radius: 10px;padding-top: 20px;padding-bottom: 10px;">
-                    <div class="col-4"><input id="422" class="w100 mb10" placeholder="Nombre"></div>
-                    <div class="col-4"><input id="522" class="w100 mb10" placeholder="Apellido Materno"></div>
-                    <div class="col-4"><input id="622" class="w100 mb10" placeholder="Apellido Paterno"></div>
-                    <div class="col-4"><input id="122" class="w100 mb10" placeholder="Rut Socio"></div>
-                    <div class="col-4"><input id="222" class="w100 mb10" placeholder="Código Lus Agro"></div>
-                    <div class="col-4"><input id="322" class="w100 mb10" placeholder="Sector"></div>
+                    <div class="col-4"><input id="422" class="w100 mb10" (click)="buscarByNombre()" placeholder="Nombre"></div>
+                    <div class="col-4"><input id="622" class="w100 mb10" (click)="buscarByApePaterno()" placeholder="Apellido Paterno"></div>
+                    <div class="col-4"><input id="522" class="w100 mb10" (click)="buscarByApeMaterno()" placeholder="Apellido Materno"></div>
+                    <div class="col-4"><input id="122" class="w100 mb10" (click)="buscarByRut()" placeholder="Rut Socio"></div>
+                    <div class="col-4"><input id="222" class="w100 mb10" (click)="buscarByCodigo()" placeholder="Código Lus Agro"></div>
+                    <div class="col-4"><input id="322" class="w100 mb10" (click)="buscarBySector()" placeholder="Sector"></div>
                 </div>
             </div>
         </div>

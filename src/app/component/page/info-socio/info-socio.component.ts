@@ -80,4 +80,32 @@ export class InfoSocioComponent {
   closeModalFunction() {
     this.modalService.dismissAll();
   }
+  /********************************************************/
+
+  buscarByNombre(): void {
+
+  }
+
+  buscarByApePaterno(): void {
+
+  }
+
+  buscarByApeMaterno(): void {
+
+  }
+
+  buscarByRut(): void {
+
+  }
+
+  buscarByCodigo(): void {
+
+  }
+
+  buscarBySector(): void {
+
+  }
+
+
+  /********************************************************/
 }
