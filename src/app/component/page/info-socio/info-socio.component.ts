@@ -83,27 +83,27 @@ export class InfoSocioComponent {
   /********************************************************/
 
   buscarByNombre(): void {
-
+    console.log('Method buscarByNombre');
   }
 
   buscarByApePaterno(): void {
-
+    console.log('Method buscarByApePaterno');
   }
 
   buscarByApeMaterno(): void {
-
+    console.log('Method buscarByApeMaterno');
   }
 
   buscarByRut(): void {
-
+    console.log('Method buscarByRut');
   }
 
   buscarByCodigo(): void {
-
+    console.log('Method buscarByCodigo');
   }
 
   buscarBySector(): void {
-
+    console.log('Method buscarBySector');
   }
 
 
