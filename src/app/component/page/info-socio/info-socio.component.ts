@@ -80,30 +80,35 @@ export class InfoSocioComponent {
   closeModalFunction() {
     this.modalService.dismissAll();
   }
-  /********************************************************/
 
-  buscarByNombre(): void {
+  /********************************************************/
+  // Sector de filtros
+  public buscarByNombre(): void {
     console.log('Method buscarByNombre');
   }
 
-  buscarByApePaterno(): void {
+  public buscarByApePaterno(): void {
     console.log('Method buscarByApePaterno');
   }
 
-  buscarByApeMaterno(): void {
+  public buscarByApeMaterno(): void {
     console.log('Method buscarByApeMaterno');
   }
 
-  buscarByRut(): void {
+  public buscarByRut(): void {
     console.log('Method buscarByRut');
   }
 
-  buscarByCodigo(): void {
+  public buscarByCodigo(): void {
     console.log('Method buscarByCodigo');
   }
 
-  buscarBySector(): void {
+  public buscarBySector(): void {
     console.log('Method buscarBySector');
+  }
+
+  public buscarByComuna() {
+    console.log('Method buscarByComuna');
   }
 
 
