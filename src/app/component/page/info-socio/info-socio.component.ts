@@ -31,7 +31,7 @@ export class InfoSocioComponent {
       }
     }
   }
-  
+
   constructor(private modalService: NgbModal) {
     this.refreshCountries('Init');
   }
