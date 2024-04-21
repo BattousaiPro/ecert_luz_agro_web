@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     font-family: "Open Sans", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6em;
+    color: #333333;
     background-color: #3393d3;
     margin: 30px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .w100 {
@@ -21,6 +28,17 @@ body {
 .mb15 {
     margin-bottom: 15px;
 }
+
 .p25 {
     padding: 25px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+.fz15 {
+    font-size: 12px;
+}
+.w-auto {
+    width: auto
 }

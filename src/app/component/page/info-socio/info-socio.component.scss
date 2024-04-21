@@ -6,3 +6,55 @@
     background: green;
     color: yellow !important;
 }
+
+.containerPagination {
+    height: 50px;
+    margin-top: 15px;
+}
+
+.containerButton {
+    border: 1px solid #d6d7de;
+    margin-right: 0;
+    margin-left: 0;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.table-socio thead tr th input {
+    font-size: 12px;
+    width: 100%;
+}
+
+.table-socio {
+    border: 1px solid #cccccc;
+    border-spacing: 0;
+}
+
+.table-socio thead tr {
+    --bs-table-bg: #333333;
+    --bs-table-color: white;
+}
+
+.table-socio th,
+.table-socio td {
+    border-right: 1px solid #cccccc;
+    min-width: 198px;
+    padding: 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-socio th:last-child,
+.table-socio td:last-child {
+    border-right: 0;
+}
+
+.table-socio td {
+    border-bottom: 1px solid #cccccc;
+}
+
+.detail-table-socio {
+    max-width: 100%;
+    overflow-x: scroll;
+}
