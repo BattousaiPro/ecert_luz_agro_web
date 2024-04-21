@@ -59,6 +59,14 @@
     border-bottom: 1px solid #cccccc;
 }
 
+.table-socio tbody tr .selectedeye {
+    background: #f2f2f2;
+}
+
+.table-socio tbody tr:nth-child(2n) .selectedeye {
+    background: white;
+}   
+
 .table-socio .sticky {
     position: sticky;
     left: 0;
