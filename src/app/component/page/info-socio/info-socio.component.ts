@@ -39,10 +39,12 @@ export class InfoSocioComponent {
       if (!socio.selected) {
         socio.selected = true;
       } else {
-        for (let index = 0; index < listaSocios.length; index++) {
+        socio.selected = false;
+      }
+      for (let index = 0; index < listaSocios.length; index++) {
+        if (listaSocios[index].id !== socio.id) {
           listaSocios[index].selected = false;
         }
-        socio.selected = false;
       }
     }
   }
