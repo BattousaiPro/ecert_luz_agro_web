@@ -7,11 +7,6 @@
     color: yellow !important;
 }
 
-.table-socio th.mw-60,
-.table-socio td.mw-60 {
-    min-width: 60px;
-}
-
 .containerPagination {
     height: 50px;
     margin-top: 15px;
@@ -25,17 +20,22 @@
     padding-bottom: 10px;
 }
 
+.table-socio th.mw-60,
+.table-socio td.mw-60 {
+    min-width: 60px;
+}
+
 .table-socio thead tr th input {
     font-size: 12px;
     width: 100%;
 }
 
 .table-socio {
-    border: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
     border-spacing: 0;
 }
 
-.table-socio thead tr {
+.table-socio thead th {
     --bs-table-bg: #333333;
     --bs-table-color: white;
 }
@@ -58,7 +58,14 @@
     border-bottom: 1px solid #cccccc;
 }
 
+.table-socio .sticky {
+    position: sticky;
+    left: 0;
+}
+
 .detail-table-socio {
     max-width: 100%;
     overflow-x: scroll;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
 }

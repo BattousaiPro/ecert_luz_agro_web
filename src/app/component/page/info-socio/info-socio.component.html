@@ -38,7 +38,7 @@
             <table class="table table-striped table-hover table-socio fz15">
                 <thead>
                     <tr>
-                        <th scope="col" class="mw-60"></th>
+                        <th scope="col" class="mw-60 sticky"></th>
                         <th scope="col">
                             <div><input type="text" class="form-control w100px mb10" placeholder="Rut"
                                     (blur)="buscarByRut()"></div>
@@ -106,7 +106,7 @@
                 </thead>
                 <thead>
                     <tr>
-                        <th scope="col" class="mw-60"></th>
+                        <th scope="col" class="mw-60 sticky"></th>
                         <th scope="col">Rut Socio</th>
                         <th scope="col">Apellido Paterno</th>
                         <th scope="col">Apellido Materno</th>
@@ -153,7 +153,7 @@
                     @for (socio of socios | slice: (page-1) * pageSize : page * pageSize; track socio.id; let index =
                     $index) {
                     <tr [ngClass]="{'selected' : socio.selected}">
-                        <td scope="row" (click)="cambioEstado(socio, 'Id')" class="mw-60">
+                        <td scope="row" (click)="cambioEstado(socio, 'Id')" class="mw-60 sticky">
                             <button type="button" class="btn btn-primary" (click)="openDetails(socio, myModalContent)">
                                 <i class="bi bi-eye-fill"></i>
                             </button>
