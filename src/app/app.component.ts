@@ -13,5 +13,5 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 export class AppComponent {
   constructor() { }
   title = 'ecert_web';
-  sidebarExpanded = true;
+  sidebarExpanded = false;
 }

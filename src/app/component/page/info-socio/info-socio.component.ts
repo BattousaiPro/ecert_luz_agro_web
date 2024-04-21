@@ -25,10 +25,7 @@ export class InfoSocioComponent {
   refreshCountries(texto: string) {
     console.log(texto);
     for (let index = 0; index < listaSocios.length; index++) {
-      listaSocios[index].visibility = false;
-      if (index < this.pageSize) {
-        listaSocios[index].visibility = true;
-      }
+      listaSocios[index].selected = false;
     }
   }
 
@@ -36,12 +33,22 @@ export class InfoSocioComponent {
     this.refreshCountries('Init');
   }
 
-  cambioEstado(socio: DataSocio, content: any) {
-    for (let index = 0; index < listaSocios.length; index++) {
-      listaSocios[index].selected = false;
+  cambioEstado(socio: DataSocio, id: string = '') {
+    console.log('Method cambioEstado.');
+    if (id === '') {
+      if (!socio.selected) {
+        socio.selected = true;
+      } else {
+        for (let index = 0; index < listaSocios.length; index++) {
+          listaSocios[index].selected = false;
+        }
+        socio.selected = false;
+      }
     }
-    socio.selected = true;
+  }
 
+  openDetails(socio: DataSocio, content: any) {
+    console.log('Method openDetails.');
     this.socioModal = socio;
     this.openModalFunction(content);
   }
@@ -49,7 +56,6 @@ export class InfoSocioComponent {
   validaSelected(): boolean {
     for (let index = 0; index < listaSocios.length; index++) {
       if (listaSocios[index].selected) {
-        console.log('return true.');
         return true;
       }
     }

@@ -5,7 +5,7 @@ body {
     line-height: 1.6em;
     color: #333333;
     background-color: #3393d3;
-    margin: 30px;
+    margin: 0;
 }
 
 * {
@@ -41,4 +41,7 @@ body {
 }
 .w-auto {
     width: auto
+}
+.fr {
+    float: right;
 }
