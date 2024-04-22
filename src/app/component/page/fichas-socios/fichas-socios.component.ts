@@ -11,6 +11,7 @@ export class FichasSociosComponent {
 
   aceptar() {
     console.log('Method aceptar');
+    alert('Funcionalidad No disponible');
   }
   /********************************************************/
   // Sector de filtros
