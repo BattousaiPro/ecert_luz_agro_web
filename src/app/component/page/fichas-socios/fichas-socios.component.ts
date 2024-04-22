@@ -9,4 +9,23 @@ import { Component } from '@angular/core';
 })
 export class FichasSociosComponent {
 
+  aceptar() {
+    console.log('Method aceptar');
+  }
+  /********************************************************/
+  // Sector de filtros
+  buscarByCodigoInicial() {
+    console.log('Method buscarByCodigoInicial');
+  }
+  buscarByCodigoFinal() {
+    console.log('Method buscarByCodigoFinal');
+  }
+  buscarByAnio() {
+    console.log('Method buscarByAnio');
+  }
+  buscarByNroPagina() {
+    console.log('Method buscarByNroPagina');
+  }
+  /********************************************************/
+
 }

@@ -118,7 +118,6 @@ export class InfoSocioComponent {
   public buscarByComuna() {
     console.log('Method buscarByComuna');
   }
-
-
   /********************************************************/
+
 }
