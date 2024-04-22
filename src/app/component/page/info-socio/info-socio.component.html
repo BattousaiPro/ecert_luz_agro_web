@@ -44,6 +44,10 @@
                                     (blur)="buscarByRut()"></div>
                         </th>
                         <th scope="col">
+                            <div><input type="text" class="form-control w100px mb10" placeholder="Nombre"
+                                    (blur)="buscarByNombre()"></div>
+                        </th>
+                        <th scope="col">
                             <div><input type="text" class="form-control w100px mb10" placeholder="Apellido Paterno"
                                     (blur)="buscarByApePaterno()">
                             </div>
@@ -52,10 +56,6 @@
                             <div><input type="text" class="form-control w100px mb10" placeholder="Apellido Materno"
                                     (blur)="buscarByApeMaterno()">
                             </div>
-                        </th>
-                        <th scope="col">
-                            <div><input type="text" class="form-control w100px mb10" placeholder="Nombre"
-                                    (blur)="buscarByNombre()"></div>
                         </th>
                         <th scope="col">
                             <div><input type="text" class="form-control w100px mb10" placeholder="Código"
@@ -108,9 +108,9 @@
                     <tr>
                         <th scope="col" class="mw-60 sticky"></th>
                         <th scope="col">Rut Socio</th>
+                        <th scope="col">Nombres</th>
                         <th scope="col">Apellido Paterno</th>
                         <th scope="col">Apellido Materno</th>
-                        <th scope="col">Nombres</th>
                         <th scope="col">Código Luzagro</th>
                         <th scope="col">Código Luzlinares</th>
                         <th scope="col">Código Anterior</th>
@@ -159,9 +159,9 @@
                             </button>
                         </td>
                         <td (click)="cambioEstado(socio)">{{ socio.rut_cop }}</td>
+                        <td (click)="cambioEstado(socio)">{{ socio.nombres }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.ape_pat }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.ape_mat }}</td>
-                        <td (click)="cambioEstado(socio)">{{ socio.nombres }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.cod_cop }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.cod_lli }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.cod_ant }}</td>
@@ -201,7 +201,7 @@
                     </tr>
                     } @empty {
                     <tr>
-                        <th scope="row">Empty list of users</th>
+                        <th scope="row" class="sticky">Sin Resultados</th>
                     </tr>
                     }
                 </tbody>
