@@ -69,7 +69,7 @@ export class InfoSocioComponent {
     if (!this.validaSelected()) {
       alert('debes seleccionar un Socio.');
     } else {
-      alert('ya esta seleccionado un Socio.');
+      alert('Funcionalidad No disponible.');
     }
   }
 
@@ -77,7 +77,7 @@ export class InfoSocioComponent {
     if (!this.validaSelected()) {
       alert('debes seleccionar un Socio para cerfificado.');
     } else {
-      alert('ya esta seleccionado un Socio para cerfificado.');
+      alert('Funcionalidad No disponible.');
     }
   }
 
