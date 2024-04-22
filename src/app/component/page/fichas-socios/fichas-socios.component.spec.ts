@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArchivosSociosComponent } from './archivos-socios.component';
+import { FichasSociosComponent } from './fichas-socios.component';
 
-describe('ArchivosSociosComponent', () => {
-  let component: ArchivosSociosComponent;
-  let fixture: ComponentFixture<ArchivosSociosComponent>;
+describe('FichasSociosComponent', () => {
+  let component: FichasSociosComponent;
+  let fixture: ComponentFixture<FichasSociosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArchivosSociosComponent]
+      imports: [FichasSociosComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ArchivosSociosComponent);
+    fixture = TestBed.createComponent(FichasSociosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
