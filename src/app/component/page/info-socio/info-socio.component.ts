@@ -114,10 +114,6 @@ export class InfoSocioComponent {
   public buscarBySector(): void {
     console.log('Method buscarBySector');
   }
-
-  public buscarByComuna() {
-    console.log('Method buscarByComuna');
-  }
   /********************************************************/
 
 }
