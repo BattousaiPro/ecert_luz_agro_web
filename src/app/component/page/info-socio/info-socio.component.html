@@ -135,11 +135,7 @@
                     @for (socio of socios | slice: (page-1) * pageSize : page * pageSize; track socio.id; let index =
                     $index) {
                     <tr [ngClass]="{'selected' : socio.selected}">
-                        <td scope="row" (click)="cambioEstado(socio, 'Id')" [ngClass]="{'selectedeye' : socio.selected}" class="mw-60 sticky">
-                            <button type="button" class="btn btn-primary" (click)="openDetails(socio, myModalContent)">
-                                <i class="bi bi-eye-fill"></i>
-                            </button>
-                        </td>
+                        <td scope="row" (click)="cambioEstado(socio, 'Id')" [ngClass]="{'selectedeye' : socio.selected}" class="mw-60 sticky"><button type="button" class="btn btn-primary" (click)="openDetails(socio, myModalContent)"><i class="bi bi-eye-fill"></i></button></td>
                         <td (click)="cambioEstado(socio)">{{ socio.rut_cop }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.nombres }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.ape_pat }}</td>
