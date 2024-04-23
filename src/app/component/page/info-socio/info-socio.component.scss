@@ -26,6 +26,11 @@
     min-width: 60px;
 }
 
+.table-socio th.mw-160,
+.table-socio td.mw-160 {
+    min-width: 160px;
+}
+
 .table-socio th.mw-280,
 .table-socio td.mw-280 {
     min-width: 280px;
@@ -50,7 +55,7 @@
 .table-socio th,
 .table-socio td {
     border-right: 1px solid #cccccc;
-    min-width: 198px;
+    min-width: 150px;
     padding: 0.5rem;
     text-align: center;
     vertical-align: middle;

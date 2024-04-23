@@ -40,7 +40,7 @@
                     <tr>
                         <th scope="col" class="mw-60 sticky"></th>
                         <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Rut" (blur)="buscarByRut()"></div></th>
-                        <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Nombre" (blur)="buscarByNombre()"></div></th>
+                        <th scope="col" class="mw-160"><div><input type="text" class="form-control w100px mb10" placeholder="Nombre" (blur)="buscarByNombre()"></div></th>
                         <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Apellido Paterno" (blur)="buscarByApePaterno()"></div></th>
                         <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Apellido Materno" (blur)="buscarByApeMaterno()"></div></th>
                         <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Código" (blur)="buscarByCodigo()"></div></th>
@@ -87,7 +87,7 @@
                     <tr>
                         <th scope="col" class="mw-60 sticky"></th>
                         <th scope="col">Rut Socio</th>
-                        <th scope="col">Nombres</th>
+                        <th scope="col" class="mw-160">Nombres</th>
                         <th scope="col">Apellido Paterno</th>
                         <th scope="col">Apellido Materno</th>
                         <th scope="col">Código Luzagro</th>
@@ -136,7 +136,7 @@
                     <tr [ngClass]="{'selected' : socio.selected}">
                         <td scope="row" (click)="statusChange(socio, 'Id')" [ngClass]="{'selectedeye' : socio.selected}" class="mw-60 sticky"><button type="button" class="btn btn-primary" (click)="openDetails(socio, myModalContent)"><i class="bi bi-eye-fill"></i></button></td>
                         <td (click)="statusChange(socio)">{{ socio.rut_cop }}</td>
-                        <td (click)="statusChange(socio)">{{ socio.nombres }}</td>
+                        <td class="mw-160" (click)="statusChange(socio)">{{ socio.nombres }}</td>
                         <td (click)="statusChange(socio)">{{ socio.ape_pat }}</td>
                         <td (click)="statusChange(socio)">{{ socio.ape_mat }}</td>
                         <td (click)="statusChange(socio)">{{ socio.cod_cop }}</td>
@@ -157,7 +157,7 @@
                         <td (click)="statusChange(socio)">{{ socio.fec_act }}</td>
                         <td (click)="statusChange(socio)">{{ socio.est_tra }}</td>
                         <td (click)="statusChange(socio)">{{ socio.est_bon }}</td>
-                        <td  class="mw-280" (click)="statusChange(socio)">{{ socio.dir_pos }}</td>
+                        <td class="mw-280" (click)="statusChange(socio)">{{ socio.dir_pos }}</td>
                         <td (click)="statusChange(socio)">{{ socio.nro_te1 }}</td>
                         <td (click)="statusChange(socio)">{{ socio.nro_te2 }}</td>
                         <td (click)="statusChange(socio)">{{ socio.nro_te3 }}</td>
