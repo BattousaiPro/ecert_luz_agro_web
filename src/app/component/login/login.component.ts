@@ -22,7 +22,7 @@ export class LoginComponent {
       if (!this.password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)) {
         alert('La contraseña debe ser alfanumérica y tener al menos 8 caracteres');
       } else {
-        this.router.navigate(['infosocio']);
+        this.router.navigate(['home']);
       }
     }
   }

@@ -4,9 +4,11 @@ import { InfoSocioComponent } from './component/page/info-socio/info-socio.compo
 import { PermisosComponent } from './component/permisos/permisos.component';
 import { RolesComponent } from './component/roles/roles.component';
 import { FichasSociosComponent } from './component/page/fichas-socios/fichas-socios.component';
+import { HomeComponent } from './component/home/home.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
+    { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'infosocio', component: InfoSocioComponent },
     { path: 'roles', component: RolesComponent },
