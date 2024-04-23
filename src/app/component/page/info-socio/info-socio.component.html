@@ -39,36 +39,16 @@
                 <thead>
                     <tr>
                         <th scope="col" class="mw-60 sticky"></th>
-                        <th scope="col">
-                            <div><input type="text" class="form-control w100px mb10" placeholder="Rut"
-                                    (blur)="buscarByRut()"></div>
-                        </th>
-                        <th scope="col">
-                            <div><input type="text" class="form-control w100px mb10" placeholder="Nombre"
-                                    (blur)="buscarByNombre()"></div>
-                        </th>
-                        <th scope="col">
-                            <div><input type="text" class="form-control w100px mb10" placeholder="Apellido Paterno"
-                                    (blur)="buscarByApePaterno()">
-                            </div>
-                        </th>
-                        <th scope="col">
-                            <div><input type="text" class="form-control w100px mb10" placeholder="Apellido Materno"
-                                    (blur)="buscarByApeMaterno()">
-                            </div>
-                        </th>
-                        <th scope="col">
-                            <div><input type="text" class="form-control w100px mb10" placeholder="Código"
-                                    (blur)="buscarByCodigo()"></div>
-                        </th>
+                        <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Rut" (blur)="buscarByRut()"></div></th>
+                        <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Nombre" (blur)="buscarByNombre()"></div></th>
+                        <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Apellido Paterno" (blur)="buscarByApePaterno()"></div></th>
+                        <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Apellido Materno" (blur)="buscarByApeMaterno()"></div></th>
+                        <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Código" (blur)="buscarByCodigo()"></div></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
-                        <th scope="col">
-                            <div><input type="text" class="form-control w100px mb10" placeholder="Sector"
-                                    (blur)="buscarBySector()"></div>
-                        </th>
+                        <th scope="col"><div><input type="text" class="form-control w100px mb10" placeholder="Sector" (blur)="buscarBySector()"></div></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
@@ -89,7 +69,7 @@
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col" class="mw-280"></th>
-                        <!--<th scope="col"></th>
+                        <!--
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
@@ -99,7 +79,9 @@
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
-                        <th scope="col"></th>-->
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        -->
                     </tr>
                 </thead>
                 <thead>
@@ -134,7 +116,8 @@
                         <th scope="col">nro telefono 4</th>
                         <th scope="col">Comuna</th>
                         <th scope="col" class="mw-280">Observación</th>
-                        <!--<th scope="col">nro_sol</th>
+                        <!--
+                        <th scope="col">nro_sol</th>
                         <th scope="col">fec_sol</th>
                         <th scope="col">fec_apr</th>
                         <th scope="col">fec_can</th>
@@ -144,7 +127,8 @@
                         <th scope="col">sec_imp</th>
                         <th scope="col">est_reg</th>
                         <th scope="col">acc_con</th>
-                        <th scope="col">aju_acc</th>-->
+                        <th scope="col">aju_acc</th>
+                        -->
                     </tr>
                 </thead>
                 <tbody>
@@ -185,7 +169,8 @@
                         <td (click)="cambioEstado(socio)">{{ socio.nro_te4 }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.com_pos }}</td>
                         <td class="mw-280" (click)="cambioEstado(socio)">{{ socio.obs_cap }}</td>
-                        <!--<td (click)="cambioEstado(socio)">{{ socio.nro_sol }}</td>
+                        <!--
+                        <td (click)="cambioEstado(socio)">{{ socio.nro_sol }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.fec_sol }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.fec_apr }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.fec_can }}</td>
@@ -195,7 +180,8 @@
                         <td (click)="cambioEstado(socio)">{{ socio.sec_imp }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.est_reg }}</td>
                         <td (click)="cambioEstado(socio)">{{ socio.acc_con }}</td>
-                        <td (click)="cambioEstado(socio)">{{ socio.aju_acc }}</td>-->
+                        <td (click)="cambioEstado(socio)">{{ socio.aju_acc }}</td>
+                        -->
                     </tr>
                     } @empty {
                     <tr>
