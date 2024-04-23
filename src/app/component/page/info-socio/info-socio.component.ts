@@ -33,7 +33,7 @@ export class InfoSocioComponent {
     this.refreshCountries('Init');
   }
 
-  cambioEstado(socio: DataSocio, id: string = '') {
+  statusChange(socio: DataSocio, id: string = '') {
     console.log('Method cambioEstado.');
     if (id === '') {
       if (!socio.selected) {
