@@ -1,22 +1,28 @@
 import { Component } from '@angular/core';
-import jsPDF from 'jspdf';
+import { SpinnerComponent } from '../../spinner/spinner.component';
+import { TemplateFichaSocioComponent } from './template-ficha-socio/template-ficha-socio.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-fichas-socios',
   standalone: true,
-  imports: [],
+  imports: [SpinnerComponent, TemplateFichaSocioComponent],
   templateUrl: './fichas-socios.component.html',
   styleUrl: './fichas-socios.component.scss'
 })
 export class FichasSociosComponent {
 
-  aceptar() {
-    console.log('Method aceptar');
-    //alert('Funcionalidad No disponible');
-    const doc = new jsPDF();
-    doc.text('Hola Koke buenos días', 10, 10);
-    doc.save('Buenos días xD.pdf');
+  cargar: boolean = false;
+
+  constructor(private modalService: NgbModal) { }
+
+  openModalTemplate(content: any) {
+    console.log('Method openModalTemplate');
+    console.log('Method openDetails.');
+    //this.socioModal = socio;
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
+
   /********************************************************/
   // Sector de filtros
   buscarByCodigoInicial() {
