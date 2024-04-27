@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-fichas-socios',
@@ -11,7 +12,10 @@ export class FichasSociosComponent {
 
   aceptar() {
     console.log('Method aceptar');
-    alert('Funcionalidad No disponible');
+    //alert('Funcionalidad No disponible');
+    const doc = new jsPDF();
+    doc.text('Hola Koke buenos días', 10, 10);
+    doc.save('Buenos días xD.pdf');
   }
   /********************************************************/
   // Sector de filtros

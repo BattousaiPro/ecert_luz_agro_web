@@ -76,6 +76,8 @@
             "development": {
               "buildTarget": "ecert_web:build:development"
             }
+          }, "options": {
+            "port": 4500
           },
           "defaultConfiguration": "development"
         },

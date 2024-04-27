@@ -34,3 +34,4 @@ Empresa: luz agro
 
 npm install bootstrap --save
 npm install bootstrap-icons --save
+npm i jspdf --legacy-peer-deps
