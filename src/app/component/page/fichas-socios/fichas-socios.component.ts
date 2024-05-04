@@ -79,13 +79,5 @@ export class FichasSociosComponent {
       event.preventDefault();
     }
   }
-  /*
-    public validspacesAlto(): void {
-      if (this.formulario.step_Dos.alto >= 500) {
-        this.formulario.step_Dos.alto = 500;
-      } else if (this.formulario.step_Dos.alto <= 0) {
-        this.formulario.step_Dos.alto = 1;
-      }
-    }
-    */
+
 }
