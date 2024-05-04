@@ -16,10 +16,22 @@ export class FichasSociosComponent {
   cargar: boolean = false;
   codigoInicial: string = '';
   codigoFinal: string = '';
-  anio!: number;
+  anio: number = 0;
   nroPagina!: number;
+  anioList: number[] = [];
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal) {
+    this.loadAnio();
+  }
+
+  private loadAnio(): void {
+    this.anioList.push(2022);
+    this.anioList.push(2021);
+    this.anioList.push(2020);
+    this.anioList.push(2019);
+    this.anioList.push(2018);
+    this.anioList.push(2017);
+  }
 
   submit(content: any) {
     const aaanio: string = '' + this.anio;

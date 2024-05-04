@@ -8,14 +8,31 @@
             <h4>Filtros</h4>
             <div class="col-12">
                 <div class="row">
-                    <div class="col-xs-12 col-md-6 col-xl-3"><input type="text" maxlength="50" class="w100 mb10" [(ngModel)]="codigoInicial" placeholder="Código Inicial" required></div>
-                    <div class="col-xs-12 col-md-6 col-xl-3"><input type="text" maxlength="50" class="w100 mb10" [(ngModel)]="codigoFinal" placeholder="Código Final" required></div>
-                    <div class="col-xs-12 col-md-6 col-xl-3"><input type="number" (keypress)="inpNum($event)" (blur)='buscarByAnio()' class="w100 mb10" [(ngModel)]="anio" placeholder="Año" required></div>
-                    <div class="col-xs-12 col-md-6 col-xl-3"><input type="number" (keypress)="inpNum($event)" (blur)='buscarByNroPagina()' class="w100 mb10" [(ngModel)]="nroPagina" placeholder="Nro Pagina" required></div>
+                    <div class="col-xs-12 col-md-6 col-xl-3">
+                        <input type="text" maxlength="50" class="w100 mb10" [(ngModel)]="codigoInicial"
+                            placeholder="Código Inicial" required>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-xl-3">
+                        <input type="text" maxlength="50" class="w100 mb10" [(ngModel)]="codigoFinal"
+                            placeholder="Código Final" required>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-xl-3">
+                        <select class="form-select w100" [(ngModel)]="anio" required>
+                            <option value="0">Año</option>
+                            @for (anio of anioList; track anio; let index = $index) {
+                            <option [ngValue]="anio">{{anio}}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-xl-3">
+                        <input type="number" (keypress)="inpNum($event)" (blur)='buscarByNroPagina()' class="w100 mb10"
+                            [(ngModel)]="nroPagina" placeholder="Nro Pagina" required>
+                    </div>
                 </div>
                 <div class="row justify-content-end containerButton">
                     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
-                        <button type="button" class="btn btn-primary w100" (click)="submit(myModalContent)">Aceptar</button>
+                        <button type="button" class="btn btn-primary w100"
+                            (click)="submit(myModalContent)">Aceptar</button>
                     </div>
                 </div>
             </div>
