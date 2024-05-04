@@ -86,5 +86,6 @@ export class FichasSociosComponent {
       } else if (this.formulario.step_Dos.alto <= 0) {
         this.formulario.step_Dos.alto = 1;
       }
-    }*/
+    }
+    */
 }
