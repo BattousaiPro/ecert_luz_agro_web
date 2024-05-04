@@ -34,20 +34,15 @@ export class FichasSociosComponent {
   }
 
   submit(content: any) {
-    const aaanio: string = '' + this.anio;
-    console.log('this.anio.length: ' + aaanio.length);
-    const nroPagina: string = '' + this.nroPagina;
-    console.log('this.anio.length: ' + nroPagina.length);
     if (
       this.codigoInicial != '' && typeof this.codigoInicial !== 'undefined' &&
       this.codigoFinal != '' && typeof this.codigoFinal !== 'undefined' &&
-      aaanio !== '' && aaanio.length === 4 &&
-      nroPagina !== '' && nroPagina.length === 4) {
+      this.anio !== 0 && this.anio < 1000 &&
+      this.nroPagina !== 0 && this.nroPagina < 1000) {
       this.openModalTemplate(content);
     } else {
       alert('todos los campos deben ser completados.');
     }
-
   }
 
   openModalTemplate(content: any) {
@@ -65,14 +60,7 @@ export class FichasSociosComponent {
   buscarByCodigoFinal() {
     //console.log('Method buscarByCodigoFinal');
   }
-  buscarByAnio() {
-    //console.log('Method buscarByAnio');
-    if (this.anio >= 9999) {
-      this.anio = 9999;
-    } else if (this.anio <= 0) {
-      this.anio = 1;
-    }
-  }
+
   buscarByNroPagina() {
     //console.log('Method buscarByNroPagina');
     if (this.nroPagina >= 9999) {
