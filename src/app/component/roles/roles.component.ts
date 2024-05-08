@@ -17,7 +17,7 @@ export class RolesComponent implements OnInit {
     this.loadCargarRoles();
   }
 
-  loadCargarRoles() {
+  private loadCargarRoles(): void {
     this.roles.push({ id: 0, nombre: 'Administrador' });
     this.roles.push({ id: 1, nombre: 'Ejecutivo' });
     this.roles.push({ id: 2, nombre: 'Cliente' });
