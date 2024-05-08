@@ -1,5 +1,10 @@
 <div class="container">
     <div class="title mt15">
         <h1>Roles</h1>
+
+        @for (rol of roles; track rol.id; let index = $index) {
+        <h4> {{ rol.id }} - {{ rol.nombre }}</h4>
+        }
+
     </div>
 </div>
