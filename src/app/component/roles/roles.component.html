@@ -3,8 +3,10 @@
         <h1>Roles</h1>
 
         @for (rol of roles; track rol.id; let index = $index) {
-        <h4> {{ rol.id }} - {{ rol.nombre }}</h4>
+        <h4> {{ rol.id }} - {{ rol.name }}</h4>
         }
 
     </div>
 </div>
+
+<app-spinner [cargar]="cargar"></app-spinner>
