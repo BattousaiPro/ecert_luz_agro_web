@@ -25,17 +25,25 @@ export class RolesComponent implements OnInit {
     this.cargar = true;
     this.rolesService.obtenerRoles().subscribe(
       (data: any) => {
-        //console.log(JSON.stringify(data));
-          this.roles.push(...data);
+        console.log(JSON.stringify(data));
+        debugger
+        if (data.code === '0') {
+          this.roles.push(...data.data);
+          // console.log(JSON.stringify(this.roles));
+        } else {
+          //this.error.mostrarError('Error con la respuesta de servicios de Roles');
+          console.log('Error con la respuesta de servicios de Roles');
+          alert('Error con la respuesta de servicios de Roles');
+        }
         this.cargar = false;
       },
       (err: any) => {
-        console.log('Error loadCargarRoles subscribe');
+        //this.error.mostrarError('Error con el ervicio de Roles');
+        console.log('Error con el ervicio de Roles');
+        alert('Error con el ervicio de Roles');
         this.cargar = false;
       });
   }
-
-
 
 }
 export interface Role {
