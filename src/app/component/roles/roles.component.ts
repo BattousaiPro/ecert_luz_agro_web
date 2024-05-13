@@ -26,7 +26,6 @@ export class RolesComponent implements OnInit {
     this.rolesService.obtenerRoles().subscribe(
       (data: any) => {
         // console.log(JSON.stringify(data));
-        debugger
         if (data.code === '0') {
           this.roles.push(...data.data);
           // console.log(JSON.stringify(this.roles));
