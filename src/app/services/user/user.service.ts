@@ -9,9 +9,15 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  public obtenerUser(): Observable<any> {
+    let url = 'http://localhost:3000/users';
+    const ladata: Observable<any> = this.http.get(
+      url
+    );
+    return ladata;
+  }
+
   public access(username: string, password: string): Observable<any> {
-    //let seguro: any = this.autenticationValue();
-    //let url = environment.urlCargaDirecta + '/general/category/findAll';
     let url = 'http://localhost:3000/user/access';
     const ladata: Observable<any> = this.http.post(
       url,
