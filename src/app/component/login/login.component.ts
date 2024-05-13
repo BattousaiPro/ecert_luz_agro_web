@@ -13,7 +13,7 @@ import { SpinnerComponent } from '../spinner/spinner.component';
 })
 export class LoginComponent {
   username: string = 'Batto';
-  password: string = 'Batto';
+  password: string = 'Batto123';
   cargar: boolean = false;
 
   constructor(private userService: UserService,
@@ -38,7 +38,8 @@ export class LoginComponent {
     this.userService.access(this.username, this.password).subscribe(
       (data: any) => {
         console.log(JSON.stringify(data));
-        if (data.code === '0' && data.data != null) {
+        if (data.body.code === '0') {
+        //if (data.body.code === '0' && data.body.data != null) {
           this.router.navigate(['home']);
         } else {
           //this.error.mostrarError('Error con la respuesta de servicios de Access');
