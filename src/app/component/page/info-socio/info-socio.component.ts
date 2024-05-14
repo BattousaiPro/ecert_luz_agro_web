@@ -40,6 +40,7 @@ export class InfoSocioComponent {
         // console.log(JSON.stringify(data));
         if (data.code === '0' && data.data != null) {
           this.socios.push(...data.data);
+          this.socios.push(...listaSocios);
           this.refreshCountries('Init');
           // console.log(JSON.stringify(this.usuarios));
         } else {
