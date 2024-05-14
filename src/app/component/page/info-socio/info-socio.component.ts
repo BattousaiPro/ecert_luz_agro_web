@@ -5,6 +5,7 @@ import { SpinnerComponent } from '../../spinner/spinner.component';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { KapmaeService } from '../../../services/kapmae/kapmae.service';
 
 @Component({
   selector: 'app-info-socio',
@@ -14,7 +15,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './info-socio.component.scss'
 })
 export class InfoSocioComponent {
-  socios: DataSocio[] = listaSocios;
+
+  socios: DataSocio[] = [];
+  // socios: DataSocio[] = listaSocios;
+
   socioModal!: DataSocio;
   cargar: boolean = false;
 
@@ -22,15 +26,42 @@ export class InfoSocioComponent {
   page = 1;
   pageSize = 5;
 
+  constructor(private modalService: NgbModal,
+    private kapmaeService: KapmaeService
+  ) {
+    this.loadCargarKapMae();
+  }
+
+  private loadCargarKapMae(): void {
+    console.log('Cargando loadCargarUsers');
+    this.cargar = true;
+    this.kapmaeService.obtenerKapMae().subscribe(
+      (data: any) => {
+        // console.log(JSON.stringify(data));
+        if (data.code === '0' && data.data != null) {
+          this.socios.push(...data.data);
+          this.refreshCountries('Init');
+          // console.log(JSON.stringify(this.usuarios));
+        } else {
+          //this.error.mostrarError('Error con la respuesta de servicios de Socios');
+          console.log('Error con la respuesta de servicios de Socios');
+          alert('Error con la respuesta de servicios de Socios');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        //this.error.mostrarError('Error con el ervicio de Socios');
+        console.log('Error con el ervicio de Socios');
+        alert('Error con el ervicio de Socios');
+        this.cargar = false;
+      });
+  }
+
   refreshCountries(texto: string) {
     console.log(texto);
     for (let index = 0; index < listaSocios.length; index++) {
       listaSocios[index].selected = false;
     }
-  }
-
-  constructor(private modalService: NgbModal) {
-    this.refreshCountries('Init');
   }
 
   statusChange(socio: DataSocio, id: string = '') {

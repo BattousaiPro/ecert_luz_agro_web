@@ -9,7 +9,7 @@ export class KapmaeService {
 
   constructor(private http: HttpClient) { }
 
-  public obtenerRoles(): Observable<any> {
+  public obtenerKapMae(): Observable<any> {
     let url = 'http://localhost:3000/kapmae';
     const ladata: Observable<any> = this.http.get(
       url
