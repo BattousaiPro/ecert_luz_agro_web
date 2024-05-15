@@ -46,6 +46,10 @@ export class UsuariosComponent {
       });
   }
 
+  public agregarUser(): void {
+
+  }
+
 }
 export interface Usuario {
   id: number;
