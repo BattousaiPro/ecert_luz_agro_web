@@ -54,5 +54,7 @@ export interface Usuario {
   ape_mat: string;
   email: string;
   pass: string;
+  ctaUsr: string;
+  ctaEmail: string;
   estado: boolean;
 }

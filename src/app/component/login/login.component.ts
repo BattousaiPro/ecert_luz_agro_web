@@ -38,8 +38,8 @@ export class LoginComponent {
     this.userService.access(this.username, this.password).subscribe(
       (data: any) => {
         console.log(JSON.stringify(data));
-        if (data.body.code === '0') {
-        //if (data.body.code === '0' && data.body.data != null) {
+        if (data.code === '0') {
+        //if (data.code === '0' && data.body.data != null) {
           this.router.navigate(['home']);
         } else {
           //this.error.mostrarError('Error con la respuesta de servicios de Access');
