@@ -15,7 +15,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class UsuariosComponent {
 
   usuarios: Usuario[] = [];
-  userUpdate: Usuario = new Usuario();
+  userTemplate: Usuario = new Usuario();
   cargar: boolean = false;
 
   constructor(private modalService: NgbModal,
@@ -49,9 +49,15 @@ export class UsuariosComponent {
       });
   }
 
-  public agregarUser(content: any): void {
+  public agregarUserModal(content: any): void {
     console.log('Method agregarUser.');
+    this.userTemplate = new Usuario();
+    this.userTemplate.estado = true;
     this.openModalFunction(content);
+  }
+
+  guardarUser(): void {
+
   }
 
   openModalFunction(content: any): void {
@@ -62,12 +68,25 @@ export class UsuariosComponent {
 export interface Usuario {
   id: number;
   nombre: string;
+  email: string;
   ape_pat: string;
   ape_mat: string;
-  email: string;
   pass: string;
   ctaUsr: string;
   ctaEmail: string;
   estado: boolean;
 }
 export class Usuario { }
+
+export interface UsuarioTemplate {
+  id: number;
+  nombre: string;
+  email: string;
+  ape_pat: string;
+  ape_mat: string;
+  pass: string;
+  ctaUsr: string;
+  ctaEmail: string;
+  estado: boolean;
+}
+export class UsuarioTemplate { }
