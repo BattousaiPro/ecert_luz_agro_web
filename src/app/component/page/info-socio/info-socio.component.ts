@@ -109,7 +109,7 @@ export class InfoSocioComponent {
     }
   }
 
-  openModalFunction(content: any) {
+  openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
