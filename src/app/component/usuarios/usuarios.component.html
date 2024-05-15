@@ -7,7 +7,7 @@
 
         <div class="row mt15">
             <div class="col-12 text-right">
-                <button class="btn btn-primary" (click)="agregarUser()">Guardar cambios</button>
+                <button class="btn btn-primary" (click)="agregarUser(myModalContent)">Guardar cambios</button>
             </div>
         </div>
 
@@ -43,5 +43,11 @@
     </div>
 
 </div>
+
+<ng-template #myModalContent let-modal>
+    <div class="title mt15">
+        <h1>Add Usuarios</h1>
+    </div>
+</ng-template>
 
 <app-spinner [cargar]="cargar"></app-spinner>

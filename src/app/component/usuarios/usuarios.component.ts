@@ -46,7 +46,7 @@ export class UsuariosComponent {
       });
   }
 
-  public agregarUser(): void {
+  public agregarUser(content: any): void {
 
   }
 

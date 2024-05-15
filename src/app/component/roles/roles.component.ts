@@ -45,7 +45,7 @@ export class RolesComponent implements OnInit {
       });
   }
 
-  public agregarRol(): void {
+  public agregarRol(content: any): void {
 
   }
 
