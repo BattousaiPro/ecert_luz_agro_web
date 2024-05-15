@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-usuarios',
@@ -16,7 +17,8 @@ export class UsuariosComponent {
   usuarios: Usuario[] = [];
   cargar: boolean = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private modalService: NgbModal,
+    private userService: UserService) { }
 
   ngOnInit(): void {
     this.loadCargarUsers();
@@ -47,7 +49,12 @@ export class UsuariosComponent {
   }
 
   public agregarUser(content: any): void {
+    console.log('Method agregarUser.');
+    this.openModalFunction(content);
+  }
 
+  openModalFunction(content: any): void {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
 }

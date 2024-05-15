@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RolesService } from '../../services/roles/roles.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-roles',
@@ -15,7 +16,8 @@ export class RolesComponent implements OnInit {
   roles: Role[] = [];
   cargar: boolean = false;
 
-  constructor(private rolesService: RolesService) { }
+  constructor(private modalService: NgbModal,
+    private rolesService: RolesService) { }
 
   ngOnInit(): void {
     this.loadCargarRoles();
@@ -46,7 +48,12 @@ export class RolesComponent implements OnInit {
   }
 
   public agregarRol(content: any): void {
+    console.log('Method agregarRol.');
+    this.openModalFunction(content);
+  }
 
+  openModalFunction(content: any): void {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
 }
