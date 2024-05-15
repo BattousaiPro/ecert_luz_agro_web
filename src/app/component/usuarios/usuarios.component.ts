@@ -15,6 +15,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class UsuariosComponent {
 
   usuarios: Usuario[] = [];
+  userUpdate: Usuario = new Usuario();
   cargar: boolean = false;
 
   constructor(private modalService: NgbModal,
@@ -69,3 +70,4 @@ export interface Usuario {
   ctaEmail: string;
   estado: boolean;
 }
+export class Usuario { }
