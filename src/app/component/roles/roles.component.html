@@ -5,6 +5,26 @@
         @for (rol of roles; track rol.id; let index = $index) {
         <h4> {{ rol.id }} - {{ rol.name }}</h4>
         }
+        <div class="role-users">
+            @for (rol of roles; track rol.id; let index = $index) {
+            <div class="user-permission">
+                <input type="checkbox" [(ngModel)]="rol.estado" id="user-{{ rol.id }}" name="permissions[{{ rol.id }}][{{ rol.estado }}]" />
+                <label for="user-{{ rol.id }}">
+                    <div>
+                        <span>ID: {{ rol.id }}</span>
+                    </div>
+                    <div>
+                        <span>Name: {{ rol.name }}</span>
+                    </div>
+                    <div>
+                        <span>Descripcion: {{ rol.descrip }}</span>
+                    </div>
+                </label>
+            </div>
+            }
+        </div>
+
+
 
     </div>
 </div>
