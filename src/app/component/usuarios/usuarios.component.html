@@ -1,12 +1,16 @@
 <div class="container">
     <div class="title mt15">
         <h1>Usuarios</h1>
-
-        @for (user of usuarios; track user.id; let index = $index) {
-        <h6> {{ user | json }}</h6>
-        }
-
     </div>
+
+    <div class="title mt15">
+        <div class="row">
+            @for (user of usuarios; track user.id; let index = $index) {
+                <h6> {{ user | json }}</h6>
+                }
+        </div>
+    </div>
+
 </div>
 
 <app-spinner [cargar]="cargar"></app-spinner>

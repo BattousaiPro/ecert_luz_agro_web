@@ -1,32 +1,35 @@
 <div class="container">
     <div class="title mt15">
         <h1>Roles</h1>
-
-        @for (rol of roles; track rol.id; let index = $index) {
-        <h4> {{ rol.id }} - {{ rol.name }}</h4>
-        }
-        <div class="role-users">
-            @for (rol of roles; track rol.id; let index = $index) {
-            <div class="user-permission">
-                <input type="checkbox" [(ngModel)]="rol.estado" id="user-{{ rol.id }}" name="permissions[{{ rol.id }}][{{ rol.estado }}]" />
-                <label for="user-{{ rol.id }}">
-                    <div>
-                        <span>ID: {{ rol.id }}</span>
-                    </div>
-                    <div>
-                        <span>Name: {{ rol.name }}</span>
-                    </div>
-                    <div>
-                        <span>Descripcion: {{ rol.descrip }}</span>
-                    </div>
-                </label>
-            </div>
-            }
-        </div>
-
-
-
     </div>
+
+    <div class="title mt15">
+        <div class="row">
+            @for (rol of roles; track rol.id; let index = $index) {
+            <h4> {{ rol.id }} - {{ rol.name }}</h4>
+            }
+            <div class="role-users">
+                @for (rol of roles; track rol.id; let index = $index) {
+                <div class="user-permission">
+                    <input type="checkbox" [(ngModel)]="rol.estado" id="user-{{ rol.id }}"
+                        name="permissions[{{ rol.id }}][{{ rol.estado }}]" />
+                    <label for="user-{{ rol.id }}">
+                        <div>
+                            <span>ID: {{ rol.id }}</span>
+                        </div>
+                        <div>
+                            <span>Name: {{ rol.name }}</span>
+                        </div>
+                        <div>
+                            <span>Descripcion: {{ rol.descrip }}</span>
+                        </div>
+                    </label>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <app-spinner [cargar]="cargar"></app-spinner>
