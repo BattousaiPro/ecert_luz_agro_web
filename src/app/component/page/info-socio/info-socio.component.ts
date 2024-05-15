@@ -68,11 +68,7 @@ export class InfoSocioComponent {
   statusChange(socio: DataSocio, id: string = '') {
     console.log('Method cambioEstado.');
     if (id === '') {
-      if (!socio.selected) {
-        socio.selected = true;
-      } else {
-        socio.selected = false;
-      }
+      socio.selected = !socio.selected;
       for (let index = 0; index < listaSocios.length; index++) {
         if (listaSocios[index].id !== socio.id) {
           listaSocios[index].selected = false;

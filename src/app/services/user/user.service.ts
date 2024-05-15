@@ -19,12 +19,13 @@ export class UserService {
 
   public access(username: string, password: string): Observable<any> {
     let url = 'http://localhost:3000/user/access';
+    let userData: any = {
+      ctaUsr: username,
+      ctaPass: password
+    };
     const ladata: Observable<any> = this.http.post(
       url,
-      {
-        ctaUsr: username,
-        ctaPass: password
-      }, { observe: 'response' }
+      userData
     );
     return ladata;
   }
