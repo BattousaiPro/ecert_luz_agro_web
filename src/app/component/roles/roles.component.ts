@@ -45,6 +45,10 @@ export class RolesComponent implements OnInit {
       });
   }
 
+  agregarRol() {
+
+  }
+
 }
 
 export interface Role {
