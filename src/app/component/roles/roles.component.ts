@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RolesService } from '../../services/roles/roles.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-roles',
   standalone: true,
-  imports: [SpinnerComponent],
+  imports: [SpinnerComponent, FormsModule],
   templateUrl: './roles.component.html',
   styleUrl: './roles.component.scss'
 })
