@@ -12,6 +12,7 @@
                                 <th scope="col" class="mw-60">Nombre</th>
                                 <th scope="col" class="mw-60">Descripcion</th>
                                 <th scope="col" class="mw-60">Estado</th>
+                                <th scope="col" class="mw-60">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -22,6 +23,7 @@
                                 <td>{{ rol.descrip }}</td>
                                 <td><input type="checkbox" [(ngModel)]="rol.estado" id="user-{{ rol.id }}"
                                         name="permissions[{{ rol.id }}][{{ rol.estado }}]" /></td>
+                                <td></td>
                             </tr>
                             }
                         </tbody>
