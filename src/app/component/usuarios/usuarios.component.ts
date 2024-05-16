@@ -66,27 +66,55 @@ export class UsuariosComponent {
 
 }
 export interface Usuario {
+  /*
   id: number;
+  ctaUsr: string;
+  nickName: string;
   nombre: string;
-  email: string;
   ape_pat: string;
   ape_mat: string;
   pass: string;
-  ctaUsr: string;
   ctaEmail: string;
   estado: boolean;
+  */
+
+  id: number;
+  ctaUsr: string;
+  ctaPass: string;
+  ctaEmail: string;
+  //tipUsr: number;
+  //estImp: number;
+  //estCop: number;
+  //estCar: number;
+  //chkRut: number;
+  //estCed: number;
+  estado: boolean;
+
 }
 export class Usuario { }
 
 export interface UsuarioTemplate {
+  /*
   id: number;
+  ctaUsr: string;
+  nickName: string;
   nombre: string;
-  email: string;
   ape_pat: string;
   ape_mat: string;
   pass: string;
-  ctaUsr: string;
   ctaEmail: string;
+  estado: boolean;
+*/
+  id: number;
+  ctaUsr: string;
+  ctaPass: string;
+  ctaEmail: string;
+  //tipUsr: number;
+  //estImp: number;
+  //estCop: number;
+  //estCar: number;
+  //chkRut: number;
+  //estCed: number;
   estado: boolean;
 }
 export class UsuarioTemplate { }
