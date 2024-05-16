@@ -17,7 +17,6 @@ import { KapmaeService } from '../../../services/kapmae/kapmae.service';
 export class InfoSocioComponent {
 
   socios: DataSocio[] = [];
-  // socios: DataSocio[] = listaSocios;
 
   socioModal!: DataSocio;
   cargar: boolean = false;
@@ -40,7 +39,7 @@ export class InfoSocioComponent {
         // console.log(JSON.stringify(data));
         if (data.code === '0' && data.data != null) {
           this.socios.push(...data.data);
-          this.socios.push(...listaSocios);
+          //this.socios.push(...listaSocios);
           this.refreshCountries('Init');
           // console.log(JSON.stringify(this.usuarios));
         } else {
@@ -60,8 +59,14 @@ export class InfoSocioComponent {
 
   refreshCountries(texto: string) {
     console.log(texto);
-    for (let index = 0; index < listaSocios.length; index++) {
-      listaSocios[index].selected = false;
+    this.setDefaultSociosData(this.socios);
+    //this.setDefaultSociosData(listaSocios);
+  }
+
+  private setDefaultSociosData(socios: DataSocio[]) {
+    for (let index = 0; index < socios.length; index++) {
+      socios[index].selected = false;
+      socios[index].visibility = false;
     }
   }
 
@@ -69,9 +74,9 @@ export class InfoSocioComponent {
     console.log('Method cambioEstado.');
     if (id === '') {
       socio.selected = !socio.selected;
-      for (let index = 0; index < listaSocios.length; index++) {
-        if (listaSocios[index].id !== socio.id) {
-          listaSocios[index].selected = false;
+      for (let index = 0; index < this.socios.length; index++) {
+        if (this.socios[index].id !== socio.id) {
+          this.socios[index].selected = false;
         }
       }
     }
@@ -84,8 +89,8 @@ export class InfoSocioComponent {
   }
 
   validaSelected(): boolean {
-    for (let index = 0; index < listaSocios.length; index++) {
-      if (listaSocios[index].selected) {
+    for (let index = 0; index < this.socios.length; index++) {
+      if (this.socios[index].selected) {
         return true;
       }
     }
