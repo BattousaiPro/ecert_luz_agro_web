@@ -60,7 +60,6 @@ export class InfoSocioComponent {
   refreshCountries(texto: string) {
     console.log(texto);
     this.setDefaultSociosData(this.socios);
-    //this.setDefaultSociosData(listaSocios);
   }
 
   private setDefaultSociosData(socios: DataSocio[]) {
