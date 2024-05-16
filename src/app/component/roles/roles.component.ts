@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RolesService } from '../../services/roles/roles.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule, JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-roles',
@@ -15,6 +16,13 @@ export class RolesComponent implements OnInit {
 
   roles: Role[] = [];
   cargar: boolean = false;
+  RolTemplate: RolTemplate = {
+    ctaEmail: '',
+    estado: false,
+    contrasena: '',
+    confirmContrasena: '',
+    ctaUsr: ''
+  };
 
   constructor(private modalService: NgbModal,
     private rolesService: RolesService) { }
@@ -50,12 +58,32 @@ export class RolesComponent implements OnInit {
   public agregarRol(content: any): void {
     console.log('Method agregarRol.');
     this.openModalFunction(content);
+    
   }
+  loadRoles() { }
+  trackById() { }
+  openModal() { }
+  guardarRol() { }
 
   openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
+  @Component({
+    selector: 'app-agregar-rol',
+    templateUrl: './agregar-rol.component.html',
+    styleUrls: ['./agregar-rol.component.css']
+  })
 
+  page = 1;
+  pageSize = 10;
+  collectionSize = 0;
+  cargar = false;
+}
+interface Rol {
+  id: number;
+  name: string;
+  descrip: string;
+  estado: boolean;
 }
 
 export interface Role {
