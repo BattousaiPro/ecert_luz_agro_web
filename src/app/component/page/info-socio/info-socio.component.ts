@@ -10,7 +10,11 @@ import { KapmaeService } from '../../../services/kapmae/kapmae.service';
 @Component({
   selector: 'app-info-socio',
   standalone: true,
-  imports: [FormsModule, DetailSocioComponent, SpinnerComponent, CommonModule, NgbPaginationModule],
+  imports: [FormsModule,
+    DetailSocioComponent,
+    SpinnerComponent,
+    CommonModule,
+    NgbPaginationModule],
   templateUrl: './info-socio.component.html',
   styleUrl: './info-socio.component.scss'
 })
