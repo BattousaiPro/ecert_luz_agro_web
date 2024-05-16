@@ -21,7 +21,7 @@ export class InfoSocioComponent {
   socioModal!: DataSocio;
   cargar: boolean = false;
 
-  collectionSize: number = this.socios.length;
+  collectionSize: number = 0;
   page = 1;
   pageSize = 5;
 
@@ -40,6 +40,7 @@ export class InfoSocioComponent {
         if (data.code === '0' && data.data != null) {
           this.socios.push(...data.data);
           //this.socios.push(...listaSocios);
+          this.collectionSize = this.socios.length;
           this.refreshCountries('Init');
           // console.log(JSON.stringify(this.usuarios));
         } else {
