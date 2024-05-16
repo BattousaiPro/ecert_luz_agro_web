@@ -1,14 +1,18 @@
-import { JsonPipe } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [FormsModule, JsonPipe, SpinnerComponent],
+  imports: [FormsModule,
+    JsonPipe,
+    SpinnerComponent,
+    CommonModule,
+    NgbPaginationModule],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss'
 })
@@ -17,6 +21,10 @@ export class UsuariosComponent {
   usuarios: Usuario[] = [];
   userTemplate: Usuario = new Usuario();
   cargar: boolean = false;
+
+  collectionSize: number = 0;
+  page = 1;
+  pageSize = 5;
 
   constructor(private modalService: NgbModal,
     private userService: UserService) { }
@@ -33,6 +41,7 @@ export class UsuariosComponent {
         // console.log(JSON.stringify(data));
         if (data.code === '0' && data.data != null) {
           this.usuarios.push(...data.data);
+          this.collectionSize = this.usuarios.length;
           // console.log(JSON.stringify(this.usuarios));
         } else {
           //this.error.mostrarError('Error con la respuesta de servicios de Usuaios');
