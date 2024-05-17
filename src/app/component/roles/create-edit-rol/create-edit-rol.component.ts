@@ -13,10 +13,18 @@ export class CreateEditRolComponent {
   @Input() rol!: Role;
   constructor() { }
 
+
   guardarRol() {
-
+    this.rol.name
+    const name = this.rol.name;
+    if (name && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(name)) {
+      console.log(name);
+      
+    } else {
+      console.log('Nombre inválido');
+      
+    }
   }
-
 }
 export interface Role {
   id?: number;
