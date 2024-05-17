@@ -7,7 +7,7 @@
       <div class="col-12 text-right">
         <div class="row justify-content-end">
           <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-            <button type="button" class="btn btn-primary w100" (click)="openModal(myModalContent)">Agregar Rol</button>
+            <button type="button" class="btn btn-primary w100" (click)="agregarRolModal(myModalContent)">Agregar Rol</button>
           </div>
         </div>
       </div>
@@ -41,17 +41,21 @@
               <th scope="col" class="mw-60">Acciones</th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor="let rol of roles; trackBy: trackById">
-              <td>{{ rol.id }}</td>
-              <td>{{ rol.name }}</td>
-              <td>{{ rol.descrip }}</td>
-              <td>
-                <input type="checkbox" [(ngModel)]="rol.estado" id="user-{{ rol.id }}" name="permissions[{{ rol.id }}][{{ rol.estado }}]" />
-              </td>
-              <td></td>
+        <tbody>
+            @for (rol of roles | slice: (page-1) * pageSize : page * pageSize; track rol.id; let index
+            = $index) {
+            <tr>
+                <td>{{ rol.id }}</td>
+                <td>{{ rol.name }}</td>
+                <td>{{ rol.descrip }}</td>
+                <td>
+                    <input type="checkbox" [(ngModel)]="rol.estado" id="user-{{ rol.id }}"
+                        name="permissions[{{ rol.id }}][{{ rol.estado }}]" />
+                </td>
+                <td></td>
             </tr>
-          </tbody>
+            }
+        </tbody>
         </table>
       </div>
   
