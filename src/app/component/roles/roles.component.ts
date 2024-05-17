@@ -81,11 +81,12 @@ export class RolesComponent implements OnInit {
 
   public guardarRol(): void {
     const name = this.rolModal.name;
-    if (name?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(name?.trim())) {
-      console.log(name);
-      alert('Nombre válido');
+    const descrip = this.rolModal.descrip;
+    if (name?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(name?.trim())
+      && descrip?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(descrip?.trim())) {
+      alert('Nombre y descripción Son válido');
     } else {
-      alert('Nombre inválido');
+      alert('Nombre o descripción son inválido');
     }
   }
 
