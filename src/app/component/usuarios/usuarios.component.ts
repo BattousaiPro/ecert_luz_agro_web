@@ -70,8 +70,14 @@ export class UsuariosComponent {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
-  guardarUser() {
-
+  public guardarUser(): void {
+    const name = this.userModal.ctaUsr;
+    if (name && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(name)) {
+      console.log(name);
+      console.log('Nombre válido');
+    } else {
+      console.log('Nombre inválido');
+    }
   }
 
 }

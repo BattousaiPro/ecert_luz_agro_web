@@ -77,10 +77,17 @@ export class RolesComponent implements OnInit {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
-  guardarRol() {
 
+
+  public guardarRol(): void {
+    const name = this.rolModal.name;
+    if (name && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(name)) {
+      console.log(name);
+      console.log('Nombre válido');
+    } else {
+      console.log('Nombre inválido');
+    }
   }
-
 
 }
 
