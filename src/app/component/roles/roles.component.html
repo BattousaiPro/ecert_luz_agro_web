@@ -44,15 +44,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (rol of roles | slice: (page-1) * pageSize : page * pageSize; track rolModal.id; let index
+                    @for (rol of roles | slice: (page-1) * pageSize : page * pageSize; track rol.id; let index
                     = $index) {
                     <tr>
-                        <td>{{ rolModal.id }}</td>
-                        <td>{{ rolModal.name }}</td>
-                        <td>{{ rolModal.descrip }}</td>
+                        <td>{{ rol.id }}</td>
+                        <td>{{ rol.name }}</td>
+                        <td>{{ rol.descrip }}</td>
                         <td>
-                            <input type="checkbox" [(ngModel)]="rolModal.estado" id="user-{{ rolModal.id }}"
-                                name="permissions[{{ rolModal.id }}][{{ rolModal.estado }}]" />
+                            <input type="checkbox" [(ngModel)]="rol.estado" id="user-{{ rol.id }}"
+                                name="permissions[{{ rol.id }}][{{ rol.estado }}]" />
                         </td>
                         <td></td>
                     </tr>
