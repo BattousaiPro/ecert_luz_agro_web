@@ -67,14 +67,14 @@
                                     (click)="agregarUserModal(myModalContent)">
                                     <i class="bi bi-trash3"></i>
                                 </button>
-                                @if (addRol) {
+                                @if (user.addRol) {
                                 <button type="button" class="btn btn-primary"
-                                    (click)="addRolModal(myModalContent)">
+                                    (click)="addRolModal(myModalContent, index)">
                                     <i class="bi bi-plus-square"></i>
                                 </button>
                                 } @else {
                                 <button type="button" class="btn btn-primary"
-                                    (click)="addRolModal(myModalContent)">
+                                    (click)="addRolModal(myModalContent, index)">
                                     <i class="bi bi-plus-square-fill"></i>
                                 </button>
                                 }

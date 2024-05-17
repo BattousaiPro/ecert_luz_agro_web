@@ -23,7 +23,6 @@ export class UsuariosComponent {
   userModal: Usuario = new Usuario();
   cargar: boolean = false;
   isEdit: boolean = false;
-  addRol: boolean = true;
 
   collectionSize: number = 0;
   page = 1;
@@ -68,8 +67,8 @@ export class UsuariosComponent {
     this.openModalFunction(content);
   }
 
-  public addRolModal(content: any): void {
-    this.addRol = !this.addRol;
+  public addRolModal(content: any, index: number): void {
+    this.usuarios[index].addRol = !this.usuarios[index].addRol;
     console.log('Method agregarUser.');
     this.userModal = new Usuario();
     this.userModal.estado = true;
@@ -106,6 +105,6 @@ export interface Usuario {
   //chkRut: number;
   //estCed: number;
   estado: boolean;
-
+  addRol: boolean;
 }
 export class Usuario { }
