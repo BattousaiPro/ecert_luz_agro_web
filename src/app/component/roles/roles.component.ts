@@ -16,7 +16,7 @@ export class RolesComponent implements OnInit {
 
   roles: Role[] = [];
   cargar: boolean = false;
-  RolTemplate: Role = {
+  rolTemplate: Role = {
     id: 0,
     name: '',
     descrip: '',
@@ -65,8 +65,8 @@ export class RolesComponent implements OnInit {
 
   public agregarRolModal(content: any): void {
     console.log('Method agregarRolModal.');
-    this.RolTemplate = new Role();
-    this.RolTemplate.estado = true;
+    this.rolTemplate = new Role();
+    this.rolTemplate.estado = true;
     this.openModalFunction(content);
   }
 

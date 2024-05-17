@@ -92,24 +92,24 @@
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="id">id</label>
                         <input class="form-control form-control-sm" type="password" placeholder="" id="Contrasena"
-                            [(ngModel)]="RolTemplate.id">
+                            [(ngModel)]="rolTemplate.id">
                     </div>
                 -->
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="name">Nombre</label>
                         <input class="form-control form-control-sm" type="text" placeholder="" id="name"
-                            [(ngModel)]="RolTemplate.name">
+                            [(ngModel)]="rolTemplate.name">
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="descrip">descripcion</label>
                         <input class="form-control form-control-sm" type="text" placeholder="" id="descrip"
-                            [(ngModel)]="RolTemplate.descrip">
+                            [(ngModel)]="rolTemplate.descrip">
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
-                        <div class="col-12 border-check">
-                            <input type="checkbox" [(ngModel)]="RolTemplate.estado" id="user-{{ RolTemplate.id }}"
-                                name="permissions[{{ RolTemplate.id }}][{{ RolTemplate.estado }}]" />
+                        <div class="col-12 border-chack">
+                            <input type="checkbox" [(ngModel)]="rolTemplate.estado" id="user-{{ rolTemplate.id }}"
+                                name="permissions[{{ rolTemplate.id }}][{{ rolTemplate.estado }}]" />
                         </div>
                     </div>
                 </div>
