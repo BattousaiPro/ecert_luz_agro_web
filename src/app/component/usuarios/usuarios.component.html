@@ -58,7 +58,16 @@
                                 <input type="checkbox" [(ngModel)]="user.estado" id="user-table-{{ user.id }}"
                                     name="permissions-table-[{{ user.id }}][{{ user.estado }}]" />
                             </td>
-                            <td></td>
+                            <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
+                                <button type="button" class="btn btn-primary"
+                                (click)="agregarUserModal(myModalContent)"><i class="bi bi-pencil-square"></i></button>
+                                <button type="button" class="btn btn-primary"
+                                (click)="agregarUserModal(myModalContent)"><i class="bi bi-trash3"></i></button>
+                                <button type="button" class="btn btn-primary"
+                                (click)="agregarUserModal(myModalContent)"><i class="bi bi-plus-square"></i></button>
+                                <button type="button" class="btn btn-primary"
+                                (click)="agregarUserModal(myModalContent)"><i class="bi bi-plus-square-fill"></i></button>
+                            </td>
                         </tr>
                         }
                     </tbody>
