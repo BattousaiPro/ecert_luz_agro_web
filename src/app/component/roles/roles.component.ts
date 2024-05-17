@@ -43,6 +43,7 @@ export class RolesComponent implements OnInit {
       (data: any) => {
         if (data.code === '0' && data.data != null) {
           this.roles.push(...data.data);
+          this.collectionSize = this.roles.length;
         } else {
           console.log('Error con la respuesta de servicios de Roles');
           alert('Error con la respuesta de servicios de Roles');
