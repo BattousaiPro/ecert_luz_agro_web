@@ -1,126 +1,126 @@
 <div class="container">
     <div class="title mt15">
-        <h1>agregarRol</h1>
+      <h1>Agregar Rol</h1>
     </div>
-
+  
     <div class="row mt15">
-        <div class="col-12 text-right">
-            <div class="row justify-content-end">
-                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                    <button type="button" class="btn btn-primary w100" (click)="openModal(myModalContent)">Agregar Rol</button>
-                </div>
-            </div>
+      <div class="col-12 text-right">
+        <div class="row justify-content-end">
+          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+            <button type="button" class="btn btn-primary w100" (click)="openModal(myModalContent)">Agregar Rol</button>
+          </div>
         </div>
+      </div>
     </div>
-
+  
     <div class="row mt15">
-        <div class="row justify-content-end">
-            <div class="col-xs-12 col-sm-2 col-xl-2 mt15">
-                <select class="form-select w100 tac" [(ngModel)]="pageSize">
-                    <option [ngValue]="5">5</option>
-                    <option [ngValue]="10">10</option>
-                    <option [ngValue]="25">25</option>
-                    <option [ngValue]="50">50</option>
-                    <option [ngValue]="100">100</option>
-                </select>
-            </div>
-            <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="3" [boundaryLinks]="true" class="fr">
-                </ngb-pagination>
-            </div>
+      <div class="row justify-content-end">
+        <div class="col-xs-12 col-sm-2 col-xl-2 mt15">
+          <select class="form-select w100 tac" [(ngModel)]="pageSize">
+            <option [ngValue]="5">5</option>
+            <option [ngValue]="10">10</option>
+            <option [ngValue]="25">25</option>
+            <option [ngValue]="50">50</option>
+            <option [ngValue]="100">100</option>
+          </select>
         </div>
-
-        <div class="detail-table-usuario">
-            <table class="table table-striped table-hover table-socio fz15">
-                <thead>
-                    <tr>
-                        <th scope="col" class="mw-60">ID</th>
-                        <th scope="col" class="mw-60">Nombre</th>
-                        <th scope="col" class="mw-60">Descripcion</th>
-                        <th scope="col" class="mw-60">Estado</th>
-                        <th scope="col" class="mw-60">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let rol of roles; trackBy: trackById">
-                        <td>{{ rol.id }}</td>
-                        <td>{{ rol.name }}</td>
-                        <td>{{ rol.descrip }}</td>
-                        <td>
-                            <input type="checkbox" [(ngModel)]="rol.estado" id="user-{{ rol.id }}" name="permissions[{{ rol.id }}][{{ rol.estado }}]" />
-                        </td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
+          <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="3" [boundaryLinks]="true" class="fr">
+          </ngb-pagination>
         </div>
-
-        <div class="row justify-content-end">
-            <div class="col-xs-12 col-sm-2 col-xl-2 mt15">
-                <select class="form-select w100 tac" [(ngModel)]="pageSize">
-                    <option [ngValue]="5">5</option>
-                    <option [ngValue]="10">10</option>
-                    <option [ngValue]="25">25</option>
-                    <option [ngValue]="50">50</option>
-                    <option [ngValue]="100">100</option>
-                </select>
-            </div>
-            <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="3" [boundaryLinks]="true" class="fr">
-                </ngb-pagination>
-            </div>
+      </div>
+  
+      <div class="detail-table-usuario">
+        <table class="table table-striped table-hover table-socio fz15">
+          <thead>
+            <tr>
+              <th scope="col" class="mw-60">ID</th>
+              <th scope="col" class="mw-60">Nombre</th>
+              <th scope="col" class="mw-60">Descripción</th>
+              <th scope="col" class="mw-60">Estado</th>
+              <th scope="col" class="mw-60">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rol of roles; trackBy: trackById">
+              <td>{{ rol.id }}</td>
+              <td>{{ rol.name }}</td>
+              <td>{{ rol.descrip }}</td>
+              <td>
+                <input type="checkbox" [(ngModel)]="rol.estado" id="user-{{ rol.id }}" name="permissions[{{ rol.id }}][{{ rol.estado }}]" />
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="row justify-content-end">
+        <div class="col-xs-12 col-sm-2 col-xl-2 mt15">
+          <select class="form-select w100 tac" [(ngModel)]="pageSize">
+            <option [ngValue]="5">5</option>
+            <option [ngValue]="10">10</option>
+            <option [ngValue]="25">25</option>
+            <option [ngValue]="50">50</option>
+            <option [ngValue]="100">100</option>
+          </select>
         </div>
+        <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
+          <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="3" [boundaryLinks]="true" class="fr">
+          </ngb-pagination>
+        </div>
+      </div>
     </div>
-</div>
-
-<ng-template #myModalContent let-modal>
+  </div>
+  
+  <ng-template #myModalContent let-modal>
     <div class="container p25">
-        <div class="title bb6">
-            <h1>Add Roles</h1>
-        </div>
-        <div class="row mb15">
-            <div class="col-xs-12 col-xl-12">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ctaEmail">Email</label>
-                        <input class="form-control form-control-sm" type="email" placeholder="" id="ctaEmail" [(ngModel)]="RolTemplate.ctaEmail">
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
-                        <div class="col-12 border-chack">
-                            <input type="checkbox" [(ngModel)]="RolTemplate.estado" id="user-{{ RolTemplate.id }}" name="permissions[{{ RolTemplate.id }}][{{ RolTemplate.estado }}]" />
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="Contrasena">Contraseña</label>
-                        <input class="form-control form-control-sm" type="password" placeholder="" id="Contrasena" [(ngModel)]="RolTemplate.contrasena">
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ConfirmContrasena">Confirmar Contraseña</label>
-                        <input class="form-control form-control-sm" type="password" placeholder="" id="ConfirmContrasena" [(ngModel)]="RolTemplate.confirmContrasena">
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ctaUsr">ctaUsr</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr" [(ngModel)]="RolTemplate.ctaUsr">
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ctaEmail">ctaEmail</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaEmail" [(ngModel)]="RolTemplate.ctaEmail">
-                    </div>
-                </div>
-
-                <div class="row mt15">
-                    <div class="col-12 text-right">
-                        <div class="row justify-content-end">
-                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                <button type="button" class="btn btn-primary w100" (click)="guardarRol()">Guardar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="title bb6">
+        <h1>Añadir Rol</h1>
+      </div>
+      <div class="row mb15">
+        <div class="col-xs-12 col-xl-12">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <label class="col-form-label col-form-label-sm" for="ctaEmail">Email</label>
+              <input class="form-control form-control-sm" type="email" placeholder="" id="ctaEmail" [(ngModel)]="RolTemplate.ctaEmail">
             </div>
+            <div class="col-xs-12 col-sm-6">
+              <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
+              <div class="col-12 border-check">
+                <input type="checkbox" [(ngModel)]="RolTemplate.estado" id="user-{{ RolTemplate.id }}" name="permissions[{{ RolTemplate.id }}][{{ RolTemplate.estado }}]" />
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <label class="col-form-label col-form-label-sm" for="Contrasena">Contraseña</label>
+              <input class="form-control form-control-sm" type="password" placeholder="" id="Contrasena" [(ngModel)]="RolTemplate.contrasena">
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <label class="col-form-label col-form-label-sm" for="ConfirmContrasena">Confirmar Contraseña</label>
+              <input class="form-control form-control-sm" type="password" placeholder="" id="ConfirmContrasena" [(ngModel)]="RolTemplate.confirmContrasena">
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <label class="col-form-label col-form-label-sm" for="ctaUsr">Usuario</label>
+              <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr" [(ngModel)]="RolTemplate.ctaUsr">
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <label class="col-form-label col-form-label-sm" for="ctaEmail">Email</label>
+              <input class="form-control form-control-sm" type="text" placeholder="" id="ctaEmail" [(ngModel)]="RolTemplate.ctaEmail">
+            </div>
+          </div>
+  
+          <div class="row mt15">
+            <div class="col-12 text-right">
+              <div class="row justify-content-end">
+                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                  <button type="button" class="btn btn-primary w100" (click)="guardarRol()">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</ng-template>
-
-<app-spinner [cargar]="cargar"></app-spinner>
+  </ng-template>
+  
+  <app-spinner [cargar]="cargar"></app-spinner>

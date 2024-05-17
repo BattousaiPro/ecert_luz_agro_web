@@ -8,24 +8,25 @@ import { CommonModule, JsonPipe } from '@angular/common';
 @Component({
   selector: 'app-roles',
   standalone: true,
-  imports: [SpinnerComponent, FormsModule],
+  imports: [SpinnerComponent, FormsModule, NgbPaginationModule, CommonModule, JsonPipe],
   templateUrl: './roles.component.html',
-  styleUrl: './roles.component.scss'
+  styleUrls: ['./roles.component.scss']
 })
 export class RolesComponent implements OnInit {
 
   roles: Role[] = [];
   cargar: boolean = false;
-  RolTemplate: RolTemplate = {
-    ctaEmail: '',
-    estado: false,
-    contrasena: '',
-    confirmContrasena: '',
-    ctaUsr: ''
+  RolTemplate: Rol = {
+    id: 0,
+    name: '',
+    descrip: '',
+    estado: false
   };
 
-  constructor(private modalService: NgbModal,
-    private rolesService: RolesService) { }
+  constructor(
+    private modalService: NgbModal,
+    private rolesService: RolesService
+  ) { }
 
   ngOnInit(): void {
     this.loadCargarRoles();
@@ -36,49 +37,37 @@ export class RolesComponent implements OnInit {
     this.cargar = true;
     this.rolesService.obtenerRoles().subscribe(
       (data: any) => {
-        // console.log(JSON.stringify(data));
         if (data.code === '0' && data.data != null) {
           this.roles.push(...data.data);
-          // console.log(JSON.stringify(this.roles));
         } else {
-          //this.error.mostrarError('Error con la respuesta de servicios de Roles');
           console.log('Error con la respuesta de servicios de Roles');
           alert('Error con la respuesta de servicios de Roles');
         }
         this.cargar = false;
       },
       (err: any) => {
-        //this.error.mostrarError('Error con el ervicio de Roles');
-        console.log('Error con el ervicio de Roles');
-        alert('Error con el ervicio de Roles');
+        console.log('Error con el servicio de Roles');
+        alert('Error con el servicio de Roles');
         this.cargar = false;
-      });
+      }
+    );
   }
 
   public agregarRol(content: any): void {
     console.log('Method agregarRol.');
     this.openModalFunction(content);
-    
   }
-  loadRoles() { }
-  trackById() { }
-  openModal() { }
-  guardarRol() { }
 
-  openModalFunction(content: any): void {
+  public loadRoles() { }
+  public trackById() { }
+  public openModal() { }
+  public guardarRol() { }
+
+  private openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
-  @Component({
-    selector: 'app-agregar-rol',
-    templateUrl: './agregar-rol.component.html',
-    styleUrls: ['./agregar-rol.component.css']
-  })
-
-  page = 1;
-  pageSize = 10;
-  collectionSize = 0;
-  cargar = false;
 }
+
 interface Rol {
   id: number;
   name: string;
