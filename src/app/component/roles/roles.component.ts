@@ -4,11 +4,12 @@ import { SpinnerComponent } from '../spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
+import { CreateEditRolComponent } from './create-edit-rol/create-edit-rol.component';
 
 @Component({
   selector: 'app-roles',
   standalone: true,
-  imports: [SpinnerComponent, FormsModule, NgbPaginationModule, CommonModule],
+  imports: [SpinnerComponent, FormsModule, NgbPaginationModule, CommonModule, CreateEditRolComponent],
   templateUrl: './roles.component.html',
   styleUrl: './roles.component.scss'
 })
@@ -16,12 +17,7 @@ export class RolesComponent implements OnInit {
 
   roles: Role[] = [];
   cargar: boolean = false;
-  rolTemplate: Role = {
-    id: 0,
-    name: '',
-    descrip: '',
-    estado: false
-  };
+  rolModal!: Role;
 
   collectionSize: number = 0;
   page = 1;
@@ -58,15 +54,19 @@ export class RolesComponent implements OnInit {
     );
   }
 
-  public agregarRol(content: any): void {
+  public agregarRol(content: any, rol: Role = {}): void {
     console.log('Method agregarRol.');
+    rol = {
+      name: '',
+      descrip: '',
+      estado: true
+    };
+    this.rolModal = rol;
     this.openModalFunction(content);
   }
 
   public agregarRolModal(content: any): void {
     console.log('Method agregarRolModal.');
-    this.rolTemplate = new Role();
-    this.rolTemplate.estado = true;
     this.openModalFunction(content);
   }
 
@@ -78,9 +78,9 @@ export class RolesComponent implements OnInit {
 }
 
 export interface Role {
-  id: number;
-  name: string;
-  descrip: string;
-  estado: boolean;
+  id?: number;
+  name?: string;
+  descrip?: string;
+  estado?: boolean;
 }
 export class Role { }
