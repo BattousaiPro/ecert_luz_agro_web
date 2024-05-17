@@ -168,14 +168,14 @@
                         <td (click)="statusChange(socio)">{{ socio.sec_cop }}</td>
                         <td (click)="statusChange(socio)">{{ socio.ano_inc }}</td>
                         <td (click)="statusChange(socio)">{{ socio.mto_inc }}</td>
-                        <td (click)="statusChange(socio)">{{ socio.fec_inc }}</td>
+                        <td (click)="statusChange(socio)">{{ socio.fec_inc | date: 'd-M-y' }}</td>
                         <td (click)="statusChange(socio)">{{ socio.ano_tra }}</td>
                         <td (click)="statusChange(socio)">{{ socio.kap_tra }}</td>
-                        <td (click)="statusChange(socio)">{{ socio.fec_tra }}</td>
+                        <td (click)="statusChange(socio)">{{ socio.fec_tra | date: 'd-M-y' }}</td>
                         <td (click)="statusChange(socio)">{{ socio.acc_tra }}</td>
                         <td (click)="statusChange(socio)">{{ socio.acc_ret }}</td>
                         <td (click)="statusChange(socio)">{{ socio.acc_apo }}</td>
-                        <td (click)="statusChange(socio)">{{ socio.fec_act }}</td>
+                        <td (click)="statusChange(socio)">{{ socio.fec_act | date: 'd-M-y' }}</td>
                         <td (click)="statusChange(socio)">{{ socio.est_tra }}</td>
                         <td (click)="statusChange(socio)">{{ socio.est_bon }}</td>
                         <td class="mw-280" (click)="statusChange(socio)">{{ socio.dir_pos }}</td>
