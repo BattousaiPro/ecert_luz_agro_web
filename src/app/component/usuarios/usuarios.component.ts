@@ -72,7 +72,7 @@ export class UsuariosComponent {
 
   public guardarUser(): void {
     const name = this.userModal.ctaUsr;
-    if (name && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(name)) {
+    if (name?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(name?.trim())) {
       console.log(name);
       alert('Nombre válido');
     } else {
