@@ -83,9 +83,9 @@ export class RolesComponent implements OnInit {
     const name = this.rolModal.name;
     if (name && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(name)) {
       console.log(name);
-      console.log('Nombre válido');
+      alert('Nombre válido');
     } else {
-      console.log('Nombre inválido');
+      alert('Nombre inválido');
     }
   }
 
