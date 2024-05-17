@@ -8,18 +8,19 @@ import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [FormsModule,
+  imports: [
     JsonPipe,
     SpinnerComponent,
-    CommonModule,
-    NgbPaginationModule],
+    FormsModule,
+    NgbPaginationModule,
+    CommonModule],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss'
 })
 export class UsuariosComponent {
 
   usuarios: Usuario[] = [];
-  userTemplate: Usuario = new Usuario();
+  userModal: Usuario = new Usuario();
   cargar: boolean = false;
 
   collectionSize: number = 0;
@@ -60,17 +61,17 @@ export class UsuariosComponent {
 
   public agregarUserModal(content: any): void {
     console.log('Method agregarUser.');
-    this.userTemplate = new Usuario();
-    this.userTemplate.estado = true;
+    this.userModal = new Usuario();
+    this.userModal.estado = true;
     this.openModalFunction(content);
-  }
-
-  guardarUser(): void {
-
   }
 
   openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
+  }
+
+  guardarUser() {
+
   }
 
 }

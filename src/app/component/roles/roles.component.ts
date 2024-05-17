@@ -4,12 +4,15 @@ import { SpinnerComponent } from '../spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-import { CreateEditRolComponent } from './create-edit-rol/create-edit-rol.component';
 
 @Component({
   selector: 'app-roles',
   standalone: true,
-  imports: [SpinnerComponent, FormsModule, NgbPaginationModule, CommonModule, CreateEditRolComponent],
+  imports: [
+    SpinnerComponent,
+    FormsModule,
+    NgbPaginationModule,
+    CommonModule],
   templateUrl: './roles.component.html',
   styleUrl: './roles.component.scss'
 })
@@ -17,7 +20,7 @@ export class RolesComponent implements OnInit {
 
   roles: Role[] = [];
   cargar: boolean = false;
-  rolModal!: Role;
+  rolModal: Role = new Role();
 
   collectionSize: number = 0;
   page = 1;
@@ -70,11 +73,15 @@ export class RolesComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public guardarRol() { }
-
   private openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
+
+  guardarRol() {
+
+  }
+
+
 }
 
 export interface Role {
