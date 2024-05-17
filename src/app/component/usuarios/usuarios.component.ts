@@ -71,18 +71,21 @@ export class UsuariosComponent {
   }
 
   public guardarUser(): void {
-    const name = this.userModal.ctaUsr;
-    if (name?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(name?.trim())) {
-      console.log(name);
-      alert('Nombre válido');
+    const ctaUsr = this.userModal.ctaUsr;
+    const ctaEmail = this.userModal.ctaEmail;
+
+    if (ctaUsr?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(ctaUsr?.trim())
+      && ctaEmail?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ.@ ]+$/.test(ctaEmail?.trim())
+    ) {
+      alert('Nombre y correo Son válido');
     } else {
-      alert('Nombre inválido');
+      alert('Nombre o correo Son inválido');
     }
   }
 
 }
 export interface Usuario {
-  id?: number;
+  id: number;
   ctaUsr: string;
   ctaPass: string;
   ctaEmail: string;

@@ -101,19 +101,35 @@
                 <div class="col-12">
                     <label class="col-form-label col-form-label-sm" for="userModalId">Id</label>
                     <input class="form-control form-control-sm" type="text" placeholder="" id="userModalId"
-                        [value]="userModal.id || ''">
+                        [(ngModel)]="userModal.id">
                 </div>
 
                 <div class="col-xs-12 col-sm-6">
                     <label class="col-form-label col-form-label-sm" for="nombre">Nombre de Usuario</label>
                     <input class="form-control form-control-sm" type="text" placeholder="" id="nombre"
-                        [value]="userModal.nombre || ''">
+                        [(ngModel)]="userModal.nombre">
                 </div>
                 -->
                     <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="ctaUsr">ctaUsr</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr"
+                            [(ngModel)]="userModal.ctaUsr">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="ctaEmail">Email</label>
                         <input class="form-control form-control-sm" type="email" placeholder="" id="ctaEmail"
-                            [value]="userModal.ctaEmail || ''">
+                            [(ngModel)]="userModal.ctaEmail">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="Contrasena">Contraseña</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="Contrasena"
+                            [(ngModel)]="userModal.ctaPass">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="ConfirmContrasena">Confirmar
+                            Contraseña</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="ConfirmContrasena"
+                            [(ngModel)]="userModal.ctaPass">
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
@@ -126,36 +142,17 @@
                 <div class="col-xs-12 col-sm-6">
                     <label class="col-form-label col-form-label-sm" for="ape_pat">Apellido Paterno</label>
                     <input class="form-control form-control-sm" type="text" placeholder="" id="ape_pat"
-                        [value]="userModal.ape_pat || ''">
+                        [(ngModel)]="userModal.ape_pat">
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <label class="col-form-label col-form-label-sm" for="ape_mat">Apellido Materno</label>
                     <input class="form-control form-control-sm" type="text" placeholder="" id="ape_mat"
-                        [value]="userModal.ape_mat || ''">
+                        [(ngModel)]="userModal.ape_mat">
                 </div>
                 -->
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="Contrasena">Contraseña</label>
-                        <input class="form-control form-control-sm" type="email" placeholder="" id="Contrasena"
-                            [value]="userModal.ctaPass || ''">
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ConfirmContrasena">Confirmar
-                            Contraseña</label>
-                        <input class="form-control form-control-sm" type="email" placeholder="" id="ConfirmContrasena"
-                            [value]="userModal.ctaPass || ''">
-                    </div>
+                    
 
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ctaUsr">ctaUsr</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr"
-                            [value]="userModal.ctaUsr || ''">
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ctaEmail">ctaEmail</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaEmail"
-                            [value]="userModal.ctaEmail || ''">
-                    </div>
+
 
                 </div>
 
