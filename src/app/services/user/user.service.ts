@@ -18,7 +18,7 @@ export class UserService {
   }
 
   public access(username: string, password: string): Observable<any> {
-    let url = 'http://localhost:3000/user/access';
+    let url = 'http://localhost:3000/auth/login';
     let userData: any = {
       ctaUsr: username,
       ctaPass: password
