@@ -22,6 +22,8 @@ export class UsuariosComponent {
   usuarios: Usuario[] = [];
   userModal: Usuario = new Usuario();
   cargar: boolean = false;
+  isEdit: boolean = false;
+  addRol: boolean = true;
 
   collectionSize: number = 0;
   page = 1;
@@ -64,6 +66,14 @@ export class UsuariosComponent {
     this.userModal = new Usuario();
     this.userModal.estado = true;
     this.openModalFunction(content);
+  }
+
+  public addRolModal(content: any): void {
+    this.addRol = !this.addRol;
+    console.log('Method agregarUser.');
+    this.userModal = new Usuario();
+    this.userModal.estado = true;
+    //this.openModalFunction(content);
   }
 
   openModalFunction(content: any): void {
