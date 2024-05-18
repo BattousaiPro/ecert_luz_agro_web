@@ -30,4 +30,17 @@ export class UserService {
     return ladata;
   }
 
+  public newUser(ctaUsr: string, ctaPass: string, ctaEmail: string): Observable<any> {
+    let url = 'http://localhost:3000/users';
+    const ladata: Observable<any> = this.http.post(
+      url,
+      {
+        ctaUsr: ctaUsr,
+        ctaPass: ctaPass,
+        ctaEmail: ctaEmail
+      }
+    );
+    return ladata;
+  }
+
 }
