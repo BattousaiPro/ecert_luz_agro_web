@@ -40,13 +40,10 @@ export class UsuariosComponent {
     this.cargar = true;
     this.userService.obtenerUser().subscribe(
       (data: any) => {
-        // console.log(JSON.stringify(data));
         if (data.code === '0' && data.data != null) {
           this.usuarios.push(...data.data);
           this.collectionSize = this.usuarios.length;
-          // console.log(JSON.stringify(this.usuarios));
         } else {
-          //this.error.mostrarError('Error con la respuesta de servicios de Usuaios');
           console.log('Error con la respuesta de servicios de Usuaios');
           alert('Error con la respuesta de servicios de Usuaios');
         }
@@ -69,7 +66,7 @@ export class UsuariosComponent {
   }
 
   public editarUserModal(content: any, userSelected: Usuario): void {
-    console.log('Method agregarUser.');
+    console.log('Method editarUserModal');
     this.userModal = userSelected;
     this.isEdit = true;
     this.openModalFunction(content);

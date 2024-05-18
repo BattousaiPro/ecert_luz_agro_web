@@ -19,9 +19,9 @@ import { CommonModule } from '@angular/common';
 export class RolesComponent implements OnInit {
 
   roles: Role[] = [];
+  rolModal: Role = new Role();
   cargar: boolean = false;
   isEdit:boolean = false;
-  rolModal: Role = new Role();
 
   collectionSize: number = 0;
   page = 1;
