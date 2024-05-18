@@ -20,6 +20,7 @@ export class RolesComponent implements OnInit {
 
   roles: Role[] = [];
   cargar: boolean = false;
+  isEdit:boolean = false;
   rolModal: Role = new Role();
 
   collectionSize: number = 0;
@@ -62,7 +63,7 @@ export class RolesComponent implements OnInit {
     rol = {
       name: '',
       descrip: '',
-      estado: true
+      estado: true,
     };
     this.rolModal = rol;
     this.openModalFunction(content);
@@ -71,13 +72,15 @@ export class RolesComponent implements OnInit {
   public agregarRolModal(content: any): void {
     console.log('Method agregarRolModal.');
     this.openModalFunction(content);
+    this.rolModal = new Role();
+    this.rolModal.estado = true;
+    this.isEdit: = false;
+    this.openModalFunction(content);
   }
 
   private openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
-
-
 
   public guardarRol(): void {
     const name = this.rolModal.name;
@@ -90,6 +93,21 @@ export class RolesComponent implements OnInit {
     }
   }
 
+  public editarRolModal(content: any, rolesSelected: Role): void {
+    console.log('Method agregarRol.');
+    this.rolModal = rolesSelected;
+    this.isEdit = true;
+    this.openModalFunction(content);
+  }
+
+  public addRolModal(content: any, index: number): void {
+    this.roles[index].addRol = !this.roles[index].addRol;
+    console.log('Method agregarRol.');
+    this.rolModal = new Role();
+    this.rolModal.estado = true;
+    //this.openModalFunction(content);
+  }
+  
 }
 
 export interface Role {
@@ -97,5 +115,7 @@ export interface Role {
   name?: string;
   descrip?: string;
   estado?: boolean;
+  addRol: boolean;
+  isEdit: boolean;
 }
 export class Role { }
