@@ -88,8 +88,8 @@ export class UsuariosComponent {
     const ctaUsr = this.userModal.ctaUsr;
     const ctaEmail = this.userModal.ctaEmail;
 
-    if (ctaUsr?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(ctaUsr?.trim())
-      && ctaEmail?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ.@ ]+$/.test(ctaEmail?.trim())
+    if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr.trim() !== '' &&
+      ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail.trim() !== ''
     ) {
       //alert('Nombre y correo Son válido');
       if (!this.isEdit) {
@@ -100,17 +100,16 @@ export class UsuariosComponent {
     } else {
       alert('Nombre o correo Son inválido');
     }
-    
+
   }
 
   private createNewUser(): void {
     console.log('Cargando createNewUser');
     this.cargar = true;
-    this.userService.newUser(this.userModal.ctaUsr,this.userModal.ctaPass,this.userModal.ctaEmail).subscribe(
+    this.userService.newUser(this.userModal.ctaUsr, this.userModal.ctaPass, this.userModal.ctaEmail).subscribe(
       (data: any) => {
-        if (data.code === '0' && data.data != null) {
-          this.usuarios.push(...data.data);
-          this.collectionSize = this.usuarios.length;
+        if (data.code === '0') {
+          this.loadCargarUsers();
         } else {
           console.log('Error con la respuesta de servicios de Usuaios');
           alert('Error con la respuesta de servicios de Usuaios');
