@@ -20,6 +20,7 @@ export class RolesComponent implements OnInit {
 
   roles: Role[] = [];
   rolModal: Role = new Role();
+  rolDeleteModal: Role = new Role();
   cargar: boolean = false;
   isEdit: boolean = false;
 
@@ -66,6 +67,24 @@ export class RolesComponent implements OnInit {
     this.openModalFunction(content);
   }
 
+  public guardarRol(): void {
+    const ctaUsr = this.rolModal.name.trim();
+    const ctaEmail = this.rolModal.descrip.trim();
+    if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== '' &&
+      ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
+    ) {
+      if (!this.isEdit) {
+        console.log('Cargando createNewRol');
+        //this.createNewRol();
+      } else {
+        console.log('Cargando createNewRol............');
+        //this.editRol();
+      }
+    } else {
+      alert('Nombre o correo Son inválido');
+    }
+  }
+
   public editarRolModal(content: any, rolesSelected: Role): void {
     console.log('Method editarRolModal.');
     this.rolModal = rolesSelected;
@@ -88,7 +107,7 @@ export class RolesComponent implements OnInit {
   private openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
-
+/*
   private createNewRoles(): void {
     console.log('Cargando createNewUser');
     this.cargar = true;
@@ -139,8 +158,9 @@ export class RolesComponent implements OnInit {
         this.cargar = false;
       });
   }
-
+*/
   public deleteRol(): void {
+    /*
     console.log('Cargando editRoles');
     this.cargar = true;
     this.rolesService.deleteRol(this.rolDeleteModal.id).subscribe(
@@ -161,6 +181,7 @@ export class RolesComponent implements OnInit {
         alert('Error con el servicio de Usuaios');
         this.cargar = false;
       });
+      */
   }
 
   public closeModal() {
@@ -171,9 +192,9 @@ export class RolesComponent implements OnInit {
 
 export interface Role {
   id?: number;
-  name?: string;
-  descrip?: string;
-  estado?: boolean;
+  name: string;
+  descrip: string;
+  estado: boolean;
   addRol: boolean;
 }
 export class Role { }

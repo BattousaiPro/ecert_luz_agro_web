@@ -105,8 +105,10 @@ export class PermisosComponent implements OnInit {
       ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
     ) {
       if (!this.isEdit) {
+        console.log('Cargando createNewPermisos');
         this.createNewPermisos();
       } else {
+        console.log('Cargando createNewPermisos............');
         //this.editPermisos();
       }
     } else {
