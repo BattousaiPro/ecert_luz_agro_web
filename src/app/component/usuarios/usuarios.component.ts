@@ -85,11 +85,11 @@ export class UsuariosComponent {
   }
 
   public guardarUser(): void {
-    const ctaUsr = this.userModal.ctaUsr;
-    const ctaEmail = this.userModal.ctaEmail;
+    const ctaUsr = this.userModal.ctaUsr.trim();
+    const ctaEmail = this.userModal.ctaEmail.trim();
 
-    if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr.trim() !== '' &&
-      ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail.trim() !== ''
+    if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== '' &&
+      ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
     ) {
       //alert('Nombre y correo Son válido');
       if (!this.isEdit) {
@@ -100,7 +100,6 @@ export class UsuariosComponent {
     } else {
       alert('Nombre o correo Son inválido');
     }
-
   }
 
   private createNewUser(): void {
