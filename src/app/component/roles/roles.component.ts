@@ -21,7 +21,7 @@ export class RolesComponent implements OnInit {
   roles: Role[] = [];
   rolModal: Role = new Role();
   cargar: boolean = false;
-  isEdit:boolean = false;
+  isEdit: boolean = false;
 
   collectionSize: number = 0;
   page = 1;
@@ -58,23 +58,26 @@ export class RolesComponent implements OnInit {
     );
   }
 
-  public agregarRol(content: any, rol: Role = {}): void {
-    console.log('Method agregarRol.');
-    rol = {
-      name: '',
-      descrip: '',
-      estado: true,
-    };
-    this.rolModal = rol;
+  public agregarRolModal(content: any): void {
+    console.log('Method agregarRolModal.');
+    this.rolModal = new Role();
+    this.rolModal.estado = true;
+    this.isEdit = false;
     this.openModalFunction(content);
   }
 
-  public agregarRolModal(content: any): void {
-    console.log('Method agregarRolModal.');
+  public editarRolModal(content: any, rolesSelected: Role): void {
+    console.log('Method editarRolModal.');
+    this.rolModal = rolesSelected;
+    this.isEdit = true;
     this.openModalFunction(content);
+  }
+
+  public addRolModal(content: any, index: number): void {
+    this.roles[index].addRol = !this.roles[index].addRol;
+    console.log('Method agregarRol.');
     this.rolModal = new Role();
     this.rolModal.estado = true;
-    this.isEdit: = false;
     this.openModalFunction(content);
   }
 
@@ -93,21 +96,6 @@ export class RolesComponent implements OnInit {
     }
   }
 
-  public editarRolModal(content: any, rolesSelected: Role): void {
-    console.log('Method agregarRol.');
-    this.rolModal = rolesSelected;
-    this.isEdit = true;
-    this.openModalFunction(content);
-  }
-
-  public addRolModal(content: any, index: number): void {
-    this.roles[index].addRol = !this.roles[index].addRol;
-    console.log('Method agregarRol.');
-    this.rolModal = new Role();
-    this.rolModal.estado = true;
-    //this.openModalFunction(content);
-  }
-  
 }
 
 export interface Role {
@@ -116,6 +104,5 @@ export interface Role {
   descrip?: string;
   estado?: boolean;
   addRol: boolean;
-  isEdit: boolean;
 }
 export class Role { }

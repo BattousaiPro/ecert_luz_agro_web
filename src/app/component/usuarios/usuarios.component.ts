@@ -58,7 +58,7 @@ export class UsuariosComponent {
   }
 
   public agregarUserModal(content: any): void {
-    console.log('Method agregarUser.');
+    console.log('Method agregarUserModal.');
     this.userModal = new Usuario();
     this.userModal.estado = true;
     this.isEdit = false;
@@ -77,7 +77,7 @@ export class UsuariosComponent {
     console.log('Method agregarUser.');
     this.userModal = new Usuario();
     this.userModal.estado = true;
-    //this.openModalFunction(content);
+    this.openModalFunction(content);
   }
 
   openModalFunction(content: any): void {
