@@ -43,7 +43,7 @@ export class UserService {
     return ladata;
   }
 
-  public updateUser(id:number, ctaUsr: string, ctaPass: string, ctaEmail: string, estado: boolean): Observable<any> {
+  public updateUser(id: number, ctaUsr: string, ctaPass: string, ctaEmail: string, estado: boolean): Observable<any> {
     let url = 'http://localhost:3000/users/' + id;
     let userData: any = {
       ctaUsr: ctaUsr,
@@ -54,6 +54,14 @@ export class UserService {
     const ladata: Observable<any> = this.http.patch(
       url,
       userData
+    );
+    return ladata;
+  }
+
+  public deleteUser(id: number): Observable<any> {
+    let url = 'http://localhost:3000/users/' + id;
+    const ladata: Observable<any> = this.http.delete(
+      url
     );
     return ladata;
   }

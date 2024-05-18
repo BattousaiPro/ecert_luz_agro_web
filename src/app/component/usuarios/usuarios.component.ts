@@ -21,6 +21,7 @@ export class UsuariosComponent {
 
   usuarios: Usuario[] = [];
   userModal: Usuario = new Usuario();
+  userDeleteModal: Usuario = new Usuario();
   cargar: boolean = false;
   isEdit: boolean = false;
 
@@ -41,6 +42,7 @@ export class UsuariosComponent {
     this.userService.obtenerUser().subscribe(
       (data: any) => {
         if (data.code === '0' && data.data != null) {
+          this.modalService.dismissAll();
           this.usuarios.push(...data.data);
           this.collectionSize = this.usuarios.length;
         } else {
@@ -50,6 +52,7 @@ export class UsuariosComponent {
         this.cargar = false;
       },
       (err: any) => {
+        this.modalService.dismissAll();
         //this.error.mostrarError('Error con el ervicio de Usuaios');
         console.log('Error con el ervicio de Usuaios');
         alert('Error con el ervicio de Usuaios');
@@ -72,6 +75,13 @@ export class UsuariosComponent {
     this.openModalFunction(content);
   }
 
+  public deleteUserModal(content: any, userSelected: Usuario): void {
+    console.log('Method editarUserModal');
+    this.userModal = userSelected;
+    this.isEdit = true;
+    this.openModalFunction(content);
+  }
+
   public addRolModal(content: any, index: number): void {
     this.usuarios[index].addRol = !this.usuarios[index].addRol;
     console.log('Method agregarUser.');
@@ -80,22 +90,20 @@ export class UsuariosComponent {
     this.openModalFunction(content);
   }
 
-  openModalFunction(content: any): void {
+  private openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
   public guardarUser(): void {
     const ctaUsr = this.userModal.ctaUsr.trim();
     const ctaEmail = this.userModal.ctaEmail.trim();
-
     if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== '' &&
       ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
     ) {
-      //alert('Nombre y correo Son válido');
       if (!this.isEdit) {
         this.createNewUser();
       } else {
-        console.log('Cargando EditNewUser');
+        this.editUser();
       }
     } else {
       alert('Nombre o correo Son inválido');
@@ -108,6 +116,7 @@ export class UsuariosComponent {
     this.userService.newUser(this.userModal.ctaUsr, this.userModal.ctaPass, this.userModal.ctaEmail).subscribe(
       (data: any) => {
         if (data.code === '0') {
+          this.modalService.dismissAll();
           this.loadCargarUsers();
         } else {
           console.log('Error con la respuesta de servicios de Usuaios');
@@ -117,12 +126,41 @@ export class UsuariosComponent {
       },
       (err: any) => {
         //this.error.mostrarError('Error con el ervicio de Usuaios');
+        this.modalService.dismissAll();
         console.log('Error con el ervicio de Usuaios');
         alert('Error con el ervicio de Usuaios');
         this.cargar = false;
       });
   }
 
+  private editUser(): void {
+    console.log('Cargando editUser');
+    this.cargar = true;
+    this.userService.updateUser(
+      this.userModal.id,
+      this.userModal.ctaUsr, 
+      this.userModal.ctaPass, 
+      this.userModal.ctaEmail,
+      this.userModal.estado
+    ).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.modalService.dismissAll();
+          this.loadCargarUsers();
+        } else {
+          console.log('Error con la respuesta de servicios de Usuaios');
+          alert('Error con la respuesta de servicios de Usuaios');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.modalService.dismissAll();
+        //this.error.mostrarError('Error con el ervicio de Usuaios');
+        console.log('Error con el ervicio de Usuaios');
+        alert('Error con el ervicio de Usuaios');
+        this.cargar = false;
+      });
+  }
 
 }
 export interface Usuario {

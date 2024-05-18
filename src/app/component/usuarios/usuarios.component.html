@@ -64,7 +64,7 @@
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                                 <button type="button" class="btn btn-primary"
-                                    (click)="agregarUserModal(myModalContent)">
+                                    (click)="deleteUserModal(myModalContent, user)">
                                     <i class="bi bi-trash3"></i>
                                 </button>
                                 @if (user.addRol) {
@@ -183,7 +183,13 @@
                             <div class="col-12 ">
                                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
                                     <button type="button" class="btn btn-primary w100"
-                                        (click)="guardarUser()">Guardar</button>
+                                        (click)="guardarUser()">
+                                        @if (isEdit) {
+                                            Editar
+                                        } @else {
+                                            Guardar
+                                        }
+                                        </button>
                                 </div>
                             </div>
                         </div>
