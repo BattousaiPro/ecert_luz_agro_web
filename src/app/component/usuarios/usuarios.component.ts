@@ -42,7 +42,7 @@ export class UsuariosComponent {
     this.userService.obtenerUser().subscribe(
       (data: any) => {
         if (data.code === '0' && data.data != null) {
-          this.modalService.dismissAll();
+          this.closeModal();
           this.usuarios.push(...data.data);
           this.collectionSize = this.usuarios.length;
         } else {
@@ -52,10 +52,10 @@ export class UsuariosComponent {
         this.cargar = false;
       },
       (err: any) => {
-        this.modalService.dismissAll();
-        //this.error.mostrarError('Error con el ervicio de Usuaios');
-        console.log('Error con el ervicio de Usuaios');
-        alert('Error con el ervicio de Usuaios');
+        this.closeModal();
+        //this.error.mostrarError('Error con el servicio de Usuaios');
+        console.log('Error con el servicio de Usuaios');
+        alert('Error con el servicio de Usuaios');
         this.cargar = false;
       });
   }
@@ -76,9 +76,8 @@ export class UsuariosComponent {
   }
 
   public deleteUserModal(content: any, userSelected: Usuario): void {
-    console.log('Method editarUserModal');
-    this.userModal = userSelected;
-    this.isEdit = true;
+    console.log('Method deleteUserModal');
+    this.userDeleteModal = userSelected;
     this.openModalFunction(content);
   }
 
@@ -116,7 +115,7 @@ export class UsuariosComponent {
     this.userService.newUser(this.userModal.ctaUsr, this.userModal.ctaPass, this.userModal.ctaEmail).subscribe(
       (data: any) => {
         if (data.code === '0') {
-          this.modalService.dismissAll();
+          this.closeModal();
           this.loadCargarUsers();
         } else {
           console.log('Error con la respuesta de servicios de Usuaios');
@@ -125,10 +124,10 @@ export class UsuariosComponent {
         this.cargar = false;
       },
       (err: any) => {
-        //this.error.mostrarError('Error con el ervicio de Usuaios');
-        this.modalService.dismissAll();
-        console.log('Error con el ervicio de Usuaios');
-        alert('Error con el ervicio de Usuaios');
+        //this.error.mostrarError('Error con el servicio de Usuaios');
+        this.closeModal();
+        console.log('Error con el servicio de Usuaios');
+        alert('Error con el servicio de Usuaios');
         this.cargar = false;
       });
   }
@@ -138,14 +137,14 @@ export class UsuariosComponent {
     this.cargar = true;
     this.userService.updateUser(
       this.userModal.id,
-      this.userModal.ctaUsr, 
-      this.userModal.ctaPass, 
+      this.userModal.ctaUsr,
+      this.userModal.ctaPass,
       this.userModal.ctaEmail,
       this.userModal.estado
     ).subscribe(
       (data: any) => {
         if (data.code === '0') {
-          this.modalService.dismissAll();
+          this.closeModal();
           this.loadCargarUsers();
         } else {
           console.log('Error con la respuesta de servicios de Usuaios');
@@ -154,12 +153,39 @@ export class UsuariosComponent {
         this.cargar = false;
       },
       (err: any) => {
-        this.modalService.dismissAll();
-        //this.error.mostrarError('Error con el ervicio de Usuaios');
-        console.log('Error con el ervicio de Usuaios');
-        alert('Error con el ervicio de Usuaios');
+        this.closeModal();
+        //this.error.mostrarError('Error con el servicio de Usuaios');
+        console.log('Error con el servicio de Usuaios');
+        alert('Error con el servicio de Usuaios');
         this.cargar = false;
       });
+  }
+
+  public deleteUser(): void {
+    console.log('Cargando editUser');
+    this.cargar = true;
+    this.userService.deleteUser(this.userDeleteModal.id).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.closeModal();
+          this.loadCargarUsers();
+        } else {
+          console.log('Error con la respuesta de servicios de Usuaios');
+          alert('Error con la respuesta de servicios de Usuaios');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        //this.error.mostrarError('Error con el servicio de Usuaios');
+        console.log('Error con el servicio de Usuaios');
+        alert('Error con el servicio de Usuaios');
+        this.cargar = false;
+      });
+  }
+
+  public closeModal() {
+    this.modalService.dismissAll();
   }
 
 }
