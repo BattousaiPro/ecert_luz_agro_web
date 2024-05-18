@@ -3,7 +3,163 @@
         <h1>Permisos</h1>
     </div>
 
-    <div class="title mt15">
-        
+    <div class="row mt15">
+        <div class="col-12 text-right">
+            <div class="row justify-content-end">
+                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                    <button type="button" class="btn btn-primary w100"
+                        (click)="agregaPermisosModal(myModalContent)">Agregar
+                        Permiso</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="row mt15">
+        <div class="row justify-content-end">
+            <div class="col-xs-12 col-sm-2 col-xl-2 mt15">
+                <select class="form-select w100 tac" [(ngModel)]="pageSize">
+                    <option [ngValue]="5">5</option>
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
+                    <option [ngValue]="100">100</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="3"
+                    [boundaryLinks]="true" class="fr">
+                </ngb-pagination>
+            </div>
+        </div>
+
+        <div class="detail-table-usuario">
+            <table class="table table-striped table-hover table-socio fz15">
+                <thead>
+                    <tr>
+                        <th scope="col" class="mw-60">ID</th>
+                        <th scope="col" class="mw-60">Nombre</th>
+                        <th scope="col" class="mw-60">Descripción</th>
+                        <th scope="col" class="mw-60">Estado</th>
+                        <th scope="col" class="mw-60">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (permiso of permisos | slice: (page-1) * pageSize : page * pageSize; track permiso.id; let
+                    index
+                    = $index) {
+                    <tr>
+                        <td>{{ permiso.id }}</td>
+                        <td>{{ permiso.name }}</td>
+                        <td>{{ permiso.descrip }}</td>
+                        <td>
+                            <input type="checkbox" [(ngModel)]="permiso.estado" id="user-table-{{ permiso.id }}"
+                                name="permissions-table-[{{ permiso.id }}][{{ permiso.estado }}]" />
+                        </td>
+                        <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
+                            <button type="button" class="btn btn-primary" (click)="editarPermisosModal(myModalContent, permiso)">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary" (click)="agregarPermisosModal(myModalContent)">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                            @if (permiso.addPermiso) {
+                            <button type="button" class="btn btn-primary" (click)="addPermisosModal(myModalContent, index)">
+                                <i class="bi bi-plus-square"></i>
+                            </button>
+                            } @else {
+                            <button type="button" class="btn btn-primary" (click)="addPermisosModal(myModalContent, index)">
+                                <i class="bi bi-plus-square-fill"></i>
+                            </button>
+                            }
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+
+
+        <div class="row justify-content-end">
+            <div class="col-xs-12 col-sm-2 col-xl-2 mt15">
+                <select class="form-select w100 tac" [(ngModel)]="pageSize">
+                    <option [ngValue]="5">5</option>
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
+                    <option [ngValue]="100">100</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="3"
+                    [boundaryLinks]="true" class="fr">
+                </ngb-pagination>
+            </div>
+        </div>
+    </div>
+
+
+
+
 </div>
+
+<ng-template #myModalContent let-modal>
+    <div class="container p25">
+        <div class="title bb6">
+            @if (isEdit) {
+            <h1>Editar Permiso</h1>
+            } @else {
+            <h1>Crear Permiso</h1>
+            }
+        </div>
+        <div class="row mb15">
+            <div class="col-xs-12 col-xl-12">
+                <div class="row">
+                    <!--
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="id">id</label>
+                        <input class="form-control form-control-sm" type="password" placeholder="" id="Contrasena"
+                            [(ngModel)]="permisosModal.id">
+                    </div>
+                -->
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="name">Nombre</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="name"
+                            [(ngModel)]="permisosModal.name">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="descrip">descripcion</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="descrip"
+                            [(ngModel)]="permisosModal.descrip">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
+                        <div class="col-12 border-chack">
+                            <input type="checkbox" [(ngModel)]="permisosModal.estado" id="rol-{{ permisosModal.id }}"
+                                name="permissions[{{ permisosModal.id }}][{{ permisosModal.estado }}]"
+                                [disabled]="!isEdit" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt15">
+                    <div class="col-12 text-right">
+                        <div class="row justify-content-end">
+                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                                <button type="button" class="btn btn-primary w100"
+                                    (click)="guardarPermiso()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<app-spinner [cargar]="cargar"></app-spinner>
