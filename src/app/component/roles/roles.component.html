@@ -55,15 +55,27 @@
                                 name="permissions-table-[{{ rol.id }}][{{ rol.estado }}]" />
                         </td>
                         <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
-                            <button type="button" class="btn btn-primary" (click)="editarRolModal(myModalContent, rol)"><i
-                                    class="bi bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-primary" (click)="agregarRolModal(myModalContent)"><i
-                                    class="bi bi-trash3"></i></button>
-                            <button type="button" class="btn btn-primary" (click)="addRolModal(myModalContent, index)"><i
-                                    class="bi bi-plus-square"></i></button>
-                            <button type="button" class="btn btn-primary" (click)="addRolModal(myModalContent, index)"><i
-                                    class="bi bi-plus-square-fill"></i></button>
+                            <button type="button" class="btn btn-primary"
+                                (click)="editarRolModal(myModalContent, rol)">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary"
+                                (click)="agregarRolModal(myModalContent)">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                            @if (rol.addRol) {
+                            <button type="button" class="btn btn-primary"
+                                (click)="addRolModal(myModalContent, index)">
+                                <i class="bi bi-plus-square"></i>
+                            </button>
+                            } @else {
+                            <button type="button" class="btn btn-primary"
+                                (click)="addRolModal(myModalContent, index)">
+                                <i class="bi bi-plus-square-fill"></i>
+                            </button>
+                            }
                         </td>
+
                     </tr>
                     }
                 </tbody>

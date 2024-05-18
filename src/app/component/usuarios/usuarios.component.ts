@@ -95,7 +95,35 @@ export class UsuariosComponent {
     } else {
       alert('Nombre o correo Son inválido');
     }
+    if (!this.isEdit) {
+      this.createNewUser();
+    } else {
+      console.log('Cargando EditNewUser');
+    }
   }
+
+  private createNewUser(): void {
+    console.log('Cargando createNewUser');
+    this.cargar = true;
+    this.userService.newUser(this.userModal.ctaUsr,this.userModal.ctaPass,this.userModal.ctaEmail).subscribe(
+      (data: any) => {
+        if (data.code === '0' && data.data != null) {
+          this.usuarios.push(...data.data);
+          this.collectionSize = this.usuarios.length;
+        } else {
+          console.log('Error con la respuesta de servicios de Usuaios');
+          alert('Error con la respuesta de servicios de Usuaios');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        //this.error.mostrarError('Error con el ervicio de Usuaios');
+        console.log('Error con el ervicio de Usuaios');
+        alert('Error con el ervicio de Usuaios');
+        this.cargar = false;
+      });
+  }
+
 
 }
 export interface Usuario {
