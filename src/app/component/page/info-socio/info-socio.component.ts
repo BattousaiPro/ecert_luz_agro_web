@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DataSocio, listaSocios } from './model/dataMock';
-import { DetailSocioComponent } from '../detail-socio/detail-socio.component';
+import { DetailSocioComponent } from './detail-socio/detail-socio.component';
 import { SpinnerComponent } from '../../spinner/spinner.component';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
