@@ -105,7 +105,7 @@ export class PermisosComponent implements OnInit {
       ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
     ) {
       if (!this.isEdit) {
-        //this.createNewPermisos();
+        this.createNewPermisos();
       } else {
         //this.editPermisos();
       }
@@ -113,82 +113,82 @@ export class PermisosComponent implements OnInit {
       alert('Nombre o correo Son inválido');
     }
   }
+
+  private createNewPermisos(): void {
+    console.log('Cargando createNewPermisos');
+    this.cargar = true;
+    this.permisosService.newUser(this.permisosModal.name, this.permisosModal.descrip, this.permisosModal.code, this.permisosModal.estado).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.closeModal();
+          this.loadCargarPermisos();
+        } else {
+          console.log('Error con la respuesta de servicios de Usuaios');
+          alert('Error con la respuesta de servicios de Usuaios');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        //this.error.mostrarError('Error con el servicio de Usuaios');
+        this.closeModal();
+        console.log('Error con el servicio de Usuaios');
+        alert('Error con el servicio de Usuaios');
+        this.cargar = false;
+      });
+  }
   /*
-    private createNewPermisos(): void {
-      console.log('Cargando createNewPermisos');
-      this.cargar = true;
-      this.permisosService.newPermisos(this.permisosModal.ctaUsr, this.permisosModal.ctaPass, this.permisosModal.ctaEmail).subscribe(
-        (data: any) => {
-          if (data.code === '0') {
-            this.closeModal();
-            this.loadCargarPermisoss();
-          } else {
-            console.log('Error con la respuesta de servicios de Usuaios');
-            alert('Error con la respuesta de servicios de Usuaios');
-          }
-          this.cargar = false;
-        },
-        (err: any) => {
-          //this.error.mostrarError('Error con el servicio de Usuaios');
+  private editPermisos(): void {
+    console.log('Cargando editPermisos');
+    this.cargar = true;
+    this.permisosService.updatePermisos(
+      this.permisosModal.id,
+      this.permisosModal.ctaUsr,
+      this.permisosModal.ctaPass,
+      this.permisosModal.ctaEmail,
+      this.permisosModal.estado
+    ).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
           this.closeModal();
-          console.log('Error con el servicio de Usuaios');
-          alert('Error con el servicio de Usuaios');
-          this.cargar = false;
-        });
-    }
-  
-    private editPermisos(): void {
-      console.log('Cargando editPermisos');
-      this.cargar = true;
-      this.permisosService.updatePermisos(
-        this.permisosModal.id,
-        this.permisosModal.ctaUsr,
-        this.permisosModal.ctaPass,
-        this.permisosModal.ctaEmail,
-        this.permisosModal.estado
-      ).subscribe(
-        (data: any) => {
-          if (data.code === '0') {
-            this.closeModal();
-            this.loadCargarPermisoss();
-          } else {
-            console.log('Error con la respuesta de servicios de Usuaios');
-            alert('Error con la respuesta de servicios de Usuaios');
-          }
-          this.cargar = false;
-        },
-        (err: any) => {
+          this.loadCargarPermisoss();
+        } else {
+          console.log('Error con la respuesta de servicios de Usuaios');
+          alert('Error con la respuesta de servicios de Usuaios');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        //this.error.mostrarError('Error con el servicio de Usuaios');
+        console.log('Error con el servicio de Usuaios');
+        alert('Error con el servicio de Usuaios');
+        this.cargar = false;
+      });
+  }
+ 
+  public deletePermisos(): void {
+    console.log('Cargando editPermisos');
+    this.cargar = true;
+    this.permisosService.deletePermisos(this.permisosDeleteModal.id).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
           this.closeModal();
-          //this.error.mostrarError('Error con el servicio de Usuaios');
-          console.log('Error con el servicio de Usuaios');
-          alert('Error con el servicio de Usuaios');
-          this.cargar = false;
-        });
-    }
-  
-    public deletePermisos(): void {
-      console.log('Cargando editPermisos');
-      this.cargar = true;
-      this.permisosService.deletePermisos(this.permisosDeleteModal.id).subscribe(
-        (data: any) => {
-          if (data.code === '0') {
-            this.closeModal();
-            this.loadCargarPermisoss();
-          } else {
-            console.log('Error con la respuesta de servicios de Usuaios');
-            alert('Error con la respuesta de servicios de Usuaios');
-          }
-          this.cargar = false;
-        },
-        (err: any) => {
-          this.closeModal();
-          //this.error.mostrarError('Error con el servicio de Usuaios');
-          console.log('Error con el servicio de Usuaios');
-          alert('Error con el servicio de Usuaios');
-          this.cargar = false;
-        });
-    }
-  */
+          this.loadCargarPermisoss();
+        } else {
+          console.log('Error con la respuesta de servicios de Usuaios');
+          alert('Error con la respuesta de servicios de Usuaios');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        //this.error.mostrarError('Error con el servicio de Usuaios');
+        console.log('Error con el servicio de Usuaios');
+        alert('Error con el servicio de Usuaios');
+        this.cargar = false;
+      });
+  }
+*/
   public closeModal() {
     this.modalService.dismissAll();
   }
@@ -198,7 +198,8 @@ export interface Permiso {
   id?: number;
   name: string;
   descrip: string;
-  estado?: boolean;
+  code: string;
+  estado: boolean;
   addPermiso: boolean;
 }
 export class Permiso { }
