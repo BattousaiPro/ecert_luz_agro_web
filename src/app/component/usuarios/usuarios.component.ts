@@ -91,15 +91,16 @@ export class UsuariosComponent {
     if (ctaUsr?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(ctaUsr?.trim())
       && ctaEmail?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ.@ ]+$/.test(ctaEmail?.trim())
     ) {
-      alert('Nombre y correo Son válido');
+      //alert('Nombre y correo Son válido');
+      if (!this.isEdit) {
+        this.createNewUser();
+      } else {
+        console.log('Cargando EditNewUser');
+      }
     } else {
       alert('Nombre o correo Son inválido');
     }
-    if (!this.isEdit) {
-      this.createNewUser();
-    } else {
-      console.log('Cargando EditNewUser');
-    }
+    
   }
 
   private createNewUser(): void {
