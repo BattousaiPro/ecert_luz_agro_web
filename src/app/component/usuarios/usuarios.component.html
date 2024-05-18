@@ -60,7 +60,7 @@
                             </td>
                             <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
                                 <button type="button" class="btn btn-primary"
-                                    (click)="agregarUserModal(myModalContent)">
+                                    (click)="editarUserModal(myModalContent, user)">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                                 <button type="button" class="btn btn-primary"
@@ -111,7 +111,11 @@
 <ng-template #myModalContent let-modal>
     <div class="container p25">
         <div class="title bb6">
-            <h1>Crear Usuario</h1>
+            @if (isEdit) {
+                <h1>Editar Usuario</h1>
+            } @else {
+                <h1>Crear Usuario</h1>
+            }
         </div>
 
         <div class="row mb15">
@@ -156,7 +160,7 @@
                         <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
                         <div class="col-12 border-chack">
                             <input type="checkbox" [(ngModel)]="userModal.estado" id="userModal-{{ userModal.id }}"
-                                name="permissions[{{ userModal.id }}][{{ userModal.estado }}]" disabled="" />
+                                name="permissions[{{ userModal.id }}][{{ userModal.estado }}]" [disabled]="!isEdit" />
                         </div>
                     </div>
                     <!--

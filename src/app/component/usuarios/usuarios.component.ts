@@ -64,6 +64,14 @@ export class UsuariosComponent {
     console.log('Method agregarUser.');
     this.userModal = new Usuario();
     this.userModal.estado = true;
+    this.isEdit = false;
+    this.openModalFunction(content);
+  }
+
+  public editarUserModal(content: any, userSelected: Usuario): void {
+    console.log('Method agregarUser.');
+    this.userModal = userSelected;
+    this.isEdit = true;
     this.openModalFunction(content);
   }
 
