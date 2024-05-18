@@ -72,8 +72,12 @@ export class RolesComponent implements OnInit {
     this.isEdit = true;
     this.openModalFunction(content);
   }
-
-  public addRolModal(content: any, index: number): void {
+  public deleteRolModal(content: any, roleSelected: Role): void {
+    console.log('Method deleteRolesModal');
+    this.rolDeleteModal = roleSelected;
+    this.openModalFunction(content);
+  }
+ public addRolModal(content: any, index: number): void {
     this.roles[index].addRol = !this.roles[index].addRol;
     console.log('Method agregarRol.');
     this.rolModal = new Role();
@@ -85,15 +89,82 @@ export class RolesComponent implements OnInit {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
-  public guardarRol(): void {
-    const name = this.rolModal.name;
-    const descrip = this.rolModal.descrip;
-    if (name?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(name?.trim())
-      && descrip?.trim() && /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(descrip?.trim())) {
-      alert('Nombre y descripción Son válido');
-    } else {
-      alert('Nombre o descripción son inválido');
-    }
+  private createNewRoles(): void {
+    console.log('Cargando createNewUser');
+    this.cargar = true;
+
+    this.rolesService.newRoles(this.rolModal.id, this.rolModal.name, this.rolModal.descrip , this.rolModal.estado).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.closeModal();
+          this.loadCargarRoles();
+        } else {
+          console.log('Error con la respuesta de servicios de Roles');
+          alert('Error con la respuesta de servicios de Roles');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        //this.error.mostrarError('Error con el servicio de Usuaios');
+        this.closeModal();
+        console.log('Error con el servicio de Roles');
+        alert('Error con el servicio de Roles');
+        this.cargar = false;
+      });
+  }
+  private editRoles(): void {
+    console.log('Cargando editRoles');
+    this.cargar = true;
+    this.rolesService.updateRol(
+      this.rolModal.id,
+      this.rolModal.name,
+      this.rolModal.descrip,
+      this.rolModal.estado,
+    ).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.closeModal();
+          this.loadCargarRoles();
+        } else {
+          console.log('Error con la respuesta de servicios de Roles');
+          alert('Error con la respuesta de servicios de Roles');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        //this.error.mostrarError('Error con el servicio de Roles');
+        console.log('Error con el servicio de Roles');
+        alert('Error con el servicio de Roles');
+        this.cargar = false;
+      });
+  }
+
+  public deleteRol(): void {
+    console.log('Cargando editRoles');
+    this.cargar = true;
+    this.rolesService.deleteRol(this.rolDeleteModal.id).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.closeModal();
+          this.loadCargarRoles();
+        } else {
+          console.log('Error con la respuesta de servicios de Roles');
+          alert('Error con la respuesta de servicios de Roles');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        //this.error.mostrarError('Error con el servicio de Usuaios');
+        console.log('Error con el servicio de Usuaios');
+        alert('Error con el servicio de Usuaios');
+        this.cargar = false;
+      });
+  }
+
+  public closeModal() {
+    this.modalService.dismissAll();
   }
 
 }
