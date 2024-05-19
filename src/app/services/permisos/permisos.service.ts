@@ -9,7 +9,7 @@ export class PermisosService {
 
   constructor(private http: HttpClient) { }
 
-  public obtenerPermisos(): Observable<any> {
+  public getAll(): Observable<any> {
     let url = 'http://localhost:3000/permisos';
     const ladata: Observable<any> = this.http.get(
       url
@@ -17,7 +17,7 @@ export class PermisosService {
     return ladata;
   }
 
-  public newUser(name: string, descrip: string, code: string, estado: boolean): Observable<any> {
+  public new(name: string, descrip: string, code: string, estado: boolean): Observable<any> {
     let url = 'http://localhost:3000/permisos';
     const ladata: Observable<any> = this.http.post(
       url,
@@ -28,7 +28,7 @@ export class PermisosService {
     return ladata;
   }
 
-  public updatePermisos(id: number, name: string, descrip: string, code: string, estado: boolean): Observable<any> {
+  public update(id: number, name: string, descrip: string, code: string, estado: boolean): Observable<any> {
     let url = 'http://localhost:3000/permisos/' + id;
     let userData: any = {
       name: name,
@@ -43,7 +43,7 @@ export class PermisosService {
     return ladata;
   }
 
-  public deleteUser(id: number): Observable<any> {
+  public delete(id: number): Observable<any> {
     let url = 'http://localhost:3000/permisos/' + id;
     const ladata: Observable<any> = this.http.delete(
       url

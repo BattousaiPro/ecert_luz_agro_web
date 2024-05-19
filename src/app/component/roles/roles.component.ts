@@ -42,7 +42,7 @@ export class RolesComponent implements OnInit {
   private loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
-    this.rolesService.obtenerRoles().subscribe(
+    this.rolesService.getAll().subscribe(
       (data: any) => {
         if (data.code === '0' && data.data != null) {
           this.closeModal();
@@ -113,7 +113,7 @@ export class RolesComponent implements OnInit {
   private createNew(): void {
     console.log('Cargando createNewUser');
     this.cargar = true;
-    this.rolesService.newRol(this.rolModal.name, this.rolModal.descrip).subscribe(
+    this.rolesService.new(this.rolModal.name, this.rolModal.descrip).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
@@ -133,7 +133,7 @@ export class RolesComponent implements OnInit {
   private edit(): void {
     console.log('Cargando edit');
     this.cargar = true;
-    this.rolesService.updateRol(
+    this.rolesService.update(
       this.rolModal.id,
       this.rolModal.name,
       this.rolModal.descrip,
@@ -158,7 +158,7 @@ export class RolesComponent implements OnInit {
   public delete(): void {
     console.log('Cargando delete');
     this.cargar = true;
-    this.rolesService.deleteRol(this.rolDeleteModal.id).subscribe(
+    this.rolesService.delete(this.rolDeleteModal.id).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();

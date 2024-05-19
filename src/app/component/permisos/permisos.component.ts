@@ -41,7 +41,7 @@ export class PermisosComponent implements OnInit {
   private loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
-    this.permisosService.obtenerPermisos().subscribe(
+    this.permisosService.getAll().subscribe(
       (data: any) => {
         if (data.code === '0' && data.data != null) {
           this.permisos = [];
@@ -111,7 +111,7 @@ export class PermisosComponent implements OnInit {
   private createNew(): void {
     console.log('Cargando createNew');
     this.cargar = true;
-    this.permisosService.newUser(this.permisosModal.name, this.permisosModal.descrip, this.permisosModal.code, this.permisosModal.estado).subscribe(
+    this.permisosService.new(this.permisosModal.name, this.permisosModal.descrip, this.permisosModal.code, this.permisosModal.estado).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
@@ -131,7 +131,7 @@ export class PermisosComponent implements OnInit {
   private edit(): void {
     console.log('Cargando edit');
     this.cargar = true;
-    this.permisosService.updatePermisos(
+    this.permisosService.update(
       this.permisosModal.id,
       this.permisosModal.name,
       this.permisosModal.descrip,
@@ -157,7 +157,7 @@ export class PermisosComponent implements OnInit {
   public delete(): void {
     console.log('Cargando edit');
     this.cargar = true;
-    this.permisosService.deleteUser(this.permisosModal.id).subscribe(
+    this.permisosService.delete(this.permisosModal.id).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();

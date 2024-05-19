@@ -9,7 +9,7 @@ export class RolesService {
 
   constructor(private http: HttpClient) { }
 
-  public obtenerRoles(): Observable<any> {
+  public getAll(): Observable<any> {
     let url = 'http://localhost:3000/roles';
     const ladata: Observable<any> = this.http.get(
       url
@@ -17,7 +17,7 @@ export class RolesService {
     return ladata;
   }
 
-  public newRol(name: string, descrip: string): Observable<any> {
+  public new(name: string, descrip: string): Observable<any> {
     let url = 'http://localhost:3000/roles';
     const ladata: Observable<any> = this.http.post(
       url,
@@ -29,7 +29,7 @@ export class RolesService {
     return ladata;
   }
 
-  public updateRol(id: number, name: string, descrip: string, estado: boolean): Observable<any> {
+  public update(id: number, name: string, descrip: string, estado: boolean): Observable<any> {
     let url = 'http://localhost:3000/roles/' + id;
     let userData: any = {
       name: name,
@@ -43,7 +43,7 @@ export class RolesService {
     return ladata;
   }
 
-  public deleteRol(id: number): Observable<any> {
+  public delete(id: number): Observable<any> {
     let url = 'http://localhost:3000/roles/' + id;
     const ladata: Observable<any> = this.http.delete(
       url

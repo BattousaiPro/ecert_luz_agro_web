@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public obtenerUser(): Observable<any> {
+  public getAll(): Observable<any> {
     let url = 'http://localhost:3000/users';
     const ladata: Observable<any> = this.http.get(
       url
@@ -17,7 +17,7 @@ export class UserService {
     return ladata;
   }
 
-  public access(username: string, password: string): Observable<any> {
+  public login(username: string, password: string): Observable<any> {
     let url = 'http://localhost:3000/auth/login';
     let userData: any = {
       ctaUsr: username,
@@ -30,7 +30,7 @@ export class UserService {
     return ladata;
   }
 
-  public newUser(ctaUsr: string, ctaPass: string, ctaEmail: string): Observable<any> {
+  public new(ctaUsr: string, ctaPass: string, ctaEmail: string): Observable<any> {
     let url = 'http://localhost:3000/users';
     const ladata: Observable<any> = this.http.post(
       url,
@@ -43,7 +43,7 @@ export class UserService {
     return ladata;
   }
 
-  public updateUser(id: number, ctaUsr: string, ctaPass: string, ctaEmail: string, estado: boolean): Observable<any> {
+  public update(id: number, ctaUsr: string, ctaPass: string, ctaEmail: string, estado: boolean): Observable<any> {
     let url = 'http://localhost:3000/users/' + id;
     let userData: any = {
       ctaUsr: ctaUsr,
@@ -58,7 +58,7 @@ export class UserService {
     return ladata;
   }
 
-  public deleteUser(id: number): Observable<any> {
+  public delete(id: number): Observable<any> {
     let url = 'http://localhost:3000/users/' + id;
     const ladata: Observable<any> = this.http.delete(
       url

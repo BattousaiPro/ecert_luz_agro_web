@@ -43,7 +43,7 @@ export class UsuariosComponent {
   private loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
-    this.userService.obtenerUser().subscribe(
+    this.userService.getAll().subscribe(
       (data: any) => {
         if (data.code === '0' && data.data != null) {
           this.closeModal();
@@ -114,7 +114,7 @@ export class UsuariosComponent {
   private createNew(): void {
     console.log('Cargando createNew');
     this.cargar = true;
-    this.userService.newUser(this.userModal.ctaUsr, this.userModal.ctaPass, this.userModal.ctaEmail).subscribe(
+    this.userService.new(this.userModal.ctaUsr, this.userModal.ctaPass, this.userModal.ctaEmail).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
@@ -134,7 +134,7 @@ export class UsuariosComponent {
   private edit(): void {
     console.log('Cargando edit');
     this.cargar = true;
-    this.userService.updateUser(
+    this.userService.update(
       this.userModal.id,
       this.userModal.ctaUsr,
       this.userModal.ctaPass,
@@ -160,7 +160,7 @@ export class UsuariosComponent {
   public delete(): void {
     console.log('Cargando edit');
     this.cargar = true;
-    this.userService.deleteUser(this.userDeleteModal.id).subscribe(
+    this.userService.delete(this.userDeleteModal.id).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
