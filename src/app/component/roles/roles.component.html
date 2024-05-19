@@ -61,7 +61,8 @@
                             <button type="button" class="btn btn-primary" (click)="editarRolModal(myModalContent, rol)">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
-                            <button type="button" class="btn btn-primary" (click)="agregarRolModal(myModalContent)">
+                            <button type="button" class="btn btn-primary"
+                                (click)="deleteRolModal(myModalContentDelete, rol)">
                                 <i class="bi bi-trash3"></i>
                             </button>
                             @if (rol.addRol) {

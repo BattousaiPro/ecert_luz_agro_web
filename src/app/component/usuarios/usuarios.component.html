@@ -68,14 +68,14 @@
                                     (click)="deleteUserModal(myModalContentDelete, user)">
                                     <i class="bi bi-trash3"></i>
                                 </button>
-                                @if (user.addRol) {
+                                @if (user.addUser) {
                                 <button type="button" class="btn btn-primary"
-                                    (click)="addRolModal(myModalContent, index)">
+                                    (click)="addUserModal(myModalContent, index)">
                                     <i class="bi bi-plus-square"></i>
                                 </button>
                                 } @else {
                                 <button type="button" class="btn btn-primary"
-                                    (click)="addRolModal(myModalContent, index)">
+                                    (click)="addUserModal(myModalContent, index)">
                                     <i class="bi bi-plus-square-fill"></i>
                                 </button>
                                 }

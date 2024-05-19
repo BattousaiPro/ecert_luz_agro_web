@@ -43,6 +43,8 @@ export class RolesComponent implements OnInit {
     this.rolesService.obtenerRoles().subscribe(
       (data: any) => {
         if (data.code === '0' && data.data != null) {
+          this.closeModal();
+          this.roles = [];
           this.roles.push(...data.data);
           this.collectionSize = this.roles.length;
         } else {
@@ -67,36 +69,20 @@ export class RolesComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public guardarRol(): void {
-    const ctaUsr = this.rolModal.name.trim();
-    const ctaEmail = this.rolModal.descrip.trim();
-    if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== '' &&
-      ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
-    ) {
-      if (!this.isEdit) {
-        console.log('Cargando createNewRol');
-        //this.createNewRol();
-      } else {
-        console.log('Cargando createNewRol............');
-        //this.editRol();
-      }
-    } else {
-      alert('Nombre o correo Son inválido');
-    }
-  }
-
   public editarRolModal(content: any, rolesSelected: Role): void {
     console.log('Method editarRolModal.');
     this.rolModal = rolesSelected;
     this.isEdit = true;
     this.openModalFunction(content);
   }
+
   public deleteRolModal(content: any, roleSelected: Role): void {
     console.log('Method deleteRolesModal');
     this.rolDeleteModal = roleSelected;
     this.openModalFunction(content);
   }
- public addRolModal(content: any, index: number): void {
+
+  public addRolModal(content: any, index: number): void {
     this.roles[index].addRol = !this.roles[index].addRol;
     console.log('Method agregarRol.');
     this.rolModal = new Role();
@@ -107,12 +93,30 @@ export class RolesComponent implements OnInit {
   private openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
-/*
-  private createNewRoles(): void {
+
+  public guardarRol(): void {
+    const ctaUsr = this.rolModal.name.trim();
+    const ctaEmail = this.rolModal.descrip.trim();
+    if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== '' &&
+      ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
+    ) {
+      if (!this.isEdit) {
+        console.log('Cargando createNewRol');
+        this.createNewRol();
+      } else {
+        console.log('Cargando createNewRol............');
+        this.editRol();
+      }
+    } else {
+      alert('Nombre o correo Son inválido');
+    }
+  }
+
+  private createNewRol(): void {
     console.log('Cargando createNewUser');
     this.cargar = true;
 
-    this.rolesService.newRoles(this.rolModal.id, this.rolModal.name, this.rolModal.descrip , this.rolModal.estado).subscribe(
+    this.rolesService.newRol(this.rolModal.name, this.rolModal.descrip).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
@@ -131,8 +135,9 @@ export class RolesComponent implements OnInit {
         this.cargar = false;
       });
   }
-  private editRoles(): void {
-    console.log('Cargando editRoles');
+
+  private editRol(): void {
+    console.log('Cargando editRol');
     this.cargar = true;
     this.rolesService.updateRol(
       this.rolModal.id,
@@ -158,10 +163,9 @@ export class RolesComponent implements OnInit {
         this.cargar = false;
       });
   }
-*/
+
   public deleteRol(): void {
-    /*
-    console.log('Cargando editRoles');
+    console.log('Cargando deleteRol');
     this.cargar = true;
     this.rolesService.deleteRol(this.rolDeleteModal.id).subscribe(
       (data: any) => {
@@ -181,7 +185,6 @@ export class RolesComponent implements OnInit {
         alert('Error con el servicio de Usuaios');
         this.cargar = false;
       });
-      */
   }
 
   public closeModal() {
@@ -191,7 +194,7 @@ export class RolesComponent implements OnInit {
 }
 
 export interface Role {
-  id?: number;
+  id: number;
   name: string;
   descrip: string;
   estado: boolean;

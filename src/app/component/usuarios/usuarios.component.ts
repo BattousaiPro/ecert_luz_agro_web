@@ -82,8 +82,8 @@ export class UsuariosComponent {
     this.openModalFunction(content);
   }
 
-  public addRolModal(content: any, index: number): void {
-    this.usuarios[index].addRol = !this.usuarios[index].addRol;
+  public addUserModal(content: any, index: number): void {
+    this.usuarios[index].addUser = !this.usuarios[index].addUser;
     console.log('Method agregarUser.');
     this.userModal = new Usuario();
     this.userModal.estado = true;
@@ -202,6 +202,6 @@ export interface Usuario {
   //chkRut: number;
   //estCed: number;
   estado: boolean;
-  addRol: boolean;
+  addUser: boolean;
 }
 export class Usuario { }
