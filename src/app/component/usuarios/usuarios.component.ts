@@ -31,8 +31,10 @@ export class UsuariosComponent {
   page = 1;
   pageSize = 5;
 
-  constructor(private modalService: NgbModal,
-    private userService: UserService) { }
+  constructor(
+    private modalService: NgbModal,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
     this.loadCargarUsers();
