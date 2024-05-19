@@ -167,30 +167,30 @@ export class PermisosComponent implements OnInit {
         this.cargar = false;
       });
   }
-  /*
-   public deletePermisos(): void {
-     console.log('Cargando editPermisos');
-     this.cargar = true;
-     this.permisosService.deletePermisos(this.permisosDeleteModal.id).subscribe(
-       (data: any) => {
-         if (data.code === '0') {
-           this.closeModal();
-           this.loadCargarPermisoss();
-         } else {
-           console.log('Error con la respuesta de servicios de Usuaios');
-           alert('Error con la respuesta de servicios de Usuaios');
-         }
-         this.cargar = false;
-       },
-       (err: any) => {
-         this.closeModal();
-         //this.error.mostrarError('Error con el servicio de Usuaios');
-         console.log('Error con el servicio de Usuaios');
-         alert('Error con el servicio de Usuaios');
-         this.cargar = false;
-       });
-   }
- */
+
+  public deletePermisos(): void {
+    console.log('Cargando editPermisos');
+    this.cargar = true;
+    this.permisosService.deleteUser(this.permisosModal.id).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.closeModal();
+          this.loadCargarPermisos();
+        } else {
+          console.log('Error con la respuesta de servicios de Usuaios');
+          alert('Error con la respuesta de servicios de Usuaios');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        //this.error.mostrarError('Error con el servicio de Usuaios');
+        console.log('Error con el servicio de Usuaios');
+        alert('Error con el servicio de Usuaios');
+        this.cargar = false;
+      });
+  }
+
   public closeModal() {
     this.modalService.dismissAll();
   }

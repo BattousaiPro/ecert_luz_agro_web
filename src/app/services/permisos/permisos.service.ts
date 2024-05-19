@@ -42,13 +42,13 @@ export class PermisosService {
     );
     return ladata;
   }
-  /*
-    public deleteUser(id: number): Observable<any> {
-      let url = 'http://localhost:3000/permisos/' + id;
-      const ladata: Observable<any> = this.http.delete(
-        url
-      );
-      return ladata;
-    }*/
+
+  public deleteUser(id: number): Observable<any> {
+    let url = 'http://localhost:3000/permisos/' + id;
+    const ladata: Observable<any> = this.http.delete(
+      url
+    );
+    return ladata;
+  }
 
 }
