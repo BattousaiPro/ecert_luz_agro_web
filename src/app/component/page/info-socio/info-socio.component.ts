@@ -6,6 +6,7 @@ import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { KapmaeService } from '../../../services/kapmae/kapmae.service';
+import { ModalOptions } from '../../../utils/modalOptions';
 
 @Component({
   selector: 'app-info-socio',
@@ -24,6 +25,7 @@ export class InfoSocioComponent {
 
   socioModal!: DataSocio;
   cargar: boolean = false;
+  modals = new ModalOptions();
 
   collectionSize: number = 0;
   page = 1;
@@ -46,18 +48,13 @@ export class InfoSocioComponent {
           //this.socios.push(...listaSocios);
           this.collectionSize = this.socios.length;
           this.refreshCountries('Init');
-          // console.log(JSON.stringify(this.usuarios));
         } else {
-          //this.error.mostrarError('Error con la respuesta de servicios de Socios');
-          console.log('Error con la respuesta de servicios de Socios');
-          alert('Error con la respuesta de servicios de Socios');
+          this.modals.error('Error con el servicio de Socios');
         }
         this.cargar = false;
       },
       (err: any) => {
-        //this.error.mostrarError('Error con el ervicio de Socios');
-        console.log('Error con el ervicio de Socios');
-        alert('Error con el ervicio de Socios');
+        this.modals.error('Error con el servicio de Socios');
         this.cargar = false;
       });
   }
@@ -104,17 +101,17 @@ export class InfoSocioComponent {
 
   seleccionar() {
     if (!this.validaSelected()) {
-      alert('debes seleccionar un Socio.');
+      this.modals.warning('debes seleccionar un Socio');
     } else {
-      alert('Funcionalidad No disponible.');
+      this.modals.info('Funcionalidad No disponible');
     }
   }
 
   cerfificado() {
     if (!this.validaSelected()) {
-      alert('debes seleccionar un Socio para cerfificado.');
+      this.modals.warning('debes seleccionar un Socio para cerfificado');
     } else {
-      alert('Funcionalidad No disponible.');
+      this.modals.info('Funcionalidad No disponible');
     }
   }
 
