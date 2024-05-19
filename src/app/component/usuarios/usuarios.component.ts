@@ -25,6 +25,7 @@ export class UsuariosComponent {
   userDeleteModal: Usuario = new Usuario();
   cargar: boolean = false;
   isEdit: boolean = false;
+  passConfirm: string = '';
   modals = new ModalOptions();
 
   collectionSize: number = 0;
@@ -96,11 +97,7 @@ export class UsuariosComponent {
   }
 
   public guardar(): void {
-    const ctaUsr = this.userModal.ctaUsr.trim();
-    const ctaEmail = this.userModal.ctaEmail.trim();
-    if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== ''
-      && ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
-    ) {
+    if (this.validateField()) {
       if (!this.isEdit) {
         this.createNew();
       } else {
@@ -109,6 +106,32 @@ export class UsuariosComponent {
     } else {
       this.modals.info('Nombre o correo Son inválido');
     }
+  }
+
+  private validateField(): boolean {
+    if (!this.isEdit) {
+      const ctaUsr = this.userModal.ctaUsr.trim();
+      const ctaEmail = this.userModal.ctaEmail.trim();
+      if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== ''
+        && ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== '') {
+        if (this.validatPassWord()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  private validatPassWord(): boolean {
+    const ctaPass = this.userModal.ctaPass.trim();
+    this.passConfirm
+    if (ctaPass !== null && typeof ctaPass !== 'undefined' && ctaPass !== ''
+      && this.passConfirm !== null && typeof this.passConfirm !== 'undefined' && this.passConfirm !== '') {
+      if (ctaPass === this.passConfirm) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private createNew(): void {
@@ -205,8 +228,8 @@ export interface Usuario {
 }
 export class Usuario {
   constructor() {
-    this.ctaUsr='';
-    this.ctaPass='';
-    this.ctaEmail='';
+    this.ctaUsr = '';
+    this.ctaPass = '';
+    this.ctaEmail = '';
   }
 }
