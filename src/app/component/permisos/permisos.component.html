@@ -8,7 +8,7 @@
             <div class="row justify-content-end">
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
                     <button type="button" class="btn btn-primary w100"
-                        (click)="agregaPermisosModal(myModalContent)">Agregar
+                        (click)="agregaModal(myModalContent)">Agregar
                         Permiso</button>
                 </div>
             </div>
@@ -60,21 +60,21 @@
                         </td>
                         <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
                             <button type="button" class="btn btn-primary"
-                                (click)="editarPermisosModal(myModalContent, permiso)">
+                                (click)="editarModal(myModalContent, permiso)">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                             <button type="button" class="btn btn-primary"
-                                (click)="deletePermisosModal(myModalContentDelete, permiso)">
+                                (click)="deleteModal(myModalContentDelete, permiso)">
                                 <i class="bi bi-trash3"></i>
                             </button>
                             @if (permiso.addPermiso) {
                             <button type="button" class="btn btn-primary"
-                                (click)="addPermisosModal(myModalContent, index)">
+                                (click)="addModal(myModalContent, index)">
                                 <i class="bi bi-plus-square"></i>
                             </button>
                             } @else {
                             <button type="button" class="btn btn-primary"
-                                (click)="addPermisosModal(myModalContent, index)">
+                                (click)="addModal(myModalContent, index)">
                                 <i class="bi bi-plus-square-fill"></i>
                             </button>
                             }
@@ -159,7 +159,7 @@
                         <div class="row justify-content-end">
                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
                                 <button type="button" class="btn btn-primary w100"
-                                    (click)="guardarPermiso()">Guardar</button>
+                                    (click)="guardar()">Guardar</button>
                             </div>
                         </div>
                     </div>
@@ -197,7 +197,7 @@
                                 </button>
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                <button type="button" class="btn btn-primary w100" (click)="deletePermisos()">
+                                <button type="button" class="btn btn-primary w100" (click)="delete()">
                                     Eliminar
                                 </button>
                             </div>

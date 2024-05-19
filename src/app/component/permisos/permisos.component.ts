@@ -35,11 +35,11 @@ export class PermisosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadCargarPermisos();
+    this.loadCargar();
   }
 
-  private loadCargarPermisos(): void {
-    console.log('Cargando loadCargarPermisos');
+  private loadCargar(): void {
+    console.log('Cargando loadCargar');
     this.cargar = true;
     this.permisosService.obtenerPermisos().subscribe(
       (data: any) => {
@@ -59,7 +59,7 @@ export class PermisosComponent implements OnInit {
     );
   }
 
-  public agregaPermisosModal(content: any): void {
+  public agregaModal(content: any): void {
     console.log('Method agregarRolModal.');
     this.permisosModal = new Permiso();
     this.permisosModal.estado = true;
@@ -67,20 +67,20 @@ export class PermisosComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public editarPermisosModal(content: any, permisosSelected: Permiso): void {
+  public editarModal(content: any, permisosSelected: Permiso): void {
     console.log('Method editarUserModal');
     this.permisosModal = permisosSelected;
     this.isEdit = true;
     this.openModalFunction(content);
   }
 
-  public deletePermisosModal(content: any, permisosSelected: Permiso): void {
+  public deleteModal(content: any, permisosSelected: Permiso): void {
     console.log('Method deleteUserModal');
     this.permisosModal = permisosSelected;
     this.openModalFunction(content);
   }
 
-  public addPermisosModal(content: any, index: number): void {
+  public addModal(content: any, index: number): void {
     this.permisos[index].addPermiso = !this.permisos[index].addPermiso;
     console.log('Method agregarUser.');
     this.permisosModal = new Permiso();
@@ -92,38 +92,38 @@ export class PermisosComponent implements OnInit {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
-  public agregarPermisosModal(content: any): void {
-    console.log('Method agregarPermisosModal.');
+  public agregarModal(content: any): void {
+    console.log('Method agregarModal.');
     this.permisosModal = new Permiso();
     this.permisosModal.estado = true;
     this.isEdit = false;
     this.openModalFunction(content);
   }
 
-  public guardarPermiso(): void {
+  public guardar(): void {
     const ctaUsr = this.permisosModal.name.trim();
     const ctaEmail = this.permisosModal.descrip.trim();
     if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== '' &&
       ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
     ) {
       if (!this.isEdit) {
-        this.createNewPermisos();
+        this.createNew();
       } else {
-        this.editPermisos();
+        this.edit();
       }
     } else {
       this.modals.info('Nombre o correo Son inválido');
     }
   }
 
-  private createNewPermisos(): void {
-    console.log('Cargando createNewPermisos');
+  private createNew(): void {
+    console.log('Cargando createNew');
     this.cargar = true;
     this.permisosService.newUser(this.permisosModal.name, this.permisosModal.descrip, this.permisosModal.code, this.permisosModal.estado).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.loadCargarPermisos();
+          this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de Permisos para crear');
         }
@@ -136,8 +136,8 @@ export class PermisosComponent implements OnInit {
       });
   }
 
-  private editPermisos(): void {
-    console.log('Cargando editPermisos');
+  private edit(): void {
+    console.log('Cargando edit');
     this.cargar = true;
     this.permisosService.updatePermisos(
       this.permisosModal.id,
@@ -149,7 +149,7 @@ export class PermisosComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.loadCargarPermisos();
+          this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de Permisos para actualizar');
         }
@@ -162,14 +162,14 @@ export class PermisosComponent implements OnInit {
       });
   }
 
-  public deletePermisos(): void {
-    console.log('Cargando editPermisos');
+  public delete(): void {
+    console.log('Cargando edit');
     this.cargar = true;
     this.permisosService.deleteUser(this.permisosModal.id).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.loadCargarPermisos();
+          this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de Permisos para eliminar');
         }
