@@ -43,6 +43,7 @@ export class UsuariosComponent {
       (data: any) => {
         if (data.code === '0' && data.data != null) {
           this.closeModal();
+          this.usuarios = [];
           this.usuarios.push(...data.data);
           this.collectionSize = this.usuarios.length;
         } else {
