@@ -37,11 +37,11 @@ export class UsuariosComponent {
   ) { }
 
   ngOnInit(): void {
-    this.loadCargarUsers();
+    this.loadCargar();
   }
 
-  private loadCargarUsers(): void {
-    console.log('Cargando loadCargarUsers');
+  private loadCargar(): void {
+    console.log('Cargando loadCargar');
     this.cargar = true;
     this.userService.obtenerUser().subscribe(
       (data: any) => {
@@ -62,28 +62,28 @@ export class UsuariosComponent {
       });
   }
 
-  public agregarUserModal(content: any): void {
-    console.log('Method agregarUserModal.');
+  public agregaModal(content: any): void {
+    console.log('Method agregaModal.');
     this.userModal = new Usuario();
     this.userModal.estado = true;
     this.isEdit = false;
     this.openModalFunction(content);
   }
 
-  public editarUserModal(content: any, userSelected: Usuario): void {
-    console.log('Method editarUserModal');
+  public editarModal(content: any, userSelected: Usuario): void {
+    console.log('Method editarModal');
     this.userModal = userSelected;
     this.isEdit = true;
     this.openModalFunction(content);
   }
 
-  public deleteUserModal(content: any, userSelected: Usuario): void {
-    console.log('Method deleteUserModal');
+  public deleteModal(content: any, userSelected: Usuario): void {
+    console.log('Method deleteModal');
     this.userDeleteModal = userSelected;
     this.openModalFunction(content);
   }
 
-  public addUserModal(content: any, index: number): void {
+  public addModal(content: any, index: number): void {
     this.usuarios[index].addUser = !this.usuarios[index].addUser;
     console.log('Method agregarUser.');
     this.userModal = new Usuario();
@@ -95,30 +95,30 @@ export class UsuariosComponent {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
-  public guardarUser(): void {
+  public guardar(): void {
     const ctaUsr = this.userModal.ctaUsr.trim();
     const ctaEmail = this.userModal.ctaEmail.trim();
     if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== '' &&
       ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
     ) {
       if (!this.isEdit) {
-        this.createNewUser();
+        this.createNew();
       } else {
-        this.editUser();
+        this.edit();
       }
     } else {
       this.modals.info('Nombre o correo Son inválido');
     }
   }
 
-  private createNewUser(): void {
-    console.log('Cargando createNewUser');
+  private createNew(): void {
+    console.log('Cargando createNew');
     this.cargar = true;
     this.userService.newUser(this.userModal.ctaUsr, this.userModal.ctaPass, this.userModal.ctaEmail).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.loadCargarUsers();
+          this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de Usuaios para crear');
         }
@@ -131,8 +131,8 @@ export class UsuariosComponent {
       });
   }
 
-  private editUser(): void {
-    console.log('Cargando editUser');
+  private edit(): void {
+    console.log('Cargando edit');
     this.cargar = true;
     this.userService.updateUser(
       this.userModal.id,
@@ -144,7 +144,7 @@ export class UsuariosComponent {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.loadCargarUsers();
+          this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de Usuaios para actualizar');
         }
@@ -157,14 +157,14 @@ export class UsuariosComponent {
       });
   }
 
-  public deleteUser(): void {
-    console.log('Cargando editUser');
+  public delete(): void {
+    console.log('Cargando edit');
     this.cargar = true;
     this.userService.deleteUser(this.userDeleteModal.id).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.loadCargarUsers();
+          this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de Usuaios para eliminar');
         }

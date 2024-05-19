@@ -11,7 +11,7 @@
                     <div class="col-12 ">
                         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
                             <button type="button" class="btn btn-primary w100"
-                                (click)="agregarUserModal(myModalContent)">Agregar Usuario</button>
+                                (click)="agregaModal(myModalContent)">Agregar Usuario</button>
                         </div>
                     </div>
                 </div>
@@ -61,21 +61,21 @@
                             </td>
                             <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
                                 <button type="button" class="btn btn-primary"
-                                    (click)="editarUserModal(myModalContent, user)">
+                                    (click)="editarModal(myModalContent, user)">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                                 <button type="button" class="btn btn-primary"
-                                    (click)="deleteUserModal(myModalContentDelete, user)">
+                                    (click)="deleteModal(myModalContentDelete, user)">
                                     <i class="bi bi-trash3"></i>
                                 </button>
                                 @if (user.addUser) {
                                 <button type="button" class="btn btn-primary"
-                                    (click)="addUserModal(myModalContent, index)">
+                                    (click)="addModal(myModalContent, index)">
                                     <i class="bi bi-plus-square"></i>
                                 </button>
                                 } @else {
                                 <button type="button" class="btn btn-primary"
-                                    (click)="addUserModal(myModalContent, index)">
+                                    (click)="addModal(myModalContent, index)">
                                     <i class="bi bi-plus-square-fill"></i>
                                 </button>
                                 }
@@ -189,7 +189,7 @@
                         <div class="row justify-content-end">
                             <div class="col-12 ">
                                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                    <button type="button" class="btn btn-primary w100" (click)="guardarUser()">
+                                    <button type="button" class="btn btn-primary w100" (click)="guardar()">
                                         @if (isEdit) {
                                         Editar
                                         } @else {
@@ -235,7 +235,7 @@
                                 </button>
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                <button type="button" class="btn btn-primary w100" (click)="deleteUser()">
+                                <button type="button" class="btn btn-primary w100" (click)="delete()">
                                     Eliminar
                                 </button>
                             </div>
