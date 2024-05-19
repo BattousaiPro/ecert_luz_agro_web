@@ -3,6 +3,7 @@ import { SpinnerComponent } from '../../spinner/spinner.component';
 import { TemplateFichaSocioComponent } from './template-ficha-socio/template-ficha-socio.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { ModalOptions } from '../../../utils/modalOptions';
 
 @Component({
   selector: 'app-fichas-socios',
@@ -19,6 +20,7 @@ export class FichasSociosComponent {
   anio: number = 0;
   nroPagina!: number;
   anioList: number[] = [];
+  modals = new ModalOptions();
 
   constructor(private modalService: NgbModal) {
     this.loadAnio();
@@ -41,7 +43,7 @@ export class FichasSociosComponent {
       this.nroPagina !== 0 && this.nroPagina < 1000) {
       this.openModalTemplate(content);
     } else {
-      alert('todos los campos deben ser completados.');
+      this.modals.info('todos los campos deben ser completados.');
     }
   }
 
