@@ -124,6 +124,8 @@ export class PermisosComponent implements OnInit {
         if (data.code === '0') {
           this.closeModal();
           this.loadCargar();
+        } else if (data.code === '-2') {
+          this.modals.warning(data.message);
         } else {
           this.modals.error('Error con la respuesta de servicios de Permisos para crear');
         }
