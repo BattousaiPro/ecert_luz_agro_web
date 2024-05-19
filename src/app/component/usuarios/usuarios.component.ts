@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalOptions } from '../../utils/modalOptions';
 
 @Component({
   selector: 'app-usuarios',
@@ -24,6 +25,7 @@ export class UsuariosComponent {
   userDeleteModal: Usuario = new Usuario();
   cargar: boolean = false;
   isEdit: boolean = false;
+  modals = new ModalOptions();
 
   collectionSize: number = 0;
   page = 1;
@@ -47,16 +49,13 @@ export class UsuariosComponent {
           this.usuarios.push(...data.data);
           this.collectionSize = this.usuarios.length;
         } else {
-          console.log('Error con la respuesta de servicios de Usuaios');
-          alert('Error con la respuesta de servicios de Usuaios');
+          this.modals.success('Error con la respuesta de servicios de Usuaios');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        //this.error.mostrarError('Error con el servicio de Usuaios');
-        console.log('Error con el servicio de Usuaios');
-        alert('Error con el servicio de Usuaios');
+        this.modals.error('Error con el servicio de Usuaios');
         this.cargar = false;
       });
   }
@@ -106,7 +105,7 @@ export class UsuariosComponent {
         this.editUser();
       }
     } else {
-      alert('Nombre o correo Son inválido');
+      this.modals.info('Nombre o correo Son inválido');
     }
   }
 
@@ -119,16 +118,13 @@ export class UsuariosComponent {
           this.closeModal();
           this.loadCargarUsers();
         } else {
-          console.log('Error con la respuesta de servicios de Usuaios');
-          alert('Error con la respuesta de servicios de Usuaios');
+          this.modals.error('Error con la respuesta de servicios de Usuaios para crear');
         }
         this.cargar = false;
       },
       (err: any) => {
-        //this.error.mostrarError('Error con el servicio de Usuaios');
         this.closeModal();
-        console.log('Error con el servicio de Usuaios');
-        alert('Error con el servicio de Usuaios');
+        this.modals.error('Error con el servicio de Usuaios para crear');
         this.cargar = false;
       });
   }
@@ -148,16 +144,13 @@ export class UsuariosComponent {
           this.closeModal();
           this.loadCargarUsers();
         } else {
-          console.log('Error con la respuesta de servicios de Usuaios');
-          alert('Error con la respuesta de servicios de Usuaios');
+          this.modals.error('Error con la respuesta de servicios de Usuaios para actualizar');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        //this.error.mostrarError('Error con el servicio de Usuaios');
-        console.log('Error con el servicio de Usuaios');
-        alert('Error con el servicio de Usuaios');
+        this.modals.error('Error con el servicio de Usuaios para actualizar');
         this.cargar = false;
       });
   }
@@ -171,16 +164,13 @@ export class UsuariosComponent {
           this.closeModal();
           this.loadCargarUsers();
         } else {
-          console.log('Error con la respuesta de servicios de Usuaios');
-          alert('Error con la respuesta de servicios de Usuaios');
+          this.modals.error('Error con la respuesta de servicios de Usuaios para eliminar');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        //this.error.mostrarError('Error con el servicio de Usuaios');
-        console.log('Error con el servicio de Usuaios');
-        alert('Error con el servicio de Usuaios');
+        this.modals.error('Error con el servicio de Usuaios para eliminar');
         this.cargar = false;
       });
   }
@@ -190,6 +180,7 @@ export class UsuariosComponent {
   }
 
 }
+
 export interface Usuario {
   id: number;
   ctaUsr: string;

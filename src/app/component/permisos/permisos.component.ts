@@ -4,6 +4,7 @@ import { PermisosService } from '../../services/permisos/permisos.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ModalOptions } from '../../utils/modalOptions';
 
 @Component({
   selector: 'app-permisos',
@@ -22,6 +23,7 @@ export class PermisosComponent implements OnInit {
   permisoDeleteModal: Permiso = new Permiso();
   cargar: boolean = false;
   isEdit: boolean = false;
+  modals = new ModalOptions();
 
   collectionSize: number = 0;
   page = 1;
@@ -46,14 +48,12 @@ export class PermisosComponent implements OnInit {
           this.permisos.push(...data.data);
           this.collectionSize = this.permisos.length;
         } else {
-          console.log('Error con la respuesta de servicios de Roles');
-          alert('Error con la respuesta de servicios de Roles');
+          this.modals.success('Error con la respuesta de servicios de Permisos');
         }
         this.cargar = false;
       },
       (err: any) => {
-        console.log('Error con el servicio de Roles');
-        alert('Error con el servicio de Roles');
+        this.modals.error('Error con el servicio de Permisos');
         this.cargar = false;
       }
     );
@@ -112,7 +112,7 @@ export class PermisosComponent implements OnInit {
         this.editPermisos();
       }
     } else {
-      alert('Nombre o correo Son inválido');
+      this.modals.info('Nombre o correo Son inválido');
     }
   }
 
@@ -125,16 +125,13 @@ export class PermisosComponent implements OnInit {
           this.closeModal();
           this.loadCargarPermisos();
         } else {
-          console.log('Error con la respuesta de servicios de Usuaios');
-          alert('Error con la respuesta de servicios de Usuaios');
+          this.modals.error('Error con la respuesta de servicios de Permisos para crear');
         }
         this.cargar = false;
       },
       (err: any) => {
-        //this.error.mostrarError('Error con el servicio de Usuaios');
         this.closeModal();
-        console.log('Error con el servicio de Usuaios');
-        alert('Error con el servicio de Usuaios');
+        this.modals.error('Error con el servicio de Permisos para crear');
         this.cargar = false;
       });
   }
@@ -154,16 +151,13 @@ export class PermisosComponent implements OnInit {
           this.closeModal();
           this.loadCargarPermisos();
         } else {
-          console.log('Error con la respuesta de servicios de Usuaios');
-          alert('Error con la respuesta de servicios de Usuaios');
+          this.modals.error('Error con la respuesta de servicios de Permisos para actualizar');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        //this.error.mostrarError('Error con el servicio de Usuaios');
-        console.log('Error con el servicio de Usuaios');
-        alert('Error con el servicio de Usuaios');
+        this.modals.error('Error con el servicio de Permisos para actualizar');
         this.cargar = false;
       });
   }
@@ -177,16 +171,13 @@ export class PermisosComponent implements OnInit {
           this.closeModal();
           this.loadCargarPermisos();
         } else {
-          console.log('Error con la respuesta de servicios de Usuaios');
-          alert('Error con la respuesta de servicios de Usuaios');
+          this.modals.error('Error con la respuesta de servicios de Permisos para eliminar');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        //this.error.mostrarError('Error con el servicio de Usuaios');
-        console.log('Error con el servicio de Usuaios');
-        alert('Error con el servicio de Usuaios');
+        this.modals.error('Error con el servicio de Permisos para eliminar');
         this.cargar = false;
       });
   }
@@ -196,6 +187,7 @@ export class PermisosComponent implements OnInit {
   }
 
 }
+
 export interface Permiso {
   id: number;
   name: string;
