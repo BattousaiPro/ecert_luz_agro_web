@@ -98,8 +98,8 @@ export class UsuariosComponent {
   public guardar(): void {
     const ctaUsr = this.userModal.ctaUsr.trim();
     const ctaEmail = this.userModal.ctaEmail.trim();
-    if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== '' &&
-      ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
+    if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== ''
+      && ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
     ) {
       if (!this.isEdit) {
         this.createNew();
@@ -201,4 +201,10 @@ export interface Usuario {
   estado: boolean;
   addUser: boolean;
 }
-export class Usuario { }
+export class Usuario {
+  constructor() {
+    this.ctaUsr='';
+    this.ctaPass='';
+    this.ctaEmail='';
+  }
+}

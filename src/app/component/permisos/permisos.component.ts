@@ -94,10 +94,12 @@ export class PermisosComponent implements OnInit {
   }
 
   public guardar(): void {
-    const ctaUsr = this.permisosModal.name.trim();
-    const ctaEmail = this.permisosModal.descrip.trim();
-    if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== '' &&
-      ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
+    const name = this.permisosModal.name.trim();
+    const descrip = this.permisosModal.descrip.trim();
+    const code = this.permisosModal.code.trim();
+    if (name !== null && typeof name !== 'undefined' && name !== ''
+      && descrip !== null && typeof descrip !== 'undefined' && descrip !== ''
+      && code !== null && typeof code !== 'undefined' && code !== ''
     ) {
       if (!this.isEdit) {
         this.createNew();
@@ -105,7 +107,7 @@ export class PermisosComponent implements OnInit {
         this.edit();
       }
     } else {
-      this.modals.info('Nombre o correo Son inválido');
+      this.modals.info('Nombre o Descripción o Código Son inválido');
     }
   }
 
@@ -194,4 +196,10 @@ export interface Permiso {
   estado: boolean;
   addPermiso: boolean;
 }
-export class Permiso { }
+export class Permiso {
+  constructor() {
+    this.name='';
+    this.descrip='';
+    this.code='';
+  }
+}
