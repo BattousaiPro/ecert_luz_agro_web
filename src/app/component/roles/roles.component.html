@@ -42,6 +42,7 @@
                         <th scope="col" class="mw-60">ID</th>
                         <th scope="col" class="mw-60">Nombre</th>
                         <th scope="col" class="mw-60">Descripción</th>
+                        <th scope="col" class="mw-60">Código</th>
                         <th scope="col" class="mw-60">Estado</th>
                         <th scope="col" class="mw-60">Acciones</th>
                     </tr>
@@ -53,6 +54,7 @@
                         <td>{{ rol.id }}</td>
                         <td>{{ rol.name }}</td>
                         <td>{{ rol.descrip }}</td>
+                        <td>{{ rol.code }}</td>
                         <td>
                             <input type="checkbox" [(ngModel)]="rol.estado" id="user-table-{{ rol.id }}"
                                 name="permissions-table-[{{ rol.id }}][{{ rol.estado }}]" />
