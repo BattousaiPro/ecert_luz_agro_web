@@ -17,24 +17,26 @@ export class RolesService {
     return ladata;
   }
 
-  public new(name: string, descrip: string): Observable<any> {
+  public new(name: string, descrip: string, code: string): Observable<any> {
     let url = 'http://localhost:3000/roles';
     const ladata: Observable<any> = this.http.post(
       url,
       {
-        name: name,
-        descrip: descrip,
+        name,
+        descrip,
+        code,
       }
     );
     return ladata;
   }
 
-  public update(id: number, name: string, descrip: string, estado: boolean): Observable<any> {
+  public update(id: number, name: string, descrip: string, code: string, estado: boolean): Observable<any> {
     let url = 'http://localhost:3000/roles/' + id;
     let userData: any = {
-      name: name,
-      descrip: descrip,
-      estado: estado,
+      name,
+      descrip,
+      code,
+      estado,
     };
     const ladata: Observable<any> = this.http.patch(
       url,

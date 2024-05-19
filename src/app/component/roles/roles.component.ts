@@ -113,7 +113,11 @@ export class RolesComponent implements OnInit {
   private createNew(): void {
     console.log('Cargando createNewUser');
     this.cargar = true;
-    this.rolesService.new(this.rolModal.name, this.rolModal.descrip).subscribe(
+    this.rolesService.new(
+      this.rolModal.name,
+      this.rolModal.descrip,
+      this.rolModal.code
+    ).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
@@ -137,6 +141,7 @@ export class RolesComponent implements OnInit {
       this.rolModal.id,
       this.rolModal.name,
       this.rolModal.descrip,
+      this.rolModal.code,
       this.rolModal.estado,
     ).subscribe(
       (data: any) => {
@@ -185,6 +190,7 @@ export interface Role {
   id: number;
   name: string;
   descrip: string;
+  code: string;
   estado: boolean;
   addRol: boolean;
 }

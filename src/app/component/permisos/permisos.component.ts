@@ -44,6 +44,7 @@ export class PermisosComponent implements OnInit {
     this.permisosService.getAll().subscribe(
       (data: any) => {
         if (data.code === '0' && data.data != null) {
+          this.closeModal();
           this.permisos = [];
           this.permisos.push(...data.data);
           this.collectionSize = this.permisos.length;
@@ -111,7 +112,12 @@ export class PermisosComponent implements OnInit {
   private createNew(): void {
     console.log('Cargando createNew');
     this.cargar = true;
-    this.permisosService.new(this.permisosModal.name, this.permisosModal.descrip, this.permisosModal.code, this.permisosModal.estado).subscribe(
+    this.permisosService.new(
+      this.permisosModal.name,
+      this.permisosModal.descrip,
+      this.permisosModal.code,
+      this.permisosModal.estado
+    ).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();

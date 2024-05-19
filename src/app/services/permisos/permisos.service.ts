@@ -22,7 +22,10 @@ export class PermisosService {
     const ladata: Observable<any> = this.http.post(
       url,
       {
-        name, descrip, code, estado
+        name,
+        descrip,
+        code,
+        estado
       }
     );
     return ladata;
@@ -31,10 +34,10 @@ export class PermisosService {
   public update(id: number, name: string, descrip: string, code: string, estado: boolean): Observable<any> {
     let url = 'http://localhost:3000/permisos/' + id;
     let userData: any = {
-      name: name,
-      descrip: descrip,
-      code: code,
-      estado: estado,
+      name,
+      descrip,
+      code,
+      estado
     };
     const ladata: Observable<any> = this.http.patch(
       url,

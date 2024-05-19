@@ -130,6 +130,11 @@
                             [(ngModel)]="rolModal.descrip">
                     </div>
                     <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="code">Código</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="code"
+                            [(ngModel)]="rolModal.code">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
                         <div class="col-12 border-chack">
                             <input type="checkbox" [(ngModel)]="rolModal.estado" id="rol-{{ rolModal.id }}"

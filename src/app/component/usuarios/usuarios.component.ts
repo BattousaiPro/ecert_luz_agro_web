@@ -114,7 +114,11 @@ export class UsuariosComponent {
   private createNew(): void {
     console.log('Cargando createNew');
     this.cargar = true;
-    this.userService.new(this.userModal.ctaUsr, this.userModal.ctaPass, this.userModal.ctaEmail).subscribe(
+    this.userService.new(
+      this.userModal.ctaUsr,
+      this.userModal.ctaPass,
+      this.userModal.ctaEmail
+    ).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();

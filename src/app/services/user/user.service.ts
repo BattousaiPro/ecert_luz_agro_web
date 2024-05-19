@@ -35,9 +35,9 @@ export class UserService {
     const ladata: Observable<any> = this.http.post(
       url,
       {
-        ctaUsr: ctaUsr,
-        ctaPass: ctaPass,
-        ctaEmail: ctaEmail
+        ctaUsr,
+        ctaPass,
+        ctaEmail
       }
     );
     return ladata;
@@ -46,10 +46,10 @@ export class UserService {
   public update(id: number, ctaUsr: string, ctaPass: string, ctaEmail: string, estado: boolean): Observable<any> {
     let url = 'http://localhost:3000/users/' + id;
     let userData: any = {
-      ctaUsr: ctaUsr,
-      ctaPass: ctaPass,
-      ctaEmail: ctaEmail,
-      estado: estado,
+      ctaUsr,
+      ctaPass,
+      ctaEmail,
+      estado,
     };
     const ladata: Observable<any> = this.http.patch(
       url,
