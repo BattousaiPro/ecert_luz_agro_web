@@ -6,15 +6,18 @@
     <div class="row mt15">
         <div class="col-12 text-right">
             <div class="row justify-content-end">
-                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                    <button type="button" class="btn btn-primary w100" (click)="agregarRolModal(myModalContent)">Agregar
-                        Rol</button>
+                <div class="col-12 ">
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                        <button type="button" class="btn btn-primary w100"
+                            (click)="agregarRolModal(myModalContent)">Agregar Rol</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row mt15">
+
         <div class="row justify-content-end">
             <div class="col-xs-12 col-sm-2 col-xl-2 mt15">
                 <select class="form-select w100 tac" [(ngModel)]="pageSize">
@@ -75,7 +78,7 @@
                     </tr>
                     } @empty {
                     <tr>
-                        <th scope="row" colspan="6">
+                        <th scope="row" colspan="5">
                             <div class="tac">Sin Resultados</div>
                         </th>
                     </tr>
@@ -115,13 +118,6 @@
         <div class="row mb15">
             <div class="col-xs-12 col-xl-12">
                 <div class="row">
-                    <!--
-                    <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="id">id</label>
-                        <input class="form-control form-control-sm" type="password" placeholder="" id="Contrasena"
-                            [(ngModel)]="rolModal.id">
-                    </div>
-                -->
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="name">Nombre</label>
                         <input class="form-control form-control-sm" type="text" placeholder="" id="name"
@@ -157,60 +153,48 @@
                         </div>
                     </div>
                 </div>
-                <ng-template #myModalContentDelete let-modal>
-                    <div class="container p25">
-                        <div class="title bb6">
-                            <h1>Eliminar Rol</h1>
-                        </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
 
-                        <div class="row mb15">
-                            <div class="col-xs-12 col-xl-12">
+<ng-template #myModalContentDelete let-modal>
+    <div class="container p25">
+        <div class="title bb6">
+            <h1>Eliminar Rol</h1>
+        </div>
 
-                                <div class="row">
+        <div class="row mb15">
+            <div class="col-xs-12 col-xl-12">
 
-                                    <div class="col-xs-12 col-sm-6">
-                                        <label class="col-form-label col-form-label-sm" for="ctaUsr">Esta seguro que
-                                            quiere eliminar el
-                                            Rol</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="ctaUsr" [(ngModel)]="rolDeleteModal.name" disabled="">
-                                    </div>
-                                </div>
+                <div class="row">
 
-                                <div class="row mt15">
-                                    <div class="col-12">
-                                        <div class="row justify-content-end">
-                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                                <button type="button" class="btn btn-primary w100"
-                                                    (click)="closeModal()">
-                                                    Cacelar
-                                                </button>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                                <button type="button" class="btn btn-primary w100"
-                                                    (click)="deleteRol()">
-                                                    Eliminar
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="deletName">Esta seguro que
+                            quiere eliminar el
+                            Rol</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="deletName"
+                            [(ngModel)]="rolDeleteModal.name" disabled="">
                     </div>
-                </ng-template>
+                </div>
 
                 <div class="row mt15">
-                    <div class="col-12 text-right">
+                    <div class="col-12">
                         <div class="row justify-content-end">
                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                <button type="button" class="btn btn-primary w100"
-                                    (click)="guardarRol()">Guardar</button>
+                                <button type="button" class="btn btn-primary w100" (click)="closeModal()">
+                                    Cacelar
+                                </button>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                                <button type="button" class="btn btn-primary w100" (click)="deleteRol()">
+                                    Eliminar
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

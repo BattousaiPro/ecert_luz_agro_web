@@ -21,14 +21,15 @@
         <div class="row mt15">
 
             <div class="row justify-content-end">
-                <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac"
-                        [(ngModel)]="pageSize">
+                <div class="col-xs-12 col-sm-2 col-xl-2 mt15">
+                    <select class="form-select w100 tac" [(ngModel)]="pageSize">
                         <option [ngValue]="5">5</option>
                         <option [ngValue]="10">10</option>
                         <option [ngValue]="25">25</option>
                         <option [ngValue]="50">50</option>
                         <option [ngValue]="100">100</option>
-                    </select></div>
+                    </select>
+                </div>
                 <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
                     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                         [maxSize]="3" [boundaryLinks]="true" class="fr">
