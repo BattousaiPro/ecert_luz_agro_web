@@ -36,11 +36,11 @@ export class RolesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadCargarRoles();
+    this.loadCargar();
   }
 
-  private loadCargarRoles(): void {
-    console.log('Cargando loadCargarRoles');
+  private loadCargar(): void {
+    console.log('Cargando loadCargar');
     this.cargar = true;
     this.rolesService.obtenerRoles().subscribe(
       (data: any) => {
@@ -61,28 +61,28 @@ export class RolesComponent implements OnInit {
     );
   }
 
-  public agregarRolModal(content: any): void {
-    console.log('Method agregarRolModal.');
+  public agregaModal(content: any): void {
+    console.log('Method agregaModal.');
     this.rolModal = new Role();
     this.rolModal.estado = true;
     this.isEdit = false;
     this.openModalFunction(content);
   }
 
-  public editarRolModal(content: any, rolesSelected: Role): void {
-    console.log('Method editarRolModal.');
+  public editarModal(content: any, rolesSelected: Role): void {
+    console.log('Method editarModal.');
     this.rolModal = rolesSelected;
     this.isEdit = true;
     this.openModalFunction(content);
   }
 
-  public deleteRolModal(content: any, roleSelected: Role): void {
-    console.log('Method deleteRolesModal');
+  public deleteModal(content: any, roleSelected: Role): void {
+    console.log('Method deleteesModal');
     this.rolDeleteModal = roleSelected;
     this.openModalFunction(content);
   }
 
-  public addRolModal(content: any, index: number): void {
+  public addModal(content: any, index: number): void {
     this.roles[index].addRol = !this.roles[index].addRol;
     console.log('Method agregarRol.');
     this.rolModal = new Role();
@@ -94,30 +94,30 @@ export class RolesComponent implements OnInit {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
-  public guardarRol(): void {
+  public guardar(): void {
     const ctaUsr = this.rolModal.name.trim();
     const ctaEmail = this.rolModal.descrip.trim();
     if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== '' &&
       ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== ''
     ) {
       if (!this.isEdit) {
-        this.createNewRol();
+        this.createNew();
       } else {
-        this.editRol();
+        this.edit();
       }
     } else {
       this.modals.info('Nombre o correo Son inválido');
     }
   }
 
-  private createNewRol(): void {
+  private createNew(): void {
     console.log('Cargando createNewUser');
     this.cargar = true;
     this.rolesService.newRol(this.rolModal.name, this.rolModal.descrip).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.loadCargarRoles();
+          this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de Roles para crear');
         }
@@ -130,8 +130,8 @@ export class RolesComponent implements OnInit {
       });
   }
 
-  private editRol(): void {
-    console.log('Cargando editRol');
+  private edit(): void {
+    console.log('Cargando edit');
     this.cargar = true;
     this.rolesService.updateRol(
       this.rolModal.id,
@@ -142,7 +142,7 @@ export class RolesComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.loadCargarRoles();
+          this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de Roles para actualizar');
         }
@@ -155,14 +155,14 @@ export class RolesComponent implements OnInit {
       });
   }
 
-  public deleteRol(): void {
-    console.log('Cargando deleteRol');
+  public delete(): void {
+    console.log('Cargando delete');
     this.cargar = true;
     this.rolesService.deleteRol(this.rolDeleteModal.id).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.loadCargarRoles();
+          this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de Roles para eliminar');
         }

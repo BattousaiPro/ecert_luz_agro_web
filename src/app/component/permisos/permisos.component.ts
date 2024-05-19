@@ -92,13 +92,13 @@ export class PermisosComponent implements OnInit {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
-  public agregarModal(content: any): void {
+  /*public agregarModal(content: any): void {
     console.log('Method agregarModal.');
     this.permisosModal = new Permiso();
     this.permisosModal.estado = true;
     this.isEdit = false;
     this.openModalFunction(content);
-  }
+  }*/
 
   public guardar(): void {
     const ctaUsr = this.permisosModal.name.trim();
