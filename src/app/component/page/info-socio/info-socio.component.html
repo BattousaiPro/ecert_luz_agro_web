@@ -14,6 +14,9 @@
                     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
                         <button type="button" class="btn btn-primary w100" (click)="cerfificado()">Certificado</button>
                     </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
+                        <button type="button" class="btn btn-primary w100" (click)="noDisponible()">Agregar Socio</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -153,8 +156,16 @@
                     $index) {
                     <tr [ngClass]="{'selected' : socio.selected}">
                         <td scope="row" (click)="statusChange(socio, 'Id')" [ngClass]="{'selectedeye' : socio.selected}"
-                            class="mw-60 sticky"><button type="button" class="btn btn-primary"
-                                (click)="openDetails(socio, myModalContent)"><i class="bi bi-eye-fill"></i></button>
+                            class="mw-160 sticky">
+                            <button type="button" class="btn btn-primary"
+                                (click)="noDisponible()" style="margin-right: 5px;"><i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary"
+                                (click)="noDisponible()" style="margin-right: 5px;"><i class="bi bi-trash3"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary"
+                                (click)="openDetails(socio, myModalContent)"><i class="bi bi-eye-fill"></i>
+                            </button>
                         </td>
                         <td (click)="statusChange(socio)">{{ socio.rut_cop }}</td>
                         <td class="mw-160" (click)="statusChange(socio)">{{ socio.nombres }}</td>

@@ -115,6 +115,10 @@ export class InfoSocioComponent {
     }
   }
 
+  noDisponible() {
+      this.modals.info('Funcionalidad No disponible');
+  }
+
   openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
