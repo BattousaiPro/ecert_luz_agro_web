@@ -24,6 +24,7 @@ export class InfoSocioComponent {
   socios: DataSocio[] = [];
 
   socioModal!: DataSocio;
+  socioDeleteModal: DataSocio = new DataSocio();
   cargar: boolean = false;
   modals = new ModalOptions();
 
@@ -123,7 +124,7 @@ export class InfoSocioComponent {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
-  closeModalFunction() {
+  closeModal() {
     this.modalService.dismissAll();
   }
 
@@ -153,5 +154,15 @@ export class InfoSocioComponent {
     console.log('Method buscarBySector');
   }
   /********************************************************/
+
+  public delete(): void {
+    this.noDisponible();
+  }
+
+  public deleteModal(content: any, userSelected: DataSocio): void {
+    console.log('Method deleteModal');
+    this.socioDeleteModal = userSelected;
+    this.openModalFunction(content);
+  }
 
 }
