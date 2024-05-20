@@ -23,10 +23,12 @@ export class InfoSocioComponent {
 
   socios: DataSocio[] = [];
 
-  socioModal!: DataSocio;
+  socioModal: DataSocio = new DataSocio();
   socioDeleteModal: DataSocio = new DataSocio();
   cargar: boolean = false;
   modals = new ModalOptions();
+  isEdit: boolean = false;
+  principalContainer: boolean = true;
 
   collectionSize: number = 0;
   page = 1;
@@ -117,7 +119,7 @@ export class InfoSocioComponent {
   }
 
   noDisponible() {
-      this.modals.info('Funcionalidad No disponible');
+    this.modals.info('Funcionalidad No disponible');
   }
 
   openModalFunction(content: any): void {
@@ -163,6 +165,22 @@ export class InfoSocioComponent {
     console.log('Method deleteModal');
     this.socioDeleteModal = userSelected;
     this.openModalFunction(content);
+  }
+
+  public editarModal(userSelected: DataSocio): void {
+    console.log('Method editarModal');
+    this.socioModal = userSelected;
+    this.isEdit = true;
+    this.principalContainer = false;
+    // this.openModalFunction(content);
+  }
+
+  public guardar(): void {
+    this.modals.info('Funcionalidad No disponible');
+  }
+
+  volverDetalle() {
+    this.principalContainer = true;
   }
 
 }

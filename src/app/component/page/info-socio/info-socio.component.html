@@ -1,3 +1,4 @@
+@if (principalContainer) {
 <div class="container">
     <div class="title mt15">
         <h1>Detalle de Socios</h1>
@@ -158,7 +159,7 @@
                     <tr [ngClass]="{'selected' : socio.selected}">
                         <td scope="row" (click)="statusChange(socio, 'Id')" [ngClass]="{'selectedeye' : socio.selected}"
                             class="mw-160 sticky">
-                            <button type="button" class="btn btn-primary" (click)="noDisponible()"
+                            <button type="button" class="btn btn-primary" (click)="editarModal(socio)"
                                 style="margin-right: 5px;">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
@@ -240,13 +241,73 @@
 
     </div>
 </div>
+}
 
 <ng-template #myModalContent let-modal>
     <app-detail-socio [socio]="socioModal"></app-detail-socio>
 </ng-template>
 
-<!-- Init Sección de Ceear y editar Socios -->
-<!-- Fin Sección de Ceear y editar Socios -->
+<!-- Init Sección de Ceear y editar Socios
+<ng-template #myModalContentEdit let-modal> -->
+@if (!principalContainer) {
+<div class="container p25">
+    <div class="title bb6">
+        @if (isEdit) {
+        <h1>Editar Socio</h1>
+        } @else {
+        <h1>Crear Socio</h1>
+        }
+    </div>
+
+    <div class="row mb15">
+        <div class="col-xs-12 col-xl-12">
+            <div class="row mt15">
+                <div class="col-12 text-right">
+                    <div class="row justify-content-end">
+                        <div class="col-12 ">
+                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                                <button type="button" class="btn btn-primary w100" (click)="volverDetalle()">
+                                    Volver
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-6">
+                    <label class="col-form-label col-form-label-sm" for="ctaUsr">Data del formulario</label>
+                    <!--
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr"
+                            [(ngModel)]="userModal.ctaUsr">
+                        -->
+                </div>
+
+            </div>
+            <div class="row mt15">
+                <div class="col-12 text-right">
+                    <div class="row justify-content-end">
+                        <div class="col-12 ">
+                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                                <button type="button" class="btn btn-primary w100" (click)="guardar()">
+                                    @if (isEdit) {
+                                    Editar
+                                    } @else {
+                                    Guardar
+                                    }
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+<!-- </ng-template>
+Fin Sección de Ceear y editar Socios -->
 
 <!-- Init Sección de Eliminar Socios -->
 <ng-template #myModalContentDelete let-modal>
@@ -269,8 +330,7 @@
                         <label class="col-form-label col-form-label-sm" for="rut_cop">
                             Rut</label>
                         <input class="form-control form-control-sm" type="text" placeholder="" id="rut_cop"
-                            [value]="socioDeleteModal.rut_cop"
-                            disabled="">
+                            [value]="socioDeleteModal.rut_cop" disabled="">
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="nombres">
@@ -283,22 +343,19 @@
                         <label class="col-form-label col-form-label-sm" for="cod_cop">
                             Código Luzagro</label>
                         <input class="form-control form-control-sm" type="text" placeholder="" id="cod_cop"
-                            [value]="socioDeleteModal.cod_cop"
-                            disabled="">
+                            [value]="socioDeleteModal.cod_cop" disabled="">
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="cod_lli">
                             Código Luzlinares</label>
                         <input class="form-control form-control-sm" type="text" placeholder="" id="cod_lli"
-                            [value]="socioDeleteModal.cod_lli"
-                            disabled="">
+                            [value]="socioDeleteModal.cod_lli" disabled="">
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="cod_ori">
                             Código Original</label>
                         <input class="form-control form-control-sm" type="text" placeholder="" id="cod_ori"
-                            [value]="socioDeleteModal.cod_ori"
-                            disabled="">
+                            [value]="socioDeleteModal.cod_ori" disabled="">
                     </div>
                 </div>
 
