@@ -2,13 +2,24 @@
     <app-sidebar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebar>
 </div>
 -->
-<div class="row">
-    <div class="col-md-6"><button [routerLink]="['/home']" style="height: 130px;width: 100%;" type="text"
-        class="btn btn-primary 100 mb10">Home</button></div>
-    <div class="col-md-6"><button [routerLink]="['/']" style="height: 130px;width: 100%;" type="text"
-        class="btn btn-primary 100 mb10">Log Out</button></div>
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <button [routerLink]="['/home']" style="height: 130px;width: 100%" type="text"
+                    class="btn btn-primary mb10">
+                    Home
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button [routerLink]="['/']" style="height: 130px;width: 100%" type="text" class="btn btn-primary mb10">
+                    Log Out
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="content" [ngClass]="{ 'sidebarExpanded': sidebarExpanded }">
+<div [ngClass]="{ 'sidebarExpanded': sidebarExpanded }">
     <router-outlet />
 </div>
