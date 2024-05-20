@@ -175,6 +175,14 @@ export class InfoSocioComponent {
     // this.openModalFunction(content);
   }
 
+  public agregaModal(): void {
+    console.log('Method agregaModal.');
+    this.socioModal = new DataSocio();
+    this.isEdit = false;
+    this.principalContainer = false;
+    //this.openModalFunction(content);
+  }
+
   public guardar(): void {
     this.modals.info('Funcionalidad No disponible');
   }
