@@ -57,7 +57,7 @@
                             <td>{{ user.ctaEmail }}</td>
                             <td>
                                 <input type="checkbox" [(ngModel)]="user.estado" id="user-table-{{ user.id }}"
-                                    name="permissions-table-[{{ user.id }}][{{ user.estado }}]" />
+                                    name="permissions-table-[{{ user.id }}][{{ user.estado }}]" disabled="" />
                             </td>
                             <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
                                 <button type="button" class="btn btn-primary"
@@ -130,7 +130,7 @@
                 <div class="row">
 
                     <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ctaUsr">ctaUsr</label>
+                        <label class="col-form-label col-form-label-sm" for="ctaUsr">Nombre</label>
                         <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr"
                             [(ngModel)]="userModal.ctaUsr">
                     </div>

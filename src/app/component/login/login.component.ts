@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user/user.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
+import { ModalOptions } from '../../utils/modalOptions';
 
 @Component({
   selector: 'app-login',
@@ -16,19 +17,21 @@ export class LoginComponent {
   password: string = 'Batto123';
   cargar: boolean = false;
 
+  modals = new ModalOptions();
+
   constructor(private userService: UserService,
     private router: Router) { }
 
   validarFormulario() {
     if (this.username === '' || this.password === '') {
-      alert('Todos los campos son obligatorios');
+      this.modals.info('Todos los campos son obligatorios');
     } else {
-      if (!this.password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)) {
-        alert('La contraseña debe ser alfanumérica y tener al menos 8 caracteres');
-      } else {
+      //if (!this.password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)) {
+      //    this.modals.info('La contraseña debe ser alfanumérica y tener al menos 8 caracteres');
+      //} else {
         //this.router.navigate(['home']);
         this.login();
-      }
+      //}
     }
   }
 
@@ -44,7 +47,7 @@ export class LoginComponent {
         } else {
           //this.error.mostrarError('Error con la respuesta de servicios de Access');
           console.log('Error con la respuesta de servicios de Access');
-          alert('Error con la respuesta de servicios de Access');
+          this.modals.error('Error con la respuesta de servicios de Access');
         }
         this.cargar = false;
       },
@@ -52,7 +55,7 @@ export class LoginComponent {
         //this.error.mostrarError('Error con el ervicio de Access');
         console.log('Error con el ervicio de Access');
         this.cargar = false;
-        alert('Error con el ervicio de Access');
+        this.modals.error('Error con el ervicio de Access');
       });
   }
 
