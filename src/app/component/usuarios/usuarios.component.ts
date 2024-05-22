@@ -92,6 +92,10 @@ export class UsuariosComponent {
     this.openModalFunction(content);
   }
 
+  public setRoles(index: number): void {
+    this.modals.info('Funcionalidad No disponible');
+  }
+
   private openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }

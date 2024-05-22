@@ -8,8 +8,8 @@
             <div class="row justify-content-end">
                 <div class="col-12 ">
                     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                        <button type="button" class="btn btn-primary w100"
-                            (click)="agregaModal(myModalContent)">Agregar Rol</button>
+                        <button type="button" class="btn btn-primary w100" (click)="agregaModal(myModalContent)">Agregar
+                            Rol</button>
                     </div>
                 </div>
             </div>
@@ -68,20 +68,54 @@
                                 <i class="bi bi-trash3"></i>
                             </button>
                             @if (rol.addRol) {
-                            <button type="button" class="btn btn-primary" (click)="addModal(myModalContent, index)">
+                            <button type="button" class="btn btn-primary" (click)="setPermisos(index)">
                                 <i class="bi bi-plus-square"></i>
                             </button>
                             } @else {
-                            <button type="button" class="btn btn-primary" (click)="addModal(myModalContent, index)">
+                            <button type="button" class="btn btn-primary" (click)="setPermisos(index)">
                                 <i class="bi bi-plus-square-fill"></i>
                             </button>
                             }
                         </td>
 
                     </tr>
+                    @if(rol.addPermisos) {
+                    <tr>
+                        <td colspan="6">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        @for (permiso of permisos; track permiso.id; let index = $index) {
+                                        <div class="col-1">
+                                            <button type="button" class="btn btn-primary"
+                                                (click)="deletePermiso(myModalContentDelete, rol)">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-11">
+                                            {{ permiso.id }} -- {{ permiso.name }}
+                                        </div>
+                                        }
+                                    </div>
+
+                                    <div class="row justify-content-end containerButton">
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <button type="button" class="btn btn-primary w100"
+                                                (click)="agregarPermiso(index)">Agregar</button>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <button type="button" class="btn btn-primary w100"
+                                                (click)="guardarPermisos()">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
                     } @empty {
                     <tr>
-                        <th scope="row" colspan="5">
+                        <th scope="row" colspan="6">
                             <div class="tac">Sin Resultados</div>
                         </th>
                     </tr>

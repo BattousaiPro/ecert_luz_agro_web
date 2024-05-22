@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { ModalOptions } from '../../utils/modalOptions';
+import { Permiso } from '../permisos/permisos.component';
+import { PermisosService } from '../../services/permisos/permisos.service';
 
 @Component({
   selector: 'app-roles',
@@ -19,6 +21,8 @@ import { ModalOptions } from '../../utils/modalOptions';
 })
 export class RolesComponent implements OnInit {
 
+  permisos: Permiso[] = [];
+
   roles: Role[] = [];
   rolModal: Role = new Role();
   rolDeleteModal: Role = new Role();
@@ -32,11 +36,13 @@ export class RolesComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private rolesService: RolesService
+    private rolesService: RolesService,
+    private permisosService: PermisosService
   ) { }
 
   ngOnInit(): void {
     this.loadCargar();
+    this.loadPermisos();
   }
 
   private loadCargar(): void {
@@ -56,6 +62,28 @@ export class RolesComponent implements OnInit {
       },
       (err: any) => {
         this.modals.error('Error con el servicio de Roles');
+        this.cargar = false;
+      }
+    );
+  }
+
+  private loadPermisos(): void {
+    console.log('Cargando loadPermisos');
+    this.cargar = true;
+    this.permisosService.getAll().subscribe(
+      (data: any) => {
+        if (data.code === '0' && data.data != null) {
+          this.closeModal();
+          this.permisos = [];
+          this.permisos.push(...data.data);
+          this.collectionSize = this.permisos.length;
+        } else {
+          this.modals.success('Error con la respuesta de servicios de Permisos');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.modals.error('Error con el servicio de Permisos');
         this.cargar = false;
       }
     );
@@ -82,12 +110,26 @@ export class RolesComponent implements OnInit {
     this.openModalFunction(content);
   }
 
+  public deletePermiso(content: any, roleSelected: Role): void {
+    console.log('Method deletePermiso');
+    this.modals.info('Funcionalidad No disponible');
+  }
+
   public addModal(content: any, index: number): void {
     this.roles[index].addRol = !this.roles[index].addRol;
     console.log('Method agregarRol.');
     this.rolModal = new Role();
     this.rolModal.estado = true;
     this.openModalFunction(content);
+  }
+
+  public setPermisos(index: number): void {
+    for (let indexRol = 0; indexRol < this.roles.length; indexRol++) {
+      if (indexRol !== index) {
+        this.roles[indexRol].addPermisos = false;
+      }
+    }
+    this.roles[index].addPermisos = !this.roles[index].addPermisos;
   }
 
   private openModalFunction(content: any): void {
@@ -188,6 +230,16 @@ export class RolesComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
+  public agregarPermiso(index: number): void {
+    console.log('Method agregarPermiso');
+    this.modals.info('Funcionalidad No disponible');
+  }
+
+  public guardarPermisos(): void {
+    console.log('Method guardarPermisos');
+    this.modals.info('Funcionalidad No disponible');
+  }
+
 }
 
 export interface Role {
@@ -197,11 +249,14 @@ export interface Role {
   code: string;
   estado: boolean;
   addRol: boolean;
+  addPermisos: boolean;
+
 }
 export class Role {
   constructor() {
-    this.name='';
-    this.descrip='';
-    this.code='';
+    this.name = '';
+    this.descrip = '';
+    this.code = '';
+    this.addPermisos = false;
   }
 }

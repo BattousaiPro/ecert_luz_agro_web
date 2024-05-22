@@ -70,12 +70,12 @@
                                 </button>
                                 @if (user.addUser) {
                                 <button type="button" class="btn btn-primary"
-                                    (click)="addModal(myModalContent, index)">
+                                    (click)="setRoles(index)">
                                     <i class="bi bi-plus-square"></i>
                                 </button>
                                 } @else {
                                 <button type="button" class="btn btn-primary"
-                                    (click)="addModal(myModalContent, index)">
+                                    (click)="setRoles(index)">
                                     <i class="bi bi-plus-square-fill"></i>
                                 </button>
                                 }
