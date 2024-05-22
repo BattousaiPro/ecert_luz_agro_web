@@ -25,14 +25,13 @@ export class InfoSocioComponent {
 
   socioModal: DataSocio = new DataSocio();
   socioDeleteModal: DataSocio = new DataSocio();
+  req: KapmaeRequest = new KapmaeRequest();
   cargar: boolean = false;
   modals = new ModalOptions();
   isEdit: boolean = false;
   principalContainer: boolean = true;
 
   collectionSize: number = 0;
-  page = 1;
-  pageSize = 5;
 
   constructor(private modalService: NgbModal,
     private kapmaeService: KapmaeService
@@ -40,17 +39,18 @@ export class InfoSocioComponent {
     this.loadCargarKapMae();
   }
 
-  private loadCargarKapMae(): void {
+  public loadCargarKapMae(): void {
     console.log('Cargando loadCargarUsers');
     this.cargar = true;
-    this.kapmaeService.obtenerKapMae().subscribe(
+    this.kapmaeService.obtenerKapMaeByFilter(this.req).subscribe(
       (data: any) => {
         // console.log(JSON.stringify(data));
-        if (data.code === '0' && data.data != null) {
-          this.socios.push(...data.data);
+        if (data.code === '0' && data.data != null && data.data.results != null) {
+          this.socios = [];
+          this.socios.push(...data.data.results);
           //this.socios.push(...listaSocios);
-          this.collectionSize = this.socios.length;
-          this.refreshCountries('Init');
+          this.collectionSize = data.data.totalReg;
+          this.setDefaultSociosData(this.socios);
         } else {
           this.modals.error('Error con el servicio de Socios');
         }
@@ -62,15 +62,9 @@ export class InfoSocioComponent {
       });
   }
 
-  refreshCountries(texto: string) {
-    console.log(texto);
-    this.setDefaultSociosData(this.socios);
-  }
-
   private setDefaultSociosData(socios: DataSocio[]) {
     for (let index = 0; index < socios.length; index++) {
       socios[index].selected = false;
-      socios[index].visibility = false;
     }
   }
 
@@ -132,22 +126,6 @@ export class InfoSocioComponent {
 
   /********************************************************/
   // Sector de filtros
-  public buscarByNombre(): void {
-    console.log('Method buscarByNombre');
-  }
-
-  public buscarByApePaterno(): void {
-    console.log('Method buscarByApePaterno');
-  }
-
-  public buscarByApeMaterno(): void {
-    console.log('Method buscarByApeMaterno');
-  }
-
-  public buscarByRut(): void {
-    console.log('Method buscarByRut');
-  }
-
   public buscarByCodigo(): void {
     console.log('Method buscarByCodigo');
   }
@@ -192,3 +170,28 @@ export class InfoSocioComponent {
   }
 
 }
+
+export interface KapmaeRequest extends PaginRequest {
+  rut_cop: string;// Rut Socio	
+  nombres: string;// Nombres
+  ape_pat: string;// Apellido Paterno
+  ape_mat: string;// Apellido Materno
+  cod_cop: number;// Código Luzagro
+  sec_cop: number;// Sector
+}
+export class KapmaeRequest {
+  constructor() {
+    this.rut_cop = '';
+    this.nombres = '';
+    this.ape_pat = '';
+    this.ape_mat = '';
+    this.pageSize = 1;
+    this.limit = 10;
+  }
+}
+
+export interface PaginRequest {
+  limit: number;
+  pageSize: number;
+}
+export class PaginRequest { }

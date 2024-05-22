@@ -24,8 +24,8 @@
         </div>
 
         <div class="row justify-content-end">
-            <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="pageSize"
-                    (ngModelChange)="refreshCountries('pao a paso')">
+            <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="req.limit"
+                    (ngModelChange)="loadCargarKapMae()">
                     <option [ngValue]="5">5</option>
                     <option [ngValue]="10">10</option>
                     <option [ngValue]="25">25</option>
@@ -33,8 +33,8 @@
                     <option [ngValue]="100">100</option>
                 </select></div>
             <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="3"
-                    [boundaryLinks]="true" (pageChange)="refreshCountries('botonera')" class="fr">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit" [maxSize]="3"
+                    [boundaryLinks]="true" (pageChange)="loadCargarKapMae()" class="fr">
                 </ngb-pagination>
             </div>
         </div>
@@ -46,19 +46,19 @@
                         <th scope="col" class="mw-60 sticky"></th>
                         <th scope="col">
                             <div><input type="text" class="form-control w100px mb10" placeholder="Rut"
-                                    (blur)="buscarByRut()"></div>
+                                    (blur)="loadCargarKapMae()" [(ngModel)]="req.rut_cop"></div>
                         </th>
                         <th scope="col" class="mw-160">
                             <div><input type="text" class="form-control w100px mb10" placeholder="Nombre"
-                                    (blur)="buscarByNombre()"></div>
+                                    (blur)="loadCargarKapMae()" [(ngModel)]="req.nombres"></div>
                         </th>
                         <th scope="col">
                             <div><input type="text" class="form-control w100px mb10" placeholder="Apellido Paterno"
-                                    (blur)="buscarByApePaterno()"></div>
+                                    (blur)="loadCargarKapMae()" [(ngModel)]="req.ape_pat"></div>
                         </th>
                         <th scope="col">
                             <div><input type="text" class="form-control w100px mb10" placeholder="Apellido Materno"
-                                    (blur)="buscarByApeMaterno()"></div>
+                                    (blur)="loadCargarKapMae()" [(ngModel)]="req.ape_mat"></div>
                         </th>
                         <th scope="col">
                             <div><input type="text" class="form-control w100px mb10" placeholder="Código"
@@ -154,8 +154,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (socio of socios | slice: (page-1) * pageSize : page * pageSize; track socio.id; let index =
-                    $index) {
+                    @for (socio of socios | slice: (req.pageSize-1) * req.limit : req.pageSize * req.limit; track socio.id; let index = $index) {
                     <tr [ngClass]="{'selected' : socio.selected}">
                         <td scope="row" (click)="statusChange(socio, 'Id')" [ngClass]="{'selectedeye' : socio.selected}"
                             class="mw-160 sticky">
@@ -224,8 +223,8 @@
         </div>
 
         <div class="row justify-content-end">
-            <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="pageSize"
-                    (ngModelChange)="refreshCountries('pao a paso')">
+            <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="req.limit"
+                    (ngModelChange)="loadCargarKapMae()">
                     <option [ngValue]="5">5</option>
                     <option [ngValue]="10">10</option>
                     <option [ngValue]="25">25</option>
@@ -233,8 +232,8 @@
                     <option [ngValue]="100">100</option>
                 </select></div>
             <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="3"
-                    [boundaryLinks]="true" (pageChange)="refreshCountries('botonera')" class="fr">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit" [maxSize]="3"
+                    [boundaryLinks]="true" (pageChange)="loadCargarKapMae()" class="fr">
                 </ngb-pagination>
             </div>
         </div>
