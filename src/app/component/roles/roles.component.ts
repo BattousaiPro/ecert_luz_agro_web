@@ -127,9 +127,11 @@ export class RolesComponent implements OnInit {
     for (let indexRol = 0; indexRol < this.roles.length; indexRol++) {
       if (indexRol !== index) {
         this.roles[indexRol].addPermisos = false;
+        this.roles[indexRol].addRol = false;
       }
     }
     this.roles[index].addPermisos = !this.roles[index].addPermisos;
+    this.roles[index].addRol = !this.roles[index].addRol;
   }
 
   private openModalFunction(content: any): void {
