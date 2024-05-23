@@ -6,3 +6,8 @@
     border: 1px solid #dee2e6;
     border-radius: 3px;
 }
+
+.table-usuario thead th {
+    --bs-table-bg: #333333;
+    --bs-table-color: white;
+}

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DataSocio } from '../model/dataMock';
+import { DataSocio } from '../model/DataSocio';
 import { CommonModule } from '@angular/common';
 
 @Component({

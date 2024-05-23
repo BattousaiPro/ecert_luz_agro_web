@@ -62,7 +62,7 @@
                         </th>
                         <th scope="col">
                             <div><input type="text" class="form-control w100px mb10" placeholder="Código"
-                                    (blur)="buscarByCodigo()"></div>
+                                    (blur)="loadCargarKapMae()" [(ngModel)]="req.cod_cop"></div>
                         </th>
                         <th scope="col"></th>
                         <th scope="col"></th>
@@ -70,7 +70,7 @@
                         <th scope="col"></th>
                         <th scope="col">
                             <div><input type="text" class="form-control w100px mb10" placeholder="Sector"
-                                    (blur)="buscarBySector()"></div>
+                                    (blur)="loadCargarKapMae()" [(ngModel)]="req.sec_cop"></div>
                         </th>
                         <th scope="col"></th>
                         <th scope="col"></th>
@@ -105,8 +105,6 @@
                         <th scope="col"></th>
                         -->
                     </tr>
-                </thead>
-                <thead>
                     <tr>
                         <th scope="col" class="mw-60 sticky"></th>
                         <th scope="col">Rut Socio</th>
