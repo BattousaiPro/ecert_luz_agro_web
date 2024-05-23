@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UsuariosRequest } from '../../component/usuarios/model/UsuariosRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +63,15 @@ export class UserService {
     let url = 'http://localhost:3000/users/' + id;
     const ladata: Observable<any> = this.http.delete(
       url
+    );
+    return ladata;
+  }
+
+  public obtenerByFilter(req: UsuariosRequest): Observable<any> {
+    let url = 'http://localhost:3000/users/findByFilter';
+    const ladata: Observable<any> = this.http.post(
+      url,
+      req
     );
     return ladata;
   }

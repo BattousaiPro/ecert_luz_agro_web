@@ -18,7 +18,7 @@ export class KapmaeService {
     return ladata;
   }
 
-  public obtenerKapMaeByFilter(req: KapmaeRequest): Observable<any> {
+  public obtenerByFilter(req: KapmaeRequest): Observable<any> {
     let url = 'http://localhost:3000/kapmae/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,

@@ -22,17 +22,17 @@ import { RolesRequest } from './model/RolesRequest';
 })
 export class RolesComponent implements OnInit {
 
-  permisos: Permiso[] = [];
-
   roles: Role[] = [];
+  permisos: Permiso[] = [];
   rolModal: Role = new Role();
   rolDeleteModal: Role = new Role();
   req: RolesRequest = new RolesRequest();
+
   cargar: boolean = false;
   isEdit: boolean = false;
   modals = new ModalOptions();
-
   collectionSize: number = 0;
+
   page = 1;
   pageSize = 5;
 

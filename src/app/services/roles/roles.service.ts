@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { RolesRequest } from '../../component/roles/model/RolesRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,15 @@ export class RolesService {
     let url = 'http://localhost:3000/roles/' + id;
     const ladata: Observable<any> = this.http.delete(
       url
+    );
+    return ladata;
+  }
+
+  public obtenerByFilter(req: RolesRequest): Observable<any> {
+    let url = 'http://localhost:3000/roles/findByFilter';
+    const ladata: Observable<any> = this.http.post(
+      url,
+      req
     );
     return ladata;
   }

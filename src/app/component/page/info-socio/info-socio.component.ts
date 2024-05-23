@@ -23,16 +23,16 @@ import { KapmaeRequest } from './model/KapmaeRequest';
 export class InfoSocioComponent {
 
   socios: DataSocio[] = [];
-
   socioModal: DataSocio = new DataSocio();
   socioDeleteModal: DataSocio = new DataSocio();
   req: KapmaeRequest = new KapmaeRequest();
-  cargar: boolean = false;
-  modals = new ModalOptions();
-  isEdit: boolean = false;
-  principalContainer: boolean = true;
 
+  cargar: boolean = false;
+  isEdit: boolean = false;
+  modals = new ModalOptions();
   collectionSize: number = 0;
+
+  principalContainer: boolean = true;
 
   constructor(private modalService: NgbModal,
     private kapmaeService: KapmaeService
@@ -43,10 +43,12 @@ export class InfoSocioComponent {
   public loadCargarKapMae(): void {
     console.log('Cargando loadCargarUsers');
     this.cargar = true;
-    this.kapmaeService.obtenerKapMaeByFilter(this.req).subscribe(
+    this.kapmaeService.obtenerByFilter(this.req).subscribe(
       (data: any) => {
         // console.log(JSON.stringify(data));
-        if (data.code === '0' && data.data != null && data.data.results != null) {
+        if (data.code === '0'
+          && data.data != null
+          && data.data.results != null) {
           this.socios = [];
           this.socios.push(...data.data.results);
           //this.socios.push(...listaSocios);

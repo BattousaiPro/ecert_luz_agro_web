@@ -23,11 +23,12 @@ export class PermisosComponent implements OnInit {
   permisosModal: Permiso = new Permiso();
   permisoDeleteModal: Permiso = new Permiso();
   req: PermisosRequest = new PermisosRequest();
+
   cargar: boolean = false;
   isEdit: boolean = false;
   modals = new ModalOptions();
-
   collectionSize: number = 0;
+
   page = 1;
   pageSize = 5;
 

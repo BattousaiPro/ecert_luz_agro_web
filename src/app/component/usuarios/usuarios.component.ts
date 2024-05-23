@@ -6,6 +6,7 @@ import { SpinnerComponent } from '../spinner/spinner.component';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalOptions } from '../../utils/modalOptions';
 import { UsuariosRequest } from './model/UsuariosRequest';
+import { Role } from '../roles/roles.component';
 
 @Component({
   selector: 'app-usuarios',
@@ -21,18 +22,21 @@ import { UsuariosRequest } from './model/UsuariosRequest';
 })
 export class UsuariosComponent {
 
+  roles: Role[] = [];
   usuarios: Usuario[] = [];
   userModal: Usuario = new Usuario();
   userDeleteModal: Usuario = new Usuario();
   req: UsuariosRequest = new UsuariosRequest();
+
   cargar: boolean = false;
   isEdit: boolean = false;
-  passConfirm: string = '';
   modals = new ModalOptions();
-
   collectionSize: number = 0;
+
   page = 1;
   pageSize = 5;
+
+  passConfirm: string = '';
 
   constructor(
     private modalService: NgbModal,
