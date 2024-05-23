@@ -38,7 +38,10 @@
                 <thead>
                     <tr>
                         <th scope="col" class="mw-60"></th>
-                        <th scope="col" class="mw-60"></th>
+                        <th scope="col" class="mw-160">
+                            <div><input type="text" class="form-control w100px mb10" placeholder="Nombre"
+                                    (blur)="loadCargar()" [(ngModel)]="req.name"></div>
+                        </th>
                         <th scope="col" class="mw-60"></th>
                         <th scope="col" class="mw-60"></th>
                         <th scope="col" class="mw-60"></th>

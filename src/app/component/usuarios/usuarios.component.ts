@@ -5,6 +5,7 @@ import { UserService } from '../../services/user/user.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalOptions } from '../../utils/modalOptions';
+import { UsuariosRequest } from './model/UsuariosRequest';
 
 @Component({
   selector: 'app-usuarios',
@@ -23,6 +24,7 @@ export class UsuariosComponent {
   usuarios: Usuario[] = [];
   userModal: Usuario = new Usuario();
   userDeleteModal: Usuario = new Usuario();
+  req: UsuariosRequest = new UsuariosRequest();
   cargar: boolean = false;
   isEdit: boolean = false;
   passConfirm: string = '';
@@ -41,7 +43,7 @@ export class UsuariosComponent {
     this.loadCargar();
   }
 
-  private loadCargar(): void {
+  public loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
     this.userService.getAll().subscribe(

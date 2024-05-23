@@ -5,6 +5,7 @@ import { SpinnerComponent } from '../spinner/spinner.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalOptions } from '../../utils/modalOptions';
+import { PermisosRequest } from './model/PermisosRequest';
 
 @Component({
   selector: 'app-permisos',
@@ -21,6 +22,7 @@ export class PermisosComponent implements OnInit {
   permisos: Permiso[] = [];
   permisosModal: Permiso = new Permiso();
   permisoDeleteModal: Permiso = new Permiso();
+  req: PermisosRequest = new PermisosRequest();
   cargar: boolean = false;
   isEdit: boolean = false;
   modals = new ModalOptions();
@@ -38,7 +40,7 @@ export class PermisosComponent implements OnInit {
     this.loadCargar();
   }
 
-  private loadCargar(): void {
+  public loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
     this.permisosService.getAll().subscribe(

@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ModalOptions } from '../../utils/modalOptions';
 import { Permiso } from '../permisos/permisos.component';
 import { PermisosService } from '../../services/permisos/permisos.service';
+import { RolesRequest } from './model/RolesRequest';
 
 @Component({
   selector: 'app-roles',
@@ -26,6 +27,7 @@ export class RolesComponent implements OnInit {
   roles: Role[] = [];
   rolModal: Role = new Role();
   rolDeleteModal: Role = new Role();
+  req: RolesRequest = new RolesRequest();
   cargar: boolean = false;
   isEdit: boolean = false;
   modals = new ModalOptions();
@@ -45,7 +47,7 @@ export class RolesComponent implements OnInit {
     this.loadPermisos();
   }
 
-  private loadCargar(): void {
+  public loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
     this.rolesService.getAll().subscribe(

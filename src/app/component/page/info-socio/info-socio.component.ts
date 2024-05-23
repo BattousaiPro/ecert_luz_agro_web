@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { listaSocios } from './model/dataMock';
 import { DataSocio } from './model/DataSocio';
 import { DetailSocioComponent } from './detail-socio/detail-socio.component';
 import { SpinnerComponent } from '../../spinner/spinner.component';
@@ -8,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { KapmaeService } from '../../../services/kapmae/kapmae.service';
 import { ModalOptions } from '../../../utils/modalOptions';
+import { KapmaeRequest } from './model/KapmaeRequest';
 
 @Component({
   selector: 'app-info-socio',
@@ -171,28 +171,3 @@ export class InfoSocioComponent {
   }
 
 }
-
-export interface KapmaeRequest extends PaginRequest {
-  rut_cop: string;// Rut Socio	
-  nombres: string;// Nombres
-  ape_pat: string;// Apellido Paterno
-  ape_mat: string;// Apellido Materno
-  cod_cop: number;// Código Luzagro
-  sec_cop: number;// Sector
-}
-export class KapmaeRequest {
-  constructor() {
-    this.rut_cop = '';
-    this.nombres = '';
-    this.ape_pat = '';
-    this.ape_mat = '';
-    this.pageSize = 1;
-    this.limit = 10;
-  }
-}
-
-export interface PaginRequest {
-  limit: number;
-  pageSize: number;
-}
-export class PaginRequest { }

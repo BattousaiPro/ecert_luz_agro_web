@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { KapmaeRequest } from '../../component/page/info-socio/info-socio.component';
+import { KapmaeRequest } from '../../component/page/info-socio/model/KapmaeRequest';
 
 @Injectable({
   providedIn: 'root'
