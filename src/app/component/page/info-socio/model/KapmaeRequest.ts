@@ -14,5 +14,7 @@ export class KapmaeRequest {
     this.nombres = '';
     this.ape_pat = '';
     this.ape_mat = '';
+    this.pageSize = 1;
+    this.limit = 10;
   }
 }

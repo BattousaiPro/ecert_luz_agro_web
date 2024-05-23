@@ -6,5 +6,7 @@ export interface PermisosRequest extends PaginRequest {
 export class PermisosRequest {
   constructor() {
     this.name = '';
+    this.pageSize = 1;
+    this.limit = 10;
   }
 }

@@ -6,5 +6,7 @@ export interface UsuariosRequest extends PaginRequest {
 export class UsuariosRequest {
   constructor() {
     this.ctaUsr = '';
+    this.pageSize = 1;
+    this.limit = 10;
   }
 }
