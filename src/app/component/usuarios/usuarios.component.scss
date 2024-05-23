@@ -11,3 +11,7 @@
     --bs-table-bg: #333333;
     --bs-table-color: white;
 }
+.table-usuario th.mw-160,
+.table-usuario td.mw-160 {
+    min-width: 160px;
+}
