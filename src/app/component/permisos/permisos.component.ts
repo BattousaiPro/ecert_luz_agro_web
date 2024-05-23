@@ -29,9 +29,6 @@ export class PermisosComponent implements OnInit {
   modals = new ModalOptions();
   collectionSize: number = 0;
 
-  page = 1;
-  pageSize = 5;
-
   constructor(
     private modalService: NgbModal,
     private permisosService: PermisosService
@@ -44,13 +41,15 @@ export class PermisosComponent implements OnInit {
   public loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
-    this.permisosService.getAll().subscribe(
+    this.permisosService.obtenerByFilter(this.req).subscribe(
       (data: any) => {
-        if (data.code === '0' && data.data != null) {
+        if (data.code === '0'
+          && data.data != null
+          && data.data.results != null) {
           this.closeModal();
           this.permisos = [];
-          this.permisos.push(...data.data);
-          this.collectionSize = this.permisos.length;
+          this.permisos.push(...data.data.results);
+          this.collectionSize = data.data.totalReg;
         } else {
           this.modals.success('Error con la respuesta de servicios de Permisos');
         }

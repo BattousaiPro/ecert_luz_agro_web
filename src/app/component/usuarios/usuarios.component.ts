@@ -33,9 +33,6 @@ export class UsuariosComponent {
   modals = new ModalOptions();
   collectionSize: number = 0;
 
-  page = 1;
-  pageSize = 5;
-
   passConfirm: string = '';
 
   constructor(
@@ -50,13 +47,15 @@ export class UsuariosComponent {
   public loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
-    this.userService.getAll().subscribe(
+    this.userService.obtenerByFilter(this.req).subscribe(
       (data: any) => {
-        if (data.code === '0' && data.data != null) {
+        if (data.code === '0'
+          && data.data != null
+          && data.data.results != null) {
           this.closeModal();
           this.usuarios = [];
-          this.usuarios.push(...data.data);
-          this.collectionSize = this.usuarios.length;
+          this.usuarios.push(...data.data.results);
+          this.collectionSize = data.data.totalReg;
         } else {
           this.modals.success('Error con la respuesta de servicios de Usuaios');
         }

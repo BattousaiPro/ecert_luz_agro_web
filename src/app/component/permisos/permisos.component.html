@@ -17,18 +17,17 @@
 
     <div class="row mt15">
         <div class="row justify-content-end">
-            <div class="col-xs-12 col-sm-2 col-xl-2 mt15">
-                <select class="form-select w100 tac" [(ngModel)]="pageSize">
+            <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="req.limit"
+                    (ngModelChange)="loadCargar()">
                     <option [ngValue]="5">5</option>
                     <option [ngValue]="10">10</option>
                     <option [ngValue]="25">25</option>
                     <option [ngValue]="50">50</option>
                     <option [ngValue]="100">100</option>
-                </select>
-            </div>
+                </select></div>
             <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="3"
-                    [boundaryLinks]="true" class="fr">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit" [maxSize]="3"
+                    [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
                 </ngb-pagination>
             </div>
         </div>
@@ -57,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (permiso of permisos | slice: (page-1) * pageSize : page * pageSize; track permiso.id; let
+                    @for (permiso of permisos | slice: (req.pageSize-1) * req.limit : req.pageSize * req.limit; track permiso.id; let
                     index
                     = $index) {
                     <tr>
@@ -103,18 +102,17 @@
         </div>
 
         <div class="row justify-content-end">
-            <div class="col-xs-12 col-sm-2 col-xl-2 mt15">
-                <select class="form-select w100 tac" [(ngModel)]="pageSize">
+            <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="req.limit"
+                    (ngModelChange)="loadCargar()">
                     <option [ngValue]="5">5</option>
                     <option [ngValue]="10">10</option>
                     <option [ngValue]="25">25</option>
                     <option [ngValue]="50">50</option>
                     <option [ngValue]="100">100</option>
-                </select>
-            </div>
+                </select></div>
             <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="3"
-                    [boundaryLinks]="true" class="fr">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit" [maxSize]="3"
+                    [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
                 </ngb-pagination>
             </div>
         </div>

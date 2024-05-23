@@ -37,11 +37,11 @@ export class InfoSocioComponent {
   constructor(private modalService: NgbModal,
     private kapmaeService: KapmaeService
   ) {
-    this.loadCargarKapMae();
+    this.loadCargar();
   }
 
-  public loadCargarKapMae(): void {
-    console.log('Cargando loadCargarUsers');
+  public loadCargar(): void {
+    console.log('Cargando loadCargar');
     this.cargar = true;
     this.kapmaeService.obtenerByFilter(this.req).subscribe(
       (data: any) => {

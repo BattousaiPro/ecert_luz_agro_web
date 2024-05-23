@@ -33,9 +33,6 @@ export class RolesComponent implements OnInit {
   modals = new ModalOptions();
   collectionSize: number = 0;
 
-  page = 1;
-  pageSize = 5;
-
   constructor(
     private modalService: NgbModal,
     private rolesService: RolesService,
@@ -50,13 +47,15 @@ export class RolesComponent implements OnInit {
   public loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
-    this.rolesService.getAll().subscribe(
+    this.rolesService.obtenerByFilter(this.req).subscribe(
       (data: any) => {
-        if (data.code === '0' && data.data != null) {
+        if (data.code === '0'
+          && data.data != null
+          && data.data.results != null) {
           this.closeModal();
           this.roles = [];
-          this.roles.push(...data.data);
-          this.collectionSize = this.roles.length;
+          this.roles.push(...data.data.results);
+          this.collectionSize = data.data.totalReg;
         } else {
           this.modals.success('Error con la respuesta de servicios de Roles');
         }
