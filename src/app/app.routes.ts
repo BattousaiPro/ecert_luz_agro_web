@@ -17,8 +17,8 @@ export const routes: Routes = [
     { path: 'usuarios', component: UsuariosComponent },
     { path: 'roles', component: RolesComponent },
     { path: 'permisos', component: PermisosComponent },
-    { path: 'sectores', component: SectoresComponent },
-    { path: 'comunas', component: ComunasComponent },
+    //{ path: 'sectores', component: SectoresComponent },
+    //{ path: 'comunas', component: ComunasComponent },
     { path: 'fichas/socios', component: FichasSociosComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
