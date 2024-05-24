@@ -10,17 +10,17 @@ import { ModalOptions } from '../../../utils/modalOptions';
 import { KapmaeRequest } from './model/KapmaeRequest';
 
 @Component({
-  selector: 'app-info-socio',
+  selector: 'app-kapmae',
   standalone: true,
   imports: [FormsModule,
     DetailSocioComponent,
     SpinnerComponent,
     CommonModule,
     NgbPaginationModule],
-  templateUrl: './info-socio.component.html',
-  styleUrl: './info-socio.component.scss'
+  templateUrl: './kapmae.component.html',
+  styleUrl: './kapmae.component.scss'
 })
-export class InfoSocioComponent {
+export class KapmaeComponent {
 
   socios: DataSocio[] = [];
   socioModal: DataSocio = new DataSocio();

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
-import { InfoSocioComponent } from './component/page/info-socio/info-socio.component';
+import { KapmaeComponent } from './component/page/kapmae/kapmae.component';
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { RolesComponent } from './component/roles/roles.component';
 import { FichasSociosComponent } from './component/page/fichas-socios/fichas-socios.component';
@@ -11,7 +11,7 @@ export const routes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'infosocio', component: InfoSocioComponent },
+    { path: 'kapmae', component: KapmaeComponent },
     { path: 'roles', component: RolesComponent },
     { path: 'permisos', component: PermisosComponent },
     { path: 'usuarios', component: UsuariosComponent },
