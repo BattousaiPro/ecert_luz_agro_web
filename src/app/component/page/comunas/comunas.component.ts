@@ -10,3 +10,17 @@ import { Component } from '@angular/core';
 export class ComunasComponent {
 
 }
+export interface Comunas {
+  id: number;
+  codigo: number;
+  descrip: string;
+  estado: boolean;
+  addComuna: boolean;
+
+}
+export class Comunas {
+  constructor() {
+    this.descrip = '';
+    this.addComuna = false;
+  }
+}

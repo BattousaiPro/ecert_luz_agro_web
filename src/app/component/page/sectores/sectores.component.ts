@@ -114,7 +114,7 @@ export class SectoresComponent {
   private createNew(): void {
     console.log('Cargando createNew');
     this.cargar = true;
-    /*this.sectorService.new(
+    this.sectorService.new(
       this.sectoresModal.codigo,
       this.sectoresModal.descrip,
       this.sectoresModal.estado
@@ -134,13 +134,13 @@ export class SectoresComponent {
         this.closeModal();
         this.modals.error('Error con el servicio de Permisos para crear');
         this.cargar = false;
-      });*/
+      });
   }
 
   private edit(): void {
     console.log('Cargando edit');
     this.cargar = true;
-    /*this.sectorService.update(
+    this.sectorService.update(
       this.sectoresModal.id,
       this.sectoresModal.codigo,
       this.sectoresModal.descrip,
@@ -159,13 +159,13 @@ export class SectoresComponent {
         this.closeModal();
         this.modals.error('Error con el servicio de Permisos para actualizar');
         this.cargar = false;
-      });*/
+      });
   }
 
   public delete(): void {
     console.log('Cargando edit');
     this.cargar = true;
-    /*this.sectorService.delete(this.sectoresModal.id).subscribe(
+    this.sectorService.delete(this.sectoresModal.id).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
@@ -179,7 +179,7 @@ export class SectoresComponent {
         this.closeModal();
         this.modals.error('Error con el servicio de Permisos para eliminar');
         this.cargar = false;
-      });*/
+      });
   }
 
   public closeModal() {
@@ -203,19 +203,3 @@ export class Sector {
     this.addSector = false;
   }
 }
-/*
-export interface Comunas {
-  id: number;
-  codigo: number;
-  descrip: string;
-  estado: boolean;
-  addComuna: boolean;
-
-}
-export class Comunas {
-  constructor() {
-    this.descrip = '';
-    this.addComuna = false;
-  }
-}
-*/
