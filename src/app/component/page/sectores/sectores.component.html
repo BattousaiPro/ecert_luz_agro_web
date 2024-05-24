@@ -119,17 +119,17 @@
     <div class="container p25">
         <div class="title bb6">
             @if (isEdit) {
-            <h1>Editar Permiso</h1>
+            <h1>Editar Sector</h1>
             } @else {
-            <h1>Crear Permiso</h1>
+            <h1>Crear Sector</h1>
             }
         </div>
         <div class="row mb15">
             <div class="col-xs-12 col-xl-12">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="name">Nombre</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="name"
+                        <label class="col-form-label col-form-label-sm" for="name">codigo</label>
+                        <input class="form-control form-control-sm" type="number" placeholder="" id="name"
                             [(ngModel)]="sectoresModal.codigo">
                     </div>
                     <div class="col-xs-12 col-sm-6">
@@ -164,7 +164,7 @@
 <ng-template #myModalContentDelete let-modal>
     <div class="container p25">
         <div class="title bb6">
-            <h1>Eliminar Permiso</h1>
+            <h1>Eliminar Sector</h1>
         </div>
 
         <div class="row mb15">
@@ -174,7 +174,7 @@
 
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="ctaUsr">Esta seguro que quiere eliminar el
-                            Permiso</label>
+                            Sector</label>
                         <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr"
                             [(ngModel)]="sectoresModal.codigo" disabled="">
                     </div>
