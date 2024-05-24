@@ -16,5 +16,14 @@ export class ComunasService {
     );
     return ladata;
   }
-
+/*
+  public obtenerByFilter(req: ComunasRequest): Observable<any> {
+    let url = 'http://localhost:3000/comunas/findByFilter';
+    const ladata: Observable<any> = this.http.post(
+      url,
+      req
+    );
+    return ladata;
+  }
+*/
 }

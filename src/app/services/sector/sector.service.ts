@@ -16,5 +16,14 @@ export class SectorService {
     );
     return ladata;
   }
-
+/*
+  public obtenerByFilter(req: KapmaeRequest): Observable<any> {
+    let url = 'http://localhost:3000/sector/findByFilter';
+    const ladata: Observable<any> = this.http.post(
+      url,
+      req
+    );
+    return ladata;
+  }
+*/
 }
