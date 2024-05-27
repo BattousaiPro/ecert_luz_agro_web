@@ -8,6 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { KapmaeService } from '../../../services/kapmae/kapmae.service';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { KapmaeRequest } from './model/KapmaeRequest';
+import { SectorService } from '../../../services/sector/sector.service';
+import { ComunasService } from '../../../services/comunas/comunas.service';
+import { Sector } from '../sectores/sectores.component';
+import { Comunas } from '../comunas/comunas.component';
 
 @Component({
   selector: 'app-kapmae',
@@ -22,6 +26,9 @@ import { KapmaeRequest } from './model/KapmaeRequest';
 })
 export class KapmaeComponent {
 
+  sectores: Sector[] = [];
+  comunas: Comunas[] = [];;
+
   socios: DataSocio[] = [];
   socioModal: DataSocio = new DataSocio();
   socioDeleteModal: DataSocio = new DataSocio();
@@ -35,9 +42,13 @@ export class KapmaeComponent {
   principalContainer: boolean = true;
 
   constructor(private modalService: NgbModal,
-    private kapmaeService: KapmaeService
+    private kapmaeService: KapmaeService,
+    private sectorService: SectorService,
+    private comunasService: ComunasService,
   ) {
     this.loadCargar();
+    this.loadCargarSector();
+    this.loadCargarComunas();
   }
 
   public loadCargar(): void {
@@ -63,6 +74,50 @@ export class KapmaeComponent {
         this.modals.error('Error con el servicio de Socios');
         this.cargar = false;
       });
+  }
+
+  public loadCargarSector(): void {
+    console.log('Cargando loadCargarSector');
+    this.cargar = true;
+    this.sectorService.getAll().subscribe(
+      (data: any) => {
+        if (data.code === '0'
+          && data.data != null) {
+          this.closeModal();
+          this.sectores = [];
+          this.sectores.push(...data.data);
+        } else {
+          this.modals.success('Error con la respuesta de servicios de Roles');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.modals.error('Error con el servicio de Roles');
+        this.cargar = false;
+      }
+    );
+  }
+
+  public loadCargarComunas(): void {
+    console.log('Cargando loadCargarComunas');
+    this.cargar = true;
+    this.comunasService.getAll().subscribe(
+      (data: any) => {
+        if (data.code === '0'
+          && data.data != null) {
+          this.closeModal();
+          this.comunas = [];
+          this.comunas.push(...data.data);
+        } else {
+          this.modals.success('Error con la respuesta de servicios de Roles');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.modals.error('Error con el servicio de Roles');
+        this.cargar = false;
+      }
+    );
   }
 
   private setDefaultSociosData(socios: DataSocio[]) {

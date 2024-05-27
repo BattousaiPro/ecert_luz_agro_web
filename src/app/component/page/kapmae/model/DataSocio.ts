@@ -9,7 +9,8 @@ export interface DataSocio {
   cod_ant?: any;
   cod_nvo?: any;
   cod_ori?: any;
-  sec_cop?: any;
+  //sec_cop?: any;
+  sector?: any;
   ano_inc?: any;
   mto_inc?: any;
   fec_inc?: any;
@@ -27,7 +28,8 @@ export interface DataSocio {
   nro_te2?: any;
   nro_te3?: any;
   nro_te4?: any;
-  com_pos?: any;
+  //com_pos?: any;
+  comuna?: any;
   obs_cap?: any;
   nro_sol?: any;
   fec_sol?: any;

@@ -66,12 +66,12 @@
                 <div class="col-6">
                     <label class="col-form-label col-form-label-sm" for="sec_cop">Sector</label>
                     <input class="form-control form-control-sm" type="text" placeholder="" id="sec_cop"
-                        [value]="'validar Sector - ' + socio.sec_cop" disabled="">
+                        [value]="socio!.sector!.descrip" disabled="">
                 </div>
                 <div class="col-6">
                     <label class="col-form-label col-form-label-sm" for="com_pos">Comuna</label>
                     <input class="form-control form-control-sm" type="text" placeholder="" id="com_pos"
-                        [value]="'validar comuna - ' + socio.com_pos" disabled="">
+                        [value]="socio!.comuna!.descrip" disabled="">
                 </div>
             </div>
         </div>
