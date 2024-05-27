@@ -342,15 +342,15 @@
                                         <select class="form-select w100">
                                             <option value="" selected>Seleccionar</option>
                                             @if (isEdit) {
-                                            @for (sector of sectores; track sector.id; let index = $index) {
-                                            @if (sector.id == socioModal.sector.id) {
+                                            @for (sector of sectores; track sector.codigo; let index = $index) {
+                                            @if (sector.codigo == socioModal!.sector!.codigo) {
                                             <option value="{{sector.codigo}}" selected>{{ sector.descrip }}</option>
                                             } @else {
                                             <option value="{{sector.codigo}}">{{ sector.descrip }}</option>
                                             }
                                             }
                                             } @else {
-                                            @for (sector of sectores; track sector.id; let index = $index) {
+                                            @for (sector of sectores; track sector.codigo; let index = $index) {
                                             <option value="{{sector.codigo}}">{{ sector.descrip }}</option>
                                             }
                                             }
@@ -361,15 +361,15 @@
                                         <select class="form-select w100">
                                             <option value="" selected>Seleccionar</option>
                                             @if (isEdit) {
-                                            @for (comuna of comunas; track comuna.id; let index = $index) {
-                                            @if (comuna.id == socioModal.comuna.id) {
+                                            @for (comuna of comunas; track comuna.codigo; let index = $index) {
+                                            @if (comuna.codigo == socioModal!.comuna!.codigo) {
                                             <option value="{{comuna.codigo}}" selected>{{ comuna.descrip }}</option>
                                             } @else {
                                             <option value="{{comuna.codigo}}">{{ comuna.descrip }}</option>
                                             }
                                             }
                                             } @else {
-                                            @for (comuna of comunas; track comuna.id; let index = $index) {
+                                            @for (comuna of comunas; track comuna.codigo; let index = $index) {
                                             <option value="{{comuna.codigo}}">{{ comuna.descrip }}</option>
                                             }
                                             }

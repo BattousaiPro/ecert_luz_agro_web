@@ -1,3 +1,6 @@
+import { Comunas } from "../../comunas/comunas.component";
+import { Sector } from "../../sectores/sectores.component";
+
 export interface DataSocio {
   id?: any;
   rut_cop?: any;
@@ -10,7 +13,7 @@ export interface DataSocio {
   cod_nvo?: any;
   cod_ori?: any;
   //sec_cop?: any;
-  sector?: any;
+  sector?: Sector;
   ano_inc?: any;
   mto_inc?: any;
   fec_inc?: any;
@@ -29,7 +32,7 @@ export interface DataSocio {
   nro_te3?: any;
   nro_te4?: any;
   //com_pos?: any;
-  comuna?: any;
+  comuna?: Comunas;
   obs_cap?: any;
   nro_sol?: any;
   fec_sol?: any;
