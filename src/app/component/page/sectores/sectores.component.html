@@ -79,17 +79,6 @@
                                 (click)="deleteModal(myModalContentDelete, sector)">
                                 <i class="bi bi-trash3"></i>
                             </button>
-                            @if (sector.addSector) {
-                            <button type="button" class="btn btn-primary"
-                                (click)="addModal(myModalContent, index)">
-                                <i class="bi bi-plus-square"></i>
-                            </button>
-                            } @else {
-                            <button type="button" class="btn btn-primary"
-                                (click)="addModal(myModalContent, index)">
-                                <i class="bi bi-plus-square-fill"></i>
-                            </button>
-                            }
                     </tr>
                     } @empty {
                     <tr>

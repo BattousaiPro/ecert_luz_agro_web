@@ -83,14 +83,6 @@ export class SectoresComponent {
     this.openModalFunction(content);
   }
 
-  public addModal(content: any, index: number): void {
-    this.sectores[index].addSector = !this.sectores[index].addSector;
-    console.log('Method agregarUser.');
-    this.sectoresModal = new Sector();
-    this.sectoresModal.estado = true;
-    this.openModalFunction(content);
-  }
-
   private openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
@@ -193,12 +185,9 @@ export interface Sector {
   diaCar: number;
   codCob: number;
   estado: boolean;
-  addSector: boolean;
-
 }
 export class Sector {
   constructor() {
     this.descrip = '';
-    this.addSector = false;
   }
 }
