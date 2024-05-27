@@ -141,7 +141,7 @@ export class SectoresComponent {
     console.log('Cargando edit');
     this.cargar = true;
     this.sectorService.update(
-      this.sectoresModal.id,
+      this.sectoresModal.codigo,
       this.sectoresModal.codigo,
       this.sectoresModal.descrip,
       this.sectoresModal.estado
@@ -165,7 +165,7 @@ export class SectoresComponent {
   public delete(): void {
     console.log('Cargando edit');
     this.cargar = true;
-    this.sectorService.delete(this.sectoresModal.id).subscribe(
+    this.sectorService.delete(this.sectoresModal.codigo).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
@@ -188,11 +188,10 @@ export class SectoresComponent {
 
 }
 export interface Sector {
-  id: number;
   codigo: number;
   descrip: string;
-  dia_car: number;
-  cod_cob: number;
+  diaCar: number;
+  codCob: number;
   estado: boolean;
   addSector: boolean;
 
