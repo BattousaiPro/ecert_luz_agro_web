@@ -43,9 +43,12 @@
                             <th scope="col" class="mw-60"></th>
                             <th scope="col" class="mw-160">
                                 <div><input type="text" class="form-control w100 mb10" placeholder="Nombre"
-                                        (blur)="loadCargar()" [(ngModel)]="req.ctaUsr"></div>
+                                        (blur)="loadCargar()" [(ngModel)]="req.ctaUserName"></div>
                             </th>
-                            <th scope="col" class="mw-60"></th>
+                            <th scope="col" class="mw-60">
+                                <div><input type="text" class="form-control w100 mb10" placeholder="Email"
+                                    (blur)="loadCargar()" [(ngModel)]="req.ctaEmail"></div>
+                            </th>
                             <th scope="col" class="mw-60"></th>
                             <th scope="col" class="mw-60"></th>
                         </tr>
@@ -62,7 +65,7 @@
                         = $index) {
                         <tr>
                             <td>{{ user.id }}</td>
-                            <td>{{ user.ctaUsr }}</td>
+                            <td>{{ user.ctaUserName }}</td>
                             <td>{{ user.ctaEmail }}</td>
                             <td>
                                 <input type="checkbox" [(ngModel)]="user.estado" id="user-table-{{ user.id }}"
@@ -139,9 +142,9 @@
                 <div class="row">
 
                     <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ctaUsr">Nombre</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr"
-                            [(ngModel)]="userModal.ctaUsr">
+                        <label class="col-form-label col-form-label-sm" for="ctaUserName">Nombre</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUserName"
+                            [(ngModel)]="userModal.ctaUserName">
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="ctaEmail">Email</label>
@@ -150,13 +153,13 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="Contrasena">Contraseña</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="Contrasena"
-                            [(ngModel)]="userModal.ctaPass">
+                        <input class="form-control form-control-sm" type="password" placeholder="" id="Contrasena"
+                            [(ngModel)]="userModal.ctaPassWord">
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="ConfirmContrasena">Confirmar
                             Contraseña</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="ConfirmContrasena"
+                        <input class="form-control form-control-sm" type="password" placeholder="" id="ConfirmContrasena"
                             [(ngModel)]="passConfirm">
                     </div>
                     <div class="col-xs-12 col-sm-6">
@@ -204,10 +207,10 @@
                 <div class="row">
 
                     <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ctaUsr">Esta seguro que quiere eliminar el
+                        <label class="col-form-label col-form-label-sm" for="ctaUserName">Esta seguro que quiere eliminar el
                             Usuario</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr"
-                            [(ngModel)]="userDeleteModal.ctaUsr" disabled="">
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUserName"
+                            [(ngModel)]="userDeleteModal.ctaUserName" disabled="">
                     </div>
                 </div>
 

@@ -21,8 +21,8 @@ export class UserService {
   public login(username: string, password: string): Observable<any> {
     let url = 'http://localhost:3000/auth/login';
     let userData: any = {
-      ctaUsr: username,
-      ctaPass: password
+      ctaUserName: username,
+      ctaPassWord: password
     };
     const ladata: Observable<any> = this.http.post(
       url,
@@ -31,24 +31,24 @@ export class UserService {
     return ladata;
   }
 
-  public new(ctaUsr: string, ctaPass: string, ctaEmail: string): Observable<any> {
+  public new(ctaUserName: string, ctaPassWord: string, ctaEmail: string): Observable<any> {
     let url = 'http://localhost:3000/users';
     const ladata: Observable<any> = this.http.post(
       url,
       {
-        ctaUsr,
-        ctaPass,
+        ctaUserName,
+        ctaPassWord,
         ctaEmail
       }
     );
     return ladata;
   }
 
-  public update(id: number, ctaUsr: string, ctaPass: string, ctaEmail: string, estado: boolean): Observable<any> {
+  public update(id: number, ctaUserName: string, ctaPassWord: string, ctaEmail: string, estado: boolean): Observable<any> {
     let url = 'http://localhost:3000/users/' + id;
     let userData: any = {
-      ctaUsr,
-      ctaPass,
+      ctaUserName,
+      ctaPassWord,
       ctaEmail,
       estado,
     };

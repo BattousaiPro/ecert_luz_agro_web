@@ -57,7 +57,7 @@ export class UsuariosComponent {
           this.usuarios.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
         } else {
-          this.modals.success('Error con la respuesta de servicios de Usuaios');
+          this.modals.info('Algo pso con la obtención de los Usuarios');
         }
         this.cargar = false;
       },
@@ -119,7 +119,7 @@ export class UsuariosComponent {
 
   private validateField(): boolean {
     if (!this.isEdit) {
-      const ctaUsr = this.userModal.ctaUsr.trim();
+      const ctaUsr = this.userModal.ctaUserName.trim();
       const ctaEmail = this.userModal.ctaEmail.trim();
       if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== ''
         && ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== '') {
@@ -127,12 +127,14 @@ export class UsuariosComponent {
           return true;
         }
       }
+    } else {
+      return true;
     }
     return false;
   }
 
   private validatPassWord(): boolean {
-    const ctaPass = this.userModal.ctaPass.trim();
+    const ctaPass = this.userModal.ctaPassWord.trim();
     this.passConfirm
     if (ctaPass !== null && typeof ctaPass !== 'undefined' && ctaPass !== ''
       && this.passConfirm !== null && typeof this.passConfirm !== 'undefined' && this.passConfirm !== '') {
@@ -147,8 +149,8 @@ export class UsuariosComponent {
     console.log('Cargando createNew');
     this.cargar = true;
     this.userService.new(
-      this.userModal.ctaUsr,
-      this.userModal.ctaPass,
+      this.userModal.ctaUserName,
+      this.userModal.ctaPassWord,
       this.userModal.ctaEmail
     ).subscribe(
       (data: any) => {
@@ -174,8 +176,8 @@ export class UsuariosComponent {
     this.cargar = true;
     this.userService.update(
       this.userModal.id,
-      this.userModal.ctaUsr,
-      this.userModal.ctaPass,
+      this.userModal.ctaUserName,
+      this.userModal.ctaPassWord,
       this.userModal.ctaEmail,
       this.userModal.estado
     ).subscribe(
@@ -223,22 +225,16 @@ export class UsuariosComponent {
 
 export interface Usuario {
   id: number;
-  ctaUsr: string;
-  ctaPass: string;
+  ctaUserName: string;
+  ctaPassWord: string;
   ctaEmail: string;
-  //tipUsr: number;
-  //estImp: number;
-  //estCop: number;
-  //estCar: number;
-  //chkRut: number;
-  //estCed: number;
   estado: boolean;
   addUser: boolean;
 }
 export class Usuario {
   constructor() {
-    this.ctaUsr = '';
-    this.ctaPass = '';
+    this.ctaUserName = '';
+    this.ctaEmail = '';
     this.ctaEmail = '';
   }
 }
