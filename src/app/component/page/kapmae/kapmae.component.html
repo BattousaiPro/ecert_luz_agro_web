@@ -177,7 +177,7 @@
                         <td (click)="statusChange(socio)">{{ socio.cod_ant }}</td>
                         <td (click)="statusChange(socio)">{{ socio.cod_nvo }}</td>
                         <td (click)="statusChange(socio)">{{ socio.cod_ori }}</td>
-                        <td (click)="statusChange(socio)">{{ socio?.sector?.descrip }}</td>
+                        <td (click)="statusChange(socio)">{{ socio?.sec_cop?.descrip }}</td>
                         <td (click)="statusChange(socio)">{{ socio.ano_inc }}</td>
                         <td (click)="statusChange(socio)">{{ socio.mto_inc }}</td>
                         <td (click)="statusChange(socio)">{{ socio.fec_inc | date: 'd-M-y' }}</td>
@@ -195,7 +195,7 @@
                         <td (click)="statusChange(socio)">{{ socio.nro_te2 }}</td>
                         <td (click)="statusChange(socio)">{{ socio.nro_te3 }}</td>
                         <td (click)="statusChange(socio)">{{ socio.nro_te4 }}</td>
-                        <td (click)="statusChange(socio)">{{ socio?.comuna?.descrip }}</td>
+                        <td (click)="statusChange(socio)">{{ socio?.com_pos?.descrip }}</td>
                         <td class="mw-280" (click)="statusChange(socio)">{{ socio.obs_cap }}</td>
                         <!--
                         <td (click)="statusChange(socio)">{{ socio.nro_sol }}</td>
@@ -343,7 +343,7 @@
                                             <option value="" selected>Seleccionar</option>
                                             @if (isEdit) {
                                             @for (sector of sectores; track sector.codigo; let index = $index) {
-                                            @if (sector.codigo == socioModal!.sector!.codigo) {
+                                            @if (sector.codigo == socioModal!.sec_cop!.codigo) {
                                             <option value="{{sector.codigo}}" selected>{{ sector.descrip }}</option>
                                             } @else {
                                             <option value="{{sector.codigo}}">{{ sector.descrip }}</option>
@@ -362,7 +362,7 @@
                                             <option value="" selected>Seleccionar</option>
                                             @if (isEdit) {
                                             @for (comuna of comunas; track comuna.codigo; let index = $index) {
-                                            @if (comuna.codigo == socioModal!.comuna!.codigo) {
+                                            @if (comuna.codigo == socioModal!.com_pos!.codigo) {
                                             <option value="{{comuna.codigo}}" selected>{{ comuna.descrip }}</option>
                                             } @else {
                                             <option value="{{comuna.codigo}}">{{ comuna.descrip }}</option>

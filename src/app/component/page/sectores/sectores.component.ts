@@ -21,7 +21,6 @@ export class SectoresComponent {
 
   sectores: Sector[] = [];
   sectoresModal: Sector = new Sector();
-  // permisoDeleteModal: Permiso = new Permiso();
   req: SectoresRequest = new SectoresRequest();
 
   cargar: boolean = false;
@@ -51,12 +50,12 @@ export class SectoresComponent {
           this.sectores.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
         } else {
-          this.modals.success('Error con la respuesta de servicios de Roles');
+          this.modals.success('Error con la respuesta de servicios de Sectotes');
         }
         this.cargar = false;
       },
       (err: any) => {
-        this.modals.error('Error con el servicio de Roles');
+        this.modals.error('Error con el servicio de Sectotes');
         this.cargar = false;
       }
     );
@@ -70,16 +69,16 @@ export class SectoresComponent {
     this.openModalFunction(content);
   }
 
-  public editarModal(content: any, permisosSelected: Sector): void {
+  public editarModal(content: any, sectorSelected: Sector): void {
     console.log('Method editarModal');
-    this.sectoresModal = permisosSelected;
+    this.sectoresModal = sectorSelected;
     this.isEdit = true;
     this.openModalFunction(content);
   }
 
-  public deleteModal(content: any, permisosSelected: Sector): void {
+  public deleteModal(content: any, sectorSelected: Sector): void {
     console.log('Method deleteModal');
-    this.sectoresModal = permisosSelected;
+    this.sectoresModal = sectorSelected;
     this.openModalFunction(content);
   }
 
@@ -118,13 +117,13 @@ export class SectoresComponent {
         } else if (data.code === '-2') {
           this.modals.warning(data.message);
         } else {
-          this.modals.error('Error con la respuesta de servicios de Permisos para crear');
+          this.modals.error('Error con la respuesta de servicios para crear Sectotes');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Permisos para crear');
+        this.modals.error('Error con el servicio de crear Sectotes');
         this.cargar = false;
       });
   }
@@ -143,13 +142,13 @@ export class SectoresComponent {
           this.closeModal();
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de Permisos para actualizar');
+          this.modals.error('Error con la respuesta de servicios de actualizar Sectotes');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Permisos para actualizar');
+        this.modals.error('Error con el servicio de actualizar Sectotes');
         this.cargar = false;
       });
   }
@@ -163,13 +162,13 @@ export class SectoresComponent {
           this.closeModal();
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de Permisos para eliminar');
+          this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Permisos para eliminar');
+        this.modals.error('Error con el servicio de eliminar Sectotes');
         this.cargar = false;
       });
   }
