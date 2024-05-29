@@ -59,10 +59,8 @@
                         <th scope="col" class="mw-60">Acciones</th>
                     </tr>
                 </thead>
-                <tbody>@for (sector of sectores | slice: (req.pageSize-1) * req.limit : req.pageSize * req.limit; track
-                    sector.codigo; let
-                    index
-                    = $index) {
+                <tbody>
+                    @for (sector of sectores; track sector.codigo; let index = $index) {
                     <tr>
                         <td>{{ sector.codigo }}</td>
                         <td>{{ sector.descrip }}</td>

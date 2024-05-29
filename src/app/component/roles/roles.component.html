@@ -58,8 +58,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (rol of roles | slice: (req.pageSize-1) * req.limit : req.pageSize * req.limit; track rol.id; let index
-                    = $index) {
+                    @for (rol of roles; track rol.id; let index = $index) {
                     <tr>
                         <td>{{ rol.id }}</td>
                         <td>{{ rol.name }}</td>

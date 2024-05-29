@@ -152,7 +152,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (socio of socios | slice: (req.pageSize-1) * req.limit : req.pageSize * req.limit; track socio.id; let index = $index) {
+                    @for (socio of socios; track socio.id; let index = $index) {
                     <tr [ngClass]="{'selected' : socio.selected}">
                         <td scope="row" (click)="statusChange(socio, 'Id')" [ngClass]="{'selectedeye' : socio.selected}"
                             class="mw-160 sticky">
