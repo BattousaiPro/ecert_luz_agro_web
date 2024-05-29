@@ -61,7 +61,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (user of usuarios | slice: (req.pageSize-1) * req.limit : req.pageSize * req.limit; track user.id; let index
+                        @for (user of usuarios; track user.id; let index
                         = $index) {
                         <tr>
                             <td>{{ user.id }}</td>
