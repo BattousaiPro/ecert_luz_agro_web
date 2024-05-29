@@ -57,7 +57,7 @@ export class UsuariosComponent {
           this.usuarios.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
         } else {
-          this.modals.info('Algo pso con la obtención de los Usuarios');
+          this.modals.info('Algo paso con la obtención de los Usuarios');
         }
         this.cargar = false;
       },
@@ -160,13 +160,13 @@ export class UsuariosComponent {
         } else if (data.code === '-2') {
           this.modals.warning(data.message);
         } else {
-          this.modals.error('Error con la respuesta de servicios de Usuaios para crear');
+          this.modals.error('Error con la respuesta de servicios para crear Usuarios');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Usuaios para crear');
+        this.modals.error('Error con el servicio de crear Usuarios');
         this.cargar = false;
       });
   }
@@ -186,13 +186,13 @@ export class UsuariosComponent {
           this.closeModal();
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de Usuaios para actualizar');
+          this.modals.error('Error con la respuesta de servicios de actualizar Usuaios');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Usuaios para actualizar');
+        this.modals.error('Error con el servicio de actualizar Usuaios');
         this.cargar = false;
       });
   }
@@ -206,13 +206,13 @@ export class UsuariosComponent {
           this.closeModal();
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de Usuaios para eliminar');
+          this.modals.error('Error con la respuesta de servicios de eliminar Usuaios');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Usuaios para eliminar');
+        this.modals.error('Error con el servicio de eliminar Usuaios');
         this.cargar = false;
       });
   }

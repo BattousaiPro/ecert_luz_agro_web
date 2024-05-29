@@ -57,7 +57,7 @@ export class RolesComponent implements OnInit {
           this.roles.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
         } else {
-          this.modals.success('Error con la respuesta de servicios de Roles');
+          this.modals.success('Algo paso con la obtención de los Roles');
         }
         this.cargar = false;
       },
@@ -78,7 +78,7 @@ export class RolesComponent implements OnInit {
           this.permisos = [];
           this.permisos.push(...data.data);
         } else {
-          this.modals.success('Error con la respuesta de servicios de Permisos');
+          this.modals.success('Algo paso con la obtención de los Permisos');
         }
         this.cargar = false;
       },
@@ -171,13 +171,13 @@ export class RolesComponent implements OnInit {
         } else if (data.code === '-2') {
           this.modals.warning(data.message);
         } else {
-          this.modals.error('Error con la respuesta de servicios de Roles para crear');
+          this.modals.error('Error con la respuesta de servicios para crear Roles');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Roles para crear');
+        this.modals.error('Error con el servicio de crear Roles');
         this.cargar = false;
       });
   }
@@ -197,13 +197,13 @@ export class RolesComponent implements OnInit {
           this.closeModal();
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de Roles para actualizar');
+          this.modals.error('Error con la respuesta de servicios de actualizar Roles');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Roles para actualizar');
+        this.modals.error('Error con el servicio de actualizar Roles');
         this.cargar = false;
       });
   }
@@ -217,13 +217,13 @@ export class RolesComponent implements OnInit {
           this.closeModal();
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de Roles para eliminar');
+          this.modals.error('Error con la respuesta de servicios de eliminar Roles');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Roles para eliminar');
+        this.modals.error('Error con el servicio de eliminar Roles');
         this.cargar = false;
       });
   }

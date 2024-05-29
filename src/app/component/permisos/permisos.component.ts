@@ -51,7 +51,7 @@ export class PermisosComponent implements OnInit {
           this.permisos.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
         } else {
-          this.modals.success('Error con la respuesta de servicios de Permisos');
+          this.modals.success('Algo paso con la obtención de los Permisos');
         }
         this.cargar = false;
       },
@@ -129,13 +129,13 @@ export class PermisosComponent implements OnInit {
         } else if (data.code === '-2') {
           this.modals.warning(data.message);
         } else {
-          this.modals.error('Error con la respuesta de servicios de Permisos para crear');
+          this.modals.error('Error con la respuesta de servicios de crear Permisos');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Permisos para crear');
+        this.modals.error('Error con el servicio de crear Permisos');
         this.cargar = false;
       });
   }
@@ -155,13 +155,13 @@ export class PermisosComponent implements OnInit {
           this.closeModal();
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de Permisos para actualizar');
+          this.modals.error('Error con la respuesta de servicios de actualizar Permisos');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Permisos para actualizar');
+        this.modals.error('Error con el servicio de actualizar Permisos');
         this.cargar = false;
       });
   }
@@ -175,13 +175,13 @@ export class PermisosComponent implements OnInit {
           this.closeModal();
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de Permisos para eliminar');
+          this.modals.error('Error con la respuesta de servicios de eliminar Permisos');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de Permisos para eliminar');
+        this.modals.error('Error con el servicio de eliminar Permisos');
         this.cargar = false;
       });
   }

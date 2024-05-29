@@ -50,7 +50,7 @@ export class SectoresComponent {
           this.sectores.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
         } else {
-          this.modals.success('Error con la respuesta de servicios de Sectotes');
+          this.modals.success('Algo paso con la obtención de los Sectotes');
         }
         this.cargar = false;
       },

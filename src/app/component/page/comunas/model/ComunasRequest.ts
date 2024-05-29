@@ -1,11 +1,12 @@
 import { PaginRequest } from "../../../../utils/PaginRequest";
 
 export interface ComunasRequest extends PaginRequest {
-  name: string;// Nombres
+  codigo: string;// Nombres
+  descrip: string;// Descripción
 }
 export class ComunasRequest {
   constructor() {
-    this.name = '';
+    this.codigo = '';
     this.pageSize = 1;
     this.limit = 10;
   }

@@ -2,4 +2,199 @@
     <div class="title mt15">
         <h1>Comunas</h1>
     </div>
+
+    <div class="title mt15">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row justify-content-end containerButton">
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
+                        <button type="button" class="btn btn-primary w100" (click)="agregaModal(myModalContent)">
+                            Agregar Sector
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="req.limit"
+                    (ngModelChange)="loadCargar()">
+                    <option [ngValue]="5">5</option>
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
+                    <option [ngValue]="100">100</option>
+                </select></div>
+            <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit"
+                    [maxSize]="3" [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
+                </ngb-pagination>
+            </div>
+        </div>
+
+        <div class="detail-table-socio">
+            <table class="table table-striped table-hover table-socio fz15">
+                <thead>
+                    <tr>
+                        <th scope="col" class="mw-60">
+                            <div>
+                                <input type="text" class="form-control w100 mb10" placeholder="Código"
+                                    (blur)="loadCargar()" [(ngModel)]="req.codigo">
+                            </div>
+                        </th>
+                        <th scope="col" class="mw-160">
+                            <div>
+                                <input type="text" class="form-control w100 mb10" placeholder="Descripción"
+                                    (blur)="loadCargar()" [(ngModel)]="req.descrip">
+                            </div>
+                        </th>
+                        <th scope="col" class="mw-60"></th>
+                        <th scope="col" class="mw-60"></th>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="mw-60">Código</th>
+                        <th scope="col" class="mw-60">Descripción</th>
+                        <th scope="col" class="mw-60">Estado</th>
+                        <th scope="col" class="mw-60">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>@for (comuna of comunas | slice: (req.pageSize-1) * req.limit : req.pageSize * req.limit; track
+                    comuna.codigo; let
+                    index
+                    = $index) {
+                    <tr>
+                        <td>{{ comuna.codigo }}</td>
+                        <td>{{ comuna.descrip }}</td>
+                        <td>
+                            <input type="checkbox" [(ngModel)]="comuna.estado" id="user-table-{{ comuna.codigo }}"
+                                name="permissions-table-[{{ comuna.estado }}]" disabled="" />
+                        </td>
+                        <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
+                            <button type="button" class="btn btn-primary" (click)="editarModal(myModalContent, comuna)">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary"
+                                (click)="deleteModal(myModalContentDelete, comuna)">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                    </tr>
+                    } @empty {
+                    <tr>
+                        <th scope="row" colspan="5">
+                            <div class="tac">Sin Resultados</div>
+                        </th>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="req.limit"
+                    (ngModelChange)="loadCargar()">
+                    <option [ngValue]="5">5</option>
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
+                    <option [ngValue]="100">100</option>
+                </select></div>
+            <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit"
+                    [maxSize]="3" [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
+                </ngb-pagination>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+<ng-template #myModalContent let-modal>
+    <div class="container p25">
+        <div class="title bb6">
+            @if (isEdit) {
+            <h1>Editar Sector</h1>
+            } @else {
+            <h1>Crear Sector</h1>
+            }
+        </div>
+        <div class="row mb15">
+            <div class="col-xs-12 col-xl-12">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="name">codigo</label>
+                        <input class="form-control form-control-sm" type="number" placeholder="" id="name"
+                            [(ngModel)]="comunasModal.codigo" [disabled]="isEdit">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="descrip">Descripción</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="descrip"
+                            [(ngModel)]="comunasModal.descrip">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
+                        <div class="col-12 border-chack">
+                            <input type="checkbox" [(ngModel)]="comunasModal.estado" id="rol-{{ comunasModal.codigo }}"
+                                name="permissions[{{ comunasModal.codigo }}][{{ comunasModal.estado }}]"
+                                [disabled]="!isEdit" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt15">
+                    <div class="col-12 text-right">
+                        <div class="row justify-content-end">
+                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                                <button type="button" class="btn btn-primary w100" (click)="guardar()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #myModalContentDelete let-modal>
+    <div class="container p25">
+        <div class="title bb6">
+            <h1>Eliminar Sector</h1>
+        </div>
+
+        <div class="row mb15">
+            <div class="col-xs-12 col-xl-12">
+
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="ctaUsr">Esta seguro que quiere eliminar el
+                            Sector</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr"
+                            [(ngModel)]="comunasModal.codigo" disabled="">
+                    </div>
+                </div>
+
+                <div class="row mt15">
+                    <div class="col-12">
+                        <div class="row justify-content-end">
+                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                                <button type="button" class="btn btn-primary w100" (click)="closeModal()">
+                                    Cacelar
+                                </button>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                                <button type="button" class="btn btn-primary w100" (click)="delete()">
+                                    Eliminar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<app-spinner [cargar]="cargar"></app-spinner>
