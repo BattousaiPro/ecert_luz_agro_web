@@ -77,7 +77,6 @@ export class RolesComponent implements OnInit {
           this.closeModal();
           this.permisos = [];
           this.permisos.push(...data.data);
-          this.collectionSize = this.permisos.length;
         } else {
           this.modals.success('Error con la respuesta de servicios de Permisos');
         }
