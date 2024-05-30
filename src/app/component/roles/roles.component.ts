@@ -110,11 +110,6 @@ export class RolesComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public deletePermiso(content: any, roleSelected: Role): void {
-    console.log('Method deletePermiso');
-    this.modals.info('Funcionalidad No disponible');
-  }
-
   public addModal(content: any, index: number): void {
     this.roles[index].addRol = !this.roles[index].addRol;
     console.log('Method agregarRol.');
@@ -230,6 +225,11 @@ export class RolesComponent implements OnInit {
 
   public closeModal() {
     this.modalService.dismissAll();
+  }
+
+  public deletePermiso(content: any, roleSelected: Role): void {
+    console.log('Method deletePermiso');
+    this.modals.info('Funcionalidad No disponible');
   }
 
   public agregarPermiso(index: number): void {

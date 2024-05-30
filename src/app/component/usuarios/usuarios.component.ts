@@ -7,6 +7,7 @@ import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalOptions } from '../../utils/modalOptions';
 import { UsuariosRequest } from './model/UsuariosRequest';
 import { Role } from '../roles/roles.component';
+import { RolesService } from '../../services/roles/roles.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -37,11 +38,13 @@ export class UsuariosComponent {
 
   constructor(
     private modalService: NgbModal,
-    private userService: UserService
+    private userService: UserService,
+    private rolesService: RolesService,
   ) { }
 
   ngOnInit(): void {
     this.loadCargar();
+    this.loadRoles();
   }
 
   public loadCargar(): void {
@@ -64,6 +67,29 @@ export class UsuariosComponent {
       (err: any) => {
         this.closeModal();
         this.modals.error('Error con el servicio de Usuaios');
+        this.cargar = false;
+      });
+  }
+
+  public loadRoles(): void {
+    console.log('Cargando loadRoles');
+    this.cargar = true;
+    this.rolesService.getAll().subscribe(
+      (data: any) => {
+        if (data.code === '0'
+          && data.data != null
+          && data.data.results != null) {
+          this.closeModal();
+          this.roles = [];
+          this.roles.push(...data.data.results);
+        } else {
+          this.modals.info('Algo paso con la obtención de los Roles');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        this.modals.error('Error con el servicio de Roles');
         this.cargar = false;
       });
   }
@@ -221,6 +247,21 @@ export class UsuariosComponent {
     this.modalService.dismissAll();
   }
 
+  public deleteRoles(content: any, roleSelected: Role): void {
+    console.log('Method deleteRoles');
+    this.modals.info('Funcionalidad No disponible');
+  }
+
+  public agregarRoles(index: number): void {
+    console.log('Method agregarRoles');
+    this.modals.info('Funcionalidad No disponible');
+  }
+
+  public guardarRoles(): void {
+    console.log('Method guardarRoles');
+    this.modals.info('Funcionalidad No disponible');
+  }
+
 }
 
 export interface Usuario {
@@ -230,11 +271,13 @@ export interface Usuario {
   ctaEmail: string;
   estado: boolean;
   addUser: boolean;
+  addRol: boolean;
 }
 export class Usuario {
   constructor() {
     this.ctaUserName = '';
     this.ctaEmail = '';
     this.ctaEmail = '';
+    this.addRol = false;
   }
 }
