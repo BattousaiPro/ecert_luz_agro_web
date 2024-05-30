@@ -1,0 +1,18 @@
+.border-chack {
+    display: flex;
+    flex-direction: column;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border: 1px solid #dee2e6;
+    border-radius: 3px;
+}
+
+.table-rol thead th {
+    --bs-table-bg: #333333;
+    --bs-table-color: white;
+}
+
+.table-rol th.mw-160,
+.table-rol td.mw-160 {
+    min-width: 160px;
+}

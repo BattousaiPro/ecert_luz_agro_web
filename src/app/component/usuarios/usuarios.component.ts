@@ -77,11 +77,10 @@ export class UsuariosComponent {
     this.rolesService.getAll().subscribe(
       (data: any) => {
         if (data.code === '0'
-          && data.data != null
-          && data.data.results != null) {
+          && data.data != null) {
           this.closeModal();
           this.roles = [];
-          this.roles.push(...data.data.results);
+          this.roles.push(...data.data);
         } else {
           this.modals.info('Algo paso con la obtención de los Roles');
         }
@@ -124,7 +123,14 @@ export class UsuariosComponent {
   }
 
   public setRoles(index: number): void {
-    this.modals.info('Funcionalidad No disponible');
+    for (let indexUser = 0; indexUser < this.usuarios.length; indexUser++) {
+      if (indexUser !== index) {
+        this.usuarios[indexUser].addRol = false;
+        this.usuarios[indexUser].addUser = false;
+      }
+    }
+    this.usuarios[index].addRol = !this.usuarios[index].addRol;
+    this.usuarios[index].addUser = !this.usuarios[index].addUser;
   }
 
   private openModalFunction(content: any): void {
