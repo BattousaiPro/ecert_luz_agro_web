@@ -33,8 +33,8 @@
                     <option [ngValue]="100">100</option>
                 </select></div>
             <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit" [maxSize]="3"
-                    [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit"
+                    [maxSize]="3" [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
                 </ngb-pagination>
             </div>
         </div>
@@ -230,8 +230,8 @@
                     <option [ngValue]="100">100</option>
                 </select></div>
             <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit" [maxSize]="3"
-                    [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit"
+                    [maxSize]="3" [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
                 </ngb-pagination>
             </div>
         </div>
@@ -283,212 +283,265 @@
 
 
 
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="rut_cop">Rut Socio</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="rut_cop"
-                                            [value]="socioModal.rut_cop || ''">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="rut_cop" [value]="socioModal.rut_cop || ''">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="nombres">Nombres</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="nombres"
-                                            [value]="socioModal.nombres || ''">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="nombres" [value]="socioModal.nombres || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="ape_pat">Apellido Paterno</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="ape_pat"
-                                            [value]="socioModal.ape_pat || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="ape_pat">Apellido
+                                            Paterno</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="ape_pat" [value]="socioModal.ape_pat || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="ape_mat">Apellido Materno</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="ape_mat"
-                                            [value]="socioModal.ape_mat || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="ape_mat">Apellido
+                                            Materno</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="ape_mat" [value]="socioModal.ape_mat || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="cod_cop">Código Luzagro</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="cod_cop"
-                                            [value]="socioModal.cod_cop || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="cod_cop">Código
+                                            Luzagro</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="cod_cop" [value]="socioModal.cod_cop || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="cod_lli">Código Luzlinares</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="cod_lli"
-                                            [value]="socioModal.cod_lli || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="cod_lli">Código
+                                            Luzlinares</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="cod_lli" [value]="socioModal.cod_lli || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="cod_ant">Código Anterior</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="cod_ant"
-                                            [value]="socioModal.cod_ant || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="cod_ant">Código
+                                            Anterior</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="cod_ant" [value]="socioModal.cod_ant || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="cod_nvo">Código Nuevo</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="cod_nvo"
-                                            [value]="socioModal.cod_nvo || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="cod_nvo">Código
+                                            Nuevo</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="cod_nvo" [value]="socioModal.cod_nvo || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="cod_ori">Código Original</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="cod_ori"
-                                            [value]="socioModal.cod_ori || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="cod_ori">Código
+                                            Original</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="cod_ori" [value]="socioModal.cod_ori || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for=".">Sector</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="sec_cop"
-                                            [value]="socioModal?.sec_cop?.descrip || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="sec_cop">Sector</label>
+                                        <select class="form-select w100">
+                                            <option value="" selected>Seleccionar</option>
+                                            @if (isEdit) {
+                                            @for (sector of sectores; track sector.codigo; let index = $index) {
+                                            @if (sector.codigo == socioModal!.sec_cop!.codigo) {
+                                            <option value="{{sector.codigo}}" selected>{{ sector.descrip }}</option>
+                                            } @else {
+                                            <option value="{{sector.codigo}}">{{ sector.descrip }}</option>
+                                            }
+                                            }
+                                            } @else {
+                                            @for (sector of sectores; track sector.codigo; let index = $index) {
+                                            <option value="{{sector.codigo}}">{{ sector.descrip }}</option>
+                                            }
+                                            }
+                                        </select>
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="ano_inc">Año Inscripción</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="ano_inc"
-                                            [value]="socioModal.ano_inc || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="ano_inc">Año
+                                            Inscripción</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="ano_inc" [value]="socioModal.ano_inc || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="mto_inc">Monto Inscripción</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="mto_inc"
-                                            [value]="socioModal.mto_inc || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="mto_inc">Monto
+                                            Inscripción</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="mto_inc" [value]="socioModal.mto_inc || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="fec_inc">Fecha Inscripción</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="fec_inc"
-                                            [value]="socioModal.fec_inc || '' | date: 'd-M-y'">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="fec_inc">Fecha
+                                            Inscripción</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="fec_inc" [value]="socioModal.fec_inc || '' | date: 'd-M-y'">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="ano_tra">Año Traspaso</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="ano_tra"
-                                            [value]="socioModal.ano_tra || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="ano_tra">Año
+                                            Traspaso</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="ano_tra" [value]="socioModal.ano_tra || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="kap_tra">Capital Traspaso</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="kap_tra"
-                                            [value]="socioModal.kap_tra || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="kap_tra">Capital
+                                            Traspaso</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="kap_tra" [value]="socioModal.kap_tra || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="fec_tra">Fecha Traspaso</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="fec_tra"
-                                            [value]="socioModal.fec_tra || '' | date: 'd-M-y'">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="fec_tra">Fecha
+                                            Traspaso</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="fec_tra" [value]="socioModal.fec_tra || '' | date: 'd-M-y'">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="acc_tra">Acciones Traspaso</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="acc_tra"
-                                            [value]="socioModal.acc_tra || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="acc_tra">Acciones
+                                            Traspaso</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="acc_tra" [value]="socioModal.acc_tra || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="acc_ret">Acciones Retiro</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="acc_ret"
-                                            [value]="socioModal.acc_ret || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="acc_ret">Acciones
+                                            Retiro</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="acc_ret" [value]="socioModal.acc_ret || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="acc_apo">Acciones Aporte</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="acc_apo"
-                                            [value]="socioModal.acc_apo || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="acc_apo">Acciones
+                                            Aporte</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="acc_apo" [value]="socioModal.acc_apo || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="fec_act">Actualización</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="fec_act"
-                                            [value]="socioModal.fec_act || '' | date: 'd-M-y'">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm"
+                                            for="fec_act">Actualización</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="fec_act" [value]="socioModal.fec_act || '' | date: 'd-M-y'">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="est_tra">Estado Traspao</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="est_tra"
-                                            [value]="socioModal.est_tra || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="est_tra">Estado
+                                            Traspao</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="est_tra" [value]="socioModal.est_tra || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="est_bon">Estado delBono</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="est_bon"
-                                            [value]="socioModal.est_bon || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="est_bon">Estado
+                                            delBono</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="est_bon" [value]="socioModal.est_bon || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="dir_pos">Dirección Postal</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="dir_pos"
-                                            [value]="socioModal.dir_pos || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="dir_pos">Dirección
+                                            Postal</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="dir_pos" [value]="socioModal.dir_pos || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="nro_te1">Nro Teléfono 1</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="nro_te1"
-                                            [value]="socioModal.nro_te1 || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="nro_te1">Nro Teléfono
+                                            1</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="nro_te1" [value]="socioModal.nro_te1 || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="nro_te2">Nro Teléfono 2</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="nro_te2"
-                                            [value]="socioModal.nro_te2 || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="nro_te2">Nro Teléfono
+                                            2</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="nro_te2" [value]="socioModal.nro_te2 || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="nro_te3">Nro Teléfono 3</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="nro_te3"
-                                            [value]="socioModal.nro_te3 || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="nro_te3">Nro Teléfono
+                                            3</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="nro_te3" [value]="socioModal.nro_te3 || ''">
                                     </div>
-                                        <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="nro_te4">Nro Teléfono 4</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="nro_te4"
-                                            [value]="socioModal.nro_te4 || ''">
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="nro_te4">Nro Teléfono
+                                            4</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="nro_te4" [value]="socioModal.nro_te4 || ''">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="com_pos">Comuna</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="com_pos"
-                                            [value]="socioModal?.com_pos?.descrip || ''">
+                                        <select class="form-select w100">
+                                            <option value="" selected>Seleccionar</option>
+                                            @if (isEdit) {
+                                            @for (comuna of comunas; track comuna.codigo; let index = $index) {
+                                            @if (comuna.codigo == socioModal!.com_pos!.codigo) {
+                                            <option value="{{comuna.codigo}}" selected>{{ comuna.descrip }}</option>
+                                            } @else {
+                                            <option value="{{comuna.codigo}}">{{ comuna.descrip }}</option>
+                                            }
+                                            }
+                                            } @else {
+                                            @for (comuna of comunas; track comuna.codigo; let index = $index) {
+                                            <option value="{{comuna.codigo}}">{{ comuna.descrip }}</option>
+                                            }
+                                            }
+                                        </select>
                                     </div>
-                                        <div class="col-12">
-                                        <label class="col-form-label col-form-label-sm" for="obs_cap">Observación</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="obs_cap"
-                                            [value]="socioModal.obs_cap || ''">
+                                    <div class="col-12">
+                                        <label class="col-form-label col-form-label-sm"
+                                            for="obs_cap">Observación</label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="obs_cap" [value]="socioModal.obs_cap || ''">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="nro_sol">nro_sol</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="nro_sol"
-                                            [value]="socioModal.nro_sol || ''">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="nro_sol" [value]="socioModal.nro_sol || ''">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="fec_sol">fec_sol</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="fec_sol"
-                                            [value]="socioModal.fec_sol || '' | date: 'd-M-y'">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="fec_sol" [value]="socioModal.fec_sol || '' | date: 'd-M-y'">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="fec_apr">fec_apr</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="fec_apr"
-                                            [value]="socioModal.fec_apr || '' | date: 'd-M-y'">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="fec_apr" [value]="socioModal.fec_apr || '' | date: 'd-M-y'">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="fec_can">fec_can</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="fec_can"
-                                            [value]="socioModal.fec_can || '' | date: 'd-M-y'">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="fec_can" [value]="socioModal.fec_can || '' | date: 'd-M-y'">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="est_sol">est_sol</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="est_sol"
-                                            [value]="socioModal.est_sol || ''">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="est_sol" [value]="socioModal.est_sol || ''">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="sec_cte">sec_cte</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="sec_cte"
-                                            [value]="socioModal.sec_cte || ''">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="sec_cte" [value]="socioModal.sec_cte || ''">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="area">area</label>
                                         <input class="form-control form-control-sm" type="text" placeholder="" id="area"
                                             [value]="socioModal.area || ''">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="sec_imp">sec_imp</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="sec_imp"
-                                            [value]="socioModal.sec_imp || ''">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="sec_imp" [value]="socioModal.sec_imp || ''">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="est_reg">est_reg</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="est_reg"
-                                            [value]="socioModal.est_reg || ''">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="est_reg" [value]="socioModal.est_reg || ''">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="acc_con">acc_con</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="acc_con"
-                                            [value]="socioModal.acc_con || ''">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="acc_con" [value]="socioModal.acc_con || ''">
                                     </div>
-                                        <div class="col-3">
+                                    <div class="col-3">
                                         <label class="col-form-label col-form-label-sm" for="aju_acc">aju_acc</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="aju_acc"
-                                            [value]="socioModal.aju_acc || ''">
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="aju_acc" [value]="socioModal.aju_acc || ''">
                                     </div>
 
                                 </div>
                             </div>
-                    
+
                         </div>
-<!--
+                        <!--
 
                         <div class="row mb15">
                             <div class="col-xs-12 col-xl-12">
@@ -697,7 +750,7 @@
                     -->
                     </div>
 
-                
+
 
                     <!--
                     <label for="info" class="col-form-label col-form-label-sm">
