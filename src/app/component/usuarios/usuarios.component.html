@@ -106,7 +106,7 @@
                                                 </button>
                                             </div>
                                             <div class="col-11">
-                                                {{ rol.id }} -- {{ rol.name }}
+                                                {{ rol.id }} -- {{ rol.name }} -- {{ rol.code }}
                                             </div>
                                             } @empty {
                                             <h6>Sin Roles asignados</h6>
@@ -117,19 +117,14 @@
                                     <div class="col-12">
                                         <h5>Roles Exsitentes</h5>
                                         <div class="row">
-                                            @for (rol of roles; track rol.id; let index = $index) {
-                                            <div class="col-1">
-                                                <button type="button" class="btn btn-primary"
-                                                    (click)="deleteRoles(myModalContentDelete, rol)">
-                                                    <i class="bi bi-trash3"></i>
-                                                </button>
+                                            <div class="col-4">
+                                                <select class="form-select w100">
+                                                    <option value="" selected>Seleccionar</option>
+                                                    @for (rol of roles; track rol.id; let index = $index) {
+                                                    <option value="{{rol.id}}">{{ rol.name }}</option>
+                                                    }
+                                                </select>
                                             </div>
-                                            <div class="col-11">
-                                                {{ rol.id }} -- {{ rol.name }}
-                                            </div>
-                                            } @empty {
-                                            <h6>Sin Roles Disponibles</h6>
-                                            }
                                         </div>
                                     </div>
 

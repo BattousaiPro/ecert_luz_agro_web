@@ -104,7 +104,7 @@
                                             </button>
                                         </div>
                                         <div class="col-11">
-                                            {{ permiso.id }} -- {{ permiso.name }}
+                                            {{ permiso.id }} -- {{ permiso.name }} -- {{ permiso.code }}
                                         </div>
                                         } @empty {
                                         <h6>Sin Permisos asignados</h6>
@@ -115,19 +115,15 @@
                                 <div class="col-12">
                                     <h5>Permisos Sección</h5>
                                     <div class="row">
-                                        @for (permiso of permisos; track permiso.id; let index = $index) {
-                                        <div class="col-1">
-                                            <button type="button" class="btn btn-primary"
-                                                (click)="deletePermiso(myModalContentDelete, rol)">
-                                                <i class="bi bi-trash3"></i>
-                                            </button>
+
+                                        <div class="col-4">
+                                            <select class="form-select w100">
+                                                <option value="" selected>Seleccionar</option>
+                                                @for (permiso of permisos; track permiso.id; let index = $index) {
+                                                <option value="{{permiso.id}}">{{ permiso.name }}</option>
+                                                }
+                                            </select>
                                         </div>
-                                        <div class="col-11">
-                                            {{ permiso.id }} -- {{ permiso.name }}
-                                        </div>
-                                        } @empty {
-                                        <h6>Sin Permisos Disponibles</h6>
-                                        }
                                     </div>
                                 </div>
 
