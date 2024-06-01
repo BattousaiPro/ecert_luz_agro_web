@@ -21,8 +21,8 @@
         <div class="row mt15">
 
             <div class="row justify-content-end">
-                <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="req.limit"
-                        (ngModelChange)="loadCargar()">
+                <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac"
+                        [(ngModel)]="req.limit" (ngModelChange)="loadCargar()">
                         <option [ngValue]="5">5</option>
                         <option [ngValue]="10">10</option>
                         <option [ngValue]="25">25</option>
@@ -30,8 +30,8 @@
                         <option [ngValue]="100">100</option>
                     </select></div>
                 <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit" [maxSize]="3"
-                        [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
+                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit"
+                        [maxSize]="3" [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
                     </ngb-pagination>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                             </th>
                             <th scope="col" class="mw-60">
                                 <div><input type="text" class="form-control w100 mb10" placeholder="Email"
-                                    (blur)="loadCargar()" [(ngModel)]="req.ctaEmail"></div>
+                                        (blur)="loadCargar()" [(ngModel)]="req.ctaEmail"></div>
                             </th>
                             <th scope="col" class="mw-60"></th>
                             <th scope="col" class="mw-60"></th>
@@ -80,13 +80,11 @@
                                     <i class="bi bi-trash3"></i>
                                 </button>
                                 @if (user.addUser) {
-                                <button type="button" class="btn btn-primary"
-                                    (click)="setRoles(index)">
+                                <button type="button" class="btn btn-primary" (click)="setRoles(index)">
                                     <i class="bi bi-plus-square"></i>
                                 </button>
                                 } @else {
-                                <button type="button" class="btn btn-primary"
-                                    (click)="setRoles(index)">
+                                <button type="button" class="btn btn-primary" (click)="setRoles(index)">
                                     <i class="bi bi-plus-square-fill"></i>
                                 </button>
                                 }
@@ -96,7 +94,7 @@
                         <tr>
                             <td colspan="6">
                                 <div class="row">
-                                    
+
                                     <div class="col-12">
                                         <h5>Roles Asignados</h5>
                                         <div class="row">
@@ -111,10 +109,8 @@
                                                 {{ rol.id }} -- {{ rol.name }}
                                             </div>
                                             } @empty {
-                                                <tr>
-                                                    <th scope="row" class="sticky">Sin Roles asignados</th>
-                                                </tr>
-                                                }
+                                            <h6>Sin Roles asignados</h6>
+                                            }
                                         </div>
                                     </div>
 
@@ -131,6 +127,8 @@
                                             <div class="col-11">
                                                 {{ rol.id }} -- {{ rol.name }}
                                             </div>
+                                            } @empty {
+                                            <h6>Sin Roles Disponibles</h6>
                                             }
                                         </div>
                                     </div>
@@ -163,8 +161,8 @@
             </div>
 
             <div class="row justify-content-end">
-                <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="req.limit"
-                        (ngModelChange)="loadCargar()">
+                <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac"
+                        [(ngModel)]="req.limit" (ngModelChange)="loadCargar()">
                         <option [ngValue]="5">5</option>
                         <option [ngValue]="10">10</option>
                         <option [ngValue]="25">25</option>
@@ -172,8 +170,8 @@
                         <option [ngValue]="100">100</option>
                     </select></div>
                 <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit" [maxSize]="3"
-                        [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
+                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit"
+                        [maxSize]="3" [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
                     </ngb-pagination>
                 </div>
             </div>
@@ -217,8 +215,8 @@
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="ConfirmContrasena">Confirmar
                             Contraseña</label>
-                        <input class="form-control form-control-sm" type="password" placeholder="" id="ConfirmContrasena"
-                            [(ngModel)]="passConfirm">
+                        <input class="form-control form-control-sm" type="password" placeholder=""
+                            id="ConfirmContrasena" [(ngModel)]="passConfirm">
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
@@ -265,8 +263,9 @@
                 <div class="row">
 
                     <div class="col-xs-12 col-sm-6">
-                        <label class="col-form-label col-form-label-sm" for="ctaUserName">Esta seguro que quiere eliminar el
-                            Usuario</label>
+                        <label class="col-form-label col-form-label-sm" for="ctaUserName">
+                            Esta seguro que quiere eliminar el Usuario
+                        </label>
                         <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUserName"
                             [(ngModel)]="userDeleteModal.ctaUserName" disabled="">
                     </div>
