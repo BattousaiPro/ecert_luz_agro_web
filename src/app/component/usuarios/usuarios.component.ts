@@ -276,6 +276,7 @@ export interface Usuario {
   ctaPassWord: string;
   ctaEmail: string;
   estado: boolean;
+  roles: Role[];
   addUser: boolean;
   addRol: boolean;
 }
