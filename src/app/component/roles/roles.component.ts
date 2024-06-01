@@ -250,6 +250,7 @@ export interface Role {
   descrip: string;
   code: string;
   estado: boolean;
+  permisos: Permiso[];
   addRol: boolean;
   addPermisos: boolean;
 

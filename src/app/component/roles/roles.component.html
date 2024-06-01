@@ -28,8 +28,8 @@
                     <option [ngValue]="100">100</option>
                 </select></div>
             <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit" [maxSize]="3"
-                    [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit"
+                    [maxSize]="3" [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
                 </ngb-pagination>
             </div>
         </div>
@@ -92,8 +92,28 @@
                     <tr>
                         <td colspan="6">
                             <div class="row">
-                                <h5>Permisos Sección</h5>
+
                                 <div class="col-12">
+                                    <h5>Permisos Asignados</h5>
+                                    <div class="row">
+                                        @for (permiso of rol.permisos; track permiso.id; let index = $index) {
+                                        <div class="col-1">
+                                            <button type="button" class="btn btn-primary"
+                                                (click)="deletePermiso(myModalContentDelete, rol)">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-11">
+                                            {{ permiso.id }} -- {{ permiso.name }}
+                                        </div>
+                                        } @empty {
+                                        <h6>Sin Permisos asignados</h6>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <h5>Permisos Sección</h5>
                                     <div class="row">
                                         @for (permiso of permisos; track permiso.id; let index = $index) {
                                         <div class="col-1">
@@ -105,9 +125,13 @@
                                         <div class="col-11">
                                             {{ permiso.id }} -- {{ permiso.name }}
                                         </div>
+                                        } @empty {
+                                        <h6>Sin Permisos Disponibles</h6>
                                         }
                                     </div>
+                                </div>
 
+                                <div class="col-12">
                                     <div class="row justify-content-end containerButton">
                                         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
                                             <button type="button" class="btn btn-primary w100"
@@ -119,6 +143,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </td>
                     </tr>
@@ -144,8 +169,8 @@
                     <option [ngValue]="100">100</option>
                 </select></div>
             <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
-                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit" [maxSize]="3"
-                    [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit"
+                    [maxSize]="3" [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
                 </ngb-pagination>
             </div>
         </div>
