@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DataSocio } from './model/DataSocio';
 import { DetailSocioComponent } from './detail-socio/detail-socio.component';
 import { SpinnerComponent } from '../../spinner/spinner.component';
-import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbPaginationModule, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { KapmaeService } from '../../../services/kapmae/kapmae.service';
@@ -20,7 +20,9 @@ import { Comunas } from '../comunas/comunas.component';
     DetailSocioComponent,
     SpinnerComponent,
     CommonModule,
-    NgbPaginationModule],
+    NgbPaginationModule,
+    NgbInputDatepicker,
+  ],
   templateUrl: './kapmae.component.html',
   styleUrl: './kapmae.component.scss'
 })

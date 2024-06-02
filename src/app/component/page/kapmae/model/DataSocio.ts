@@ -44,11 +44,27 @@ export interface DataSocio {
   acc_con?: number;
   aju_acc?: number;
   selected?: boolean;
+  fec_inc_date?: DatepickerModel;
+  fec_tra_date?: DatepickerModel;
+  fec_act_date?: DatepickerModel;
+  fec_sol_date?: DatepickerModel;
+  fec_apr_date?: DatepickerModel;
+  fec_can_date?: DatepickerModel;
 }
 
 export class DataSocio {
   constructor() {
     this.selected = false;
+  }
+}
 
+export interface DatepickerModel {
+  year?: number;
+  month?: number;
+  day?: number;
+}
+
+export class DatepickerModel {
+  constructor() {
   }
 }
