@@ -83,14 +83,6 @@ export class PermisosComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public addModal(content: any, index: number): void {
-    this.permisos[index].addPermiso = !this.permisos[index].addPermiso;
-    console.log('Method agregarUser.');
-    this.permisosModal = new Permiso();
-    this.permisosModal.estado = true;
-    this.openModalFunction(content);
-  }
-
   private openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
@@ -198,7 +190,6 @@ export interface Permiso {
   descrip: string;
   code: string;
   estado: boolean;
-  addPermiso: boolean;
 }
 export class Permiso {
   constructor() {
