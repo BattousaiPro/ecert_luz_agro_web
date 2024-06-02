@@ -7,6 +7,7 @@ export interface KapmaeRequest extends PaginRequest {
   ape_mat: string;// Apellido Materno
   cod_cop: number;// Código Luzagro
   sec_cop: number;// Sector
+  com_pos: number;// Comuna
 }
 export class KapmaeRequest {
   constructor() {
