@@ -205,18 +205,22 @@ export class KapmaeComponent {
 
   public editarModal(userSelected: DataSocio): void {
     console.log('Method editarModal');
+    /*
     this.socioModal = userSelected;
     this.isEdit = true;
     this.principalContainer = false;
-    // this.openModalFunction(content);
+    */
+    this.modals.info('Funcionalidad No disponible');
   }
 
   public agregaModal(): void {
     console.log('Method agregaModal.');
+    /*
     this.socioModal = new DataSocio();
     this.isEdit = false;
     this.principalContainer = false;
-    //this.openModalFunction(content);
+    */
+    this.modals.info('Funcionalidad No disponible');
   }
 
   public guardar(): void {
