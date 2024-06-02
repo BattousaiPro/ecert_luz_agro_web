@@ -40,7 +40,6 @@
                 <table class="table table-striped table-hover table-usuario fz15">
                     <thead>
                         <tr>
-                            <th scope="col" class="mw-60"></th>
                             <th scope="col" class="mw-160">
                                 <div><input type="text" class="form-control w100 mb10" placeholder="Nombre"
                                         (blur)="loadCargar()" [(ngModel)]="req.ctaUserName"></div>
@@ -53,7 +52,6 @@
                             <th scope="col" class="mw-60"></th>
                         </tr>
                         <tr>
-                            <th scope="col" class="mw-60">ID</th>
                             <th scope="col" class="mw-60">Nombre</th>
                             <th scope="col" class="mw-60">Email</th>
                             <th scope="col" class="mw-60">Estado</th>
@@ -63,7 +61,6 @@
                     <tbody>
                         @for (user of usuarios; track user.id; let index = $index) {
                         <tr>
-                            <td>{{ user.id }}</td>
                             <td>{{ user.ctaUserName }}</td>
                             <td>{{ user.ctaEmail }}</td>
                             <td>
