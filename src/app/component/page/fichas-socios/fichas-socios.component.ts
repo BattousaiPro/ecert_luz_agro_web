@@ -39,9 +39,10 @@ export class FichasSociosComponent {
     if (
       this.codigoInicial != '' && typeof this.codigoInicial !== 'undefined' &&
       this.codigoFinal != '' && typeof this.codigoFinal !== 'undefined' &&
-      this.anio !== 0 && this.anio < 1000 &&
+      this.anio !== 0 &&
       this.nroPagina !== 0 && this.nroPagina < 1000) {
-      this.openModalTemplate(content);
+      //this.openModalTemplate(content);
+      this.modals.info('Funcionalidad No disponible');
     } else {
       this.modals.info('todos los campos deben ser completados.');
     }
