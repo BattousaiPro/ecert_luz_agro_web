@@ -89,7 +89,7 @@ export class SectoresComponent {
   public guardar(): void {
     const code = this.sectoresModal.codigo;
     const descrip = this.sectoresModal.descrip.trim();
-    if (code !== null && typeof code !== 'undefined' && code !== 0
+    if (code !== null && typeof code !== 'undefined'
       && descrip !== null && typeof descrip !== 'undefined' && descrip !== ''
     ) {
       if (!this.isEdit) {
@@ -114,7 +114,7 @@ export class SectoresComponent {
         if (data.code === '0') {
           this.closeModal();
           this.loadCargar();
-        } else if (data.code === '-2') {
+        } else if (data.code === '-4') {
           this.modals.warning(data.message);
         } else {
           this.modals.error('Error con la respuesta de servicios para crear Sectotes');

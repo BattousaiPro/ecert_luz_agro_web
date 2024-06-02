@@ -114,7 +114,7 @@ export class ComunasComponent {
         if (data.code === '0') {
           this.closeModal();
           this.loadCargar();
-        } else if (data.code === '-2') {
+        } else if (data.code === '-4') {
           this.modals.warning(data.message);
         } else {
           this.modals.error('Error con la respuesta de servicios para crear Sectotes');
