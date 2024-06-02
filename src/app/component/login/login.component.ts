@@ -44,18 +44,21 @@ export class LoginComponent {
         if (data.code === '0') {
         //if (data.code === '0' && data.body.data != null) {
           this.router.navigate(['home']);
+        } else if(data.code === '-1') {
+          console.log(data.message);
+          this.modals.error(data.message);
         } else {
           //this.error.mostrarError('Error con la respuesta de servicios de Access');
-          console.log('Error con la respuesta de servicios de Access');
-          this.modals.error('Error con la respuesta de servicios de Access');
+          console.log('Error con servicio Login');
+          this.modals.error('Error con servicio Login');
         }
         this.cargar = false;
       },
       (err: any) => {
-        //this.error.mostrarError('Error con el ervicio de Access');
-        console.log('Error con el ervicio de Access');
+        //this.error.mostrarError('Error con el Login');
+        console.log('Error con el Login');
         this.cargar = false;
-        this.modals.error('Error con el ervicio de Access');
+        this.modals.error('Error con el Login');
       });
   }
 
