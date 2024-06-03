@@ -91,9 +91,25 @@
                             <div class="row">
 
                                 <div class="col-12">
+                                    <h5>Permisos Asignados Test</h5>
+                                    <div class="row">
+                                        @for (permiso of rol.permisosDisponibeles; track permiso.id; let index = $index) {
+                                        @if(permiso.showAtribute){
+                                        <div class="col-11">
+                                            {{ permiso.id }} -- {{ permiso.name }} -- {{ permiso.code }}
+                                        </div>
+                                        }
+                                        } @empty {
+                                        <h6>Sin Permisos asignados</h6>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
                                     <h5>Permisos Asignados</h5>
                                     <div class="row">
-                                        @for (permiso of rol.permisos; track permiso.id; let index = $index) {
+                                        @for (permiso of rol.permisosDisponibeles; track permiso.id; let index = $index) {
+                                        @if(permiso.showAtribute){
                                         <div class="col-1">
                                             <button type="button" class="btn btn-primary"
                                                 (click)="deletePermiso(myModalContentDelete, rol)">
@@ -103,6 +119,7 @@
                                         <div class="col-11">
                                             {{ permiso.id }} -- {{ permiso.name }} -- {{ permiso.code }}
                                         </div>
+                                        }
                                         } @empty {
                                         <h6>Sin Permisos asignados</h6>
                                         }
@@ -116,8 +133,10 @@
                                         <div class="col-4">
                                             <select class="form-select w100">
                                                 <option value="" selected>Seleccionar</option>
-                                                @for (permiso of permisos; track permiso.id; let index = $index) {
+                                                @for (permiso of rol.permisosDisponibeles; track permiso.id; let index = $index) {
+                                                @if (permiso.showAtributeOption) {
                                                 <option value="{{permiso.id}}">{{ permiso.name }}</option>
+                                                }
                                                 }
                                             </select>
                                         </div>

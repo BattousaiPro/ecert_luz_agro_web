@@ -93,9 +93,23 @@
                                 <div class="row">
 
                                     <div class="col-12">
-                                        <h5>Roles Asignados</h5>
+                                        <h5>Roles Asignados Test</h5>
                                         <div class="row">
                                             @for (rol of user.roles; track rol.id; let index = $index) {
+                                            <div class="col-11">
+                                                {{ rol.id }} -- {{ rol.name }} -- {{ rol.code }}
+                                            </div>
+                                            } @empty {
+                                            <h6>Sin Roles asignados</h6>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <h5>Roles Asignados</h5>
+                                        <div class="row">
+                                            @for (rol of user.rolesDisponibeles; track rol.id; let index = $index) {
+                                            @if (!rol.showAtribute){
                                             <div class="col-1">
                                                 <button type="button" class="btn btn-primary"
                                                     (click)="deleteRoles(myModalContentDelete, rol)">
@@ -105,6 +119,7 @@
                                             <div class="col-11">
                                                 {{ rol.id }} -- {{ rol.name }} -- {{ rol.code }}
                                             </div>
+                                            }
                                             } @empty {
                                             <h6>Sin Roles asignados</h6>
                                             }
@@ -117,8 +132,10 @@
                                             <div class="col-4">
                                                 <select class="form-select w100">
                                                     <option value="" selected>Seleccionar</option>
-                                                    @for (rol of roles; track rol.id; let index = $index) {
+                                                    @for (rol of user.rolesDisponibeles; track rol.id; let index = $index) {
+                                                    @if (rol.showAtributeOption) {
                                                     <option value="{{rol.id}}">{{ rol.name }}</option>
+                                                    }
                                                     }
                                                 </select>
                                             </div>

@@ -190,11 +190,17 @@ export interface Permiso {
   descrip: string;
   code: string;
   estado: boolean;
+
+  showAtribute: boolean;
+  showAtributeOption: boolean;
 }
 export class Permiso {
   constructor() {
     this.name='';
     this.descrip='';
     this.code='';
+
+    this.showAtribute = true;
+    this.showAtributeOption = true;
   }
 }

@@ -26,7 +26,7 @@ import { UserRolService } from '../../../services/user-rol/user-rol.service';
 export class UsuariosComponent {
 
   usuarios: Usuario[] = [];
-  roles: Role[] = [];
+  //roles: Role[] = [];
   userModal: Usuario = new Usuario();
   userDeleteModal: Usuario = new Usuario();
   req: UsuariosRequest = new UsuariosRequest();
@@ -82,8 +82,9 @@ export class UsuariosComponent {
         if (data.code === '0'
           && data.data != null) {
           this.closeModal();
-          this.roles = [];
-          this.roles.push(...data.data);
+          //this.roles = [];
+          //this.roles.push(...data.data);
+          this.setOptionValidate(data.data);
         } else {
           this.modals.info('Algo paso con la obtención de los Roles');
         }
@@ -94,6 +95,21 @@ export class UsuariosComponent {
         this.modals.error('Error con el servicio de Roles');
         this.cargar = false;
       });
+  }
+
+  private setOptionValidate(data: Role[]): void {
+    for (let index = 0; index < this.usuarios.length; index++) {
+      const rolesList: Role[] = JSON.parse(JSON.stringify(data));
+      this.usuarios[index].rolesDisponibeles = [];
+      this.usuarios[index].rolesDisponibeles.push(...rolesList);
+    }
+    for (let index = 0; index < this.usuarios.length; index++) {
+      for (let index2 = 0; index2 < this.usuarios[index].rolesDisponibeles.length; index2++) {
+        this.usuarios[index].rolesDisponibeles[index2].showAtribute = true;
+        this.usuarios[index].rolesDisponibeles[index2].showAtributeOption = false;
+      }
+    }
+    // TODO: Pendinete re-asignar las asignaciones de toles disponibles.
   }
 
   public agregaModal(content: any): void {
@@ -280,6 +296,7 @@ export interface Usuario {
   ctaEmail: string;
   estado: boolean;
   roles: Role[];
+  rolesDisponibeles: Role[];
   addUser: boolean;
   addRol: boolean;
 }
@@ -289,5 +306,6 @@ export class Usuario {
     this.ctaEmail = '';
     this.ctaEmail = '';
     this.addRol = false;
+    this.rolesDisponibeles = [];
   }
 }

@@ -24,7 +24,7 @@ import { RolPermisoService } from '../../../services/rol-permiso/rol-permiso.ser
 export class RolesComponent implements OnInit {
 
   roles: Role[] = [];
-  permisos: Permiso[] = [];
+  //permisos: Permiso[] = [];
   rolModal: Role = new Role();
   rolDeleteModal: Role = new Role();
   req: RolesRequest = new RolesRequest();
@@ -77,8 +77,9 @@ export class RolesComponent implements OnInit {
       (data: any) => {
         if (data.code === '0' && data.data != null) {
           this.closeModal();
-          this.permisos = [];
-          this.permisos.push(...data.data);
+          //this.permisos = [];
+          //this.permisos.push(...data.data);
+          this.setOptionValidate(data.data);
         } else {
           this.modals.success('Algo paso con la obtención de los Permisos');
         }
@@ -89,6 +90,22 @@ export class RolesComponent implements OnInit {
         this.cargar = false;
       }
     );
+  }
+
+  private setOptionValidate(data: Permiso[]): void {
+
+    for (let index = 0; index < this.roles.length; index++) {
+      const permisosList: Permiso[] = JSON.parse(JSON.stringify(data));
+      this.roles[index].permisosDisponibeles = [];
+      this.roles[index].permisosDisponibeles.push(...permisosList);
+    }
+    for (let index = 0; index < this.roles.length; index++) {
+      for (let index2 = 0; index2 < this.roles[index].permisosDisponibeles.length; index2++) {
+        this.roles[index].permisosDisponibeles[index2].showAtribute = true;
+        this.roles[index].permisosDisponibeles[index2].showAtributeOption = false;
+      }
+    }
+    // TODO: Pendinete re-asignar las asignaciones de toles disponibles.
   }
 
   public agregaModal(content: any): void {
@@ -253,9 +270,12 @@ export interface Role {
   code: string;
   estado: boolean;
   permisos: Permiso[];
+  permisosDisponibeles: Permiso[];
   addRol: boolean;
   addPermisos: boolean;
 
+  showAtribute: boolean;
+  showAtributeOption: boolean;
 }
 export class Role {
   constructor() {
@@ -263,5 +283,8 @@ export class Role {
     this.descrip = '';
     this.code = '';
     this.addPermisos = false;
+
+    this.showAtribute = true;
+    this.showAtributeOption = true;
   }
 }
