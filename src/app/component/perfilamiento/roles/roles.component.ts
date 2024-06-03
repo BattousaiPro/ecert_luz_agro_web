@@ -8,6 +8,7 @@ import { ModalOptions } from '../../../utils/modalOptions';
 import { Permiso } from '../permisos/permisos.component';
 import { PermisosService } from '../../../services/permisos/permisos.service';
 import { RolesRequest } from './model/RolesRequest';
+import { RolPermisoService } from '../../../services/rol-permiso/rol-permiso.service';
 
 @Component({
   selector: 'app-roles',
@@ -36,7 +37,8 @@ export class RolesComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private rolesService: RolesService,
-    private permisosService: PermisosService
+    private permisosService: PermisosService,
+    private rolPermisoService: RolPermisoService,
   ) { }
 
   ngOnInit(): void {

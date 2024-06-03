@@ -8,6 +8,7 @@ import { ModalOptions } from '../../../utils/modalOptions';
 import { UsuariosRequest } from './model/UsuariosRequest';
 import { Role } from '../roles/roles.component';
 import { RolesService } from '../../../services/roles/roles.service';
+import { UserRolService } from '../../../services/user-rol/user-rol.service';
 
 
 @Component({
@@ -41,6 +42,7 @@ export class UsuariosComponent {
     private modalService: NgbModal,
     private userService: UserService,
     private rolesService: RolesService,
+    private userRolService: UserRolService,
   ) { }
 
   ngOnInit(): void {
