@@ -69,16 +69,16 @@ export class ComunasComponent {
     this.openModalFunction(content);
   }
 
-  public editarModal(content: any, comunaSelected: Comunas): void {
+  public editarModal(content: any, selectedItem: Comunas): void {
     console.log('Method editarModal');
-    this.comunasModal = comunaSelected;
+    this.comunasModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
     this.openModalFunction(content);
   }
 
-  public deleteModal(content: any, comunaSelected: Comunas): void {
+  public deleteModal(content: any, selectedItem: Comunas): void {
     console.log('Method deleteModal');
-    this.comunasModal = comunaSelected;
+    this.comunasModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
   }
 

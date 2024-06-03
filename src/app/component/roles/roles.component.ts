@@ -97,16 +97,16 @@ export class RolesComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public editarModal(content: any, rolesSelected: Role): void {
+  public editarModal(content: any, selectedItem: Role): void {
     console.log('Method editarModal.');
-    this.rolModal = rolesSelected;
+    this.rolModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
     this.openModalFunction(content);
   }
 
-  public deleteModal(content: any, roleSelected: Role): void {
+  public deleteModal(content: any, selectedItem: Role): void {
     console.log('Method deleteesModal');
-    this.rolDeleteModal = roleSelected;
+    this.rolDeleteModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
   }
 

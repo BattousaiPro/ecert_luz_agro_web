@@ -70,16 +70,16 @@ export class PermisosComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public editarModal(content: any, permisosSelected: Permiso): void {
+  public editarModal(content: any, selectedItem: Permiso): void {
     console.log('Method editarUserModal');
-    this.permisosModal = permisosSelected;
+    this.permisosModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
     this.openModalFunction(content);
   }
 
-  public deleteModal(content: any, permisosSelected: Permiso): void {
+  public deleteModal(content: any, selectedItem: Permiso): void {
     console.log('Method deleteUserModal');
-    this.permisosModal = permisosSelected;
+    this.permisosModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
   }
 

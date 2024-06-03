@@ -199,16 +199,16 @@ export class KapmaeComponent {
     this.noDisponible();
   }
 
-  public deleteModal(content: any, userSelected: DataSocio): void {
+  public deleteModal(content: any, selectedItem: DataSocio): void {
     console.log('Method deleteModal');
-    this.socioDeleteModal = userSelected;
+    this.socioDeleteModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
   }
 
-  public editarModal(userSelected: DataSocio): void {
+  public editarModal(selectedItem: DataSocio): void {
     console.log('Method editarModal');
     /*
-    this.socioModal = userSelected;
+    this.socioModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
     this.principalContainer = false;
     */

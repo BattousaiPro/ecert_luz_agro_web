@@ -101,16 +101,16 @@ export class UsuariosComponent {
     this.openModalFunction(content);
   }
 
-  public editarModal(content: any, userSelected: Usuario): void {
+  public editarModal(content: any, selectedItem: Usuario): void {
     console.log('Method editarModal');
-    this.userModal = userSelected;
+    this.userModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
     this.openModalFunction(content);
   }
 
-  public deleteModal(content: any, userSelected: Usuario): void {
+  public deleteModal(content: any, selectedItem: Usuario): void {
     console.log('Method deleteModal');
-    this.userDeleteModal = userSelected;
+    this.userDeleteModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
   }
 

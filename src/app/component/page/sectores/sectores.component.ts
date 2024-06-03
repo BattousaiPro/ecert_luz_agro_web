@@ -69,16 +69,16 @@ export class SectoresComponent {
     this.openModalFunction(content);
   }
 
-  public editarModal(content: any, sectorSelected: Sector): void {
+  public editarModal(content: any, selectedItem: Sector): void {
     console.log('Method editarModal');
-    this.sectoresModal = sectorSelected;
+    this.sectoresModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
     this.openModalFunction(content);
   }
 
-  public deleteModal(content: any, sectorSelected: Sector): void {
+  public deleteModal(content: any, selectedItem: Sector): void {
     console.log('Method deleteModal');
-    this.sectoresModal = sectorSelected;
+    this.sectoresModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
   }
 
