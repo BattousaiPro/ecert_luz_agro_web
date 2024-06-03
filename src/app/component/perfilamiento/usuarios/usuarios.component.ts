@@ -25,8 +25,8 @@ import { UserRolService } from '../../../services/user-rol/user-rol.service';
 })
 export class UsuariosComponent {
 
-  roles: Role[] = [];
   usuarios: Usuario[] = [];
+  roles: Role[] = [];
   userModal: Usuario = new Usuario();
   userDeleteModal: Usuario = new Usuario();
   req: UsuariosRequest = new UsuariosRequest();
@@ -47,7 +47,6 @@ export class UsuariosComponent {
 
   ngOnInit(): void {
     this.loadCargar();
-    this.loadRoles();
   }
 
   public loadCargar(): void {
@@ -62,6 +61,7 @@ export class UsuariosComponent {
           this.usuarios = [];
           this.usuarios.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
+          this.loadRoles();
         } else {
           this.modals.info('Algo paso con la obtención de los Usuarios');
         }

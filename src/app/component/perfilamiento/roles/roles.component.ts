@@ -43,7 +43,6 @@ export class RolesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCargar();
-    this.loadPermisos();
   }
 
   public loadCargar(): void {
@@ -58,6 +57,7 @@ export class RolesComponent implements OnInit {
           this.roles = [];
           this.roles.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
+          this.loadPermisos();
         } else {
           this.modals.success('Algo paso con la obtención de los Roles');
         }
