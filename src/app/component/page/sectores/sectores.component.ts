@@ -3,7 +3,7 @@ import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { SectoresRequest } from './model/SectoresRequest';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { SectorService } from '../../../services/sector/sector.service';
-import { SpinnerComponent } from '../../spinner/spinner.component';
+import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 

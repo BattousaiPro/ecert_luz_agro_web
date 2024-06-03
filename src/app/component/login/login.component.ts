@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user/user.service';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerComponent } from '../utilitarios/spinner/spinner.component';
 import { ModalOptions } from '../../utils/modalOptions';
 
 @Component({

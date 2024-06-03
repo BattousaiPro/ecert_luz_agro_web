@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SpinnerComponent } from '../../spinner/spinner.component';
+import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { TemplateFichaSocioComponent } from './template-ficha-socio/template-ficha-socio.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';

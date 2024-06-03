@@ -2,7 +2,7 @@ import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerComponent } from '../utilitarios/spinner/spinner.component';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalOptions } from '../../utils/modalOptions';
 import { UsuariosRequest } from './model/UsuariosRequest';

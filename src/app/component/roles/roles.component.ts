@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RolesService } from '../../services/roles/roles.service';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerComponent } from '../utilitarios/spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';

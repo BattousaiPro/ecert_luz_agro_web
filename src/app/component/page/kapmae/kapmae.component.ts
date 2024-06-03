@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DataSocio } from './model/DataSocio';
 import { DetailSocioComponent } from './detail-socio/detail-socio.component';
-import { SpinnerComponent } from '../../spinner/spinner.component';
+import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { NgbModal, NgbPaginationModule, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

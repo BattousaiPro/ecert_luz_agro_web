@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { PermisosService } from '../../services/permisos/permisos.service';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerComponent } from '../utilitarios/spinner/spinner.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalOptions } from '../../utils/modalOptions';

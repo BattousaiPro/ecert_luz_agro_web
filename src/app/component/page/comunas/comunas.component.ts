@@ -5,7 +5,7 @@ import { ComunasService } from '../../../services/comunas/comunas.service';
 import { ComunasRequest } from './model/ComunasRequest';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SpinnerComponent } from '../../spinner/spinner.component';
+import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 
 @Component({
   selector: 'app-comunas',
