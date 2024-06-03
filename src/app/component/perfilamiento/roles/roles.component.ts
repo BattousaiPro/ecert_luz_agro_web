@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { RolesService } from '../../services/roles/roles.service';
-import { SpinnerComponent } from '../utilitarios/spinner/spinner.component';
+import { RolesService } from '../../../services/roles/roles.service';
+import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-import { ModalOptions } from '../../utils/modalOptions';
+import { ModalOptions } from '../../../utils/modalOptions';
 import { Permiso } from '../permisos/permisos.component';
-import { PermisosService } from '../../services/permisos/permisos.service';
+import { PermisosService } from '../../../services/permisos/permisos.service';
 import { RolesRequest } from './model/RolesRequest';
 
 @Component({

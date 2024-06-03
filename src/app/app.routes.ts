@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { KapmaeComponent } from './component/page/kapmae/kapmae.component';
-import { UsuariosComponent } from './component/usuarios/usuarios.component';
-import { RolesComponent } from './component/roles/roles.component';
 import { FichasSociosComponent } from './component/page/fichas-socios/fichas-socios.component';
 import { HomeComponent } from './component/home/home.component';
-import { PermisosComponent } from './component/permisos/permisos.component';
 import { SectoresComponent } from './component/page/sectores/sectores.component';
 import { ComunasComponent } from './component/page/comunas/comunas.component';
+import { UsuariosComponent } from './component/perfilamiento/usuarios/usuarios.component';
+import { RolesComponent } from './component/perfilamiento/roles/roles.component';
+import { PermisosComponent } from './component/perfilamiento/permisos/permisos.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },

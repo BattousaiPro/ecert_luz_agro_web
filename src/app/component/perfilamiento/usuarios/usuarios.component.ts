@@ -1,13 +1,14 @@
 import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UserService } from '../../services/user/user.service';
-import { SpinnerComponent } from '../utilitarios/spinner/spinner.component';
+import { UserService } from '../../../services/user/user.service';
+import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-import { ModalOptions } from '../../utils/modalOptions';
+import { ModalOptions } from '../../../utils/modalOptions';
 import { UsuariosRequest } from './model/UsuariosRequest';
 import { Role } from '../roles/roles.component';
-import { RolesService } from '../../services/roles/roles.service';
+import { RolesService } from '../../../services/roles/roles.service';
+
 
 @Component({
   selector: 'app-usuarios',

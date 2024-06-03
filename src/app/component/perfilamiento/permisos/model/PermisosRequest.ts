@@ -1,4 +1,4 @@
-import { PaginRequest } from "../../../utils/PaginRequest";
+import { PaginRequest } from "../../../../utils/PaginRequest";
 
 export interface PermisosRequest extends PaginRequest {
   name: string;// Nombres

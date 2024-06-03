@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PermisosRequest } from '../../component/permisos/model/PermisosRequest';
+import { PermisosRequest } from '../../component/perfilamiento/permisos/model/PermisosRequest';
 
 @Injectable({
   providedIn: 'root'
