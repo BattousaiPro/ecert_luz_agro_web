@@ -191,7 +191,6 @@ export interface Permiso {
   code: string;
   estado: boolean;
 
-  showAtribute: boolean;
   showAtributeOption: boolean;
 }
 export class Permiso {
@@ -200,7 +199,6 @@ export class Permiso {
     this.descrip='';
     this.code='';
 
-    this.showAtribute = true;
     this.showAtributeOption = true;
   }
 }

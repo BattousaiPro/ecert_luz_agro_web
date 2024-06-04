@@ -101,7 +101,6 @@ export class RolesComponent implements OnInit {
     }
     for (let index = 0; index < this.roles.length; index++) {
       for (let index2 = 0; index2 < this.roles[index].permisosDisponibeles.length; index2++) {
-        this.roles[index].permisosDisponibeles[index2].showAtribute = true;
         this.roles[index].permisosDisponibeles[index2].showAtributeOption = false;
       }
     }
@@ -274,7 +273,6 @@ export interface Role {
   addRol: boolean;
   addPermisos: boolean;
 
-  showAtribute: boolean;
   showAtributeOption: boolean;
 }
 export class Role {
@@ -284,7 +282,6 @@ export class Role {
     this.code = '';
     this.addPermisos = false;
 
-    this.showAtribute = true;
     this.showAtributeOption = true;
   }
 }

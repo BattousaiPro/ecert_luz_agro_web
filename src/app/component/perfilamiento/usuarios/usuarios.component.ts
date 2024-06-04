@@ -105,7 +105,6 @@ export class UsuariosComponent {
     }
     for (let index = 0; index < this.usuarios.length; index++) {
       for (let index2 = 0; index2 < this.usuarios[index].rolesDisponibeles.length; index2++) {
-        this.usuarios[index].rolesDisponibeles[index2].showAtribute = true;
         this.usuarios[index].rolesDisponibeles[index2].showAtributeOption = false;
       }
     }

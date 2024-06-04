@@ -109,7 +109,7 @@
                                         <h5>Roles Asignados</h5>
                                         <div class="row">
                                             @for (rol of user.rolesDisponibeles; track rol.id; let index = $index) {
-                                            @if (!rol.showAtribute){
+                                            @if (!rol.showAtributeOption){
                                             <div class="col-1">
                                                 <button type="button" class="btn btn-primary"
                                                     (click)="deleteRoles(myModalContentDelete, rol)">
