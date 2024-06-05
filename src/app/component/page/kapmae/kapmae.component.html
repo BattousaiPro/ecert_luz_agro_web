@@ -380,9 +380,9 @@
                                             id="fec_inc" [value]="socioModal.fec_inc || '' | date: 'd-M-y'">-->
                                         <div class="input-group">
                                             <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                [(ngModel)]="socioModal.fec_inc_date" ngbDatepicker #d="ngbDatepicker"/>
+                                                [(ngModel)]="socioModal.fec_inc_date" ngbDatepicker #d_fec_inc_date="ngbDatepicker"/>
                                             <button class="btn btn-outline-secondary bi bi-calendar3"
-                                                (click)="d.toggle()" type="button"></button>
+                                                (click)="d_fec_inc_date.toggle()" type="button"></button>
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -404,9 +404,9 @@
                                             id="fec_tra" [value]="socioModal.fec_tra || '' | date: 'd-M-y'">-->
                                             <div class="input-group">
                                                 <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                    [(ngModel)]="socioModal.fec_tra_date" ngbDatepicker #d="ngbDatepicker"/>
+                                                    [(ngModel)]="socioModal.fec_tra_date" ngbDatepicker #d_fec_tra_date="ngbDatepicker"/>
                                                 <button class="btn btn-outline-secondary bi bi-calendar3"
-                                                    (click)="d.toggle()" type="button"></button>
+                                                    (click)="d_fec_tra_date.toggle()" type="button"></button>
                                             </div>
                                     </div>
                                     <div class="col-3">
@@ -434,9 +434,9 @@
                                             id="fec_act" [value]="socioModal.fec_act || '' | date: 'd-M-y'">-->
                                             <div class="input-group">
                                                 <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                    [(ngModel)]="socioModal.fec_act_date" ngbDatepicker #d="ngbDatepicker"/>
+                                                    [(ngModel)]="socioModal.fec_act_date" ngbDatepicker #d_fec_act_date="ngbDatepicker"/>
                                                 <button class="btn btn-outline-secondary bi bi-calendar3"
-                                                    (click)="d.toggle()" type="button"></button>
+                                                    (click)="d_fec_act_date.toggle()" type="button"></button>
                                             </div>
                                     </div>
                                     <div class="col-3">
@@ -517,9 +517,9 @@
                                             id="fec_sol" [value]="socioModal.fec_sol || '' | date: 'd-M-y'">-->
                                             <div class="input-group">
                                                 <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                    [(ngModel)]="socioModal.fec_sol_date" ngbDatepicker #d="ngbDatepicker"/>
+                                                    [(ngModel)]="socioModal.fec_sol_date" ngbDatepicker #d_fec_sol_date="ngbDatepicker"/>
                                                 <button class="btn btn-outline-secondary bi bi-calendar3"
-                                                    (click)="d.toggle()" type="button"></button>
+                                                    (click)="d_fec_sol_date.toggle()" type="button"></button>
                                             </div>
                                     </div>
                                     <div class="col-3">
@@ -528,9 +528,9 @@
                                             id="fec_apr" [value]="socioModal.fec_apr || '' | date: 'd-M-y'">-->
                                         <div class="input-group">
                                             <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                [(ngModel)]="socioModal.fec_apr_date" ngbDatepicker #d="ngbDatepicker"/>
+                                                [(ngModel)]="socioModal.fec_apr_date" ngbDatepicker #d_fec_apr_date="ngbDatepicker"/>
                                             <button class="btn btn-outline-secondary bi bi-calendar3"
-                                                (click)="d.toggle()" type="button"></button>
+                                                (click)="d_fec_apr_date.toggle()" type="button"></button>
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -539,9 +539,9 @@
                                             id="fec_can" [value]="socioModal.fec_can || '' | date: 'd-M-y'">-->
                                             <div class="input-group">
                                                 <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                    [(ngModel)]="socioModal.fec_can_date" ngbDatepicker #d="ngbDatepicker"/>
+                                                    [(ngModel)]="socioModal.fec_can_date" ngbDatepicker #d_fec_can_date="ngbDatepicker"/>
                                                 <button class="btn btn-outline-secondary bi bi-calendar3"
-                                                    (click)="d.toggle()" type="button"></button>
+                                                    (click)="d_fec_can_date.toggle()" type="button"></button>
                                             </div>
                                     </div>
                                     <div class="col-3">

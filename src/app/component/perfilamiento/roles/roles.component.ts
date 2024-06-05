@@ -81,7 +81,7 @@ export class RolesComponent implements OnInit {
           //this.permisos.push(...data.data);
           this.setOptionValidate(data.data);
         } else {
-          this.modals.success('Algo paso con la obtención de los Permisos');
+          this.modals.error('Algo paso con la obtención de los Permisos');
         }
         this.cargar = false;
       },
