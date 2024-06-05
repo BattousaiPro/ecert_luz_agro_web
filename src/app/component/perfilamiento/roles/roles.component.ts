@@ -101,10 +101,19 @@ export class RolesComponent implements OnInit {
     }
     for (let index = 0; index < this.roles.length; index++) {
       for (let index2 = 0; index2 < this.roles[index].permisosDisponibeles.length; index2++) {
-        this.roles[index].permisosDisponibeles[index2].showAtributeOption = false;
+        this.roles[index].permisosDisponibeles[index2].showAtributeOption = true;
       }
     }
-    // TODO: Pendinete re-asignar las asignaciones de toles disponibles.
+    for (let indexRol = 0; indexRol < this.roles.length; indexRol++) {
+      for (let indexPerDisp = 0; indexPerDisp < this.roles[indexRol].permisosDisponibeles.length; indexPerDisp++) {
+        for (let index = 0; index < this.roles[indexRol].permisos.length; index++) {
+          if (this.roles[indexRol].permisos[index].id === this.roles[indexRol].permisosDisponibeles[indexPerDisp].id) {
+            this.roles[indexRol].permisosDisponibeles[indexPerDisp].showAtributeOption = false;
+            break;
+          }
+        }
+      }
+    }
   }
 
   public agregaModal(content: any): void {

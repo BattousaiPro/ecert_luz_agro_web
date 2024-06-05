@@ -105,10 +105,19 @@ export class UsuariosComponent {
     }
     for (let index = 0; index < this.usuarios.length; index++) {
       for (let index2 = 0; index2 < this.usuarios[index].rolesDisponibeles.length; index2++) {
-        this.usuarios[index].rolesDisponibeles[index2].showAtributeOption = false;
+        this.usuarios[index].rolesDisponibeles[index2].showAtributeOption = true;
       }
     }
-    // TODO: Pendinete re-asignar las asignaciones de toles disponibles.
+    for (let indexUser = 0; indexUser < this.usuarios.length; indexUser++) {
+      for (let indexRolDisp = 0; indexRolDisp < this.usuarios[indexUser].rolesDisponibeles.length; indexRolDisp++) {
+        for (let index = 0; index < this.usuarios[indexUser].roles.length; index++) {
+          if (this.usuarios[indexUser].roles[index].id === this.usuarios[indexUser].rolesDisponibeles[indexRolDisp].id) {
+            this.usuarios[indexUser].rolesDisponibeles[indexRolDisp].showAtributeOption = false;
+            break;
+          }
+        }
+      }
+    }
   }
 
   public agregaModal(content: any): void {
