@@ -584,246 +584,31 @@
                             </div>
 
                         </div>
-                        <!--
 
-                        <div class="row mb15">
-                            <div class="col-xs-12 col-xl-12">
-                                <div class="row">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb15">
-                            <div class="col-xs-12 col-xl-12">
-                                <div class="row">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb15">
-                            <div class="col-xs-12 col-xl-12">
-                                <div class="row">
+                        <div class="row mt15">
+                            <div class="col-12 text-right">
+                                <div class="row justify-content-end">
+                                    <div class="col-12 ">
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                                            <button type="button" class="btn btn-primary w100" (click)="guardar()">
+                                                @if (isEdit) {
+                                                Editar
+                                                } @else {
+                                                Agregar
+                                                }
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row mb15">
-                            <div class="col-xs-12 col-xl-12">
-                                <div class="row">
 
-                                    <div class="col-4">
-                                        <label class="col-form-label col-form-label-sm" for="rut_cop">Rut Socio</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="rut_cop"
-                                            [value]="socioModal.rut_cop">
-                                    </div>
-                                    <div class="col-4">
-                                        <label class="col-form-label col-form-label-sm" for="cod_cop">Código Luzagro</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="cod_cop"
-                                            [value]="socioModal.cod_cop">
-                                    </div>
-                                    <div class="col-4">
-                                        <label class="col-form-label col-form-label-sm" for="cod_lli">Código Luzlinares</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="cod_lli"
-                                            [value]="socioModal.cod_lli">
-                                    </div>
-                                
-                                </div>
-                            </div>
-                    
-                        </div>
-                    
-                        <div class="row mb15">
-                            <div class="col-xs-12 col-xl-6">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <label class="col-form-label col-form-label-sm" for="cod_ant">Código Anterior</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="cod_ant"
-                                            [value]="socioModal.cod_ant">
-                                    </div>
-                                    <div class="col-4">
-                                        <label class="col-form-label col-form-label-sm" for="cod_nvo">Código Nuevo</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="cod_nvo"
-                                            [value]="socioModal.cod_nvo">
-                                    </div>
-                                    <div class="col-4">
-                                        <label class="col-form-label col-form-label-sm" for="cod_ori">Código Original</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="cod_ori"
-                                            [value]="socioModal.cod_ori">
-                                    </div>
-                                </div>
-                            </div>
-                    
-                            <div class="col-xs-12 col-xl-6">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label class="col-form-label col-form-label-sm" for="nombres">Nombre</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="nombres"
-                                            [value]="socioModal.nombres + ' ' + socioModal. ape_pat + ' ' +socioModal.ape_mat">
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    
-                        <div class="row mb15">
-                    
-                            <div class="col-xs-12 col-xl-6">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label class="col-form-label col-form-label-sm" for="sec_cop">Sector</label>
-                                        <select class="form-select w100">
-                                            <option value="" selected>Seleccionar</option>
-                                            @if (isEdit) {
-                                            @for (sector of sectores; track sector.codigo; let index = $index) {
-                                            @if (sector.codigo == socioModal!.sec_cop!.codigo) {
-                                            <option value="{{sector.codigo}}" selected>{{ sector.descrip }}</option>
-                                            } @else {
-                                            <option value="{{sector.codigo}}">{{ sector.descrip }}</option>
-                                            }
-                                            }
-                                            } @else {
-                                            @for (sector of sectores; track sector.codigo; let index = $index) {
-                                            <option value="{{sector.codigo}}">{{ sector.descrip }}</option>
-                                            }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="col-form-label col-form-label-sm" for="com_pos">Comunsas</label>
-                                        <select class="form-select w100">
-                                            <option value="" selected>Seleccionar</option>
-                                            @if (isEdit) {
-                                            @for (comuna of comunas; track comuna.codigo; let index = $index) {
-                                            @if (comuna.codigo == socioModal!.com_pos!.codigo) {
-                                            <option value="{{comuna.codigo}}" selected>{{ comuna.descrip }}</option>
-                                            } @else {
-                                            <option value="{{comuna.codigo}}">{{ comuna.descrip }}</option>
-                                            }
-                                            }
-                                            } @else {
-                                            @for (comuna of comunas; track comuna.codigo; let index = $index) {
-                                            <option value="{{comuna.codigo}}">{{ comuna.descrip }}</option>
-                                            }
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                    
-                            <div class="col-xs-12 col-xl-6">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="ano_inc">Año Inscripción</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="ano_inc"
-                                            [value]="socioModal.ano_inc">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="mto_inc">Monto Inscripción</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="mto_inc"
-                                            [value]="socioModal.mto_inc">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="fec_inc">Fecha Inscripción</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="fec_inc"
-                                            [value]="socioModal.fec_inc | date: 'd-M-y'">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="ano_tra">Año Traspaso</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="ano_tra"
-                                            [value]="socioModal.ano_tra">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-xl-6">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <label class="col-form-label col-form-label-sm" for="kap_tra">Capital Traspaso</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="kap_tra"
-                                            [value]="socioModal.kap_tra">
-                                    </div>
-                                    <div class="col-4">
-                                        <label class="col-form-label col-form-label-sm" for="fec_tra">Fecha Traspaso</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="fec_tra"
-                                            [value]="socioModal.fec_tra | date: 'd-M-y'">
-                                    </div>
-                                    <div class="col-4">
-                                        <label class="col-form-label col-form-label-sm" for="acc_tra">Acciones Traspaso</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="acc_tra"
-                                            [value]="socioModal.acc_tra">
-                                    </div>
-                                </div>
-                            </div>
-                    
-                            <div class="col-xs-12 col-xl-6">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="acc_apo">Acciones Aporte</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="acc_apo"
-                                            [value]="socioModal.acc_apo">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="acc_ret">Acciones Retiro</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="acc_ret"
-                                            [value]="socioModal.acc_ret">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="inputSmall">Total Acciones</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="inputSmall"
-                                            [value]="'Pndiente consultar'">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="fec_act">Actualización</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="fec_act"
-                                            [value]="socioModal.fec_act | date: 'd-M-y'">
-                                    </div>
-                                </div>
-                            </div>
-                    
-                        </div>
-                    
-                        <div class="row mb15">
-                            <div class="col-xs-12 col-xl-6">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label class="col-form-label col-form-label-sm" for="obs_cap">Observación</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder="" id="obs_cap"
-                                            [value]="socioModal.obs_cap">    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    -->
                     </div>
-
-
-
-                    <!--
-                    <label for="info" class="col-form-label col-form-label-sm">
-                        <span style="font-size: 20px;">
-                            Pendiente incorporar la información de los socios
-                        </span>
-                    </label>
-                    <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUsr"
-                        [(ngModel)]="userModal.ctaUsr">
-                    -->
                 </div>
 
             </div>
-            <div class="row mt15">
-                <div class="col-12 text-right">
-                    <div class="row justify-content-end">
-                        <div class="col-12 ">
-                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                <button type="button" class="btn btn-primary w100" (click)="guardar()">
-                                    @if (isEdit) {
-                                    Editar
-                                    } @else {
-                                    Guardar
-                                    }
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>
