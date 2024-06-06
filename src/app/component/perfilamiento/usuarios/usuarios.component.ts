@@ -61,6 +61,9 @@ export class UsuariosComponent {
           this.usuarios = [];
           this.usuarios.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
+          for (let index = 0; index < this.usuarios.length; index++) {
+            this.usuarios[index].idSelectedRol = '';
+          }
           this.loadRoles();
         } else {
           this.modals.info('Algo paso con la obtención de los Usuarios');
@@ -295,6 +298,34 @@ export class UsuariosComponent {
     this.modals.info('Funcionalidad No disponible');
   }
 
+  public onChange(event: string, userId: number): void {
+    debugger
+    for (let index = 0; index < this.usuarios.length; index++) {
+      if (userId === this.usuarios[index].id) {
+        this.usuarios[index].idSelectedRol = event;
+        break;
+      }
+    }
+    debugger
+    for (let index = 0; index < this.usuarios.length; index++) {
+      for (let index2 = 0; index2 < this.usuarios[index].rolesDisponibeles.length; index2++) {
+        if (userId === this.usuarios[index].id) {
+          if (this.usuarios[index].rolesDisponibeles[index2].id === +this.usuarios[index].idSelectedRol) {
+            this.usuarios[index].rolesDisponibeles[index2].showAtributeOption = !this.usuarios[index].rolesDisponibeles[index2].showAtributeOption;
+          }
+        }
+      }
+    }
+    setTimeout(() => {
+      for (let index = 0; index < this.usuarios.length; index++) {
+        if (userId === this.usuarios[index].id) {
+          this.usuarios[index].idSelectedRol = '';
+          break;
+        }
+      }
+    }, 10);
+  }
+
 }
 
 export interface Usuario {
@@ -307,6 +338,8 @@ export interface Usuario {
   rolesDisponibeles: Role[];
   addUser: boolean;
   addRol: boolean;
+
+  idSelectedRol: string;
 }
 export class Usuario {
   constructor() {
@@ -315,5 +348,6 @@ export class Usuario {
     this.ctaEmail = '';
     this.addRol = false;
     this.rolesDisponibeles = [];
+    this.idSelectedRol = '';
   }
 }

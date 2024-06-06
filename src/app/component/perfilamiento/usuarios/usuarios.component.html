@@ -117,7 +117,8 @@
                                         <h5>Roles Exsitentes</h5>
                                         <div class="row">
                                             <div class="col-4">
-                                                <select class="form-select w100">
+                                                <select class="form-select w100"
+                                                (ngModelChange)="onChange($event, user.id)" [(ngModel)]="user.idSelectedRol">
                                                     <option value="" selected>Seleccionar</option>
                                                     @for (rol of user.rolesDisponibeles; track rol.id; let index = $index) {
                                                     @if (rol.showAtributeOption) {
@@ -126,6 +127,14 @@
                                                     }
                                                 </select>
                                             </div>
+                                            <div class="col-1">
+                                                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2" style="width: 100%;height: 100%;">
+                                                    <button type="button" class="btn btn-primary w100" style="height: 100%;"
+                                                        (click)="agregarRoles(index)">
+                                                        <i aria-hidden="true" class="bi bi-plus-circle"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -133,11 +142,9 @@
                                         <div class="row justify-content-end containerButton">
                                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
                                                 <button type="button" class="btn btn-primary w100"
-                                                    (click)="agregarRoles(index)">Agregar</button>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-                                                <button type="button" class="btn btn-primary w100"
-                                                    (click)="guardarRoles()">Guardar</button>
+                                                    (click)="guardarRoles()">
+                                                    <i class="bi bi-floppy"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
