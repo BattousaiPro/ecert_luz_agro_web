@@ -283,30 +283,14 @@ export class UsuariosComponent {
     this.modalService.dismissAll();
   }
 
-  public deleteRoles(content: any, roleSelected: Role): void {
+  public deleteRoles(userId: number, roleId: number): void {
     console.log('Method deleteRoles');
-    this.modals.info('Funcionalidad No disponible');
-  }
-
-  public agregarRoles(index: number): void {
-    console.log('Method agregarRoles');
-    this.modals.info('Funcionalidad No disponible');
-  }
-
-  public guardarRoles(): void {
-    console.log('Method guardarRoles');
-    this.modals.info('Funcionalidad No disponible');
-  }
-
-  public onChange(event: string, userId: number): void {
-    debugger
     for (let index = 0; index < this.usuarios.length; index++) {
       if (userId === this.usuarios[index].id) {
-        this.usuarios[index].idSelectedRol = event;
+        this.usuarios[index].idSelectedRol = '' + roleId;
         break;
       }
     }
-    debugger
     for (let index = 0; index < this.usuarios.length; index++) {
       for (let index2 = 0; index2 < this.usuarios[index].rolesDisponibeles.length; index2++) {
         if (userId === this.usuarios[index].id) {
@@ -326,6 +310,36 @@ export class UsuariosComponent {
     }, 10);
   }
 
+  public guardarRoles(): void {
+    console.log('Method guardarRoles');
+    this.modals.info('Funcionalidad No disponible');
+  }
+
+  public onChange(event: string, userId: number): void {
+    for (let index = 0; index < this.usuarios.length; index++) {
+      if (userId === this.usuarios[index].id) {
+        this.usuarios[index].idSelectedRol = event;
+        break;
+      }
+    }
+    for (let index = 0; index < this.usuarios.length; index++) {
+      for (let index2 = 0; index2 < this.usuarios[index].rolesDisponibeles.length; index2++) {
+        if (userId === this.usuarios[index].id) {
+          if (this.usuarios[index].rolesDisponibeles[index2].id === +this.usuarios[index].idSelectedRol) {
+            this.usuarios[index].rolesDisponibeles[index2].showAtributeOption = !this.usuarios[index].rolesDisponibeles[index2].showAtributeOption;
+          }
+        }
+      }
+    }
+    setTimeout(() => {
+      for (let index = 0; index < this.usuarios.length; index++) {
+        if (userId === this.usuarios[index].id) {
+          this.usuarios[index].idSelectedRol = '';
+          break;
+        }
+      }
+    }, 10);
+  }
 }
 
 export interface Usuario {
