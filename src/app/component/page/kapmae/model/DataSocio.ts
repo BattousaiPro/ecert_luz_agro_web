@@ -2,12 +2,11 @@ import { Comunas } from "../../comunas/comunas.component";
 import { Sector } from "../../sectores/sectores.component";
 
 export interface DataSocio {
-  id?: number;
-  rut_cop?: string;
+  rut_cop: string;
   ape_pat?: string;
   ape_mat?: string;
   nombres?: string;
-  cod_cop?: number;
+  cod_cop: number;
   cod_lli?: number;
   cod_ant?: number;
   cod_nvo?: number;

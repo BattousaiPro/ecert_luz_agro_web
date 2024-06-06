@@ -93,7 +93,7 @@ export class SectoresComponent {
       && descrip !== null && typeof descrip !== 'undefined' && descrip !== ''
     ) {
       if (!this.isEdit) {
-        this.createNew();
+        this.new();
       } else {
         this.edit();
       }
@@ -102,8 +102,8 @@ export class SectoresComponent {
     }
   }
 
-  private createNew(): void {
-    console.log('Cargando createNew');
+  private new(): void {
+    console.log('Cargando new');
     this.cargar = true;
     this.sectorService.new(
       this.sectoresModal.codigo,
@@ -154,7 +154,7 @@ export class SectoresComponent {
   }
 
   public delete(): void {
-    console.log('Cargando edit');
+    console.log('Cargando delete');
     this.cargar = true;
     this.sectorService.delete(this.sectoresModal.codigo).subscribe(
       (data: any) => {

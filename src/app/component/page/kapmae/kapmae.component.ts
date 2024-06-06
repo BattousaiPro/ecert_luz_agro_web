@@ -49,8 +49,6 @@ export class KapmaeComponent {
     private comunasService: ComunasService,
   ) {
     this.loadCargar();
-    this.loadCargarSector();
-    this.loadCargarComunas();
   }
 
   public loadCargar(): void {
@@ -66,11 +64,14 @@ export class KapmaeComponent {
           this.socios.push(...data.data.results);
           //this.socios.push(...listaSocios);
           this.collectionSize = data.data.totalReg;
-          this.setDefaultSociosData(this.socios);
+          for (let index = 0; index < this.socios.length; index++) {
+            this.socios[index].selected = false;
+          }
+          this.loadCargarSector();
         } else {
+          this.cargar = false;
           this.modals.error('Error con el servicio de Socios');
         }
-        this.cargar = false;
       },
       (err: any) => {
         this.modals.error('Error con el servicio de Socios');
@@ -88,10 +89,11 @@ export class KapmaeComponent {
           this.closeModal();
           this.sectores = [];
           this.sectores.push(...data.data);
+          this.loadCargarComunas();
         } else {
+          this.cargar = false;
           this.modals.success('Error con la respuesta de servicios de Roles');
         }
-        this.cargar = false;
       },
       (err: any) => {
         this.modals.error('Error con el servicio de Roles');
@@ -122,18 +124,12 @@ export class KapmaeComponent {
     );
   }
 
-  private setDefaultSociosData(socios: DataSocio[]) {
-    for (let index = 0; index < socios.length; index++) {
-      socios[index].selected = false;
-    }
-  }
-
   statusChange(socio: DataSocio, id: string = '') {
     console.log('Method cambioEstado.');
     if (id === '') {
       socio.selected = !socio.selected;
       for (let index = 0; index < this.socios.length; index++) {
-        if (this.socios[index].id !== socio.id) {
+        if (!(this.socios[index].rut_cop === socio.rut_cop && this.socios[index].cod_cop === socio.cod_cop)) {
           this.socios[index].selected = false;
         }
       }
@@ -172,10 +168,6 @@ export class KapmaeComponent {
     }
   }
 
-  noDisponible() {
-    this.modals.info('Funcionalidad No disponible');
-  }
-
   openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
@@ -196,7 +188,23 @@ export class KapmaeComponent {
   /********************************************************/
 
   public delete(): void {
-    this.noDisponible();
+    console.log('Cargando delete');
+    this.cargar = true;
+    this.kapmaeService.delete(this.socioDeleteModal.rut_cop, this.socioDeleteModal.cod_cop).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.closeModal();
+          this.loadCargar();
+        } else {
+          this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        this.modals.error('Error con el servicio de eliminar Sectotes');
+        this.cargar = false;
+      });
   }
 
   public deleteModal(content: any, selectedItem: DataSocio): void {
