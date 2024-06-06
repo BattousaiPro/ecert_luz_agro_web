@@ -322,8 +322,21 @@ export class UsuariosComponent {
         }
       }
     }
-    console.log('rolIds: ' + JSON.stringify(rolIds));
-    this.modals.info('Funcionalidad No disponible');
+    // console.log('rolIds: ' + JSON.stringify(rolIds));
+    this.userRolService.setRolToUser(userId, rolIds).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.loadCargar();
+        } else {
+          this.modals.error('Error con la respuesta de servicios de asignar Roles');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        this.modals.error('Error con el servicio de asignar Roles');
+        this.cargar = false;
+      });
   }
 
   public onChange(event: string, userId: number): void {

@@ -9,11 +9,13 @@ export class RolPermisoService {
 
   constructor(private http: HttpClient) { }
 
-  public setPermisoToRol(idRol: number, listIdPermisos: number[]): Observable<any> {
+  public setPermisoToRol(idRol: number, listPermisosId: number[]): Observable<any> {
     let url = 'http://localhost:3000/rol-permiso/' + idRol;
     const ladata: Observable<any> = this.http.post(
       url,
-      listIdPermisos
+      {
+        listPermisosId: listPermisosId
+      }
     );
     return ladata;
   }
