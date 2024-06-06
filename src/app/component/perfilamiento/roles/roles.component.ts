@@ -62,7 +62,7 @@ export class RolesComponent implements OnInit {
           }
           this.loadPermisos();
         } else {
-          this.modals.success('Algo paso con la obtención de los Roles');
+          this.modals.info('Algo paso con la obtención de los Roles');
         }
         this.cargar = false;
       },
@@ -84,7 +84,7 @@ export class RolesComponent implements OnInit {
           //this.permisos.push(...data.data);
           this.setOptionValidate(data.data);
         } else {
-          this.modals.error('Algo paso con la obtención de los Permisos');
+          this.modals.info('Algo paso con la obtención de los Permisos');
         }
         this.cargar = false;
       },
@@ -96,7 +96,6 @@ export class RolesComponent implements OnInit {
   }
 
   private setOptionValidate(data: Permiso[]): void {
-
     for (let index = 0; index < this.roles.length; index++) {
       const permisosList: Permiso[] = JSON.parse(JSON.stringify(data));
       this.roles[index].permisosDisponibeles = [];
@@ -296,14 +295,18 @@ export class RolesComponent implements OnInit {
         }
       }
     }
+    // console.log('rolIds: ' + JSON.stringify(permisoIds));
+    this.cargar = true;
     this.rolPermisoService.setPermisoToRol(rolId, permisoIds).subscribe(
       (data: any) => {
         if (data.code === '0') {
-          this.loadCargar();
+          setTimeout(() => {
+            this.loadCargar();
+          }, 10);
         } else {
+          this.cargar = false;
           this.modals.error('Error con la respuesta de servicios de asignar Permisos');
         }
-        this.cargar = false;
       },
       (err: any) => {
         this.closeModal();

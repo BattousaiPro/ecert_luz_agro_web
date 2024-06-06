@@ -323,14 +323,17 @@ export class UsuariosComponent {
       }
     }
     // console.log('rolIds: ' + JSON.stringify(rolIds));
+    this.cargar = true;
     this.userRolService.setRolToUser(userId, rolIds).subscribe(
       (data: any) => {
         if (data.code === '0') {
-          this.loadCargar();
+          setTimeout(() => {
+            this.loadCargar();
+          }, 10);
         } else {
+          this.cargar = false;
           this.modals.error('Error con la respuesta de servicios de asignar Roles');
         }
-        this.cargar = false;
       },
       (err: any) => {
         this.closeModal();

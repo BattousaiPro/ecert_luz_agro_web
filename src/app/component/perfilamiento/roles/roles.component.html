@@ -93,35 +93,41 @@
                                 <div class="col-12">
                                     <h5>Permisos Asignados</h5>
                                     <div class="row">
-                                        @for (permiso of rol.permisosDisponibeles; track permiso.id; let index = $index) {
+                                        @for (permiso of rol.permisosDisponibeles; track permiso.id; let index = $index)
+                                        {
                                         @if(!permiso.showAtributeOption){
-                                        <div class="col-1">
-                                            <button type="button" class="btn btn-primary"
-                                                (click)="deletePermiso(rol.id, permiso.id)">
-                                                <i class="bi bi-trash3"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-11">
-                                            {{ permiso.id }} -- {{ permiso.name }} -- {{ permiso.code }}
+                                        <div class="col-4">
+                                            <div class="row mt15">
+                                                <div class="col-2">
+                                                    <button type="button" class="btn btn-primary"
+                                                        (click)="deletePermiso(rol.id, permiso.id)">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="col-10">
+                                                    [{{ permiso.id }}] - {{ permiso.name }} - {{ permiso.code }}
+                                                </div>
+                                            </div>
                                         </div>
                                         }
                                         } @empty {
-                                        <h6>Sin Permisos asignados</h6>
+                                        <h6 class="mt15">Sin Permisos asignados</h6>
                                         }
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <h5>Permisos Sección</h5>
-                                    <div class="row">
-
+                                    <div class="row mt15">
                                         <div class="col-4">
-                                            <select class="form-select w100"
-                                            (ngModelChange)="onChange($event, rol.id)" [(ngModel)]="rol.idSelectedPermiso">
+                                            <select class="form-select w100" (ngModelChange)="onChange($event, rol.id)"
+                                                [(ngModel)]="rol.idSelectedPermiso">
                                                 <option value="" selected>Seleccionar</option>
-                                                @for (permiso of rol.permisosDisponibeles; track permiso.id; let index = $index) {
+                                                @for (permiso of rol.permisosDisponibeles; track permiso.id; let index =
+                                                $index) {
                                                 @if (permiso.showAtributeOption) {
-                                                <option value="{{permiso.id}}">{{ permiso.name }}</option>
+                                                <option value="{{permiso.id}}">[{{ permiso.id }}] - {{ permiso.name }}
+                                                </option>
                                                 }
                                                 }
                                             </select>
