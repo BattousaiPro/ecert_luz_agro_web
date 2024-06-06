@@ -57,6 +57,9 @@ export class RolesComponent implements OnInit {
           this.roles = [];
           this.roles.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
+          for (let index = 0; index < this.roles.length; index++) {
+            this.roles[index].idSelectedPermiso = '';
+          }
           this.loadPermisos();
         } else {
           this.modals.success('Algo paso con la obtención de los Roles');
@@ -254,19 +257,85 @@ export class RolesComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-  public deletePermiso(content: any, roleSelected: Role): void {
+  public deletePermiso(roleId: number, permisoId: number): void {
     console.log('Method deletePermiso');
-    this.modals.info('Funcionalidad No disponible');
+    for (let index = 0; index < this.roles.length; index++) {
+      if (roleId === this.roles[index].id) {
+        this.roles[index].idSelectedPermiso = '' + permisoId;
+        break;
+      }
+    }
+    for (let index = 0; index < this.roles.length; index++) {
+      for (let index2 = 0; index2 < this.roles[index].permisosDisponibeles.length; index2++) {
+        if (roleId === this.roles[index].id) {
+          if (this.roles[index].permisosDisponibeles[index2].id === +this.roles[index].idSelectedPermiso) {
+            this.roles[index].permisosDisponibeles[index2].showAtributeOption = !this.roles[index].permisosDisponibeles[index2].showAtributeOption;
+          }
+        }
+      }
+    }
+    setTimeout(() => {
+      for (let index = 0; index < this.roles.length; index++) {
+        if (roleId === this.roles[index].id) {
+          this.roles[index].idSelectedPermiso = '';
+          break;
+        }
+      }
+    }, 10);
   }
 
-  public agregarPermiso(index: number): void {
-    console.log('Method agregarPermiso');
-    this.modals.info('Funcionalidad No disponible');
-  }
-
-  public guardarPermisos(): void {
+  public guardarPermisos(rolId: number): void {
     console.log('Method guardarPermisos');
-    this.modals.info('Funcionalidad No disponible');
+    let permisoIds: number[] = [];
+    for (let index = 0; index < this.roles.length; index++) {
+      if (rolId === this.roles[index].id) {
+        for (let index2 = 0; index2 < this.roles[index].permisosDisponibeles.length; index2++) {
+          if (!this.roles[index].permisosDisponibeles[index2].showAtributeOption) {
+            permisoIds.push(this.roles[index].permisosDisponibeles[index2].id);
+          }
+        }
+      }
+    }
+    this.rolPermisoService.setPermisoToRol(rolId, permisoIds).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.loadCargar();
+        } else {
+          this.modals.error('Error con la respuesta de servicios de asignar Permisos');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        this.modals.error('Error con el servicio de asignar Permisos');
+        this.cargar = false;
+      });
+  }
+
+  public onChange(event: string, userId: number): void {
+    for (let index = 0; index < this.roles.length; index++) {
+      if (userId === this.roles[index].id) {
+        this.roles[index].idSelectedPermiso = event;
+        break;
+      }
+    }
+    for (let index = 0; index < this.roles.length; index++) {
+      for (let index2 = 0; index2 < this.roles[index].permisosDisponibeles.length; index2++) {
+        if (userId === this.roles[index].id) {
+          if (this.roles[index].permisosDisponibeles[index2].id === +this.roles[index].idSelectedPermiso) {
+            this.roles[index].permisosDisponibeles[index2].showAtributeOption = !this.roles[index].permisosDisponibeles[index2].showAtributeOption;
+          }
+        }
+      }
+    }
+    setTimeout(() => {
+      for (let index = 0; index < this.roles.length; index++) {
+        if (userId === this.roles[index].id) {
+          this.roles[index].idSelectedPermiso = '';
+          break;
+        }
+      }
+    }, 10);
   }
 
 }
@@ -283,6 +352,7 @@ export interface Role {
   addPermisos: boolean;
 
   showAtributeOption: boolean;
+  idSelectedPermiso: string;
 }
 export class Role {
   constructor() {
@@ -292,5 +362,6 @@ export class Role {
     this.addPermisos = false;
 
     this.showAtributeOption = true;
+    this.idSelectedPermiso = '';
   }
 }
