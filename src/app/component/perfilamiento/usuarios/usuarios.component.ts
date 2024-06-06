@@ -310,8 +310,19 @@ export class UsuariosComponent {
     }, 10);
   }
 
-  public guardarRoles(): void {
+  public guardarRoles(userId: number): void {
     console.log('Method guardarRoles');
+    let rolIds: number[] = [];
+    for (let index = 0; index < this.usuarios.length; index++) {
+      if (userId === this.usuarios[index].id) {
+        for (let index2 = 0; index2 < this.usuarios[index].rolesDisponibeles.length; index2++) {
+          if (!this.usuarios[index].rolesDisponibeles[index2].showAtributeOption) {
+            rolIds.push(this.usuarios[index].rolesDisponibeles[index2].id);
+          }
+        }
+      }
+    }
+    console.log('rolIds: ' + JSON.stringify(rolIds));
     this.modals.info('Funcionalidad No disponible');
   }
 
