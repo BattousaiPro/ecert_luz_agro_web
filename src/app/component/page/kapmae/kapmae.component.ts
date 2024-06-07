@@ -228,7 +228,11 @@ export class KapmaeComponent {
   }
 
   public guardar(): void {
-    this.modals.info('Funcionalidad No disponible');
+    if (this.isEdit) {
+      this.modals.info('Funcionalidad de Edit No disponible');
+    } else {
+      this.modals.info('Funcionalidad de Crear No disponible');
+    }
   }
 
   volverDetalle() {
