@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataSocio } from './model/DataSocio';
+import { DataSocio, DatepickerModel } from './model/DataSocio';
 import { DetailSocioComponent } from './detail-socio/detail-socio.component';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { NgbModal, NgbPaginationModule, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
@@ -34,6 +34,7 @@ export class KapmaeComponent {
   socios: DataSocio[] = [];
   socioModal: DataSocio = new DataSocio();
   socioDeleteModal: DataSocio = new DataSocio();
+  currentItem: DataSocio = new DataSocio();
   req: KapmaeRequest = new KapmaeRequest();
 
   cargar: boolean = false;
@@ -42,6 +43,7 @@ export class KapmaeComponent {
   collectionSize: number = 0;
 
   principalContainer: boolean = true;
+  erroresNewEdit: string[] = [];
 
   constructor(private modalService: NgbModal,
     private kapmaeService: KapmaeService,
@@ -256,6 +258,7 @@ export class KapmaeComponent {
   public editarModal(selectedItem: DataSocio): void {
     console.log('Method editarModal');
     this.socioModal = JSON.parse(JSON.stringify(selectedItem));
+    this.currentItem = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
     this.principalContainer = false;
   }
@@ -267,8 +270,8 @@ export class KapmaeComponent {
     this.principalContainer = false;
   }
 
-  public guardar(): void {
-    if (this.validateActionNewEdit()) {
+  public guardar(selectedItem: DataSocio): void {
+    if (this.validateActionNewEdit(selectedItem)) {
       if (this.isEdit) {
         this.edit();
       } else {
@@ -276,6 +279,7 @@ export class KapmaeComponent {
       }
     } else {
       this.modals.info('Algunos de los campos no se ingreso correctamente');
+      console.log('errores: ' + JSON.stringify(this.erroresNewEdit));
     }
   }
 
@@ -283,9 +287,273 @@ export class KapmaeComponent {
     this.principalContainer = true;
   }
 
-  public validateActionNewEdit(): boolean {
+  public validateActionNewEdit(selectedItem: DataSocio): boolean {
     // TODO: validar cada uno de los campos.
-    return false;
+    this.erroresNewEdit = [];
+    // Campo: Rut Socio
+    if (typeof this.socioModal.rut_cop !== 'undefined') {
+      this.erroresNewEdit.push('Error con rut_cop');
+    }
+
+    // Campo: Nombres
+    if (typeof this.socioModal.nombres !== 'undefined') {
+      this.erroresNewEdit.push('Error con nombres');
+    }
+
+    // Campo: Apellido Paterno
+    if (typeof this.socioModal.ape_pat !== 'undefined') {
+      this.erroresNewEdit.push('Error con ape_pat');
+    }
+
+    // Campo: Apellido Materno
+    if (typeof this.socioModal.ape_mat !== 'undefined') {
+      this.erroresNewEdit.push('Error con ape_mat');
+    }
+
+    // Campo: Código Luzagro
+    if (typeof this.socioModal.cod_cop !== 'undefined') {
+      this.erroresNewEdit.push('Error con cod_cop');
+    }
+
+    // Campo: Código Luzlinares
+    if (typeof this.socioModal.cod_lli !== 'undefined') {
+      this.erroresNewEdit.push('Error con cod_lli');
+    }
+
+    // Campo: Código Anterior
+    if (typeof this.socioModal.cod_ant !== 'undefined') {
+      this.erroresNewEdit.push('Error con cod_ant');
+    }
+
+    // Campo: Código Nuevo
+    if (typeof this.socioModal.cod_nvo !== 'undefined') {
+      this.erroresNewEdit.push('Error con cod_nvo');
+    }
+
+    // Campo: Código Original
+    if (typeof this.socioModal.cod_ori !== 'undefined') {
+      this.erroresNewEdit.push('Error con cod_ori');
+    }
+
+    // Campo: Sector
+    if (typeof this.socioModal.sec_cop !== 'undefined') {
+      this.erroresNewEdit.push('Error con sec_cop');
+    }
+
+    // Campo: Año Inscripción
+    if (typeof this.socioModal.ano_inc !== 'undefined') {
+      this.erroresNewEdit.push('Error con ano_inc');
+    }
+
+    // Campo: Monto Inscripción
+    if (typeof this.socioModal.mto_inc !== 'undefined') {
+      this.erroresNewEdit.push('Error con mto_inc');
+    }
+
+    // Campo: Fecha Inscripción
+    if (this.validateFormatDate(this.socioModal.fec_inc_date)) {
+      this.erroresNewEdit.push('Error con fec_inc');
+    }
+    /*if (typeof this.socioModal.fec_inc !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_inc');
+    }
+
+    // Campo: Fecha Inscripción
+    if (typeof this.socioModal.fec_inc_date !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_inc_date');
+    }*/
+
+    // Campo: Año Traspaso
+    if (typeof this.socioModal.ano_tra !== 'undefined') {
+      this.erroresNewEdit.push('Error con ano_tra');
+    }
+
+    // Campo: Capital Traspaso
+    if (typeof this.socioModal.kap_tra !== 'undefined') {
+      this.erroresNewEdit.push('Error con kap_tra');
+    }
+
+    // Campo: Fecha Traspaso
+    if (this.validateFormatDate(this.socioModal.fec_tra_date)) {
+      this.erroresNewEdit.push('Error con fec_tra');
+    }
+    /*if (typeof this.socioModal.fec_tra !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_tra');
+    }
+
+    // Campo: Fecha Traspaso
+    if (typeof this.socioModal.fec_tra_date !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_tra_date');
+    }*/
+
+    // Campo: Acciones Traspaso
+    if (typeof this.socioModal.acc_tra !== 'undefined') {
+      this.erroresNewEdit.push('Error con acc_tra');
+    }
+
+    // Campo: Acciones Retiro
+    if (typeof this.socioModal.acc_ret !== 'undefined') {
+      this.erroresNewEdit.push('Error con acc_ret');
+    }
+
+    // Campo: Acciones Aporte
+    if (typeof this.socioModal.acc_apo !== 'undefined') {
+      this.erroresNewEdit.push('Error con acc_apo');
+    }
+
+    // Campo: Actualización
+    if (this.validateFormatDate(this.socioModal.fec_act_date)) {
+      this.erroresNewEdit.push('Error con fec_act');
+    }
+    /*if (typeof this.socioModal.fec_act !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_act');
+    }
+
+    // Campo: Actualización
+    if (typeof this.socioModal.fec_act_date !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_act_date');
+    }*/
+
+    // Campo: ">Estado Traspao
+    if (typeof this.socioModal.est_tra !== 'undefined') {
+      this.erroresNewEdit.push('Error con est_tra');
+    }
+
+    // Campo: ">Estado del Bono
+    if (typeof this.socioModal.est_bon !== 'undefined') {
+      this.erroresNewEdit.push('Error con est_bon');
+    }
+
+    // Campo: ">Dirección Postal
+    if (typeof this.socioModal.dir_pos !== 'undefined') {
+      this.erroresNewEdit.push('Error con dir_pos');
+    }
+
+    // Campo: Nro Teléfono 1
+    if (typeof this.socioModal.nro_te1 !== 'undefined') {
+      this.erroresNewEdit.push('Error con nro_te1');
+    }
+
+    // Campo: Nro Teléfono 2
+    if (typeof this.socioModal.nro_te2 !== 'undefined') {
+      this.erroresNewEdit.push('Error con nro_te2');
+    }
+
+    // Campo: Nro Teléfono 3
+    if (typeof this.socioModal.nro_te3 !== 'undefined') {
+      this.erroresNewEdit.push('Error con nro_te3');
+    }
+
+    // Campo: Nro Teléfono 4
+    if (typeof this.socioModal.nro_te4 !== 'undefined') {
+      this.erroresNewEdit.push('Error con nro_te4');
+    }
+
+    // Campo: Comuna
+    if (typeof this.socioModal.com_pos !== 'undefined') {
+      this.erroresNewEdit.push('Error con com_pos');
+    }
+
+
+    // Campo: Observación
+    if (typeof this.socioModal.obs_cap !== 'undefined') {
+      this.erroresNewEdit.push('Error con obs_cap');
+    }
+
+    // ************************************************************************************************
+    // Campos ocultro en la tabla de socios.
+    // Campo: nro_sol
+    if (typeof this.socioModal.nro_sol !== 'undefined') {
+      this.erroresNewEdit.push('Error con nro_sol');
+    }
+
+    // Campo: fec_sol
+    if (this.validateFormatDate(this.socioModal.fec_sol_date)) {
+      this.erroresNewEdit.push('Error con fec_sol');
+    }
+    /*if (typeof this.socioModal.fec_sol !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_sol');
+    }
+
+    // Campo: fec_sol
+    /*if (typeof this.socioModal.fec_sol_date !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_sol_date');
+    }*/
+
+    // Campo: fec_apr
+    if (this.validateFormatDate(this.socioModal.fec_apr_date)) {
+      this.erroresNewEdit.push('Error con fec_apr');
+    }
+    /*if (typeof this.socioModal.fec_apr !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_apr');
+    }
+
+    // Campo: fec_apr
+    /*if (typeof this.socioModal.fec_apr_date !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_apr_date');
+    }*/
+
+    // Campo: fec_can
+    if (this.validateFormatDate(this.socioModal.fec_can_date)) {
+      this.erroresNewEdit.push('Error con fec_can');
+    }
+    /*if (typeof this.socioModal.fec_can !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_can');
+    }
+
+    // Campo: fec_can
+    /*if (typeof this.socioModal.fec_can_date !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_can_date');
+    }*/
+
+    // Campo: est_sol 
+    if (typeof this.socioModal.est_sol !== 'undefined') {
+      this.erroresNewEdit.push('Error con est_sol');
+    }
+
+    // Campo: sec_cte 
+    if (typeof this.socioModal.sec_cte !== 'undefined') {
+      this.erroresNewEdit.push('Error con sec_cte');
+    }
+
+    // Campo: area 
+    if (typeof this.socioModal.area !== 'undefined') {
+      this.erroresNewEdit.push('Error con area');
+    }
+
+    // Campo: sec_imp 
+    if (typeof this.socioModal.sec_imp !== 'undefined') {
+      this.erroresNewEdit.push('Error con sec_imp');
+    }
+
+    // Campo: est_reg 
+    if (typeof this.socioModal.est_reg !== 'undefined') {
+      this.erroresNewEdit.push('Error con est_reg');
+    }
+
+    // Campo: acc_con 
+    if (typeof this.socioModal.acc_con !== 'undefined') {
+      this.erroresNewEdit.push('Error con acc_con');
+    }
+
+    // Campo: aju_acc 
+    if (typeof this.socioModal.aju_acc !== 'undefined') {
+      this.erroresNewEdit.push('Error con aju_acc');
+    }
+    if (this.erroresNewEdit.length > 0) {
+      return false;
+    }
+    return true;
+  }
+
+  private validateFormatDate(inputDate: DatepickerModel | undefined): boolean {
+    /*
+    if (typeof this.socioModal.fec_inc !== 'undefined') {
+      this.erroresNewEdit.push('Error con fec_inc');
+      return false;
+    }
+    */
+    return true;
   }
 
 }
