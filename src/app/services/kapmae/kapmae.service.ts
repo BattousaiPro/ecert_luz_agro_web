@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { KapmaeRequest } from '../../component/page/kapmae/model/KapmaeRequest';
+import { DataSocio } from '../../component/page/kapmae/model/DataSocio';
 
 @Injectable({
   providedIn: 'root'
@@ -10,32 +11,23 @@ export class KapmaeService {
 
   constructor(private http: HttpClient) { }
 
-  /*public new(codigo: number, descrip: string, estado: boolean): Observable<any> {
-    let url = 'http://localhost:3000/sector';
+  public new(userData: DataSocio): Observable<any> {
+    let url = 'http://localhost:3000/kapmae';
     const ladata: Observable<any> = this.http.post(
       url,
-      {
-        codigo,
-        descrip,
-        estado
-      }
+      userData
     );
     return ladata;
   }
 
-  public update(id: number, codigo: number, descrip: string, estado: boolean): Observable<any> {
-    let url = 'http://localhost:3000/sector/' + id;
-    let userData: any = {
-      codigo,
-      descrip,
-      estado
-    };
+  public edit(userData: DataSocio): Observable<any> {
+    let url = 'http://localhost:3000/kapmae';
     const ladata: Observable<any> = this.http.patch(
       url,
       userData
     );
     return ladata;
-  }*/
+  }
 
   public delete(rut_cop: string, cod_cop: number): Observable<any> {
     let url = 'http://localhost:3000/kapmae/delete';

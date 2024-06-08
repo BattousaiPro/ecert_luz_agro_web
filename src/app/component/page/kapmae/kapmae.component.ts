@@ -207,6 +207,46 @@ export class KapmaeComponent {
       });
   }
 
+  public edit(): void {
+    console.log('Cargando delete');
+    this.cargar = true;
+    this.kapmaeService.edit(this.socioModal).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.closeModal();
+          this.loadCargar();
+        } else {
+          this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        this.modals.error('Error con el servicio de eliminar Sectotes');
+        this.cargar = false;
+      });
+  }
+
+  public new(): void {
+    console.log('Cargando delete');
+    this.cargar = true;
+    this.kapmaeService.new(this.socioModal).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          this.closeModal();
+          this.loadCargar();
+        } else {
+          this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        this.modals.error('Error con el servicio de eliminar Sectotes');
+        this.cargar = false;
+      });
+  }
+
   public deleteModal(content: any, selectedItem: DataSocio): void {
     console.log('Method deleteModal');
     this.socioDeleteModal = JSON.parse(JSON.stringify(selectedItem));
@@ -228,15 +268,24 @@ export class KapmaeComponent {
   }
 
   public guardar(): void {
-    if (this.isEdit) {
-      this.modals.info('Funcionalidad de Edit No disponible');
+    if (this.validateActionNewEdit()) {
+      if (this.isEdit) {
+        this.edit();
+      } else {
+        this.new();
+      }
     } else {
-      this.modals.info('Funcionalidad de Crear No disponible');
+      this.modals.info('Algunos de los campos no se ingreso correctamente');
     }
   }
 
-  volverDetalle() {
+  public volverDetalle(): void {
     this.principalContainer = true;
+  }
+
+  public validateActionNewEdit(): boolean {
+    // TODO: validar cada uno de los campos.
+    return false;
   }
 
 }
