@@ -265,19 +265,26 @@
 
     <div class="row mb15">
         <div class="col-xs-12 col-xl-12">
+
             <div class="row mt15 mb15">
-                <div class="col-12 text-right">
-                    <div class="row justify-content-end">
-                        <div class="col-12 ">
-                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                <button type="button" class="btn btn-primary w100" (click)="volverDetalle()">
-                                    Volver
-                                </button>
-                            </div>
+                <div class="col-12">
+                    <div class="row justify-content-end containerButton">
+                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
+                            <button type="button" class="btn btn-primary w100" (click)="volverDetalle()">Volver</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
+                            <button type="button" class="btn btn-primary w100" (click)="guardar(socioModal)">
+                                @if (isEdit) {
+                                    Editar
+                                    } @else {
+                                    Agregar
+                                    }
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="row">
 
                 <div class="col-xs-12 col-sm-12">
@@ -288,62 +295,73 @@
                             <div class="col-xs-12 col-xl-12">
                                 <div class="row">
 
-
-
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="rut_cop">Rut Socio</label>
+                                        <label class="col-form-label col-form-label-sm" for="rut_cop">
+                                            Rut Socio
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="rut_cop" [value]="socioModal.rut_cop || ''">
+                                            id="rut_cop" [(ngModel)]="socioModal.rut_cop">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="nombres">Nombres</label>
+                                        <label class="col-form-label col-form-label-sm" for="nombres">
+                                            Nombres
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="nombres" [value]="socioModal.nombres || ''">
+                                            id="nombres" [(ngModel)]="socioModal.nombres">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="ape_pat">Apellido
-                                            Paterno</label>
+                                        <label class="col-form-label col-form-label-sm" for="ape_pat">
+                                            Apellido Paterno
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="ape_pat" [value]="socioModal.ape_pat || ''">
+                                            id="ape_pat" [(ngModel)]="socioModal.ape_pat">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="ape_mat">Apellido
-                                            Materno</label>
+                                        <label class="col-form-label col-form-label-sm" for="ape_mat">
+                                            Apellido Materno
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="ape_mat" [value]="socioModal.ape_mat || ''">
+                                            id="ape_mat" [(ngModel)]="socioModal.ape_mat">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="cod_cop">Código
-                                            Luzagro</label>
+                                        <label class="col-form-label col-form-label-sm" for="cod_cop">
+                                            Código Luzagro
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="cod_cop" [value]="socioModal.cod_cop || ''">
+                                            id="cod_cop" [(ngModel)]="socioModal.cod_cop">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="cod_lli">Código
-                                            Luzlinares</label>
+                                        <label class="col-form-label col-form-label-sm" for="cod_lli">
+                                            Código Luzlinares
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="cod_lli" [value]="socioModal.cod_lli || ''">
+                                            id="cod_lli" [(ngModel)]="socioModal.cod_lli">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="cod_ant">Código
-                                            Anterior</label>
+                                        <label class="col-form-label col-form-label-sm" for="cod_ant">
+                                            Código Anterior
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="cod_ant" [value]="socioModal.cod_ant || ''">
+                                            id="cod_ant" [(ngModel)]="socioModal.cod_ant">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="cod_nvo">Código
-                                            Nuevo</label>
+                                        <label class="col-form-label col-form-label-sm" for="cod_nvo">
+                                            Código Nuevo
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="cod_nvo" [value]="socioModal.cod_nvo || ''">
+                                            id="cod_nvo" [(ngModel)]="socioModal.cod_nvo">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="cod_ori">Código
-                                            Original</label>
+                                        <label class="col-form-label col-form-label-sm" for="cod_ori">
+                                            Código Original
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="cod_ori" [value]="socioModal.cod_ori || ''">
+                                            id="cod_ori" [(ngModel)]="socioModal.cod_ori">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="sec_cop">Sector</label>
+                                        <label class="col-form-label col-form-label-sm" for="sec_cop">
+                                            Sector
+                                        </label>
                                         <select class="form-select w100">
                                             <option value="" selected>Seleccionar</option>
                                             @if (isEdit) {
@@ -362,127 +380,149 @@
                                         </select>
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="ano_inc">Año
-                                            Inscripción</label>
+                                        <label class="col-form-label col-form-label-sm" for="ano_inc">
+                                            Año Inscripción
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="ano_inc" [value]="socioModal.ano_inc || ''">
+                                            id="ano_inc" [(ngModel)]="socioModal.ano_inc">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="mto_inc">Monto
-                                            Inscripción</label>
+                                        <label class="col-form-label col-form-label-sm" for="mto_inc">
+                                            Monto Inscripción
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="mto_inc" [value]="socioModal.mto_inc || ''">
+                                            id="mto_inc" [(ngModel)]="socioModal.mto_inc">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="fec_inc">Fecha
-                                            Inscripción</label>
+                                        <label class="col-form-label col-form-label-sm" for="fec_inc">
+                                            Fecha Inscripción
+                                        </label>
                                         <!--<input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="fec_inc" [value]="socioModal.fec_inc || '' | date: 'd-M-y'">-->
+                                            id="fec_inc" [(ngModel)]="socioModal.fec_inc | date: 'd-M-y'">-->
                                         <div class="input-group">
                                             <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                [(ngModel)]="socioModal.fec_inc_date" ngbDatepicker #d_fec_inc_date="ngbDatepicker"/>
+                                                [(ngModel)]="socioModal.fec_inc_date" ngbDatepicker
+                                                #d_fec_inc_date="ngbDatepicker" />
                                             <button class="btn btn-outline-secondary bi bi-calendar3"
                                                 (click)="d_fec_inc_date.toggle()" type="button"></button>
                                         </div>
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="ano_tra">Año
-                                            Traspaso</label>
+                                        <label class="col-form-label col-form-label-sm" for="ano_tra">
+                                            Año Traspaso
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="ano_tra" [value]="socioModal.ano_tra || ''">
+                                            id="ano_tra" [(ngModel)]="socioModal.ano_tra">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="kap_tra">Capital
-                                            Traspaso</label>
+                                        <label class="col-form-label col-form-label-sm" for="kap_tra">
+                                            Capital Traspaso
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="kap_tra" [value]="socioModal.kap_tra || ''">
+                                            id="kap_tra" [(ngModel)]="socioModal.kap_tra">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="fec_tra">Fecha
-                                            Traspaso</label>
+                                        <label class="col-form-label col-form-label-sm" for="fec_tra">
+                                            Fecha Traspaso
+                                        </label>
                                         <!--<input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="fec_tra" [value]="socioModal.fec_tra || '' | date: 'd-M-y'">-->
-                                            <div class="input-group">
-                                                <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                    [(ngModel)]="socioModal.fec_tra_date" ngbDatepicker #d_fec_tra_date="ngbDatepicker"/>
-                                                <button class="btn btn-outline-secondary bi bi-calendar3"
-                                                    (click)="d_fec_tra_date.toggle()" type="button"></button>
-                                            </div>
+                                            id="fec_tra" [(ngModel)]="socioModal.fec_tra | date: 'd-M-y'">-->
+                                        <div class="input-group">
+                                            <input class="form-control" placeholder="dd-m-yyyy" name="dp"
+                                                [(ngModel)]="socioModal.fec_tra_date" ngbDatepicker
+                                                #d_fec_tra_date="ngbDatepicker" />
+                                            <button class="btn btn-outline-secondary bi bi-calendar3"
+                                                (click)="d_fec_tra_date.toggle()" type="button"></button>
+                                        </div>
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="acc_tra">Acciones
-                                            Traspaso</label>
+                                        <label class="col-form-label col-form-label-sm" for="acc_tra">
+                                            Acciones Traspaso
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="acc_tra" [value]="socioModal.acc_tra || ''">
+                                            id="acc_tra" [(ngModel)]="socioModal.acc_tra">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="acc_ret">Acciones
-                                            Retiro</label>
+                                        <label class="col-form-label col-form-label-sm" for="acc_ret">
+                                            Acciones Retiro
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="acc_ret" [value]="socioModal.acc_ret || ''">
+                                            id="acc_ret" [(ngModel)]="socioModal.acc_ret">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="acc_apo">Acciones
-                                            Aporte</label>
+                                        <label class="col-form-label col-form-label-sm" for="acc_apo">
+                                            Acciones Aporte
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="acc_apo" [value]="socioModal.acc_apo || ''">
+                                            id="acc_apo" [(ngModel)]="socioModal.acc_apo">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm"
-                                            for="fec_act">Actualización</label>
+                                        <label class="col-form-label col-form-label-sm" for="fec_act">
+                                            Actualización
+                                        </label>
                                         <!--<input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="fec_act" [value]="socioModal.fec_act || '' | date: 'd-M-y'">-->
-                                            <div class="input-group">
-                                                <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                    [(ngModel)]="socioModal.fec_act_date" ngbDatepicker #d_fec_act_date="ngbDatepicker"/>
-                                                <button class="btn btn-outline-secondary bi bi-calendar3"
-                                                    (click)="d_fec_act_date.toggle()" type="button"></button>
-                                            </div>
+                                            id="fec_act" [(ngModel)]="socioModal.fec_act | date: 'd-M-y'">-->
+                                        <div class="input-group">
+                                            <input class="form-control" placeholder="dd-m-yyyy" name="dp"
+                                                [(ngModel)]="socioModal.fec_act_date" ngbDatepicker
+                                                #d_fec_act_date="ngbDatepicker" />
+                                            <button class="btn btn-outline-secondary bi bi-calendar3"
+                                                (click)="d_fec_act_date.toggle()" type="button"></button>
+                                        </div>
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="est_tra">Estado
-                                            Traspao</label>
+                                        <label class="col-form-label col-form-label-sm" for="est_tra">
+                                            Estado Traspao
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="est_tra" [value]="socioModal.est_tra || ''">
+                                            id="est_tra" [(ngModel)]="socioModal.est_tra">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="est_bon">Estado
-                                            del Bono</label>
+                                        <label class="col-form-label col-form-label-sm" for="est_bon">
+                                            Estado del Bono
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="est_bon" [value]="socioModal.est_bon || ''">
+                                            id="est_bon" [(ngModel)]="socioModal.est_bon">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="dir_pos">Dirección
-                                            Postal</label>
+                                        <label class="col-form-label col-form-label-sm" for="dir_pos">
+                                            Dirección Postal
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="dir_pos" [value]="socioModal.dir_pos || ''">
+                                            id="dir_pos" [(ngModel)]="socioModal.dir_pos">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="nro_te1">Nro Teléfono
-                                            1</label>
+                                        <label class="col-form-label col-form-label-sm" for="nro_te1">
+                                            Nro Teléfono 1
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="nro_te1" [value]="socioModal.nro_te1 || ''">
+                                            id="nro_te1" [(ngModel)]="socioModal.nro_te1">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="nro_te2">Nro Teléfono
-                                            2</label>
+                                        <label class="col-form-label col-form-label-sm" for="nro_te2">
+                                            Nro Teléfono 2
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="nro_te2" [value]="socioModal.nro_te2 || ''">
+                                            id="nro_te2" [(ngModel)]="socioModal.nro_te2">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="nro_te3">Nro Teléfono
-                                            3</label>
+                                        <label class="col-form-label col-form-label-sm" for="nro_te3">
+                                            Nro Teléfono 3
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="nro_te3" [value]="socioModal.nro_te3 || ''">
+                                            id="nro_te3" [(ngModel)]="socioModal.nro_te3">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="nro_te4">Nro Teléfono
-                                            4</label>
+                                        <label class="col-form-label col-form-label-sm" for="nro_te4">
+                                            Nro Teléfono 4
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="nro_te4" [value]="socioModal.nro_te4 || ''">
+                                            id="nro_te4" [(ngModel)]="socioModal.nro_te4">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="com_pos">Comuna</label>
+                                        <label class="col-form-label col-form-label-sm" for="com_pos">
+                                            Comuna
+                                        </label>
                                         <select class="form-select w100">
                                             <option value="" selected>Seleccionar</option>
                                             @if (isEdit) {
@@ -501,114 +541,140 @@
                                         </select>
                                     </div>
                                     <div class="col-12">
-                                        <label class="col-form-label col-form-label-sm"
-                                            for="obs_cap">Observación</label>
+                                        <label class="col-form-label col-form-label-sm" for="obs_cap">
+                                            Observación
+                                        </label>
                                         <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="obs_cap" [value]="socioModal.obs_cap || ''">
+                                            id="obs_cap" [(ngModel)]="socioModal.obs_cap">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="nro_sol">nro_sol</label>
+                                        <label class="col-form-label col-form-label-sm" for="nro_sol">
+                                            nro_sol
+                                        </label>
                                         <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="nro_sol" [value]="socioModal.nro_sol || ''">
+                                            id="nro_sol" [(ngModel)]="socioModal.nro_sol">
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="fec_sol">fec_sol</label>
+                                        <label class="col-form-label col-form-label-sm" for="fec_sol">
+                                            fec_sol
+                                        </label>
                                         <!--<input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="fec_sol" [value]="socioModal.fec_sol || '' | date: 'd-M-y'">-->
-                                            <div class="input-group">
-                                                <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                    [(ngModel)]="socioModal.fec_sol_date" ngbDatepicker #d_fec_sol_date="ngbDatepicker"/>
-                                                <button class="btn btn-outline-secondary bi bi-calendar3"
-                                                    (click)="d_fec_sol_date.toggle()" type="button"></button>
-                                            </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="fec_apr">fec_apr</label>
-                                        <!--<input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="fec_apr" [value]="socioModal.fec_apr || '' | date: 'd-M-y'">-->
+                                            id="fec_sol" [(ngModel)]="socioModal.fec_sol | date: 'd-M-y'">-->
                                         <div class="input-group">
                                             <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                [(ngModel)]="socioModal.fec_apr_date" ngbDatepicker #d_fec_apr_date="ngbDatepicker"/>
+                                                [(ngModel)]="socioModal.fec_sol_date" ngbDatepicker
+                                                #d_fec_sol_date="ngbDatepicker" />
+                                            <button class="btn btn-outline-secondary bi bi-calendar3"
+                                                (click)="d_fec_sol_date.toggle()" type="button"></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="fec_apr">
+                                            fec_apr
+                                        </label>
+                                        <!--<input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="fec_apr" [(ngModel)]="socioModal.fec_apr | date: 'd-M-y'">-->
+                                        <div class="input-group">
+                                            <input class="form-control" placeholder="dd-m-yyyy" name="dp"
+                                                [(ngModel)]="socioModal.fec_apr_date" ngbDatepicker
+                                                #d_fec_apr_date="ngbDatepicker" />
                                             <button class="btn btn-outline-secondary bi bi-calendar3"
                                                 (click)="d_fec_apr_date.toggle()" type="button"></button>
                                         </div>
                                     </div>
                                     <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="fec_can">fec_can</label>
+                                        <label class="col-form-label col-form-label-sm" for="fec_can">
+                                            fec_can
+                                        </label>
                                         <!--<input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="fec_can" [value]="socioModal.fec_can || '' | date: 'd-M-y'">-->
-                                            <div class="input-group">
-                                                <input class="form-control" placeholder="dd-m-yyyy" name="dp"
-                                                    [(ngModel)]="socioModal.fec_can_date" ngbDatepicker #d_fec_can_date="ngbDatepicker"/>
-                                                <button class="btn btn-outline-secondary bi bi-calendar3"
-                                                    (click)="d_fec_can_date.toggle()" type="button"></button>
-                                            </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="est_sol">est_sol</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="est_sol" [value]="socioModal.est_sol || ''">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="sec_cte">sec_cte</label>
-                                        <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="sec_cte" [value]="socioModal.sec_cte || ''">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="area">area</label>
-                                        <input class="form-control form-control-sm" type="number" placeholder="" id="area"
-                                            [value]="socioModal.area || ''">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="sec_imp">sec_imp</label>
-                                        <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="sec_imp" [value]="socioModal.sec_imp || ''">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="est_reg">est_reg</label>
-                                        <input class="form-control form-control-sm" type="text" placeholder=""
-                                            id="est_reg" [value]="socioModal.est_reg || ''">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="acc_con">acc_con</label>
-                                        <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="acc_con" [value]="socioModal.acc_con || ''">
-                                    </div>
-                                    <div class="col-3">
-                                        <label class="col-form-label col-form-label-sm" for="aju_acc">aju_acc</label>
-                                        <input class="form-control form-control-sm" type="number" placeholder=""
-                                            id="aju_acc" [value]="socioModal.aju_acc || ''">
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row mt15">
-                            <div class="col-12 text-right">
-                                <div class="row justify-content-end">
-                                    <div class="col-12 ">
-                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                            <button type="button" class="btn btn-primary w100" (click)="guardar(socioModal)">
-                                                @if (isEdit) {
-                                                Editar
-                                                } @else {
-                                                Agregar
-                                                }
-                                            </button>
+                                            id="fec_can" [(ngModel)]="socioModal.fec_can | date: 'd-M-y'">-->
+                                        <div class="input-group">
+                                            <input class="form-control" placeholder="dd-m-yyyy" name="dp"
+                                                [(ngModel)]="socioModal.fec_can_date" ngbDatepicker
+                                                #d_fec_can_date="ngbDatepicker" />
+                                            <button class="btn btn-outline-secondary bi bi-calendar3"
+                                                (click)="d_fec_can_date.toggle()" type="button"></button>
                                         </div>
                                     </div>
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="est_sol">
+                                            est_sol
+                                        </label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="est_sol" [(ngModel)]="socioModal.est_sol">
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="sec_cte">
+                                            sec_cte
+                                        </label>
+                                        <input class="form-control form-control-sm" type="number" placeholder=""
+                                            id="sec_cte" [(ngModel)]="socioModal.sec_cte">
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="area">
+                                            area
+                                        </label>
+                                        <input class="form-control form-control-sm" type="number" placeholder=""
+                                            id="area" [(ngModel)]="socioModal.area">
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="sec_imp">
+                                            sec_imp
+                                        </label>
+                                        <input class="form-control form-control-sm" type="number" placeholder=""
+                                            id="sec_imp" [(ngModel)]="socioModal.sec_imp">
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="est_reg">
+                                            est_reg
+                                        </label>
+                                        <input class="form-control form-control-sm" type="text" placeholder=""
+                                            id="est_reg" [(ngModel)]="socioModal.est_reg">
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="acc_con">
+                                            acc_con
+                                        </label>
+                                        <input class="form-control form-control-sm" type="number" placeholder=""
+                                            id="acc_con" [(ngModel)]="socioModal.acc_con">
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="col-form-label col-form-label-sm" for="aju_acc">
+                                            aju_acc
+                                        </label>
+                                        <input class="form-control form-control-sm" type="number" placeholder=""
+                                            id="aju_acc" [(ngModel)]="socioModal.aju_acc">
+                                    </div>
+
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
 
                     </div>
                 </div>
 
             </div>
-            
+
+            <div class="row mt15 mb15">
+                <div class="col-12">
+                    <div class="row justify-content-end containerButton">
+                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
+                            <button type="button" class="btn btn-primary w100" (click)="volverDetalle()">Volver</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
+                            <button type="button" class="btn btn-primary w100" (click)="guardar(socioModal)">
+                                @if (isEdit) {
+                                    Editar
+                                    } @else {
+                                    Agregar
+                                    }
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

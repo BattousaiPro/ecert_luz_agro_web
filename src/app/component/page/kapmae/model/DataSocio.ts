@@ -15,13 +15,16 @@ export interface DataSocio {
   ano_inc?: number;
   mto_inc?: number;
   fec_inc?: Date;
+  fec_inc_date?: DatepickerModel;
   ano_tra?: number;
   kap_tra?: number;
   fec_tra?: Date;
+  fec_tra_date?: DatepickerModel;
   acc_tra?: number;
   acc_ret?: number;
   acc_apo?: number;
   fec_act?: Date;
+  fec_act_date?: DatepickerModel;
   est_tra?: string;
   est_bon?: number;
   dir_pos?: string;
@@ -33,8 +36,11 @@ export interface DataSocio {
   obs_cap?: string;
   nro_sol?: number;
   fec_sol?: Date;
+  fec_sol_date?: DatepickerModel;
   fec_apr?: Date;
+  fec_apr_date?: DatepickerModel;
   fec_can?: Date;
+  fec_can_date?: DatepickerModel;
   est_sol?: string;
   sec_cte?: number;
   area?: number;
@@ -43,12 +49,6 @@ export interface DataSocio {
   acc_con?: number;
   aju_acc?: number;
   selected?: boolean;
-  fec_inc_date?: DatepickerModel;
-  fec_tra_date?: DatepickerModel;
-  fec_act_date?: DatepickerModel;
-  fec_sol_date?: DatepickerModel;
-  fec_apr_date?: DatepickerModel;
-  fec_can_date?: DatepickerModel;
 }
 
 export class DataSocio {

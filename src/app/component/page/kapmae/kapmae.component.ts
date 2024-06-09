@@ -273,13 +273,18 @@ export class KapmaeComponent {
   public guardar(selectedItem: DataSocio): void {
     if (this.validateActionNewEdit(selectedItem)) {
       if (this.isEdit) {
-        this.edit();
+        // this.edit();
+        this.modals.info('Method edit');
       } else {
-        this.new();
+        // this.new();
+        this.modals.info('Method new');
       }
     } else {
       this.modals.info('Algunos de los campos no se ingreso correctamente');
-      console.log('errores: ' + JSON.stringify(this.erroresNewEdit));
+      for (let index = 0; index < this.erroresNewEdit.length; index++) {
+        const element = this.erroresNewEdit[index];
+        console.log('error[' + index + ']: ' + element);
+      }
     }
   }
 
@@ -291,68 +296,79 @@ export class KapmaeComponent {
     // TODO: validar cada uno de los campos.
     this.erroresNewEdit = [];
     // Campo: Rut Socio
-    if (typeof this.socioModal.rut_cop !== 'undefined') {
-      this.erroresNewEdit.push('Error con rut_cop');
+    if (typeof this.socioModal.rut_cop === 'undefined' || this.socioModal.rut_cop === '') {
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con rut_cop -> Rut Socio');
     }
 
     // Campo: Nombres
-    if (typeof this.socioModal.nombres !== 'undefined') {
-      this.erroresNewEdit.push('Error con nombres');
+    if (typeof this.socioModal.nombres === 'undefined' || this.socioModal.nombres === '') {
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con nombres -> Nombres');
     }
 
     // Campo: Apellido Paterno
-    if (typeof this.socioModal.ape_pat !== 'undefined') {
-      this.erroresNewEdit.push('Error con ape_pat');
+    if (typeof this.socioModal.ape_pat === 'undefined' || this.socioModal.ape_pat === '') {
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con ape_pat -> Apellido Paterno');
     }
 
     // Campo: Apellido Materno
-    if (typeof this.socioModal.ape_mat !== 'undefined') {
-      this.erroresNewEdit.push('Error con ape_mat');
+    if (typeof this.socioModal.ape_mat === 'undefined' || this.socioModal.ape_mat === '') {
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con ape_mat -> Apellido Materno');
     }
 
     // Campo: Código Luzagro
-    if (typeof this.socioModal.cod_cop !== 'undefined') {
-      this.erroresNewEdit.push('Error con cod_cop');
+    if (typeof this.socioModal.cod_cop === 'undefined' || this.socioModal.cod_cop < 0) {
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con cod_cop -> Código Luzagro');
     }
 
     // Campo: Código Luzlinares
-    if (typeof this.socioModal.cod_lli !== 'undefined') {
-      this.erroresNewEdit.push('Error con cod_lli');
+    if (typeof this.socioModal.cod_lli === 'undefined' || this.socioModal.cod_lli < 0) {
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con cod_lli -> Código Luzlinares');
     }
 
     // Campo: Código Anterior
-    if (typeof this.socioModal.cod_ant !== 'undefined') {
-      this.erroresNewEdit.push('Error con cod_ant');
+    if (typeof this.socioModal.cod_ant === 'undefined' || this.socioModal.cod_ant < 0) {
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con cod_ant -> Código Anterior');
     }
 
     // Campo: Código Nuevo
-    if (typeof this.socioModal.cod_nvo !== 'undefined') {
-      this.erroresNewEdit.push('Error con cod_nvo');
+    if (typeof this.socioModal.cod_nvo === 'undefined' || this.socioModal.cod_nvo < 0) {
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con cod_nvo -> Código Nuevo');
     }
 
     // Campo: Código Original
-    if (typeof this.socioModal.cod_ori !== 'undefined') {
-      this.erroresNewEdit.push('Error con cod_ori');
+    if (typeof this.socioModal.cod_ori === 'undefined' || this.socioModal.cod_ori < 0) {
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con cod_ori -> Código Original');
     }
 
     // Campo: Sector
     if (typeof this.socioModal.sec_cop !== 'undefined') {
-      this.erroresNewEdit.push('Error con sec_cop');
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con sec_cop -> Sector');
     }
 
     // Campo: Año Inscripción
-    if (typeof this.socioModal.ano_inc !== 'undefined') {
-      this.erroresNewEdit.push('Error con ano_inc');
+    if (typeof this.socioModal.ano_inc === 'undefined' || this.socioModal.ano_inc < 0) {
+      //distinto de vacio o indefinido.
+      this.erroresNewEdit.push('Error con ano_inc -> Año Inscripción');
     }
 
     // Campo: Monto Inscripción
-    if (typeof this.socioModal.mto_inc !== 'undefined') {
-      this.erroresNewEdit.push('Error con mto_inc');
+    if (typeof this.socioModal.mto_inc === 'undefined' || this.socioModal.mto_inc < 0) {
+      this.erroresNewEdit.push('Error con mto_inc -> Monto Inscripción');
     }
 
     // Campo: Fecha Inscripción
-    if (this.validateFormatDate(this.socioModal.fec_inc_date)) {
-      this.erroresNewEdit.push('Error con fec_inc');
+    if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
+      this.erroresNewEdit.push('Error con fec_inc -> Fecha Inscripción');
     }
     /*if (typeof this.socioModal.fec_inc !== 'undefined') {
       this.erroresNewEdit.push('Error con fec_inc');
@@ -364,18 +380,18 @@ export class KapmaeComponent {
     }*/
 
     // Campo: Año Traspaso
-    if (typeof this.socioModal.ano_tra !== 'undefined') {
-      this.erroresNewEdit.push('Error con ano_tra');
+    if (typeof this.socioModal.ano_tra === 'undefined' || this.socioModal.ano_tra < 0) {
+      this.erroresNewEdit.push('Error con ano_tra -> Año Traspaso');
     }
 
     // Campo: Capital Traspaso
-    if (typeof this.socioModal.kap_tra !== 'undefined') {
-      this.erroresNewEdit.push('Error con kap_tra');
+    if (typeof this.socioModal.kap_tra === 'undefined' || this.socioModal.kap_tra < 0) {
+      this.erroresNewEdit.push('Error con kap_tra -> Capital Traspaso');
     }
 
     // Campo: Fecha Traspaso
-    if (this.validateFormatDate(this.socioModal.fec_tra_date)) {
-      this.erroresNewEdit.push('Error con fec_tra');
+    if (!this.validateFormatDate(this.socioModal.fec_tra_date)) {
+      this.erroresNewEdit.push('Error con fec_tra -> Fecha Traspaso');
     }
     /*if (typeof this.socioModal.fec_tra !== 'undefined') {
       this.erroresNewEdit.push('Error con fec_tra');
@@ -387,23 +403,23 @@ export class KapmaeComponent {
     }*/
 
     // Campo: Acciones Traspaso
-    if (typeof this.socioModal.acc_tra !== 'undefined') {
-      this.erroresNewEdit.push('Error con acc_tra');
+    if (typeof this.socioModal.acc_tra === 'undefined' || this.socioModal.acc_tra < 0) {
+      this.erroresNewEdit.push('Error con acc_tra -> Acciones Traspaso');
     }
 
     // Campo: Acciones Retiro
-    if (typeof this.socioModal.acc_ret !== 'undefined') {
-      this.erroresNewEdit.push('Error con acc_ret');
+    if (typeof this.socioModal.acc_ret === 'undefined' || this.socioModal.acc_ret < 0) {
+      this.erroresNewEdit.push('Error con acc_ret -> Acciones Retiro');
     }
 
     // Campo: Acciones Aporte
-    if (typeof this.socioModal.acc_apo !== 'undefined') {
-      this.erroresNewEdit.push('Error con acc_apo');
+    if (typeof this.socioModal.acc_apo === 'undefined' || this.socioModal.acc_apo < 0) {
+      this.erroresNewEdit.push('Error con acc_apo -> Acciones Aporte');
     }
 
     // Campo: Actualización
-    if (this.validateFormatDate(this.socioModal.fec_act_date)) {
-      this.erroresNewEdit.push('Error con fec_act');
+    if (!this.validateFormatDate(this.socioModal.fec_act_date)) {
+      this.erroresNewEdit.push('Error con fec_act -> Actualización');
     }
     /*if (typeof this.socioModal.fec_act !== 'undefined') {
       this.erroresNewEdit.push('Error con fec_act');
@@ -414,61 +430,61 @@ export class KapmaeComponent {
       this.erroresNewEdit.push('Error con fec_act_date');
     }*/
 
-    // Campo: ">Estado Traspao
-    if (typeof this.socioModal.est_tra !== 'undefined') {
-      this.erroresNewEdit.push('Error con est_tra');
+    // Campo: Estado Traspao -> Campo opcional
+    /*if (typeof this.socioModal.est_tra !== 'undefined' && this.socioModal.est_tra !== null) {
+      this.erroresNewEdit.push('Error con est_tra -> Estado Traspao');
+    }*/
+
+    // Campo: Estado del Bono
+    if (typeof this.socioModal.est_bon === 'undefined' || this.socioModal.est_bon < 0) {
+      this.erroresNewEdit.push('Error con est_bon -> Estado del Bono');
     }
 
-    // Campo: ">Estado del Bono
-    if (typeof this.socioModal.est_bon !== 'undefined') {
-      this.erroresNewEdit.push('Error con est_bon');
-    }
-
-    // Campo: ">Dirección Postal
+    // Campo: Dirección Postal
     if (typeof this.socioModal.dir_pos !== 'undefined') {
-      this.erroresNewEdit.push('Error con dir_pos');
+      this.erroresNewEdit.push('Error con dir_pos -> Dirección Postal');
     }
 
     // Campo: Nro Teléfono 1
     if (typeof this.socioModal.nro_te1 !== 'undefined') {
-      this.erroresNewEdit.push('Error con nro_te1');
+      this.erroresNewEdit.push('Error con nro_te1 -> Nro Teléfono 1');
     }
 
     // Campo: Nro Teléfono 2
     if (typeof this.socioModal.nro_te2 !== 'undefined') {
-      this.erroresNewEdit.push('Error con nro_te2');
+      this.erroresNewEdit.push('Error con nro_te2 -> Nro Teléfono 2');
     }
 
     // Campo: Nro Teléfono 3
     if (typeof this.socioModal.nro_te3 !== 'undefined') {
-      this.erroresNewEdit.push('Error con nro_te3');
+      this.erroresNewEdit.push('Error con nro_te3 -> Nro Teléfono 3');
     }
 
     // Campo: Nro Teléfono 4
     if (typeof this.socioModal.nro_te4 !== 'undefined') {
-      this.erroresNewEdit.push('Error con nro_te4');
+      this.erroresNewEdit.push('Error con nro_te4 -> Nro Teléfono 4');
     }
 
     // Campo: Comuna
     if (typeof this.socioModal.com_pos !== 'undefined') {
-      this.erroresNewEdit.push('Error con com_pos');
+      this.erroresNewEdit.push('Error con com_pos -> Comuna');
     }
 
 
     // Campo: Observación
     if (typeof this.socioModal.obs_cap !== 'undefined') {
-      this.erroresNewEdit.push('Error con obs_cap');
+      this.erroresNewEdit.push('Error con obs_cap -> Observación');
     }
 
     // ************************************************************************************************
     // Campos ocultro en la tabla de socios.
     // Campo: nro_sol
-    if (typeof this.socioModal.nro_sol !== 'undefined') {
+    if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
       this.erroresNewEdit.push('Error con nro_sol');
     }
 
     // Campo: fec_sol
-    if (this.validateFormatDate(this.socioModal.fec_sol_date)) {
+    if (!this.validateFormatDate(this.socioModal.fec_sol_date)) {
       this.erroresNewEdit.push('Error con fec_sol');
     }
     /*if (typeof this.socioModal.fec_sol !== 'undefined') {
@@ -481,7 +497,7 @@ export class KapmaeComponent {
     }*/
 
     // Campo: fec_apr
-    if (this.validateFormatDate(this.socioModal.fec_apr_date)) {
+    if (!this.validateFormatDate(this.socioModal.fec_apr_date)) {
       this.erroresNewEdit.push('Error con fec_apr');
     }
     /*if (typeof this.socioModal.fec_apr !== 'undefined') {
@@ -494,7 +510,7 @@ export class KapmaeComponent {
     }*/
 
     // Campo: fec_can
-    if (this.validateFormatDate(this.socioModal.fec_can_date)) {
+    if (!this.validateFormatDate(this.socioModal.fec_can_date)) {
       this.erroresNewEdit.push('Error con fec_can');
     }
     /*if (typeof this.socioModal.fec_can !== 'undefined') {
@@ -512,17 +528,17 @@ export class KapmaeComponent {
     }
 
     // Campo: sec_cte 
-    if (typeof this.socioModal.sec_cte !== 'undefined') {
+    if (typeof this.socioModal.sec_cte === 'undefined' || this.socioModal.sec_cte < 0) {
       this.erroresNewEdit.push('Error con sec_cte');
     }
 
     // Campo: area 
-    if (typeof this.socioModal.area !== 'undefined') {
+    if (typeof this.socioModal.area === 'undefined' || this.socioModal.area < 0) {
       this.erroresNewEdit.push('Error con area');
     }
 
     // Campo: sec_imp 
-    if (typeof this.socioModal.sec_imp !== 'undefined') {
+    if (typeof this.socioModal.sec_imp === 'undefined' || this.socioModal.sec_imp < 0) {
       this.erroresNewEdit.push('Error con sec_imp');
     }
 
@@ -532,12 +548,12 @@ export class KapmaeComponent {
     }
 
     // Campo: acc_con 
-    if (typeof this.socioModal.acc_con !== 'undefined') {
+    if (typeof this.socioModal.acc_con === 'undefined' || this.socioModal.acc_con < 0) {
       this.erroresNewEdit.push('Error con acc_con');
     }
 
     // Campo: aju_acc 
-    if (typeof this.socioModal.aju_acc !== 'undefined') {
+    if (typeof this.socioModal.aju_acc === 'undefined' || this.socioModal.aju_acc < 0) {
       this.erroresNewEdit.push('Error con aju_acc');
     }
     if (this.erroresNewEdit.length > 0) {
