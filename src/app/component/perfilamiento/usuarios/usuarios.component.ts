@@ -37,6 +37,8 @@ export class UsuariosComponent {
   collectionSize: number = 0;
 
   passConfirm: string = '';
+  erroresList: string[] = [];
+  isErroresList: boolean = false;
 
   constructor(
     private modalService: NgbModal,
@@ -135,6 +137,8 @@ export class UsuariosComponent {
     console.log('Method editarModal');
     this.userModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
+    this.erroresList = [];
+    this.isErroresList = false;
     this.openModalFunction(content);
   }
 
@@ -149,6 +153,8 @@ export class UsuariosComponent {
     console.log('Method agregarUser.');
     this.userModal = new Usuario();
     this.userModal.estado = true;
+    this.erroresList = [];
+    this.isErroresList = false;
     this.openModalFunction(content);
   }
 
@@ -168,45 +174,73 @@ export class UsuariosComponent {
   }
 
   public guardar(): void {
-    if (this.validateField()) {
-      if (!this.isEdit) {
-        this.createNew();
+    this.erroresList = [];
+    this.isErroresList = false;
+    this.erroresList = this.validateNew();
+    if (!this.isEdit) {
+      if (this.erroresList.length > 0) {
+        /*for (let index = 0; index < this.erroresList.length; index++) {
+          const element = this.erroresList[index];
+          console.log('[' + index + ']: ' + element);
+        }*/
+        this.isErroresList = true;
       } else {
+        // console.log('this.createNew()');
+        this.createNew();
+      }
+    } else {
+      if (this.erroresList.length > 0) {
+        /*for (let index = 0; index < this.erroresList.length; index++) {
+          const element = this.erroresList[index];
+          console.log('[' + index + ']: ' + element);
+        }*/
+        this.isErroresList = true;
+      } else {
+        // console.log('this.edit()');
         this.edit();
       }
-    } else {
-      this.modals.info('Nombre o correo Son inválido');
     }
   }
 
-  private validateField(): boolean {
+  private validateNew(): string[] {
+    let errores: string[] = [];
+    this.userModal.ctaUserName = this.userModal.ctaUserName.trim();
+    if (this.userModal.ctaUserName === null || typeof this.userModal.ctaUserName === 'undefined' || this.userModal.ctaUserName === '') {
+      errores.push('Nombre es Obligatorio');
+    }
+
+    this.userModal.ctaEmail = this.userModal.ctaEmail.trim();
+    if (this.userModal.ctaEmail === null || typeof this.userModal.ctaEmail === 'undefined' || this.userModal.ctaEmail === '') {
+      errores.push('Email es Obligatorio');
+    }
+    // TODO: validar con expresión regutar
+    /*else if (false) {
+      errores.push('Email debe tener el fomato correcto');
+    }*/
+
     if (!this.isEdit) {
-      const ctaUsr = this.userModal.ctaUserName.trim();
-      const ctaEmail = this.userModal.ctaEmail.trim();
-      if (ctaUsr !== null && typeof ctaUsr !== 'undefined' && ctaUsr !== ''
-        && ctaEmail !== null && typeof ctaEmail !== 'undefined' && ctaEmail !== '') {
-        if (this.validatPassWord()) {
-          return true;
+      if (this.userModal.ctaPassWord === null || typeof this.userModal.ctaPassWord === 'undefined' || this.userModal.ctaPassWord === '') {
+        errores.push('Contraseña es Obligatorio');
+      } else if (this.passConfirm === null || typeof this.passConfirm === 'undefined' || this.passConfirm === '') {
+        errores.push('Confirmación de contraseña es Obligatorio');
+      } else if (this.userModal.ctaPassWord !== this.passConfirm) {
+        errores.push('La contraseña debe coincidir');
+      }
+    } else {
+      if (this.userModal.ctaPassWord !== null && typeof this.userModal.ctaPassWord !== 'undefined' && this.userModal.ctaPassWord !== '') {
+        if (this.passConfirm === null || typeof this.passConfirm === 'undefined' || this.passConfirm === '') {
+          errores.push('Confirmación de contraseña es Obligatorio');
+        } else if (this.userModal.ctaPassWord !== this.passConfirm) {
+          errores.push('La contraseña debe coincidir');
+        }
+      } else if (this.passConfirm !== null && typeof this.passConfirm !== 'undefined' && this.passConfirm !== '') {
+        if (this.userModal.ctaPassWord === null || typeof this.userModal.ctaPassWord === 'undefined' || this.userModal.ctaPassWord === '') {
+          errores.push('Contraseña es Obligatorio');
         }
       }
-    } else {
-      return true;
     }
-    return false;
+    return errores;
   }
-
-  private validatPassWord(): boolean {
-    const ctaPass = this.userModal.ctaPassWord.trim();
-    this.passConfirm
-    if (ctaPass !== null && typeof ctaPass !== 'undefined' && ctaPass !== ''
-      && this.passConfirm !== null && typeof this.passConfirm !== 'undefined' && this.passConfirm !== '') {
-      if (ctaPass === this.passConfirm) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   private createNew(): void {
     console.log('Cargando createNew');
     this.cargar = true;
@@ -236,10 +270,14 @@ export class UsuariosComponent {
   private edit(): void {
     console.log('Cargando edit');
     this.cargar = true;
+    let passSend = '';
+    if (this.userModal.ctaPassWord !== '' && this.passConfirm !== '') {
+      passSend = this.userModal.ctaPassWord;
+    }
     this.userService.update(
       this.userModal.id,
       this.userModal.ctaUserName,
-      this.userModal.ctaPassWord,
+      passSend,
       this.userModal.ctaEmail,
       this.userModal.estado
     ).subscribe(
