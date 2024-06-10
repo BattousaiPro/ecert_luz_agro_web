@@ -63,6 +63,7 @@ export class UsuariosComponent {
           this.usuarios = [];
           this.usuarios.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
+          this.passConfirm = '';
           for (let index = 0; index < this.usuarios.length; index++) {
             this.usuarios[index].idSelectedRol = '';
           }
