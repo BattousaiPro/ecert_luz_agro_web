@@ -214,6 +214,17 @@
                         </div>
                     </div>
                 </div>
+
+                @if (isErroresList) {
+                <div class="row mt15">
+                    @for (error of erroresList; track error; let index = $index) {
+                    <div class="col-12">
+                        <label class="col-form-label col-form-label-sm error">{{error}}</label>
+                    </div>
+                    }
+                </div>
+                }
+
                 <div class="row mt15">
                     <div class="col-12 text-right">
                         <div class="row justify-content-end">
