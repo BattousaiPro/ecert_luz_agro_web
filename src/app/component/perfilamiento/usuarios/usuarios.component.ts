@@ -37,6 +37,7 @@ export class UsuariosComponent {
   collectionSize: number = 0;
 
   passConfirm: string = '';
+
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
@@ -180,27 +181,29 @@ export class UsuariosComponent {
     this.erroresList = this.validateNew();
     if (!this.isEdit) {
       if (this.erroresList.length > 0) {
-        /*for (let index = 0; index < this.erroresList.length; index++) {
-          const element = this.erroresList[index];
-          console.log('[' + index + ']: ' + element);
-        }*/
-        this.isErroresList = true;
+        this.setIsErroresList(true);
       } else {
         // console.log('this.createNew()');
         this.createNew();
       }
     } else {
       if (this.erroresList.length > 0) {
-        /*for (let index = 0; index < this.erroresList.length; index++) {
-          const element = this.erroresList[index];
-          console.log('[' + index + ']: ' + element);
-        }*/
-        this.isErroresList = true;
+        this.setIsErroresList(false);
       } else {
         // console.log('this.edit()');
         this.edit();
       }
     }
+  }
+
+  private setIsErroresList(isErroresList: boolean): void {
+    /*
+    for (let index = 0; index < this.erroresList.length; index++) {
+      const element = this.erroresList[index];
+      console.log('[' + index + ']: ' + element);
+    }
+    */
+    this.isErroresList = isErroresList;
   }
 
   private validateNew(): string[] {
@@ -242,6 +245,7 @@ export class UsuariosComponent {
     }
     return errores;
   }
+
   private createNew(): void {
     console.log('Cargando createNew');
     this.cargar = true;
