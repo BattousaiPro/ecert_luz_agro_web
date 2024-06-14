@@ -28,6 +28,9 @@ export class ComunasComponent {
   modals = new ModalOptions();
   collectionSize: number = 0;
 
+  erroresList: string[] = [];
+  isErroresList: boolean = false;
+
   constructor(
     private modalService: NgbModal,
     private comunasService: ComunasService
@@ -66,6 +69,7 @@ export class ComunasComponent {
     this.comunasModal = new Comunas();
     this.comunasModal.estado = true;
     this.isEdit = false;
+    this.isErroresList = false;
     this.openModalFunction(content);
   }
 
@@ -87,23 +91,68 @@ export class ComunasComponent {
   }
 
   public guardar(): void {
+    this.erroresList = [];
+    this.isErroresList = false;
+    this.erroresList = this.validateNew();
+    if (!this.isEdit) {
+      if (this.erroresList.length > 0) {
+        this.setIsErroresList(true);
+      } else {
+        // console.log('this.new()');
+        this.new();
+      }
+    } else {
+      if (this.erroresList.length > 0) {
+        this.setIsErroresList(false);
+      } else {
+        // console.log('this.edit()');
+        this.edit();
+      }
+    }
+    /*
     const code = this.comunasModal.codigo;
     const descrip = this.comunasModal.descrip.trim();
     if (code !== null && typeof code !== 'undefined' && code !== 0
       && descrip !== null && typeof descrip !== 'undefined' && descrip !== ''
     ) {
       if (!this.isEdit) {
-        this.createNew();
+        this.new();
       } else {
         this.edit();
       }
     } else {
       this.modals.info('Nombre o Descripción o Código Son inválido');
-    }
+    }*/
   }
 
-  private createNew(): void {
-    console.log('Cargando createNew');
+  private setIsErroresList(isErroresList: boolean): void {
+    /*
+    for (let index = 0; index < this.erroresList.length; index++) {
+      const element = this.erroresList[index];
+      console.log('[' + index + ']: ' + element);
+    }
+    */
+    this.isErroresList = isErroresList;
+  }
+
+  private validateNew(): string[] {
+    let errores: string[] = [];
+    this.comunasModal.descrip = this.comunasModal.descrip.trim();
+    if (this.comunasModal.descrip === null || typeof this.comunasModal.descrip === 'undefined' || this.comunasModal.descrip === '') {
+      errores.push('Descripción es Obligatorio');
+    }
+
+    this.comunasModal.codigo = this.comunasModal.codigo;
+    if (this.comunasModal.codigo === null || typeof this.comunasModal.codigo === 'undefined') {
+      errores.push('Código es Obligatorio');
+    } else if (this.comunasModal.codigo !== null && typeof this.comunasModal.codigo !== 'undefined' && this.comunasModal.codigo < 0) {
+      errores.push('Código debe ser mayor a 0');
+    }
+    return errores;
+  }
+
+  private new(): void {
+    console.log('Cargando new');
     this.cargar = true;
     this.comunasService.new(
       this.comunasModal.codigo,

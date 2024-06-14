@@ -183,8 +183,8 @@ export class UsuariosComponent {
       if (this.erroresList.length > 0) {
         this.setIsErroresList(true);
       } else {
-        // console.log('this.createNew()');
-        this.createNew();
+        // console.log('this.new()');
+        this.new();
       }
     } else {
       if (this.erroresList.length > 0) {
@@ -246,8 +246,8 @@ export class UsuariosComponent {
     return errores;
   }
 
-  private createNew(): void {
-    console.log('Cargando createNew');
+  private new(): void {
+    console.log('Cargando new');
     this.cargar = true;
     this.userService.new(
       this.userModal.ctaUserName,

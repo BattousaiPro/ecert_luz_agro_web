@@ -34,6 +34,9 @@ export class RolesComponent implements OnInit {
   modals = new ModalOptions();
   collectionSize: number = 0;
 
+  erroresList: string[] = [];
+  isErroresList: boolean = false;
+
   constructor(
     private modalService: NgbModal,
     private rolesService: RolesService,
@@ -123,6 +126,7 @@ export class RolesComponent implements OnInit {
     this.rolModal = new Role();
     this.rolModal.estado = true;
     this.isEdit = false;
+    this.isErroresList = false;
     this.openModalFunction(content);
   }
 
@@ -163,6 +167,25 @@ export class RolesComponent implements OnInit {
   }
 
   public guardar(): void {
+    this.erroresList = [];
+    this.isErroresList = false;
+    this.erroresList = this.validateNew();
+    if (!this.isEdit) {
+      if (this.erroresList.length > 0) {
+        this.setIsErroresList(true);
+      } else {
+        // console.log('this.new()');
+        this.new();
+      }
+    } else {
+      if (this.erroresList.length > 0) {
+        this.setIsErroresList(false);
+      } else {
+        // console.log('this.edit()');
+        this.edit();
+      }
+    }
+    /*
     const name = this.rolModal.name.trim();
     const descrip = this.rolModal.descrip.trim();
     const code = this.rolModal.code.trim();
@@ -171,17 +194,46 @@ export class RolesComponent implements OnInit {
       && code !== null && typeof code !== 'undefined' && code !== ''
     ) {
       if (!this.isEdit) {
-        this.createNew();
+        this.new();
       } else {
         this.edit();
       }
     } else {
       this.modals.info('Nombre o Descripción o Código Son inválido');
-    }
+    }*/
   }
 
-  private createNew(): void {
-    console.log('Cargando createNewUser');
+  private setIsErroresList(isErroresList: boolean): void {
+    /*
+    for (let index = 0; index < this.erroresList.length; index++) {
+      const element = this.erroresList[index];
+      console.log('[' + index + ']: ' + element);
+    }
+    */
+    this.isErroresList = isErroresList;
+  }
+
+  private validateNew(): string[] {
+    let errores: string[] = [];
+    this.rolModal.name = this.rolModal.name.trim();
+    if (this.rolModal.name === null || typeof this.rolModal.name === 'undefined' || this.rolModal.name === '') {
+      errores.push('Nombre es Obligatorio');
+    }
+
+    this.rolModal.descrip = this.rolModal.descrip.trim();
+    if (this.rolModal.descrip === null || typeof this.rolModal.descrip === 'undefined' || this.rolModal.descrip === '') {
+      errores.push('Descripción es Obligatorio');
+    }
+
+    this.rolModal.code = this.rolModal.code.trim();
+    if (this.rolModal.code === null || typeof this.rolModal.code === 'undefined' || this.rolModal.code === '') {
+      errores.push('Código es Obligatorio');
+    }
+    return errores;
+  }
+
+  private new(): void {
+    console.log('Cargando newUser');
     this.cargar = true;
     this.rolesService.new(
       this.rolModal.name,
