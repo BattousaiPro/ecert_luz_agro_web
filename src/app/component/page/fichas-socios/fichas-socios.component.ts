@@ -39,9 +39,9 @@ export class FichasSociosComponent {
           this.anioList = [];
           this.anioList.push(...data.data);
         } else {
-          this.cargar = false;
           this.modals.error('Error con el servicio de obtener años');
         }
+        this.cargar = false;
       },
       (err: any) => {
         this.modals.error('Error con el servicio de obtener años');
