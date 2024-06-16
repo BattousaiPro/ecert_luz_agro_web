@@ -33,7 +33,6 @@ export class FichasSociosComponent {
     this.cargar = true;
     this.fichaService.getnios().subscribe(
       (data: any) => {
-        debugger
         // console.log(JSON.stringify(data));
         if (data.code === '0'
           && data.data != null) {
