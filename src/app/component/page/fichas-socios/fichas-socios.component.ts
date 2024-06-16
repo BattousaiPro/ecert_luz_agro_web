@@ -4,6 +4,7 @@ import { TemplateFichaSocioComponent } from './template-ficha-socio/template-fic
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ModalOptions } from '../../../utils/modalOptions';
+import { FichaService } from '../../../services/ficha/ficha.service';
 
 @Component({
   selector: 'app-fichas-socios',
@@ -22,17 +23,32 @@ export class FichasSociosComponent {
   anioList: number[] = [];
   modals = new ModalOptions();
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal,
+    private fichaService: FichaService
+  ) {
     this.loadAnio();
   }
 
   private loadAnio(): void {
-    this.anioList.push(2022);
-    this.anioList.push(2021);
-    this.anioList.push(2020);
-    this.anioList.push(2019);
-    this.anioList.push(2018);
-    this.anioList.push(2017);
+    this.cargar = true;
+    this.fichaService.getnios().subscribe(
+      (data: any) => {
+        debugger
+        // console.log(JSON.stringify(data));
+        if (data.code === '0'
+          && data.data != null) {
+          this.anioList = [];
+          this.anioList.push(...data.data);
+        } else {
+          this.cargar = false;
+          this.modals.error('Error con el servicio de obtener años');
+        }
+      },
+      (err: any) => {
+        this.modals.error('Error con el servicio de obtener años');
+        this.cargar = false;
+      });
+
   }
 
   submit(content: any) {
