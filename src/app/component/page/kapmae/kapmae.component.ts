@@ -29,10 +29,13 @@ import { Comunas } from '../comunas/comunas.component';
 export class KapmaeComponent {
 
   sectores: Sector[] = [];
-  comunas: Comunas[] = [];;
+  comunas: Comunas[] = [];
+
+  listaImagenes: string[] = [];
 
   socios: DataSocio[] = [];
   socioModal: DataSocio = new DataSocio();
+  socioSelectImgModal: DataSocio = new DataSocio();
   socioDeleteModal: DataSocio = new DataSocio();
   currentItem: DataSocio = new DataSocio();
   req: KapmaeRequest = new KapmaeRequest();
@@ -51,6 +54,28 @@ export class KapmaeComponent {
     private comunasService: ComunasService,
   ) {
     this.loadCargar();
+  }
+
+  public loadCargarImg(content: any): void {
+    this.cargar = true;
+    let codCop = this.socioSelectImgModal.cod_cop;
+    this.kapmaeService.findImgByCodCop(codCop).subscribe(
+      (data: any) => {
+        // console.log(JSON.stringify(data));
+        if (data.code === '0'
+          && data.data != null) {
+          this.listaImagenes = [];
+          this.listaImagenes.push(...data.data.imgs);
+          this.openModalFunction(content);
+        } else {
+          this.modals.error('Error con el Obtener Imágenes');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.modals.error('Error con el Obtener Imágenes');
+        this.cargar = false;
+      });
   }
 
   public loadCargar(): void {
@@ -144,26 +169,29 @@ export class KapmaeComponent {
     this.openModalFunction(content);
   }
 
-  validaSelected(): boolean {
+  validaSelected(): any {
     for (let index = 0; index < this.socios.length; index++) {
       if (this.socios[index].selected) {
-        return true;
+        return this.socios[index];
       }
     }
     console.log('return false.');
-    return false;
+    return null;
   }
 
-  seleccionar() {
-    if (!this.validaSelected()) {
+  seleccionar(content: any) {
+    let selectItem = this.validaSelected();
+    if (selectItem == null) {
       this.modals.warning('debes seleccionar un Socio');
     } else {
-      this.modals.info('Funcionalidad No disponible');
+      this.socioSelectImgModal = JSON.parse(JSON.stringify(selectItem));
+      this.loadCargarImg(content);
     }
   }
 
   cerfificado() {
-    if (!this.validaSelected()) {
+    let selectItem = this.validaSelected();
+    if (selectItem == null) {
       this.modals.warning('debes seleccionar un Socio para cerfificado');
     } else {
       this.modals.info('Funcionalidad No disponible');

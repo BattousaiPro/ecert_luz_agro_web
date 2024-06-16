@@ -50,4 +50,12 @@ export class KapmaeService {
     return ladata;
   }
 
+  public findImgByCodCop(codCop: number): Observable<any> {
+    let url = 'http://localhost:3000/kapmae/findImgByCodCop/' + codCop;
+    const ladata: Observable<any> = this.http.get(
+      url
+    );
+    return ladata;
+  }
+
 }

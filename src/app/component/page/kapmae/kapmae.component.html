@@ -10,7 +10,7 @@
             <div class="col-12">
                 <div class="row justify-content-end containerButton">
                     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
-                        <button type="button" class="btn btn-primary w100" (click)="seleccionar()">Seleccionar</button>
+                        <button type="button" class="btn btn-primary w100" (click)="seleccionar(myModalContentImagenesSocio)">Seleccionar</button>
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
                         <button type="button" class="btn btn-primary w100" (click)="cerfificado()">Certificado</button>
@@ -759,5 +759,84 @@ Fin Sección de Ceear y editar Socios -->
     </div>
 </ng-template>
 <!-- Fin Sección de Eliminar Socios -->
+
+<!-- Init Sección de Seleccionar Imagen Socio -->
+<ng-template #myModalContentImagenesSocio let-modal>
+    <div class="container p25">
+        <div class="title bb6">
+            <h1>Seleccionar Imagenes</h1>
+        </div>
+
+        <div class="row mt15">
+            <div class="col-xs-12 col-xl-12">
+
+                <div class="row">
+                    <div class="col-12">
+                        <label class="col-form-label col-form-label-sm" for="text">
+                            <strong>Visualizar Documentos Digitalizados</strong>
+                        </label>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="rut_cop">
+                            Rut</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="rut_cop"
+                            [value]="socioSelectImgModal.rut_cop" disabled>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <label class="col-form-label col-form-label-sm" for="nombres">
+                            Nombre Completo</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" id="nombres"
+                            [value]="socioSelectImgModal.nombres + ' ' + socioSelectImgModal. ape_pat + ' ' +socioSelectImgModal.ape_mat"
+                            disabled>
+                    </div>
+                </div>
+
+                <div class="detail-table-imagenes mb15" style="max-height: 300px;">
+                    <table class="table table-striped table-hover table-imagenes fz15">
+                        <thead>
+                            <tr>
+                                <th scope="col">Capital Traspaso</th>
+                                <th scope="col">Fecha Traspaso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (imagen of listaImagenes; track imagen ; let index = $index) {
+                            <tr>
+                                <td>{{ index }}
+                                    <input type="checkbox">
+                                </td>
+                                <td>{{ imagen }}</td>
+                            </tr>
+                            } @empty {
+                            <tr>
+                                <th scope="row" class="sticky">Sin Resultados</th>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row mt15">
+                    <div class="col-12">
+                        <div class="row justify-content-end">
+                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                                <button type="button" class="btn btn-primary w100" (click)="closeModal()">
+                                    Cacelar
+                                </button>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
+                                <button type="button" class="btn btn-primary w100" (click)="delete()">
+                                    Eliminar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+<!-- Fin Sección de Seleccionar Imagen Socio -->
 
 <app-spinner [cargar]="cargar"></app-spinner>
