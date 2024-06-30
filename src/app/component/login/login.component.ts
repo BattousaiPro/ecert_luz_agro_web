@@ -13,8 +13,8 @@ import { ModalOptions } from '../../utils/modalOptions';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  username: string = 'Batto';
-  password: string = 'Batto123';
+  username: string = 'Batto2';
+  password: string = 'asd';
   cargar: boolean = false;
 
   modals = new ModalOptions();
@@ -29,8 +29,8 @@ export class LoginComponent {
       //if (!this.password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)) {
       //    this.modals.info('La contraseña debe ser alfanumérica y tener al menos 8 caracteres');
       //} else {
-        //this.router.navigate(['home']);
-        this.login();
+      //this.router.navigate(['home']);
+      this.login();
       //}
     }
   }
@@ -42,9 +42,9 @@ export class LoginComponent {
       (data: any) => {
         console.log(JSON.stringify(data));
         if (data.code === '0') {
-        //if (data.code === '0' && data.body.data != null) {
+          //if (data.code === '0' && data.body.data != null) {
           this.router.navigate(['home']);
-        } else if(data.code === '-1') {
+        } else if (data.code === '-1' || data.code === '-2' || data.code === '-3') {
           console.log(data.message);
           this.modals.error(data.message);
         } else {

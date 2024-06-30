@@ -1,5 +1,5 @@
 {
-  "name": "ecert-web",
+  "name": "ecert_luz_agro_web",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
