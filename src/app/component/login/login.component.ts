@@ -13,7 +13,7 @@ import { ModalOptions } from '../../utils/modalOptions';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  username: string = 'Batto2';
+  username: string = 'Batto';
   password: string = 'asd';
   cargar: boolean = false;
 
