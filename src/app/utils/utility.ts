@@ -24,4 +24,24 @@ export class Uyility {
         return false;
     }
 
+    verificarToken() {
+        console.log('verificarToken');
+        try {
+            if (localStorage !== null && typeof localStorage !== 'undefined') {
+                let itemStorage = localStorage.getItem('datatoken');
+                if (itemStorage) {
+                    this.datatoken = JSON.parse(itemStorage);
+                    if (typeof this.datatoken!.token === 'undefined') {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        } catch (err) {
+            // console.log(err);
+        }
+        return false;
+    }
+
 }

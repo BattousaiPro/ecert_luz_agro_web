@@ -7,54 +7,80 @@
         <div class="row styoleBorder">
             <div class="col-12">
                 <div class="row">
+                    @if (isPermisoSocio) {
                     <div class="col-xs-12 col-md-3">
                         <button [routerLink]="['/kapmae']" type="text" class="btn btn-primary mb10 formatCard">
                             <i class="bi bi-gear-wide-connected formatCardIcon"></i>
                             Socios
                         </button>
                     </div>
+                    }
 
+                    @if (isPermisoFicha) {
                     <div class="col-xs-12 col-md-3">
                         <button [routerLink]="['/fichas/socios']" type="text" class="btn btn-primary mb10 formatCard">
                             <i class="bi bi-filetype-pdf formatCardIcon"></i>
                             Fichas
                         </button>
                     </div>
+                    }
 
+                    @if (isPermisoSector) {
                     <div class="col-xs-12 col-md-3">
                         <button [routerLink]="['/sectores']" type="text" class="btn btn-primary mb10 formatCard">
                             <!--<i class="bi bi-gear-wide-connected formatCardIcon"></i>-->
                             Sectores
                         </button>
                     </div>
+                    }
 
+                    @if (isPermisoComuna) {
                     <div class="col-xs-12 col-md-3">
                         <button [routerLink]="['/comunas']" type="text" class="btn btn-primary mb10 formatCard">
                             <!--<i class="bi bi-filetype-pdf formatCardIcon"></i>-->
                             Comunas
                         </button>
                     </div>
+                    }
 
+                    @if (isPermisoUser) {
                     <div class="col-xs-12 col-md-4">
                         <button [routerLink]="['/usuarios']" type="text" class="btn btn-primary mb10 formatCard">
                             <i class="bi bi-person-up formatCardIcon"></i>
                             Usuarios
                         </button>
                     </div>
+                    }
 
+                    @if (isPermisoRol) {
                     <div class="col-xs-12 col-md-4">
                         <button [routerLink]="['/roles']" type="text" class="btn btn-primary mb10 formatCard">
                             <i class="bi bi-person-rolodex formatCardIcon"></i>
                             Roles
                         </button>
                     </div>
+                    }
 
+                    @if (isPermisoPermiso) {
                     <div class="col-xs-12 col-md-4">
                         <button [routerLink]="['/permisos']" type="text" class="btn btn-primary mb10 formatCard">
                             <i class="bi bi-shield-lock formatCardIcon"></i>
                             Permisos
                         </button>
                     </div>
+                    }
+
+                    @if (
+                    !isPermisoSocio && !isPermisoFicha && !isPermisoSector &&
+                    !isPermisoComuna && !isPermisoUser && !isPermisoRol &&
+                    !isPermisoPermiso
+                    ) {
+                    <div class="col-xs-12 col-md-12">
+                        <label>
+                            No presenta Permisos para ver esta Sección.
+                        </label>
+                    </div>
+                    }
 
                 </div>
             </div>

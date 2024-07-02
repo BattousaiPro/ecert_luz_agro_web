@@ -2,6 +2,7 @@
     <app-sidebar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebar>
 </div>
 -->
+@if(isPermisoSidebar) {
 <div>
     <div class="container">
         <div class="row">
@@ -12,13 +13,14 @@
                 </button>
             </div>
             <div class="col-md-6">
-                <button [routerLink]="['/']" style="height: 65px;width: 100%" type="text" class="btn btn-primary mb10">
+                <button (click)="logput()" style="height: 65px;width: 100%" type="text" class="btn btn-primary mb10">
                     Log Out
                 </button>
             </div>
         </div>
     </div>
 </div>
+}
 
 <div [ngClass]="{ 'sidebarExpanded': sidebarExpanded }">
     <router-outlet />
