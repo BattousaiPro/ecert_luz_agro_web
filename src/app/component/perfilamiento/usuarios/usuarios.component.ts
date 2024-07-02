@@ -1,5 +1,5 @@
 import { CommonModule, JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../../services/user/user.service';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
@@ -9,6 +9,7 @@ import { UsuariosRequest } from './model/UsuariosRequest';
 import { Role } from '../roles/roles.component';
 import { RolesService } from '../../../services/roles/roles.service';
 import { UserRolService } from '../../../services/user-rol/user-rol.service';
+import { Uyility } from '../../../utils/utility';
 
 
 @Component({
@@ -23,7 +24,7 @@ import { UserRolService } from '../../../services/user-rol/user-rol.service';
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss'
 })
-export class UsuariosComponent {
+export class UsuariosComponent implements OnInit {
 
   usuarios: Usuario[] = [];
   //roles: Role[] = [];
@@ -41,6 +42,11 @@ export class UsuariosComponent {
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
+  public permisosAcces = new Uyility;
+  isPermisoCreate: boolean = false;
+  isPermisoDelete: boolean = false;
+  isPermisoEdit: boolean = false;
+
   constructor(
     private modalService: NgbModal,
     private userService: UserService,
@@ -48,7 +54,14 @@ export class UsuariosComponent {
     private userRolService: UserRolService,
   ) { }
 
+  setPermiso(): void {
+    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_USER_DELETE');
+    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_USER_EDIT');
+    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_USER_CREATE');
+  }
+
   ngOnInit(): void {
+    this.setPermiso();
     this.loadCargar();
   }
 

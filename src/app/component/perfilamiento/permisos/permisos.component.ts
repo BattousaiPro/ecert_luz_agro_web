@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { PermisosRequest } from './model/PermisosRequest';
+import { Uyility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-permisos',
@@ -32,12 +33,24 @@ export class PermisosComponent implements OnInit {
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
+  public permisosAcces = new Uyility;
+  isPermisoCreate: boolean = false;
+  isPermisoDelete: boolean = false;
+  isPermisoEdit: boolean = false;
+
   constructor(
     private modalService: NgbModal,
     private permisosService: PermisosService
   ) { }
 
+  setPermiso(): void {
+    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_PERMISO_DELETE');
+    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_PERMISO_EDIT');
+    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_PERMISO_CREATE');
+  }
+
   ngOnInit(): void {
+    this.setPermiso();
     this.loadCargar();
   }
 
@@ -110,22 +123,6 @@ export class PermisosComponent implements OnInit {
         this.edit();
       }
     }
-    /*
-    const name = this.permisosModal.name.trim();
-    const descrip = this.permisosModal.descrip.trim();
-    const code = this.permisosModal.code.trim();
-    if (name !== null && typeof name !== 'undefined' && name !== ''
-      && descrip !== null && typeof descrip !== 'undefined' && descrip !== ''
-      && code !== null && typeof code !== 'undefined' && code !== ''
-    ) {
-      if (!this.isEdit) {
-        this.new();
-      } else {
-        this.edit();
-      }
-    } else {
-      this.modals.info('Nombre o Descripción o Código Son inválido');
-    }*/
   }
 
   private setIsErroresList(isErroresList: boolean): void {

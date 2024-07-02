@@ -9,6 +9,7 @@ import { Permiso } from '../permisos/permisos.component';
 import { PermisosService } from '../../../services/permisos/permisos.service';
 import { RolesRequest } from './model/RolesRequest';
 import { RolPermisoService } from '../../../services/rol-permiso/rol-permiso.service';
+import { Uyility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-roles',
@@ -37,6 +38,11 @@ export class RolesComponent implements OnInit {
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
+  public permisosAcces = new Uyility;
+  isPermisoCreate: boolean = false;
+  isPermisoDelete: boolean = false;
+  isPermisoEdit: boolean = false;
+
   constructor(
     private modalService: NgbModal,
     private rolesService: RolesService,
@@ -44,7 +50,14 @@ export class RolesComponent implements OnInit {
     private rolPermisoService: RolPermisoService,
   ) { }
 
+  setPermiso(): void {
+    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_ROL_DELETE');
+    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_ROL_EDIT');
+    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_ROL_CREATE');
+  }
+
   ngOnInit(): void {
+    this.setPermiso();
     this.loadCargar();
   }
 

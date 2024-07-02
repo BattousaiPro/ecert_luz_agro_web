@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { SectoresRequest } from './model/SectoresRequest';
 import { ModalOptions } from '../../../utils/modalOptions';
@@ -6,6 +6,7 @@ import { SectorService } from '../../../services/sector/sector.service';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Uyility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-sectores',
@@ -17,7 +18,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './sectores.component.html',
   styleUrl: './sectores.component.scss'
 })
-export class SectoresComponent {
+export class SectoresComponent implements OnInit {
 
   sectores: Sector[] = [];
   sectoresModal: Sector = new Sector();
@@ -31,12 +32,24 @@ export class SectoresComponent {
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
+  public permisosAcces = new Uyility;
+  isPermisoCreate: boolean = false;
+  isPermisoDelete: boolean = false;
+  isPermisoEdit: boolean = false;
+
   constructor(
     private modalService: NgbModal,
     private sectorService: SectorService
   ) { }
 
+  setPermiso(): void {
+    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_SECTOR_DELETE');
+    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_SECTOR_EDIT');
+    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_SECTOR_CREATE');
+  }
+
   ngOnInit(): void {
+    this.setPermiso();
     this.loadCargar();
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataSocio, DatepickerModel } from './model/DataSocio';
 import { DetailSocioComponent } from './detail-socio/detail-socio.component';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
@@ -12,6 +12,7 @@ import { SectorService } from '../../../services/sector/sector.service';
 import { ComunasService } from '../../../services/comunas/comunas.service';
 import { Sector } from '../sectores/sectores.component';
 import { Comunas } from '../comunas/comunas.component';
+import { Uyility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-kapmae',
@@ -26,7 +27,7 @@ import { Comunas } from '../comunas/comunas.component';
   templateUrl: './kapmae.component.html',
   styleUrl: './kapmae.component.scss'
 })
-export class KapmaeComponent {
+export class KapmaeComponent implements OnInit {
 
   sectores: Sector[] = [];
   comunas: Comunas[] = [];
@@ -48,11 +49,30 @@ export class KapmaeComponent {
   principalContainer: boolean = true;
   erroresNewEdit: string[] = [];
 
+  public permisosAcces = new Uyility;
+  isPermisoCreate: boolean = false;
+  isPermisoDelete: boolean = false;
+  isPermisoEdit: boolean = false;
+  isPermisoSeleccionar: boolean = false;
+  isPermisoCertificado: boolean = false;
+
   constructor(private modalService: NgbModal,
     private kapmaeService: KapmaeService,
     private sectorService: SectorService,
     private comunasService: ComunasService,
-  ) {
+    
+  ) { }
+
+  setPermiso(): void {
+    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_DELETE');
+    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_EDIT');
+    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_CREATE');
+    this.isPermisoSeleccionar = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_SELECCIONAR');
+    this.isPermisoCertificado = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_CERTIFICADO');
+  }
+
+  ngOnInit(): void {
+    this.setPermiso();
     this.loadCargar();
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComunasService } from '../../../services/comunas/comunas.service';
@@ -6,6 +6,7 @@ import { ComunasRequest } from './model/ComunasRequest';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
+import { Uyility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-comunas',
@@ -17,7 +18,7 @@ import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
   templateUrl: './comunas.component.html',
   styleUrl: './comunas.component.scss'
 })
-export class ComunasComponent {
+export class ComunasComponent implements OnInit {
 
   comunas: Comunas[] = [];
   comunasModal: Comunas = new Comunas();
@@ -31,12 +32,24 @@ export class ComunasComponent {
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
+  public permisosAcces = new Uyility;
+  isPermisoCreate: boolean = false;
+  isPermisoDelete: boolean = false;
+  isPermisoEdit: boolean = false;
+
   constructor(
     private modalService: NgbModal,
     private comunasService: ComunasService
   ) { }
 
+  setPermiso(): void {
+    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_COMUNA_DELETE');
+    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_COMUNA_EDIT');
+    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_COMUNA_CREATE');
+  }
+
   ngOnInit(): void {
+    this.setPermiso();
     this.loadCargar();
   }
 

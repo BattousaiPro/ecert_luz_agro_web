@@ -38,11 +38,12 @@ export class LoginComponent {
   private login(): void {
     console.log('Cargando loadCargarRoles');
     this.cargar = true;
+    localStorage.removeItem('datatoken');
     this.userService.login(this.username, this.password).subscribe(
       (data: any) => {
         console.log(JSON.stringify(data));
         if (data.code === '0') {
-          //if (data.code === '0' && data.body.data != null) {
+          localStorage.setItem('datatoken', JSON.stringify(data.data));
           this.router.navigate(['home']);
         } else if (data.code === '-1' || data.code === '-2' || data.code === '-3') {
           console.log(data.message);

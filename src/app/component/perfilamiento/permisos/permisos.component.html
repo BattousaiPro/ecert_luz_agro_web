@@ -23,7 +23,8 @@
                     <option [ngValue]="25">25</option>
                     <option [ngValue]="50">50</option>
                     <option [ngValue]="100">100</option>
-                </select></div>
+                </select>
+            </div>
             <div class="col-xs-12 col-sm-10 col-xl-10 mt15">
                 <ngb-pagination [collectionSize]="collectionSize" [(page)]="req.pageSize" [pageSize]="req.limit"
                     [maxSize]="3" [boundaryLinks]="true" (pageChange)="loadCargar()" class="fr">
@@ -36,8 +37,10 @@
                 <thead>
                     <tr>
                         <th scope="col" class="mw-160">
-                            <div><input type="text" class="form-control w100 mb10" placeholder="Nombre"
-                                    (blur)="loadCargar()" [(ngModel)]="req.name"></div>
+                            <div>
+                                <input type="text" class="form-control w100 mb10" placeholder="Nombre"
+                                    (blur)="loadCargar()" [(ngModel)]="req.name">
+                            </div>
                         </th>
                         <th scope="col" class="mw-60"></th>
                         <th scope="col" class="mw-60"></th>
