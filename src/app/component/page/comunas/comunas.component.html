@@ -8,11 +8,13 @@
         <div class="row">
             <div class="col-12">
                 <div class="row justify-content-end containerButton">
+                    @if (isPermisoCreate) {
                     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
                         <button type="button" class="btn btn-primary w100" (click)="agregaModal(myModalContent)">
                             Agregar Comuna
                         </button>
                     </div>
+                    }
                 </div>
             </div>
         </div>
@@ -69,13 +71,17 @@
                                 name="permissions-table-[{{ comuna.estado }}]" disabled="" />
                         </td>
                         <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
+                            @if (isPermisoEdit) {
                             <button type="button" class="btn btn-primary" (click)="editarModal(myModalContent, comuna)">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
+                            }
+                            @if (isPermisoDelete) {
                             <button type="button" class="btn btn-primary"
                                 (click)="deleteModal(myModalContentDelete, comuna)">
                                 <i class="bi bi-trash3"></i>
                             </button>
+                            }
                     </tr>
                     } @empty {
                     <tr>

@@ -46,6 +46,7 @@ export class UsuariosComponent implements OnInit {
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
   isPermisoEdit: boolean = false;
+  isPermisoAddRol: boolean = false;
 
   constructor(
     private modalService: NgbModal,
@@ -58,6 +59,7 @@ export class UsuariosComponent implements OnInit {
     this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_USER_DELETE');
     this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_USER_EDIT');
     this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_USER_CREATE');
+    this.isPermisoAddRol = this.permisosAcces.consultar('LUZ_AGRO_USER_ADD_PERMISO');
   }
 
   ngOnInit(): void {

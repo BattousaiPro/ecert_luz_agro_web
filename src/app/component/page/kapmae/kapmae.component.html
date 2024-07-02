@@ -8,21 +8,32 @@
 
         <div class="row">
             <div class="col-12">
+                @if (isPermisoSeleccionar || isPermisoCertificado || isPermisoCreate) {
                 <div class="row justify-content-end containerButton">
+                    @if (isPermisoSeleccionar) {
                     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
-                        <button type="button" class="btn btn-primary w100" (click)="seleccionar(myModalContentImagenesSocio)">Seleccionar</button>
+                        <button type="button" class="btn btn-primary w100"
+                            (click)="seleccionar(myModalContentImagenesSocio)">
+                            Seleccionar
+                        </button>
                     </div>
+                    }
+                    @if (isPermisoCertificado) {
                     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
-                        <button type="button" class="btn btn-primary w100" (click)="cerfificado()">Certificado</button>
+                        <button type="button" class="btn btn-primary w100" (click)="cerfificado()">
+                            Certificado
+                        </button>
                     </div>
-                    <!--
+                    }
+                    @if (isPermisoCreate) {
                     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
                         <button type="button" class="btn btn-primary w100" (click)="agregaModal()">
                             Agregar Socio
                         </button>
                     </div>
-                    -->
+                    }
                 </div>
+                }
             </div>
         </div>
 
@@ -166,16 +177,18 @@
                     <tr [ngClass]="{'selected' : socio.selected}">
                         <td scope="row" (click)="statusChange(socio, 'Id')" [ngClass]="{'selectedeye' : socio.selected}"
                             class="mw-160 sticky">
-                            <!--
+                            @if (isPermisoEdit) {
                             <button type="button" class="btn btn-primary" (click)="editarModal(socio)"
                                 style="margin-right: 5px;">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
-                            -->
+                            }
+                            @if (isPermisoDelete) {
                             <button type="button" class="btn btn-primary"
                                 (click)="deleteModal(myModalContentDelete, socio)" style="margin-right: 5px;">
                                 <i class="bi bi-trash3"></i>
                             </button>
+                            }
                             <button type="button" class="btn btn-primary" (click)="openDetails(socio, myModalContent)">
                                 <i class="bi bi-eye-fill"></i>
                             </button>
@@ -280,10 +293,10 @@
                         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
                             <button type="button" class="btn btn-primary w100" (click)="guardar(socioModal)">
                                 @if (isEdit) {
-                                    Editar
-                                    } @else {
-                                    Agregar
-                                    }
+                                Editar
+                                } @else {
+                                Agregar
+                                }
                             </button>
                         </div>
                     </div>
@@ -670,10 +683,10 @@
                         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
                             <button type="button" class="btn btn-primary w100" (click)="guardar(socioModal)">
                                 @if (isEdit) {
-                                    Editar
-                                    } @else {
-                                    Agregar
-                                    }
+                                Editar
+                                } @else {
+                                Agregar
+                                }
                             </button>
                         </div>
                     </div>

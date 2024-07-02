@@ -42,6 +42,7 @@ export class RolesComponent implements OnInit {
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
   isPermisoEdit: boolean = false;
+  isPermisoAddPermiso: boolean = false;
 
   constructor(
     private modalService: NgbModal,
@@ -54,6 +55,7 @@ export class RolesComponent implements OnInit {
     this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_ROL_DELETE');
     this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_ROL_EDIT');
     this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_ROL_CREATE');
+    this.isPermisoAddPermiso = this.permisosAcces.consultar('LUZ_AGRO_ROL_ADD_PERMISO');
   }
 
   ngOnInit(): void {

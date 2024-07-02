@@ -9,10 +9,13 @@
             <div class="col-12 text-right">
                 <div class="row justify-content-end">
                     <div class="col-12 ">
+                        @if (isPermisoCreate) {
                         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                            <button type="button" class="btn btn-primary w100"
-                                (click)="agregaModal(myModalContent)">Agregar Usuario</button>
+                            <button type="button" class="btn btn-primary w100" (click)="agregaModal(myModalContent)">
+                                Agregar Usuario
+                            </button>
                         </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -68,14 +71,20 @@
                                     name="permissions-table-[{{ user.id }}][{{ user.estado }}]" disabled="" />
                             </td>
                             <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
+                                <div class="text-center">
+                                @if (isPermisoEdit) {
                                 <button type="button" class="btn btn-primary"
                                     (click)="editarModal(myModalContent, user)">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
+                                }
+                                @if (isPermisoDelete) {
                                 <button type="button" class="btn btn-primary"
                                     (click)="deleteModal(myModalContentDelete, user)">
                                     <i class="bi bi-trash3"></i>
                                 </button>
+                                }
+                                @if (isPermisoAddRol) {
                                 @if (user.addUser) {
                                 <button type="button" class="btn btn-primary" (click)="setRoles(index)">
                                     <i class="bi bi-plus-square"></i>
@@ -85,6 +94,8 @@
                                     <i class="bi bi-plus-square-fill"></i>
                                 </button>
                                 }
+                                }
+                                </div>
                             </td>
                         </tr>
                         @if(user.addRol) {
