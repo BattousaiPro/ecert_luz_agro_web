@@ -71,7 +71,6 @@
                                     name="permissions-table-[{{ user.id }}][{{ user.estado }}]" disabled="" />
                             </td>
                             <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
-                                <div class="text-center">
                                 @if (isPermisoEdit) {
                                 <button type="button" class="btn btn-primary"
                                     (click)="editarModal(myModalContent, user)">
@@ -95,7 +94,6 @@
                                 </button>
                                 }
                                 }
-                                </div>
                             </td>
                         </tr>
                         @if(user.addRol) {
