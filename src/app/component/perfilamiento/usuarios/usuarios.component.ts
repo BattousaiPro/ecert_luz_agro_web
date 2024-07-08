@@ -303,6 +303,9 @@ export class UsuariosComponent implements OnInit {
     ).subscribe(
       (data: any) => {
         if (data.code === '0') {
+          if (passSend !== '') {
+            this.modals.success('Cambio de contraseña Exitoso');
+          }
           this.closeModal();
           this.loadCargar();
         } else {
