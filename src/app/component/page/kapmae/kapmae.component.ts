@@ -32,7 +32,7 @@ export class KapmaeComponent implements OnInit {
   sectores: Sector[] = [];
   comunas: Comunas[] = [];
 
-  listaImagenes: string[] = [];
+  listaImagenes: ImgLista[] = [];
   showImprimirBoton: boolean = false;
 
   socios: DataSocio[] = [];
@@ -86,7 +86,12 @@ export class KapmaeComponent implements OnInit {
           && data.data != null) {
           this.showImprimirBoton = false;
           this.listaImagenes = [];
-          this.listaImagenes.push(...data.data.imgs);
+          for (let index = 0; index < data.data.imgs.length; index++) {
+            let img: ImgLista = new ImgLista();
+            img.imagen = data.data.imgs[index];
+            img.estado = false;
+            this.listaImagenes.push(img);
+          }
           if (this.listaImagenes.length > 0) {
             this.showImprimirBoton = true;
           }
@@ -224,6 +229,14 @@ export class KapmaeComponent implements OnInit {
   }
 
   imprimirImg(): void {
+    let habilitados = 0;
+    for (let index = 0; index < this.listaImagenes.length; index++) {
+      const element = this.listaImagenes[index];
+      if (element.estado) {
+        habilitados++;
+      }
+    }
+
     this.modals.info('Funcionalidad No disponible');
   }
 
@@ -629,4 +642,14 @@ export class KapmaeComponent implements OnInit {
     return true;
   }
 
+}
+export interface ImgLista {
+  imagen: string;
+  estado: boolean;
+}
+export class ImgLista {
+  constructor() {
+    this.imagen = '';
+    this.estado = false;
+  }
 }

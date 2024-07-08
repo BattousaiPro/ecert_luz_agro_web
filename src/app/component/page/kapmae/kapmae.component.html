@@ -813,13 +813,17 @@ Fin Sección de Ceear y editar Socios -->
                             </tr>
                         </thead>
                         <tbody>
-                            @for (imagen of listaImagenes; track imagen ; let index = $index) {
+                            @for (itemImg of listaImagenes; track itemImg ; let index = $index) {
                             <tr>
                                 <td style="text-align: center;">
-                                    <span style="padding-right: 10px;">{{ index }}</span>
-                                    <input type="checkbox">
+                                    <div class="checkbox-wrapper-64">
+                                        <label class="switch">
+                                            <input type="checkbox"  [(ngModel)]="itemImg.estado">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
                                 </td>
-                                <td>{{ imagen }}</td>
+                                <td>{{ itemImg.imagen }}</td>
                             </tr>
                             } @empty {
                             <tr>
