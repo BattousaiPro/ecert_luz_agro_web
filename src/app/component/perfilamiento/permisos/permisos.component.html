@@ -68,7 +68,7 @@
                             <input type="checkbox" [(ngModel)]="permiso.estado" id="user-table-{{ permiso.id }}"
                                 name="permissions-table-[{{ permiso.id }}][{{ permiso.estado }}]" disabled="" />
                         </td>
-                        <td>
+                        <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
                             @if (isPermisoEdit) {
                             <button type="button" class="btn btn-primary"
                                 (click)="editarModal(myModalContent, permiso)">
