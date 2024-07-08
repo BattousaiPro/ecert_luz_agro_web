@@ -815,7 +815,8 @@ Fin Sección de Ceear y editar Socios -->
                         <tbody>
                             @for (imagen of listaImagenes; track imagen ; let index = $index) {
                             <tr>
-                                <td>{{ index }}
+                                <td style="text-align: center;">
+                                    <span style="padding-right: 10px;">{{ index }}</span>
                                     <input type="checkbox">
                                 </td>
                                 <td>{{ imagen }}</td>
