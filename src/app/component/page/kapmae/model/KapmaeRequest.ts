@@ -18,4 +18,11 @@ export class KapmaeRequest {
     this.pageSize = 1;
     this.limit = 10;
   }
+
+  clear() {
+    this.rut_cop = this.rut_cop !== '' ? this.rut_cop.trim() : '';
+    this.nombres = this.nombres !== '' ? this.nombres.trim() : '';
+    this.ape_pat = this.ape_pat !== '' ? this.ape_pat.trim() : '';
+    this.ape_mat = this.ape_mat !== '' ? this.ape_mat.trim() : '';
+  }
 }

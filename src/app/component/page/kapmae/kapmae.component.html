@@ -837,11 +837,13 @@ Fin Sección de Ceear y editar Socios -->
                                     Cerrar
                                 </button>
                             </div>
+                            @if(showImprimirBoton) {
                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
                                 <button type="button" class="btn btn-primary w100" (click)="imprimirImg()">
                                     Imprimir
                                 </button>
                             </div>
+                            }
                         </div>
                     </div>
                 </div>

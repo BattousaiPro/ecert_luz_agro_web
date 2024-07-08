@@ -33,6 +33,7 @@ export class KapmaeComponent implements OnInit {
   comunas: Comunas[] = [];
 
   listaImagenes: string[] = [];
+  showImprimirBoton: boolean = false;
 
   socios: DataSocio[] = [];
   socioModal: DataSocio = new DataSocio();
@@ -60,7 +61,6 @@ export class KapmaeComponent implements OnInit {
     private kapmaeService: KapmaeService,
     private sectorService: SectorService,
     private comunasService: ComunasService,
-    
   ) { }
 
   setPermiso(): void {
@@ -84,8 +84,12 @@ export class KapmaeComponent implements OnInit {
         // console.log(JSON.stringify(data));
         if (data.code === '0'
           && data.data != null) {
+          this.showImprimirBoton = false;
           this.listaImagenes = [];
           this.listaImagenes.push(...data.data.imgs);
+          if (this.listaImagenes.length > 0) {
+            this.showImprimirBoton = true;
+          }
           this.openModalFunction(content);
         } else {
           this.modals.error('Error con el Obtener Imágenes');
@@ -101,6 +105,7 @@ export class KapmaeComponent implements OnInit {
   public loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
+    this.req.clear();
     this.kapmaeService.obtenerByFilter(this.req).subscribe(
       (data: any) => {
         // console.log(JSON.stringify(data));
