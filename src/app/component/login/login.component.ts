@@ -41,7 +41,7 @@ export class LoginComponent {
     localStorage.removeItem('datatoken');
     this.userService.login(this.username, this.password).subscribe(
       (data: any) => {
-        console.log(JSON.stringify(data));
+        // console.log(JSON.stringify(data));
         if (data.code === '0') {
           localStorage.setItem('datatoken', JSON.stringify(data.data));
           this.router.navigate(['home']);
