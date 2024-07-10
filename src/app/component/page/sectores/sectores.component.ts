@@ -33,6 +33,7 @@ export class SectoresComponent implements OnInit {
   isErroresList: boolean = false;
 
   public permisosAcces = new Uyility;
+  isPermisoVerLista: boolean = false;
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
   isPermisoEdit: boolean = false;
@@ -43,6 +44,7 @@ export class SectoresComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
+    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_SECTOR');
     this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_SECTOR_DELETE');
     this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_SECTOR_EDIT');
     this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_SECTOR_CREATE');
@@ -50,7 +52,8 @@ export class SectoresComponent implements OnInit {
 
   ngOnInit(): void {
     this.setPermiso();
-    this.loadCargar();
+    if (this.isPermisoVerLista)
+      this.loadCargar();
   }
 
   public loadCargar(): void {

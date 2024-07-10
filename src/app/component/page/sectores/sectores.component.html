@@ -3,6 +3,10 @@
         <h1>Sectores</h1>
     </div>
 
+    @if (
+    !isPermisoVerLista && !isPermisoDelete
+    && !isPermisoEdit && !isPermisoCreate
+    ) {
     <div class="title mt15">
 
         <div class="row">
@@ -112,6 +116,14 @@
         </div>
 
     </div>
+    } @else {
+    <div class="col-xs-12 col-md-12">
+        <label>
+            No presenta Permisos para ver esta Sección.
+        </label>
+    </div>
+    }
+
 </div>
 
 <ng-template #myModalContent let-modal>
