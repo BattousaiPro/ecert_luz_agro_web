@@ -3,6 +3,7 @@
         <h1>Roles</h1>
     </div>
 
+    @if (isPermisoVerLista) {
     <div class="row mt15">
         <div class="col-12 text-right">
             <div class="row justify-content-end">
@@ -186,6 +187,14 @@
             </div>
         </div>
     </div>
+    } @else {
+    <div class="col-xs-12 col-md-12">
+        <label class="emptyReg">
+            No presenta Permisos para ver esta Sección.
+        </label>
+    </div>
+    }
+
 </div>
 
 <ng-template #myModalContent let-modal>

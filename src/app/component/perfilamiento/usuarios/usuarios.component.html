@@ -3,6 +3,7 @@
         <h1>Usuarios</h1>
     </div>
 
+    @if (isPermisoVerLista) {
     <div class="title mt15">
 
         <div class="row mt15">
@@ -189,6 +190,13 @@
         </div>
 
     </div>
+    } @else {
+    <div class="col-xs-12 col-md-12">
+        <label class="emptyReg">
+            No presenta Permisos para ver esta Sección.
+        </label>
+    </div>
+    }
 
 </div>
 

@@ -34,6 +34,7 @@ export class PermisosComponent implements OnInit {
   isErroresList: boolean = false;
 
   public permisosAcces = new Uyility;
+  isPermisoVerLista: boolean = false;
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
   isPermisoEdit: boolean = false;
@@ -44,6 +45,7 @@ export class PermisosComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
+    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_PERMISO');
     this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_PERMISO_DELETE');
     this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_PERMISO_EDIT');
     this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_PERMISO_CREATE');
@@ -51,7 +53,8 @@ export class PermisosComponent implements OnInit {
 
   ngOnInit(): void {
     this.setPermiso();
-    this.loadCargar();
+    if (this.isPermisoVerLista)
+      this.loadCargar();
   }
 
   public loadCargar(): void {

@@ -32,7 +32,7 @@ export class FichasSociosComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
-    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_FICHA_READ');
+    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_FICHA');
   }
 
   ngOnInit(): void {

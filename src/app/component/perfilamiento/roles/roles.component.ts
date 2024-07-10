@@ -39,6 +39,7 @@ export class RolesComponent implements OnInit {
   isErroresList: boolean = false;
 
   public permisosAcces = new Uyility;
+  isPermisoVerLista: boolean = false;
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
   isPermisoEdit: boolean = false;
@@ -52,6 +53,7 @@ export class RolesComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
+    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_ROL');
     this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_ROL_DELETE');
     this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_ROL_EDIT');
     this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_ROL_CREATE');
@@ -60,7 +62,8 @@ export class RolesComponent implements OnInit {
 
   ngOnInit(): void {
     this.setPermiso();
-    this.loadCargar();
+    if (this.isPermisoVerLista)
+      this.loadCargar();
   }
 
   public loadCargar(): void {
