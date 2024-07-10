@@ -3,6 +3,7 @@
         <h1>Fichas</h1>
     </div>
 
+    @if (isPermisoVerLista) {
     <div class="title" style="margin-bottom: 15px;margin-top: 15px;">
         <div class="row styoleBorder">
             <h4>Filtros</h4>
@@ -38,6 +39,13 @@
             </div>
         </div>
     </div>
+    } @else {
+    <div class="col-xs-12 col-md-12">
+        <label class="emptyReg">
+            No presenta Permisos para ver esta Sección.
+        </label>
+    </div>
+    }
 
 </div>
 

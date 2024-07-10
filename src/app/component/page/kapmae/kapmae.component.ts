@@ -51,6 +51,7 @@ export class KapmaeComponent implements OnInit {
   erroresNewEdit: string[] = [];
 
   public permisosAcces = new Uyility;
+  isPermisoVerLista: boolean = false;
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
   isPermisoEdit: boolean = false;
@@ -64,6 +65,7 @@ export class KapmaeComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
+    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_SOCIO');
     this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_DELETE');
     this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_EDIT');
     this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_CREATE');
@@ -73,7 +75,8 @@ export class KapmaeComponent implements OnInit {
 
   ngOnInit(): void {
     this.setPermiso();
-    this.loadCargar();
+    if (this.isPermisoVerLista)
+      this.loadCargar();
   }
 
   public loadCargarImg(content: any): void {

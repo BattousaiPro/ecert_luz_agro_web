@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { TemplateFichaSocioComponent } from './template-ficha-socio/template-ficha-socio.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { FichaService } from '../../../services/ficha/ficha.service';
+import { Uyility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-fichas-socios',
@@ -13,7 +14,7 @@ import { FichaService } from '../../../services/ficha/ficha.service';
   templateUrl: './fichas-socios.component.html',
   styleUrl: './fichas-socios.component.scss'
 })
-export class FichasSociosComponent {
+export class FichasSociosComponent implements OnInit {
 
   cargar: boolean = false;
   codigoInicial: string = '';
@@ -23,10 +24,21 @@ export class FichasSociosComponent {
   anioList: number[] = [];
   modals = new ModalOptions();
 
+  public permisosAcces = new Uyility;
+  isPermisoVerLista: boolean = false;
+
   constructor(private modalService: NgbModal,
     private fichaService: FichaService
-  ) {
-    this.loadAnio();
+  ) { }
+
+  setPermiso(): void {
+    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_FICHA_READ');
+  }
+
+  ngOnInit(): void {
+    this.setPermiso();
+    if (this.isPermisoVerLista)
+      this.loadAnio();
   }
 
   private loadAnio(): void {

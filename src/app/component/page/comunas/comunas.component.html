@@ -3,10 +3,7 @@
         <h1>Comunas</h1>
     </div>
 
-    @if (
-    !isPermisoVerLista && !isPermisoDelete
-    && !isPermisoEdit && !isPermisoCreate
-    ) {
+    @if (isPermisoVerLista) {
     <div class="title mt15">
 
         <div class="row">
@@ -118,7 +115,7 @@
     </div>
     } @else {
     <div class="col-xs-12 col-md-12">
-        <label>
+        <label class="emptyReg">
             No presenta Permisos para ver esta Sección.
         </label>
     </div>

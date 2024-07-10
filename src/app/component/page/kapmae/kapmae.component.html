@@ -2,6 +2,8 @@
     <div class="title mt15">
         <h1>Socios</h1>
     </div>
+
+    @if (isPermisoVerLista) {
     @if (principalContainer) {
     <div class="title mt15">
 
@@ -701,6 +703,14 @@
     </div>
     <!-- </ng-template>
     Fin Sección de Ceear y editar Socios -->
+    }
+
+    } @else {
+    <div class="col-xs-12 col-md-12">
+        <label class="emptyReg">
+            No presenta Permisos para ver esta Sección.
+        </label>
+    </div>
     }
 
 </div>
