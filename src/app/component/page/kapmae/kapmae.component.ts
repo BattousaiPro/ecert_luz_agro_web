@@ -152,11 +152,11 @@ export class KapmaeComponent implements OnInit {
           this.loadCargarComunas();
         } else {
           this.cargar = false;
-          this.modals.success('Error con la respuesta de servicios de Roles');
+          this.modals.error('Error con la respuesta de servicios de Sectores');
         }
       },
       (err: any) => {
-        this.modals.error('Error con el servicio de Roles');
+        this.modals.error('Error con el servicio de Sectores');
         this.cargar = false;
       }
     );
@@ -173,12 +173,12 @@ export class KapmaeComponent implements OnInit {
           this.comunas = [];
           this.comunas.push(...data.data);
         } else {
-          this.modals.success('Error con la respuesta de servicios de Roles');
+          this.modals.error('Error con la respuesta de servicios de Comunas');
         }
         this.cargar = false;
       },
       (err: any) => {
-        this.modals.error('Error con el servicio de Roles');
+        this.modals.error('Error con el servicio de Comunas');
         this.cargar = false;
       }
     );
