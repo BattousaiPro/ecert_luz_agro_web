@@ -344,20 +344,29 @@ export class KapmaeComponent implements OnInit {
   }
 
   public guardar(selectedItem: DataSocio): void {
-    if (this.validateActionNewEdit(selectedItem)) {
-      if (this.isEdit) {
+    console.log('Method guardar.');
+    if (this.isEdit) {
+      if (this.validateActionEdit(selectedItem)) {
         // this.edit();
         this.modals.info('Funcionalidad Editar Socios No disponible');
       } else {
-        // this.new();
-        this.modals.info('Funcionalidad Crear Socios No disponible');
+        this.showErrorNewEdit();
       }
     } else {
-      this.modals.info('Algunos de los campos no se ingreso correctamente');
-      for (let index = 0; index < this.erroresNewEdit.length; index++) {
-        const element = this.erroresNewEdit[index];
-        console.log('error[' + index + ']: ' + element);
+      if (this.validateActionNew()) {
+        // this.new();
+        this.modals.info('Funcionalidad Crear Socios No disponible');
+      } else {
+        this.showErrorNewEdit();
       }
+    }
+  }
+
+  private showErrorNewEdit(): void {
+    this.modals.info('Algunos de los campos no se ingreso correctamente, [' + this.erroresNewEdit.length + '] Errores');
+    for (let index = 0; index < this.erroresNewEdit.length; index++) {
+      const element = this.erroresNewEdit[index];
+      console.log('error[' + index + ']: ' + element);
     }
   }
 
@@ -365,9 +374,10 @@ export class KapmaeComponent implements OnInit {
     this.principalContainer = true;
   }
 
-  public validateActionNewEdit(selectedItem: DataSocio): boolean {
+  public validateActionNew(): boolean {
     // TODO: validar cada uno de los campos.
     this.erroresNewEdit = [];
+
     // Campo: Rut Socio
     if (typeof this.socioModal.rut_cop === 'undefined' || this.socioModal.rut_cop === '') {
       //distinto de vacio o indefinido.
@@ -423,7 +433,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Sector
-    if (typeof this.socioModal.sec_cop !== 'undefined') {
+    if (typeof this.socioModal.sec_cop === 'undefined') {
       //distinto de vacio o indefinido.
       this.erroresNewEdit.push('Error con sec_cop -> Sector');
     }
@@ -443,14 +453,6 @@ export class KapmaeComponent implements OnInit {
     if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
       this.erroresNewEdit.push('Error con fec_inc -> Fecha Inscripción');
     }
-    /*if (typeof this.socioModal.fec_inc !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_inc');
-    }
-
-    // Campo: Fecha Inscripción
-    if (typeof this.socioModal.fec_inc_date !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_inc_date');
-    }*/
 
     // Campo: Año Traspaso
     if (typeof this.socioModal.ano_tra === 'undefined' || this.socioModal.ano_tra < 0) {
@@ -466,14 +468,6 @@ export class KapmaeComponent implements OnInit {
     if (!this.validateFormatDate(this.socioModal.fec_tra_date)) {
       this.erroresNewEdit.push('Error con fec_tra -> Fecha Traspaso');
     }
-    /*if (typeof this.socioModal.fec_tra !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_tra');
-    }
-
-    // Campo: Fecha Traspaso
-    if (typeof this.socioModal.fec_tra_date !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_tra_date');
-    }*/
 
     // Campo: Acciones Traspaso
     if (typeof this.socioModal.acc_tra === 'undefined' || this.socioModal.acc_tra < 0) {
@@ -494,19 +488,11 @@ export class KapmaeComponent implements OnInit {
     if (!this.validateFormatDate(this.socioModal.fec_act_date)) {
       this.erroresNewEdit.push('Error con fec_act -> Actualización');
     }
-    /*if (typeof this.socioModal.fec_act !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_act');
-    }
 
-    // Campo: Actualización
-    if (typeof this.socioModal.fec_act_date !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_act_date');
-    }*/
-
-    // Campo: Estado Traspao -> Campo opcional
-    /*if (typeof this.socioModal.est_tra !== 'undefined' && this.socioModal.est_tra !== null) {
+    // Campo: Estado Traspao
+    if (typeof this.socioModal.est_tra === 'undefined' || this.socioModal.est_tra === '') {
       this.erroresNewEdit.push('Error con est_tra -> Estado Traspao');
-    }*/
+    }
 
     // Campo: Estado del Bono
     if (typeof this.socioModal.est_bon === 'undefined' || this.socioModal.est_bon < 0) {
@@ -514,38 +500,37 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Dirección Postal
-    if (typeof this.socioModal.dir_pos !== 'undefined') {
+    if (typeof this.socioModal.dir_pos === 'undefined') {
       this.erroresNewEdit.push('Error con dir_pos -> Dirección Postal');
     }
 
     // Campo: Nro Teléfono 1
-    if (typeof this.socioModal.nro_te1 !== 'undefined') {
+    if (typeof this.socioModal.nro_te1 === 'undefined' || this.socioModal.nro_te1 === '') {
       this.erroresNewEdit.push('Error con nro_te1 -> Nro Teléfono 1');
     }
 
     // Campo: Nro Teléfono 2
-    if (typeof this.socioModal.nro_te2 !== 'undefined') {
+    if (typeof this.socioModal.nro_te2 === 'undefined' || this.socioModal.nro_te2 === '') {
       this.erroresNewEdit.push('Error con nro_te2 -> Nro Teléfono 2');
     }
 
     // Campo: Nro Teléfono 3
-    if (typeof this.socioModal.nro_te3 !== 'undefined') {
+    if (typeof this.socioModal.nro_te3 === 'undefined' || this.socioModal.nro_te3 === '') {
       this.erroresNewEdit.push('Error con nro_te3 -> Nro Teléfono 3');
     }
 
     // Campo: Nro Teléfono 4
-    if (typeof this.socioModal.nro_te4 !== 'undefined') {
+    if (typeof this.socioModal.nro_te4 === 'undefined' || this.socioModal.nro_te4 === '') {
       this.erroresNewEdit.push('Error con nro_te4 -> Nro Teléfono 4');
     }
 
     // Campo: Comuna
-    if (typeof this.socioModal.com_pos !== 'undefined') {
+    if (typeof this.socioModal.com_pos === 'undefined') {
       this.erroresNewEdit.push('Error con com_pos -> Comuna');
     }
 
-
     // Campo: Observación
-    if (typeof this.socioModal.obs_cap !== 'undefined') {
+    if (typeof this.socioModal.obs_cap === 'undefined') {
       this.erroresNewEdit.push('Error con obs_cap -> Observación');
     }
 
@@ -560,43 +545,19 @@ export class KapmaeComponent implements OnInit {
     if (!this.validateFormatDate(this.socioModal.fec_sol_date)) {
       this.erroresNewEdit.push('Error con fec_sol');
     }
-    /*if (typeof this.socioModal.fec_sol !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_sol');
-    }
-
-    // Campo: fec_sol
-    /*if (typeof this.socioModal.fec_sol_date !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_sol_date');
-    }*/
 
     // Campo: fec_apr
     if (!this.validateFormatDate(this.socioModal.fec_apr_date)) {
       this.erroresNewEdit.push('Error con fec_apr');
     }
-    /*if (typeof this.socioModal.fec_apr !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_apr');
-    }
-
-    // Campo: fec_apr
-    /*if (typeof this.socioModal.fec_apr_date !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_apr_date');
-    }*/
 
     // Campo: fec_can
     if (!this.validateFormatDate(this.socioModal.fec_can_date)) {
       this.erroresNewEdit.push('Error con fec_can');
     }
-    /*if (typeof this.socioModal.fec_can !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_can');
-    }
-
-    // Campo: fec_can
-    /*if (typeof this.socioModal.fec_can_date !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_can_date');
-    }*/
 
     // Campo: est_sol 
-    if (typeof this.socioModal.est_sol !== 'undefined') {
+    if (typeof this.socioModal.est_sol === 'undefined') {
       this.erroresNewEdit.push('Error con est_sol');
     }
 
@@ -616,7 +577,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: est_reg 
-    if (typeof this.socioModal.est_reg !== 'undefined') {
+    if (typeof this.socioModal.est_reg === 'undefined') {
       this.erroresNewEdit.push('Error con est_reg');
     }
 
@@ -635,14 +596,20 @@ export class KapmaeComponent implements OnInit {
     return true;
   }
 
-  private validateFormatDate(inputDate: DatepickerModel | undefined): boolean {
-    /*
-    if (typeof this.socioModal.fec_inc !== 'undefined') {
-      this.erroresNewEdit.push('Error con fec_inc');
-      return false;
-    }
-    */
+  public validateActionEdit(selectedItem: DataSocio): boolean {
     return true;
+  }
+
+  private validateFormatDate(inputDate: DatepickerModel | undefined): boolean {
+    if (typeof inputDate === 'undefined') {
+      return false;
+    } else {
+      if (typeof inputDate.year !== 'undefined' && typeof inputDate.month !== 'undefined' && typeof inputDate.day !== 'undefined') {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 
 }
