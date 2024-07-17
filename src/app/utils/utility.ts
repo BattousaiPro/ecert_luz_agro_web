@@ -27,7 +27,7 @@ export class Utility {
     verificarToken() {
         console.log('verificarToken');
         try {
-            if (localStorage !== null && typeof localStorage !== 'undefined') {
+            if (typeof localStorage !== 'undefined' && localStorage !== null) {
                 let itemStorage = localStorage.getItem('datatoken');
                 if (itemStorage) {
                     this.datatoken = JSON.parse(itemStorage);
@@ -46,7 +46,7 @@ export class Utility {
 
     public validateToken(): string {
         let resp: string = '';
-        if (localStorage !== null && typeof localStorage !== 'undefined') {
+        if (typeof localStorage !== 'undefined' && localStorage !== null) {
             let itemStorage = localStorage.getItem('datatoken');
             if (itemStorage) {
                 this.datatoken = JSON.parse(itemStorage);

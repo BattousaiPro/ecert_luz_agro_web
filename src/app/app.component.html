@@ -1,8 +1,4 @@
-<!--<div>
-    <app-sidebar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebar>
-</div>
--->
-@if(isPermisoSidebar) {
+@if(userService.isLogged | async) {
 <div>
     <div class="container">
         <div class="row">

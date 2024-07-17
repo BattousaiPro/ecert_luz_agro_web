@@ -4,6 +4,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './component/utilitarios/sidebar/sidebar.component';
 import { Utility } from './utils/utility';
 import { Router } from '@angular/router';
+import { UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ export class AppComponent {
   public utility = new Utility;
   isPermisoSidebar: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    public userService: UserService) { }
 
   setPermiso(): void {
     this.isPermisoSidebar = this.utility.verificarToken();
@@ -30,6 +32,7 @@ export class AppComponent {
 
   logput() {
     localStorage.removeItem('datatoken');
+    this.userService.logOut();
     this.isPermisoSidebar = false;
     this.router.navigate(['']);
   }

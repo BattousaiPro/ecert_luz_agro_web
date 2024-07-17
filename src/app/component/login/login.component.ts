@@ -44,6 +44,7 @@ export class LoginComponent {
         // console.log(JSON.stringify(data));
         if (data.code === '0') {
           localStorage.setItem('datatoken', JSON.stringify(data.data));
+          this.userService.logIn();
           this.router.navigate(['home']);
         } else if (data.code === '-1' || data.code === '-2' || data.code === '-3') {
           console.log(data.message);

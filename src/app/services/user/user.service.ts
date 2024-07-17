@@ -19,7 +19,7 @@ export class UserService {
     this.checkToken();
   }
 
-  get isLoggedin(): Observable<boolean> {
+  get isLogged(): Observable<boolean> {
     return this.loggedin.asObservable();
   }
 
@@ -40,11 +40,6 @@ export class UserService {
     const ladata: Observable<any> = this.http.post(
       url,
       userData
-    ).pipe(
-      map((res: any) => {
-        this.loggedin.next(true);
-        return res;
-      })
     );
     return ladata;
   }
@@ -94,8 +89,11 @@ export class UserService {
     return ladata;
   }
 
+  public logIn(): void {
+    this.loggedin.next(true);
+  }
+
   public logOut(): void {
-    localStorage.removeItem('datatoken');
     this.loggedin.next(false);
   }
 

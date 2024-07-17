@@ -63,7 +63,12 @@ body {
     border-bottom: 6px #62a3cf solid;
 }
 
-div label.emptyReg {
-    color: #cc3a3a;
-    font-size: 20px;
+div.emptyReg {
+    background-color: #dfdfdf;
+    border-radius: 30px;
+    >label {
+        color: #cc3a3a;
+        font-size: 20px;
+        font-style: italic;
+    }
 }
