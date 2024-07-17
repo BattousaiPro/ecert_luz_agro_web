@@ -347,10 +347,10 @@ export class KapmaeComponent implements OnInit {
     if (this.validateActionNewEdit(selectedItem)) {
       if (this.isEdit) {
         // this.edit();
-        this.modals.info('Funcionalidad No disponible');
+        this.modals.info('Funcionalidad Editar Socios No disponible');
       } else {
         // this.new();
-        this.modals.info('Funcionalidad No disponible');
+        this.modals.info('Funcionalidad Crear Socios No disponible');
       }
     } else {
       this.modals.info('Algunos de los campos no se ingreso correctamente');
