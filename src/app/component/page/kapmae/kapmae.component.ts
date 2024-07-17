@@ -12,7 +12,7 @@ import { SectorService } from '../../../services/sector/sector.service';
 import { ComunasService } from '../../../services/comunas/comunas.service';
 import { Sector } from '../sectores/sectores.component';
 import { Comunas } from '../comunas/comunas.component';
-import { Uyility } from '../../../utils/utility';
+import { Utility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-kapmae',
@@ -50,7 +50,7 @@ export class KapmaeComponent implements OnInit {
   principalContainer: boolean = true;
   erroresNewEdit: string[] = [];
 
-  public permisosAcces = new Uyility;
+  public utility = new Utility;
   isPermisoVerLista: boolean = false;
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
@@ -65,12 +65,12 @@ export class KapmaeComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
-    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_SOCIO');
-    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_DELETE');
-    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_EDIT');
-    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_CREATE');
-    this.isPermisoSeleccionar = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_SELECCIONAR');
-    this.isPermisoCertificado = this.permisosAcces.consultar('LUZ_AGRO_SOCIO_CERTIFICADO');
+    this.isPermisoVerLista = this.utility.consultar('LUZ_AGRO_MENU_SOCIO');
+    this.isPermisoDelete = this.utility.consultar('LUZ_AGRO_SOCIO_DELETE');
+    this.isPermisoEdit = this.utility.consultar('LUZ_AGRO_SOCIO_EDIT');
+    this.isPermisoCreate = this.utility.consultar('LUZ_AGRO_SOCIO_CREATE');
+    this.isPermisoSeleccionar = this.utility.consultar('LUZ_AGRO_SOCIO_SELECCIONAR');
+    this.isPermisoCertificado = this.utility.consultar('LUZ_AGRO_SOCIO_CERTIFICADO');
   }
 
   ngOnInit(): void {

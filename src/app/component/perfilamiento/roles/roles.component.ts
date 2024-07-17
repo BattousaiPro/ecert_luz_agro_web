@@ -9,7 +9,7 @@ import { Permiso } from '../permisos/permisos.component';
 import { PermisosService } from '../../../services/permisos/permisos.service';
 import { RolesRequest } from './model/RolesRequest';
 import { RolPermisoService } from '../../../services/rol-permiso/rol-permiso.service';
-import { Uyility } from '../../../utils/utility';
+import { Utility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-roles',
@@ -38,7 +38,7 @@ export class RolesComponent implements OnInit {
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
-  public permisosAcces = new Uyility;
+  public utility = new Utility;
   isPermisoVerLista: boolean = false;
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
@@ -53,11 +53,11 @@ export class RolesComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
-    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_ROL');
-    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_ROL_DELETE');
-    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_ROL_EDIT');
-    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_ROL_CREATE');
-    this.isPermisoAddPermiso = this.permisosAcces.consultar('LUZ_AGRO_ROL_ADD_PERMISO');
+    this.isPermisoVerLista = this.utility.consultar('LUZ_AGRO_MENU_ROL');
+    this.isPermisoDelete = this.utility.consultar('LUZ_AGRO_ROL_DELETE');
+    this.isPermisoEdit = this.utility.consultar('LUZ_AGRO_ROL_EDIT');
+    this.isPermisoCreate = this.utility.consultar('LUZ_AGRO_ROL_CREATE');
+    this.isPermisoAddPermiso = this.utility.consultar('LUZ_AGRO_ROL_ADD_PERMISO');
   }
 
   ngOnInit(): void {

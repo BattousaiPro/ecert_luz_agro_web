@@ -6,7 +6,7 @@ import { SectorService } from '../../../services/sector/sector.service';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Uyility } from '../../../utils/utility';
+import { Utility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-sectores',
@@ -32,7 +32,7 @@ export class SectoresComponent implements OnInit {
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
-  public permisosAcces = new Uyility;
+  public utility = new Utility;
   isPermisoVerLista: boolean = false;
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
@@ -44,10 +44,10 @@ export class SectoresComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
-    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_SECTOR');
-    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_SECTOR_DELETE');
-    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_SECTOR_EDIT');
-    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_SECTOR_CREATE');
+    this.isPermisoVerLista = this.utility.consultar('LUZ_AGRO_MENU_SECTOR');
+    this.isPermisoDelete = this.utility.consultar('LUZ_AGRO_SECTOR_DELETE');
+    this.isPermisoEdit = this.utility.consultar('LUZ_AGRO_SECTOR_EDIT');
+    this.isPermisoCreate = this.utility.consultar('LUZ_AGRO_SECTOR_CREATE');
   }
 
   ngOnInit(): void {

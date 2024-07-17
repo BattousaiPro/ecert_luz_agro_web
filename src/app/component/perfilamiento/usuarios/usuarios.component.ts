@@ -9,8 +9,7 @@ import { UsuariosRequest } from './model/UsuariosRequest';
 import { Role } from '../roles/roles.component';
 import { RolesService } from '../../../services/roles/roles.service';
 import { UserRolService } from '../../../services/user-rol/user-rol.service';
-import { Uyility } from '../../../utils/utility';
-
+import { Utility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-usuarios',
@@ -42,7 +41,7 @@ export class UsuariosComponent implements OnInit {
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
-  public permisosAcces = new Uyility;
+  public utility = new Utility;
   isPermisoVerLista: boolean = false;
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
@@ -57,11 +56,11 @@ export class UsuariosComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
-    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_USUARIO');
-    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_USER_DELETE');
-    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_USER_EDIT');
-    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_USER_CREATE');
-    this.isPermisoAddRol = this.permisosAcces.consultar('LUZ_AGRO_USER_ADD_ROL');
+    this.isPermisoVerLista = this.utility.consultar('LUZ_AGRO_MENU_USUARIO');
+    this.isPermisoDelete = this.utility.consultar('LUZ_AGRO_USER_DELETE');
+    this.isPermisoEdit = this.utility.consultar('LUZ_AGRO_USER_EDIT');
+    this.isPermisoCreate = this.utility.consultar('LUZ_AGRO_USER_CREATE');
+    this.isPermisoAddRol = this.utility.consultar('LUZ_AGRO_USER_ADD_ROL');
   }
 
   ngOnInit(): void {

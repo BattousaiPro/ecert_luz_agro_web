@@ -5,7 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { FichaService } from '../../../services/ficha/ficha.service';
-import { Uyility } from '../../../utils/utility';
+import { Utility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-fichas-socios',
@@ -24,7 +24,7 @@ export class FichasSociosComponent implements OnInit {
   anioList: number[] = [];
   modals = new ModalOptions();
 
-  public permisosAcces = new Uyility;
+  public utility = new Utility;
   isPermisoVerLista: boolean = false;
 
   constructor(private modalService: NgbModal,
@@ -32,7 +32,7 @@ export class FichasSociosComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
-    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_FICHA');
+    this.isPermisoVerLista = this.utility.consultar('LUZ_AGRO_MENU_FICHA');
   }
 
   ngOnInit(): void {

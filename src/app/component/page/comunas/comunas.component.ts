@@ -6,7 +6,7 @@ import { ComunasRequest } from './model/ComunasRequest';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
-import { Uyility } from '../../../utils/utility';
+import { Utility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-comunas',
@@ -32,7 +32,7 @@ export class ComunasComponent implements OnInit {
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
-  public permisosAcces = new Uyility;
+  public utility = new Utility;
   isPermisoVerLista: boolean = false;
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
@@ -44,10 +44,10 @@ export class ComunasComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
-    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_COMUNA');
-    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_COMUNA_DELETE');
-    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_COMUNA_EDIT');
-    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_COMUNA_CREATE');
+    this.isPermisoVerLista = this.utility.consultar('LUZ_AGRO_MENU_COMUNA');
+    this.isPermisoDelete = this.utility.consultar('LUZ_AGRO_COMUNA_DELETE');
+    this.isPermisoEdit = this.utility.consultar('LUZ_AGRO_COMUNA_EDIT');
+    this.isPermisoCreate = this.utility.consultar('LUZ_AGRO_COMUNA_CREATE');
   }
 
   ngOnInit(): void {

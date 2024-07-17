@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { PermisosRequest } from './model/PermisosRequest';
-import { Uyility } from '../../../utils/utility';
+import { Utility } from '../../../utils/utility';
 
 @Component({
   selector: 'app-permisos',
@@ -33,7 +33,7 @@ export class PermisosComponent implements OnInit {
   erroresList: string[] = [];
   isErroresList: boolean = false;
 
-  public permisosAcces = new Uyility;
+  public utility = new Utility;
   isPermisoVerLista: boolean = false;
   isPermisoCreate: boolean = false;
   isPermisoDelete: boolean = false;
@@ -45,10 +45,10 @@ export class PermisosComponent implements OnInit {
   ) { }
 
   setPermiso(): void {
-    this.isPermisoVerLista = this.permisosAcces.consultar('LUZ_AGRO_MENU_PERMISO');
-    this.isPermisoDelete = this.permisosAcces.consultar('LUZ_AGRO_PERMISO_DELETE');
-    this.isPermisoEdit = this.permisosAcces.consultar('LUZ_AGRO_PERMISO_EDIT');
-    this.isPermisoCreate = this.permisosAcces.consultar('LUZ_AGRO_PERMISO_CREATE');
+    this.isPermisoVerLista = this.utility.consultar('LUZ_AGRO_MENU_PERMISO');
+    this.isPermisoDelete = this.utility.consultar('LUZ_AGRO_PERMISO_DELETE');
+    this.isPermisoEdit = this.utility.consultar('LUZ_AGRO_PERMISO_EDIT');
+    this.isPermisoCreate = this.utility.consultar('LUZ_AGRO_PERMISO_CREATE');
   }
 
   ngOnInit(): void {

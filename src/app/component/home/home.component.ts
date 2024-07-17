@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Uyility } from '../../utils/utility';
+import { Utility } from '../../utils/utility';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { Uyility } from '../../utils/utility';
 })
 export class HomeComponent implements OnInit {
 
-  public permisosAcces = new Uyility;
+  public utility = new Utility;
   isPermisoSocio: boolean = false;
   isPermisoFicha: boolean = false;
   isPermisoSector: boolean = false;
@@ -23,13 +23,13 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   setPermiso(): void {
-    this.isPermisoSocio = this.permisosAcces.consultar('LUZ_AGRO_MENU_SOCIO');
-    this.isPermisoFicha = this.permisosAcces.consultar('LUZ_AGRO_MENU_FICHA');
-    this.isPermisoSector = this.permisosAcces.consultar('LUZ_AGRO_MENU_SECTOR');
-    this.isPermisoComuna = this.permisosAcces.consultar('LUZ_AGRO_MENU_COMUNA');
-    this.isPermisoUser = this.permisosAcces.consultar('LUZ_AGRO_MENU_USUARIO');
-    this.isPermisoRol = this.permisosAcces.consultar('LUZ_AGRO_MENU_ROL');
-    this.isPermisoPermiso = this.permisosAcces.consultar('LUZ_AGRO_MENU_PERMISO');
+    this.isPermisoSocio = this.utility.consultar('LUZ_AGRO_MENU_SOCIO');
+    this.isPermisoFicha = this.utility.consultar('LUZ_AGRO_MENU_FICHA');
+    this.isPermisoSector = this.utility.consultar('LUZ_AGRO_MENU_SECTOR');
+    this.isPermisoComuna = this.utility.consultar('LUZ_AGRO_MENU_COMUNA');
+    this.isPermisoUser = this.utility.consultar('LUZ_AGRO_MENU_USUARIO');
+    this.isPermisoRol = this.utility.consultar('LUZ_AGRO_MENU_ROL');
+    this.isPermisoPermiso = this.utility.consultar('LUZ_AGRO_MENU_PERMISO');
   }
 
   ngOnInit(): void {

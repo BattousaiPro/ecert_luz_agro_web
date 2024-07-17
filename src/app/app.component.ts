@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './component/utilitarios/sidebar/sidebar.component';
-import { Uyility } from './utils/utility';
+import { Utility } from './utils/utility';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,13 +15,13 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'ecert_web';
   sidebarExpanded = false;
-  public permisosAcces = new Uyility;
+  public utility = new Utility;
   isPermisoSidebar: boolean = false;
 
   constructor(private router: Router) { }
 
   setPermiso(): void {
-    this.isPermisoSidebar = this.permisosAcces.verificarToken();
+    this.isPermisoSidebar = this.utility.verificarToken();
   }
 
   ngOnInit(): void {

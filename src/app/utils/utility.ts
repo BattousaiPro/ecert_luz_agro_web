@@ -1,4 +1,4 @@
-export class Uyility {
+export class Utility {
 
     public datatoken?: any;
 
@@ -42,6 +42,22 @@ export class Uyility {
             // console.log(err);
         }
         return false;
+    }
+
+    public validateToken(): string {
+        let resp: string = '';
+        if (localStorage !== null && typeof localStorage !== 'undefined') {
+            let itemStorage = localStorage.getItem('datatoken');
+            if (itemStorage) {
+                this.datatoken = JSON.parse(itemStorage);
+                if (typeof this.datatoken !== 'undefined'
+                    && typeof this.datatoken.token !== 'undefined'
+                    && this.datatoken.token !== '') {
+                    return this.datatoken.token;
+                }
+            }
+        }
+        return resp;
     }
 
 }
