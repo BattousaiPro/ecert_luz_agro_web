@@ -838,7 +838,12 @@
                                         </label>
                                     </div>
                                 </td>
-                                <td>{{ itemImg.imagen }}</td>
+                                <td>
+                                    <div class="fs14">
+                                        {{ itemImg.imagen.pathImg }} 
+                                        <!-- <br>{{ itemImg.imagen.base64 }} -->
+                                    </div>
+                                </td>
                             </tr>
                             } @empty {
                             <tr>

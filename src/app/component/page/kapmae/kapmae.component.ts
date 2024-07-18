@@ -98,6 +98,7 @@ export class KapmaeComponent implements OnInit {
           if (this.listaImagenes.length > 0) {
             this.showImprimirBoton = true;
           }
+          this.listaImagenes.sort();
           this.openModalFunction(content);
         } else {
           this.modals.error('Error con el Obtener Imágenes');
@@ -375,6 +376,23 @@ export class KapmaeComponent implements OnInit {
   }
 
   public validateActionNew(): boolean {
+    /* Campos Opcionales, TODO: cambiar validación de obligtorio.
+      -> Nro Teléfono 1
+      -> Nro Teléfono 2
+      -> Nro Teléfono 3
+      -> Nro Teléfono 4
+      -> nro_sol
+      -> fec_sol
+      -> fec_apr
+      -> fec_can
+      -> est_sol
+      -> sec_cte
+      -> area
+      -> sec_imp
+      -> est_reg
+      -> acc_con
+      -> aju_acc
+    */
     // TODO: validar cada uno de los campos.
     this.erroresNewEdit = [];
 
@@ -614,12 +632,18 @@ export class KapmaeComponent implements OnInit {
 
 }
 export interface ImgLista {
-  imagen: string;
+  imagen: imgVO;
   estado: boolean;
 }
 export class ImgLista {
   constructor() {
-    this.imagen = '';
     this.estado = false;
   }
+}
+export interface imgVO {
+  pathImg: string;
+  base64: string;
+}
+export class imgVO {
+  constructor() { }
 }
