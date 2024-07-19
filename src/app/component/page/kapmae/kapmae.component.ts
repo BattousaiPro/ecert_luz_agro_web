@@ -33,7 +33,7 @@ export class KapmaeComponent implements OnInit {
   comunas: Comunas[] = [];
 
   listaImagenes: ImgLista[] = [];
-  showImprimirBoton: boolean = false;
+  showBoton: boolean = false;
 
   socios: DataSocio[] = [];
   socioModal: DataSocio = new DataSocio();
@@ -44,6 +44,7 @@ export class KapmaeComponent implements OnInit {
 
   cargar: boolean = false;
   isEdit: boolean = false;
+  selectedAll: boolean = false;
   modals = new ModalOptions();
   collectionSize: number = 0;
 
@@ -63,6 +64,13 @@ export class KapmaeComponent implements OnInit {
     private sectorService: SectorService,
     private comunasService: ComunasService,
   ) { }
+
+  public selectedMethod(): void {
+    this.selectedAll = !this.selectedAll;
+    for (let index = 0; index < this.listaImagenes.length; index++) {
+      this.listaImagenes[index].estado = this.selectedAll;
+    }
+  }
 
   setPermiso(): void {
     this.isPermisoVerLista = this.utility.consultar('LUZ_AGRO_MENU_SOCIO');
@@ -87,18 +95,21 @@ export class KapmaeComponent implements OnInit {
         // console.log(JSON.stringify(data));
         if (data.code === '0'
           && data.data != null) {
-          this.showImprimirBoton = false;
+          this.showBoton = false;
           this.listaImagenes = [];
-          for (let index = 0; index < data.data.imgs.length; index++) {
-            let img: ImgLista = new ImgLista();
-            img.imagen = data.data.imgs[index];
-            img.estado = false;
-            this.listaImagenes.push(img);
+          if (typeof data.data.imgs !== 'undefined') {
+            for (let index = 0; index < data.data.imgs.length; index++) {
+              let img: ImgLista = new ImgLista();
+              img.imagen = data.data.imgs[index];
+              img.estado = false;
+              this.listaImagenes.push(img);
+            }
+            if (this.listaImagenes.length > 0) {
+              this.showBoton = true;
+            }
+            this.listaImagenes.sort();
           }
-          if (this.listaImagenes.length > 0) {
-            this.showImprimirBoton = true;
-          }
-          this.listaImagenes.sort();
+
           this.openModalFunction(content);
         } else {
           this.modals.error('Error con el Obtener Imágenes');
