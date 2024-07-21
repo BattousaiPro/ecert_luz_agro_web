@@ -388,11 +388,12 @@ export class KapmaeComponent implements OnInit {
 
   public validateActionNew(): boolean {
     /* Campos Opcionales, TODO: cambiar validación de obligtorio.
-      -> Nro Teléfono 1
-      -> Nro Teléfono 2
-      -> Nro Teléfono 3
-      -> Nro Teléfono 4
-      -> nro_sol
+      -> Dirección Postal *
+      -> Nro Teléfono 1 *
+      -> Nro Teléfono 2 *
+      -> Nro Teléfono 3 *
+      -> Nro Teléfono 4 *
+      -> nro_sol *
       -> fec_sol
       -> fec_apr
       -> fec_can
@@ -529,28 +530,33 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Dirección Postal
-    if (typeof this.socioModal.dir_pos === 'undefined') {
-      this.erroresNewEdit.push('Error con dir_pos -> Dirección Postal');
+    if (typeof this.socioModal.dir_pos !== 'undefined') {
+      // TODO: validar formato de ser requeido
+      // this.erroresNewEdit.push('Error con dir_pos -> Dirección Postal');
     }
 
     // Campo: Nro Teléfono 1
-    if (typeof this.socioModal.nro_te1 === 'undefined' || this.socioModal.nro_te1 === '') {
-      this.erroresNewEdit.push('Error con nro_te1 -> Nro Teléfono 1');
+    if (typeof this.socioModal.nro_te1 !== 'undefined') {
+      // TODO: validar formato de ser requeido
+      // this.erroresNewEdit.push('Error con nro_te1 -> Nro Teléfono 1');
     }
 
     // Campo: Nro Teléfono 2
-    if (typeof this.socioModal.nro_te2 === 'undefined' || this.socioModal.nro_te2 === '') {
-      this.erroresNewEdit.push('Error con nro_te2 -> Nro Teléfono 2');
+    if (typeof this.socioModal.nro_te2 !== 'undefined') {
+      // TODO: validar formato de ser requeido
+      // this.erroresNewEdit.push('Error con nro_te2 -> Nro Teléfono 2');
     }
 
     // Campo: Nro Teléfono 3
-    if (typeof this.socioModal.nro_te3 === 'undefined' || this.socioModal.nro_te3 === '') {
-      this.erroresNewEdit.push('Error con nro_te3 -> Nro Teléfono 3');
+    if (typeof this.socioModal.nro_te3 !== 'undefined') {
+      // TODO: validar formato de ser requeido
+      // this.erroresNewEdit.push('Error con nro_te3 -> Nro Teléfono 3');
     }
 
     // Campo: Nro Teléfono 4
-    if (typeof this.socioModal.nro_te4 === 'undefined' || this.socioModal.nro_te4 === '') {
-      this.erroresNewEdit.push('Error con nro_te4 -> Nro Teléfono 4');
+    if (typeof this.socioModal.nro_te4 !== 'undefined') {
+      // TODO: validar formato de ser requeido
+      // this.erroresNewEdit.push('Error con nro_te4 -> Nro Teléfono 4');
     }
 
     // Campo: Comuna
@@ -566,8 +572,10 @@ export class KapmaeComponent implements OnInit {
     // ************************************************************************************************
     // Campos ocultro en la tabla de socios.
     // Campo: nro_sol
-    if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
-      this.erroresNewEdit.push('Error con nro_sol');
+    //if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
+    if (typeof this.socioModal.nro_sol !== 'undefined') {
+        // TODO: validar formato de ser requeido
+        // this.erroresNewEdit.push('Error con nro_sol');
     }
 
     // Campo: fec_sol
