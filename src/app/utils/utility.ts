@@ -4,7 +4,7 @@ export class Utility {
 
     constructor() { }
 
-    consultar(buscar: string) {
+    public consultar(buscar: string): boolean {
         // console.log('buscar: ' + buscar);
         try {
             if (localStorage !== null && typeof localStorage !== 'undefined') {
@@ -24,7 +24,7 @@ export class Utility {
         return false;
     }
 
-    verificarToken() {
+    public verificarToken(): boolean {
         console.log('verificarToken');
         try {
             if (typeof localStorage !== 'undefined' && localStorage !== null) {
@@ -32,8 +32,10 @@ export class Utility {
                 if (itemStorage) {
                     this.datatoken = JSON.parse(itemStorage);
                     if (typeof this.datatoken!.token === 'undefined') {
+                        // console.log('return false');
                         return false;
                     } else {
+                        // console.log('return true');
                         return true;
                     }
                 }
@@ -41,6 +43,7 @@ export class Utility {
         } catch (err) {
             // console.log(err);
         }
+        // console.log('return false');
         return false;
     }
 
