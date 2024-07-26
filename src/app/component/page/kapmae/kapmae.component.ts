@@ -32,7 +32,8 @@ export class KapmaeComponent implements OnInit {
   sectores: Sector[] = [];
   comunas: Comunas[] = [];
 
-  listaImagenes: ImgLista[] = [];
+  docsImg: DocumentosImg = new DocumentosImg();
+  // listaImagenes: ImgLista[] = [];
   showBoton: boolean = false;
 
   socios: DataSocio[] = [];
@@ -67,8 +68,8 @@ export class KapmaeComponent implements OnInit {
 
   public selectedMethod(): void {
     this.selectedAll = !this.selectedAll;
-    for (let index = 0; index < this.listaImagenes.length; index++) {
-      this.listaImagenes[index].estado = this.selectedAll;
+    for (let index = 0; index < this.docsImg.imagenes.length; index++) {
+      this.docsImg.imagenes[index].estado = this.selectedAll;
     }
   }
 
@@ -82,6 +83,7 @@ export class KapmaeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.docsImg.imagenes = [];
     this.setPermiso();
     if (this.isPermisoVerLista)
       this.loadCargar();
@@ -96,18 +98,19 @@ export class KapmaeComponent implements OnInit {
         if (data.code === '0'
           && data.data != null) {
           this.showBoton = false;
-          this.listaImagenes = [];
+          this.docsImg.imagenes = [];
           if (typeof data.data.imgs !== 'undefined') {
             for (let index = 0; index < data.data.imgs.length; index++) {
               let img: ImgLista = new ImgLista();
               img.imagen = data.data.imgs[index];
               img.estado = false;
-              this.listaImagenes.push(img);
+              this.docsImg.imagenes.push(img);
             }
-            if (this.listaImagenes.length > 0) {
+            if (this.docsImg.imagenes.length > 0) {
               this.showBoton = true;
             }
-            this.listaImagenes.sort();
+            this.docsImg.imagenes.sort();
+            this.docsImg.basePath = data.data.basepath;
           }
 
           this.openModalFunction(content);
@@ -245,8 +248,8 @@ export class KapmaeComponent implements OnInit {
 
   imprimirImg(): void {
     let habilitados = 0;
-    for (let index = 0; index < this.listaImagenes.length; index++) {
-      const element = this.listaImagenes[index];
+    for (let index = 0; index < this.docsImg.imagenes.length; index++) {
+      const element = this.docsImg.imagenes[index];
       if (element.estado) {
         habilitados++;
       }
@@ -652,6 +655,15 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
+}
+
+export interface DocumentosImg {
+  imagenes: ImgLista[];
+  basePath: string;
+}
+export class DocumentosImg {
+  constructor() {
+  }
 }
 export interface ImgLista {
   imagen: imgVO;
