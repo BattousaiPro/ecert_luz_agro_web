@@ -152,6 +152,8 @@ export class RolesComponent implements OnInit {
     console.log('Method editarModal.');
     this.rolModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
+    this.erroresList = [];
+    this.setIsErroresList(false);
     this.openModalFunction(content);
   }
 
@@ -166,6 +168,9 @@ export class RolesComponent implements OnInit {
     console.log('Method agregarRol.');
     this.rolModal = new Role();
     this.rolModal.estado = true;
+    this.isEdit = false;
+    this.erroresList = [];
+    this.setIsErroresList(false);
     this.openModalFunction(content);
   }
 
@@ -186,48 +191,22 @@ export class RolesComponent implements OnInit {
 
   public guardar(): void {
     this.erroresList = [];
-    this.isErroresList = false;
+    this.setIsErroresList(false);
     this.erroresList = this.validateNew();
-    if (!this.isEdit) {
-      if (this.erroresList.length > 0) {
-        this.setIsErroresList(true);
-      } else {
+    if (this.erroresList.length > 0) {
+      this.setIsErroresList(true);
+    } else {
+      if (!this.isEdit) {
         // console.log('this.new()');
         this.new();
-      }
-    } else {
-      if (this.erroresList.length > 0) {
-        this.setIsErroresList(false);
       } else {
         // console.log('this.edit()');
         this.edit();
       }
     }
-    /*
-    const name = this.rolModal.name.trim();
-    const descrip = this.rolModal.descrip.trim();
-    const code = this.rolModal.code.trim();
-    if (name !== null && typeof name !== 'undefined' && name !== ''
-      && descrip !== null && typeof descrip !== 'undefined' && descrip !== ''
-      && code !== null && typeof code !== 'undefined' && code !== ''
-    ) {
-      if (!this.isEdit) {
-        this.new();
-      } else {
-        this.edit();
-      }
-    } else {
-      this.modals.info('Nombre o Descripción o Código Son inválido');
-    }*/
   }
 
   private setIsErroresList(isErroresList: boolean): void {
-    /*
-    for (let index = 0; index < this.erroresList.length; index++) {
-      const element = this.erroresList[index];
-      console.log('[' + index + ']: ' + element);
-    }
-    */
     this.isErroresList = isErroresList;
   }
 

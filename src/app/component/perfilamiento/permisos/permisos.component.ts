@@ -86,7 +86,8 @@ export class PermisosComponent implements OnInit {
     this.permisosModal = new Permiso();
     this.permisosModal.estado = true;
     this.isEdit = false;
-    this.isErroresList = false;
+    this.erroresList = [];
+    this.setIsErroresList(false);
     this.openModalFunction(content);
   }
 
@@ -94,6 +95,8 @@ export class PermisosComponent implements OnInit {
     console.log('Method editarUserModal');
     this.permisosModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
+    this.erroresList = [];
+    this.setIsErroresList(false);
     this.openModalFunction(content);
   }
 
@@ -109,18 +112,14 @@ export class PermisosComponent implements OnInit {
 
   public guardar(): void {
     this.erroresList = [];
-    this.isErroresList = false;
+    this.setIsErroresList(false);
     this.erroresList = this.validateNew();
-    if (!this.isEdit) {
-      if (this.erroresList.length > 0) {
-        this.setIsErroresList(true);
-      } else {
+    if (this.erroresList.length > 0) {
+      this.setIsErroresList(true);
+    } else {
+      if (!this.isEdit) {
         // console.log('this.new()');
         this.new();
-      }
-    } else {
-      if (this.erroresList.length > 0) {
-        this.setIsErroresList(false);
       } else {
         // console.log('this.edit()');
         this.edit();
@@ -129,12 +128,6 @@ export class PermisosComponent implements OnInit {
   }
 
   private setIsErroresList(isErroresList: boolean): void {
-    /*
-    for (let index = 0; index < this.erroresList.length; index++) {
-      const element = this.erroresList[index];
-      console.log('[' + index + ']: ' + element);
-    }
-    */
     this.isErroresList = isErroresList;
   }
 

@@ -85,7 +85,8 @@ export class SectoresComponent implements OnInit {
     this.sectoresModal = new Sector();
     this.sectoresModal.estado = true;
     this.isEdit = false;
-    this.isErroresList = false;
+    this.erroresList = [];
+    this.setIsErroresList(false);
     this.openModalFunction(content);
   }
 
@@ -93,6 +94,8 @@ export class SectoresComponent implements OnInit {
     console.log('Method editarModal');
     this.sectoresModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
+    this.erroresList = [];
+    this.setIsErroresList(false);
     this.openModalFunction(content);
   }
 
@@ -110,44 +113,20 @@ export class SectoresComponent implements OnInit {
     this.erroresList = [];
     this.isErroresList = false;
     this.erroresList = this.validateNew();
-    if (!this.isEdit) {
-      if (this.erroresList.length > 0) {
-        this.setIsErroresList(true);
-      } else {
+    if (this.erroresList.length > 0) {
+      this.setIsErroresList(true);
+    } else {
+      if (!this.isEdit) {
         // console.log('this.new()');
         this.new();
-      }
-    } else {
-      if (this.erroresList.length > 0) {
-        this.setIsErroresList(false);
       } else {
         // console.log('this.edit()');
         this.edit();
       }
     }
-    /*
-    const code = this.sectoresModal.codigo;
-    const descrip = this.sectoresModal.descrip.trim();
-    if (code !== null && typeof code !== 'undefined'
-      && descrip !== null && typeof descrip !== 'undefined' && descrip !== ''
-    ) {
-      if (!this.isEdit) {
-        this.new();
-      } else {
-        this.edit();
-      }
-    } else {
-      this.modals.info('Nombre o Descripción o Código Son inválido');
-    }*/
   }
 
   private setIsErroresList(isErroresList: boolean): void {
-    /*
-    for (let index = 0; index < this.erroresList.length; index++) {
-      const element = this.erroresList[index];
-      console.log('[' + index + ']: ' + element);
-    }
-    */
     this.isErroresList = isErroresList;
   }
 
