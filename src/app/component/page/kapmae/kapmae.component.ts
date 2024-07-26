@@ -274,13 +274,14 @@ export class KapmaeComponent implements OnInit {
   }
   /********************************************************/
 
-  public delete(): void {
+  public new(): void {
     console.log('Cargando delete');
     this.cargar = true;
-    this.kapmaeService.delete(this.socioDeleteModal.rut_cop, this.socioDeleteModal.cod_cop).subscribe(
+    this.kapmaeService.new(this.socioModal).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
+          this.modals.success('Socio Creado Con Éxito!');
           this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
@@ -301,6 +302,7 @@ export class KapmaeComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
+          this.modals.success('Socio Modificado Con Éxito!');
           this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
@@ -314,13 +316,14 @@ export class KapmaeComponent implements OnInit {
       });
   }
 
-  public new(): void {
+  public delete(): void {
     console.log('Cargando delete');
     this.cargar = true;
-    this.kapmaeService.new(this.socioModal).subscribe(
+    this.kapmaeService.delete(this.socioDeleteModal.rut_cop, this.socioDeleteModal.cod_cop).subscribe(
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
+          this.modals.success('Socio Eliminado Con Éxito!');
           this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
@@ -574,8 +577,8 @@ export class KapmaeComponent implements OnInit {
     // Campo: nro_sol
     //if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
     if (typeof this.socioModal.nro_sol !== 'undefined') {
-        // TODO: validar formato de ser requeido
-        // this.erroresNewEdit.push('Error con nro_sol');
+      // TODO: validar formato de ser requeido
+      // this.erroresNewEdit.push('Error con nro_sol');
     }
 
     // Campo: fec_sol

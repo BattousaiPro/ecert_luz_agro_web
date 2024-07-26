@@ -261,6 +261,7 @@ export class RolesComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
+          this.modals.success('Rol Creado Con Éxito!');
           this.loadCargar();
         } else if (data.code === '-2') {
           this.modals.warning(data.message);
@@ -289,6 +290,7 @@ export class RolesComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
+          this.modals.success('Rol Modificado Con Éxito!');
           this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de actualizar Roles');
@@ -309,6 +311,7 @@ export class RolesComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
+          this.modals.success('Rol Eliminado Con Éxito!');
           this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de eliminar Roles');

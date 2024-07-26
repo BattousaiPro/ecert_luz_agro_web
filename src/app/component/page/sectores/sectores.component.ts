@@ -178,6 +178,7 @@ export class SectoresComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
+          this.modals.success('Sector Creado Con Éxito!');
           this.loadCargar();
         } else if (data.code === '-4') {
           this.modals.warning(data.message);
@@ -205,6 +206,7 @@ export class SectoresComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
+          this.modals.success('Sector Modificado Con Éxito!');
           this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de actualizar Sectotes');
@@ -225,6 +227,7 @@ export class SectoresComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
+          this.modals.success('Sector Eliminado Con Éxito!');
           this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
