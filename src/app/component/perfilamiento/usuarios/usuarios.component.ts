@@ -274,7 +274,7 @@ export class UsuariosComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.modals.error('Usuarios Creado Con Éxito!');
+          this.modals.success('Usuarios Creado Con Éxito!');
           this.loadCargar();
         } else if (data.code === '-2') {
           this.modals.warning(data.message);
@@ -310,7 +310,7 @@ export class UsuariosComponent implements OnInit {
             this.modals.success('Cambio de contraseña Exitoso');
           }
           this.closeModal();
-          this.modals.error('Usuarios Modificado Con Éxito!');
+          this.modals.success('Usuarios Modificado Con Éxito!');
           this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de actualizar Usuaios');
@@ -331,7 +331,7 @@ export class UsuariosComponent implements OnInit {
       (data: any) => {
         if (data.code === '0') {
           this.closeModal();
-          this.modals.error('Usuarios Eliminado Con Éxito!');
+          this.modals.success('Usuarios Eliminado Con Éxito!');
           this.loadCargar();
         } else {
           this.modals.error('Error con la respuesta de servicios de eliminar Usuaios');
