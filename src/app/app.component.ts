@@ -31,7 +31,7 @@ export class AppComponent {
     await this.userService.isLogged.subscribe(
       (data: any) => {
         if (!data) {
-          this.modals.warning('Se ha perdido la sesión');
+          //this.modals.warning('Se ha perdido la sesión');
           this.router.navigate(['']);
         }
       },
