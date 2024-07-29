@@ -5,7 +5,7 @@ import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { NgbModal, NgbPaginationModule, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { KapmaeService } from '../../../services/kapmae/kapmae.service';
+import { KapmaeService, ReqImg } from '../../../services/kapmae/kapmae.service';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { KapmaeRequest } from './model/KapmaeRequest';
 import { SectorService } from '../../../services/sector/sector.service';
@@ -66,6 +66,13 @@ export class KapmaeComponent implements OnInit {
     private comunasService: ComunasService,
   ) { }
 
+  ngOnInit(): void {
+    this.docsImg.imagenes = [];
+    this.setPermiso();
+    if (this.isPermisoVerLista)
+      this.loadCargar();
+  }
+
   public selectedMethod(): void {
     this.selectedAll = !this.selectedAll;
     for (let index = 0; index < this.docsImg.imagenes.length; index++) {
@@ -73,20 +80,13 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
-  setPermiso(): void {
+  private setPermiso(): void {
     this.isPermisoVerLista = this.utility.consultar('LUZ_AGRO_MENU_SOCIO');
     this.isPermisoDelete = this.utility.consultar('LUZ_AGRO_SOCIO_DELETE');
     this.isPermisoEdit = this.utility.consultar('LUZ_AGRO_SOCIO_EDIT');
     this.isPermisoCreate = this.utility.consultar('LUZ_AGRO_SOCIO_CREATE');
     this.isPermisoSeleccionar = this.utility.consultar('LUZ_AGRO_SOCIO_SELECCIONAR');
     this.isPermisoCertificado = this.utility.consultar('LUZ_AGRO_SOCIO_CERTIFICADO');
-  }
-
-  ngOnInit(): void {
-    this.docsImg.imagenes = [];
-    this.setPermiso();
-    if (this.isPermisoVerLista)
-      this.loadCargar();
   }
 
   public loadCargarImg(content: any): void {
@@ -112,7 +112,6 @@ export class KapmaeComponent implements OnInit {
             this.docsImg.imagenes.sort();
             this.docsImg.basePath = data.data.basepath;
           }
-
           this.openModalFunction(content);
         } else {
           this.modals.error('Error con el Obtener Imágenes');
@@ -199,7 +198,7 @@ export class KapmaeComponent implements OnInit {
     );
   }
 
-  statusChange(socio: DataSocio, id: string = '') {
+  public statusChange(socio: DataSocio, id: string = ''): void {
     console.log('Method cambioEstado.');
     if (id === '') {
       socio.selected = !socio.selected;
@@ -211,13 +210,13 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
-  openDetails(socio: DataSocio, content: any) {
+  public openDetails(socio: DataSocio, content: any): void {
     console.log('Method openDetails.');
     this.socioModal = socio;
     this.openModalFunction(content);
   }
 
-  validaSelected(): any {
+  private validaSelected(): DataSocio | null {
     for (let index = 0; index < this.socios.length; index++) {
       if (this.socios[index].selected) {
         return this.socios[index];
@@ -227,7 +226,7 @@ export class KapmaeComponent implements OnInit {
     return null;
   }
 
-  seleccionar(content: any) {
+  public seleccionar(content: any): void {
     let selectItem = this.validaSelected();
     if (selectItem == null) {
       this.modals.warning('debes seleccionar un Socio');
@@ -237,7 +236,7 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
-  cerfificado() {
+  public cerfificado(): void {
     let selectItem = this.validaSelected();
     if (selectItem == null) {
       this.modals.warning('debes seleccionar un Socio para cerfificado');
@@ -246,23 +245,57 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
-  imprimirImg(): void {
-    let habilitados = 0;
-    for (let index = 0; index < this.docsImg.imagenes.length; index++) {
-      const element = this.docsImg.imagenes[index];
-      if (element.estado) {
-        habilitados++;
-      }
-    }
-
+  public imprimirImg(): void {
+    let habilitadosList: ReqImg = this.obtenerListaHabilitados();
+    // this.impromirPdfImagens(habilitadosList);
     this.modals.info('Funcionalidad No disponible');
   }
 
-  openModalFunction(content: any): void {
+  private obtenerListaHabilitados(): ReqImg {
+    const imgHabilitados: ReqImg = new ReqImg();
+    imgHabilitados.imgs = [];
+    for (let index = 0; index < this.docsImg.imagenes.length; index++) {
+      const element = this.docsImg.imagenes[index];
+      if (element.estado) {
+        imgHabilitados.imgs.push(element.imagen.pathImg);
+      }
+    }
+    return imgHabilitados;
+  }
+
+  private impromirPdfImagens(imgHabilitados: ReqImg): void {
+    console.log('Method impromirPdfImagens');
+    this.cargar = true;
+    this.kapmaeService.impromirPdfImagens(imgHabilitados).subscribe(
+      (data: any) => {
+        if (data.code === '0') {
+          let dat = new Date();
+          let fileName = 'imagenes_codeSocio_';
+          const linkSource = 'data:application/pdf;base64,' + data.data;
+
+          const downloadLink = document.createElement('a');
+          downloadLink.href = linkSource;
+          fileName = fileName + '_' + dat.getDate() + '_' + (dat.getMonth() + 1) + '_'
+            + dat.getFullYear() + '_' + dat.getHours() + '_' + dat.getMinutes() + '.pdf';
+          downloadLink.download = fileName;
+          downloadLink.click();
+        } else {
+          this.modals.error('Error con la respuesta de servicios de obtener Pdf Con Imagenes');
+        }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        this.modals.error('Error con el servicio de obtener Pdf Con Imagenes');
+        this.cargar = false;
+      });
+  }
+
+  public openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
   }
 
-  closeModal() {
+  public closeModal(): void {
     this.modalService.dismissAll();
   }
 
@@ -329,13 +362,13 @@ export class KapmaeComponent implements OnInit {
           this.modals.success('Socio Eliminado Con Éxito!');
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
+          this.modals.error('Error con la respuesta de servicios de eliminar Socio');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de eliminar Sectotes');
+        this.modals.error('Error con el servicio de eliminar Socio');
         this.cargar = false;
       });
   }

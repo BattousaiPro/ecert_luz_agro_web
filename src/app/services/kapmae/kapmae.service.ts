@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { KapmaeRequest } from '../../component/page/kapmae/model/KapmaeRequest';
 import { DataSocio } from '../../component/page/kapmae/model/DataSocio';
+import { ImgLista } from '../../component/page/kapmae/kapmae.component';
 
 @Injectable({
   providedIn: 'root'
@@ -58,4 +59,19 @@ export class KapmaeService {
     return ladata;
   }
 
+  public impromirPdfImagens(imgHabilitados: ReqImg): Observable<any> {
+    let url = 'http://localhost:3000/kapmae/getPdfDocumentImg';
+    const ladata: Observable<any> = this.http.post(
+      url,
+      imgHabilitados
+    );
+    return ladata;
+  }
+
+}
+export interface ReqImg {
+  imgs: string[];
+}
+export class ReqImg {
+  constructor() { }
 }
