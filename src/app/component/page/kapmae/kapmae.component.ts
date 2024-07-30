@@ -245,9 +245,11 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
-  public imprimirImg(cod_cop: number): void {
-    let habilitadosList: ReqImg = this.obtenerListaHabilitados();
-    this.impromirPdfImagens(habilitadosList, cod_cop);
+  public imprimirImg(rut_cop: string, cod_cop: number): void {
+    let imgHabilitados: ReqImg = this.obtenerListaHabilitados();
+    imgHabilitados.codCop = cod_cop;
+    imgHabilitados.rutCop = rut_cop;
+    this.impromirPdfImagens(imgHabilitados, cod_cop);
     //this.modals.info('Funcionalidad No disponible');
   }
 
