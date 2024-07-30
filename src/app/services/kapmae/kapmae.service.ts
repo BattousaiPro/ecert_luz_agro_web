@@ -71,6 +71,8 @@ export class KapmaeService {
 }
 export interface ReqImg {
   imgs: string[];
+  codCop: number;
+  rutCop: string;
 }
 export class ReqImg {
   constructor() { }
