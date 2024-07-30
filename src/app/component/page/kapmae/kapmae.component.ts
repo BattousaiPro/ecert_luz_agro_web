@@ -245,9 +245,9 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
-  public imprimirImg(): void {
+  public imprimirImg(cod_cop: number): void {
     let habilitadosList: ReqImg = this.obtenerListaHabilitados();
-    this.impromirPdfImagens(habilitadosList);
+    this.impromirPdfImagens(habilitadosList, cod_cop);
     //this.modals.info('Funcionalidad No disponible');
   }
 
@@ -263,14 +263,14 @@ export class KapmaeComponent implements OnInit {
     return imgHabilitados;
   }
 
-  private impromirPdfImagens(imgHabilitados: ReqImg): void {
+  private impromirPdfImagens(imgHabilitados: ReqImg, cod_cop: number): void {
     console.log('Method impromirPdfImagens');
     this.cargar = true;
     this.kapmaeService.impromirPdfImagens(imgHabilitados).subscribe(
       (data: any) => {
         if (data.code === '0') {
           let dat = new Date();
-          let fileName = 'imagenes_codeSocio_';
+          let fileName = 'imagenes_' + cod_cop + '_';
           const linkSource = 'data:application/pdf;base64,' + data.data;
 
           const downloadLink = document.createElement('a');
