@@ -247,8 +247,8 @@ export class KapmaeComponent implements OnInit {
 
   public imprimirImg(): void {
     let habilitadosList: ReqImg = this.obtenerListaHabilitados();
-    // this.impromirPdfImagens(habilitadosList);
-    this.modals.info('Funcionalidad No disponible');
+    this.impromirPdfImagens(habilitadosList);
+    //this.modals.info('Funcionalidad No disponible');
   }
 
   private obtenerListaHabilitados(): ReqImg {
