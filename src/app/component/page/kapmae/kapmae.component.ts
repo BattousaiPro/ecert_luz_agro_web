@@ -247,10 +247,14 @@ export class KapmaeComponent implements OnInit {
 
   public imprimirImg(rut_cop: string, cod_cop: number): void {
     let imgHabilitados: ReqImg = this.obtenerListaHabilitados();
-    imgHabilitados.codCop = cod_cop;
-    imgHabilitados.rutCop = rut_cop;
-    this.impromirPdfImagens(imgHabilitados, cod_cop);
-    //this.modals.info('Funcionalidad No disponible');
+    if (imgHabilitados.imgs.length > 0) {
+      imgHabilitados.codCop = cod_cop;
+      imgHabilitados.rutCop = rut_cop;
+      this.impromirPdfImagens(imgHabilitados, cod_cop);
+      //this.modals.info('Funcionalidad No disponible');
+    } else {
+      this.modals.info('Debe seleccionar a lo menos una Imagen.');
+    }
   }
 
   private obtenerListaHabilitados(): ReqImg {
