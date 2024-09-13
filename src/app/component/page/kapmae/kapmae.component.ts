@@ -476,54 +476,54 @@ export class KapmaeComponent implements OnInit {
       errores.push('Apellido Materno es Obligatorio');
     }
 
-    /*// Campo: Código Luzagro
+    // Campo: Código Luzagro
     if (typeof this.socioModal.cod_cop === 'undefined' || this.socioModal.cod_cop < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Error con cod_cop -> Código Luzagro');
+      errores.push('Código Luzagro es Obligatorio');
     }
 
     // Campo: Código Luzlinares
     if (typeof this.socioModal.cod_lli === 'undefined' || this.socioModal.cod_lli < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Error con cod_lli -> Código Luzlinares');
+      errores.push('Código Luzlinares es Obligatorio');
     }
 
     // Campo: Código Anterior
     if (typeof this.socioModal.cod_ant === 'undefined' || this.socioModal.cod_ant < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Error con cod_ant -> Código Anterior');
+      errores.push('Código Anterior es Obligatorio');
     }
 
     // Campo: Código Nuevo
     if (typeof this.socioModal.cod_nvo === 'undefined' || this.socioModal.cod_nvo < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Error con cod_nvo -> Código Nuevo');
+      errores.push('Código Nuevo es Obligatorio');
     }
 
     // Campo: Código Original
     if (typeof this.socioModal.cod_ori === 'undefined' || this.socioModal.cod_ori < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Error con cod_ori -> Código Original');
+      errores.push('Código Original es Obligatorio');
     }
 
     // Campo: Sector
     if (typeof this.socioModal.sec_cop === 'undefined') {
       //distinto de vacio o indefinido.
-      errores.push('Error con sec_cop -> Sector');
+      errores.push('Sector es Obligatorio');
     }
 
     // Campo: Año Inscripción
     if (typeof this.socioModal.ano_inc === 'undefined' || this.socioModal.ano_inc < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Error con ano_inc -> Año Inscripción');
+      errores.push('Año Inscripción es Obligatorio');
     }
 
     // Campo: Monto Inscripción
     if (typeof this.socioModal.mto_inc === 'undefined' || this.socioModal.mto_inc < 0) {
-      errores.push('Error con mto_inc -> Monto Inscripción');
+      errores.push('Monto Inscripción es Obligatorio');
     }
 
-    // Campo: Fecha Inscripción
+    /*// Campo: Fecha Inscripción
     if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
       errores.push('Error con fec_inc -> Fecha Inscripción');
     }
