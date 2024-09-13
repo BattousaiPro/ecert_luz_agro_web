@@ -50,7 +50,8 @@ export class KapmaeComponent implements OnInit {
   collectionSize: number = 0;
 
   principalContainer: boolean = true;
-  erroresNewEdit: string[] = [];
+  erroresList: string[] = [];
+  isErroresList: boolean = false;
 
   public utility = new Utility;
   isPermisoVerLista: boolean = false;
@@ -390,6 +391,8 @@ export class KapmaeComponent implements OnInit {
     this.socioModal = JSON.parse(JSON.stringify(selectedItem));
     this.currentItem = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
+    this.erroresList = [];
+    this.setIsErroresList(false);
     this.principalContainer = false;
   }
 
@@ -397,41 +400,50 @@ export class KapmaeComponent implements OnInit {
     console.log('Method agregaModal.');
     this.socioModal = new DataSocio();
     this.isEdit = false;
+    this.erroresList = [];
+    this.setIsErroresList(false);
     this.principalContainer = false;
   }
 
-  public guardar(selectedItem: DataSocio): void {
-    console.log('Method guardar.');
-    if (this.isEdit) {
-      if (this.validateActionEdit(selectedItem)) {
-        // this.edit();
-        this.modals.info('Funcionalidad Editar Socios No disponible');
-      } else {
-        this.showErrorNewEdit();
-      }
+  public guardar(): void {
+    this.erroresList = [];
+    this.isErroresList = false;
+    this.erroresList = this.validateNew();
+    if (this.erroresList.length > 0) {
+      this.setIsErroresList(true);
     } else {
-      if (this.validateActionNew()) {
-        // this.new();
-        this.modals.info('Funcionalidad Crear Socios No disponible');
+      if (!this.isEdit) {
+        // console.log('this.new()');
+        this.new();
       } else {
-        this.showErrorNewEdit();
+        // console.log('this.edit()');
+        this.edit();
       }
     }
   }
 
   private showErrorNewEdit(): void {
-    this.modals.info('Algunos de los campos no se ingreso correctamente, [' + this.erroresNewEdit.length + '] Errores');
-    for (let index = 0; index < this.erroresNewEdit.length; index++) {
-      const element = this.erroresNewEdit[index];
-      console.log('error[' + index + ']: ' + element);
+    let salida = '';
+    for (let index = 0; index < this.erroresList.length; index++) {
+      const element = this.erroresList[index];
+      salida += '[' + index + '] error----- : ' + element;
+      //console.log('error[' + index + ']: ' + element);
     }
+    this.modals.info('Algunos de los campos no se ingreso correctamente,---- '
+      + '----------------------------- [' + this.erroresList.length + '] Errores ----------------------------- ' +
+      salida);
   }
 
   public volverDetalle(): void {
     this.principalContainer = true;
   }
 
-  public validateActionNew(): boolean {
+  private setIsErroresList(isErroresList: boolean): void {
+    this.isErroresList = isErroresList;
+  }
+
+  public validateNew(): string[] {
+    let errores: string[] = [];
     /* Campos Opcionales, TODO: cambiar validación de obligtorio.
       -> Dirección Postal *
       -> Nro Teléfono 1 *
@@ -451,167 +463,166 @@ export class KapmaeComponent implements OnInit {
       -> aju_acc
     */
     // TODO: validar cada uno de los campos.
-    this.erroresNewEdit = [];
 
     // Campo: Rut Socio
     if (typeof this.socioModal.rut_cop === 'undefined' || this.socioModal.rut_cop === '') {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con rut_cop -> Rut Socio');
+      errores.push('Error con rut_cop -> Rut Socio-------------- ');
     }
 
     // Campo: Nombres
     if (typeof this.socioModal.nombres === 'undefined' || this.socioModal.nombres === '') {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con nombres -> Nombres');
+      errores.push('Error con nombres -> Nombres-------------- ');
     }
 
     // Campo: Apellido Paterno
     if (typeof this.socioModal.ape_pat === 'undefined' || this.socioModal.ape_pat === '') {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con ape_pat -> Apellido Paterno');
+      errores.push('Error con ape_pat -> Apellido Paterno------ ');
     }
 
     // Campo: Apellido Materno
     if (typeof this.socioModal.ape_mat === 'undefined' || this.socioModal.ape_mat === '') {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con ape_mat -> Apellido Materno');
+      errores.push('Error con ape_mat -> Apellido Materno------ ');
     }
 
-    // Campo: Código Luzagro
+    /*// Campo: Código Luzagro
     if (typeof this.socioModal.cod_cop === 'undefined' || this.socioModal.cod_cop < 0) {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con cod_cop -> Código Luzagro');
+      errores.push('Error con cod_cop -> Código Luzagro');
     }
 
     // Campo: Código Luzlinares
     if (typeof this.socioModal.cod_lli === 'undefined' || this.socioModal.cod_lli < 0) {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con cod_lli -> Código Luzlinares');
+      errores.push('Error con cod_lli -> Código Luzlinares');
     }
 
     // Campo: Código Anterior
     if (typeof this.socioModal.cod_ant === 'undefined' || this.socioModal.cod_ant < 0) {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con cod_ant -> Código Anterior');
+      errores.push('Error con cod_ant -> Código Anterior');
     }
 
     // Campo: Código Nuevo
     if (typeof this.socioModal.cod_nvo === 'undefined' || this.socioModal.cod_nvo < 0) {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con cod_nvo -> Código Nuevo');
+      errores.push('Error con cod_nvo -> Código Nuevo');
     }
 
     // Campo: Código Original
     if (typeof this.socioModal.cod_ori === 'undefined' || this.socioModal.cod_ori < 0) {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con cod_ori -> Código Original');
+      errores.push('Error con cod_ori -> Código Original');
     }
 
     // Campo: Sector
     if (typeof this.socioModal.sec_cop === 'undefined') {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con sec_cop -> Sector');
+      errores.push('Error con sec_cop -> Sector');
     }
 
     // Campo: Año Inscripción
     if (typeof this.socioModal.ano_inc === 'undefined' || this.socioModal.ano_inc < 0) {
       //distinto de vacio o indefinido.
-      this.erroresNewEdit.push('Error con ano_inc -> Año Inscripción');
+      errores.push('Error con ano_inc -> Año Inscripción');
     }
 
     // Campo: Monto Inscripción
     if (typeof this.socioModal.mto_inc === 'undefined' || this.socioModal.mto_inc < 0) {
-      this.erroresNewEdit.push('Error con mto_inc -> Monto Inscripción');
+      errores.push('Error con mto_inc -> Monto Inscripción');
     }
 
     // Campo: Fecha Inscripción
     if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
-      this.erroresNewEdit.push('Error con fec_inc -> Fecha Inscripción');
+      errores.push('Error con fec_inc -> Fecha Inscripción');
     }
 
     // Campo: Año Traspaso
     if (typeof this.socioModal.ano_tra === 'undefined' || this.socioModal.ano_tra < 0) {
-      this.erroresNewEdit.push('Error con ano_tra -> Año Traspaso');
+      errores.push('Error con ano_tra -> Año Traspaso');
     }
 
     // Campo: Capital Traspaso
     if (typeof this.socioModal.kap_tra === 'undefined' || this.socioModal.kap_tra < 0) {
-      this.erroresNewEdit.push('Error con kap_tra -> Capital Traspaso');
+      errores.push('Error con kap_tra -> Capital Traspaso');
     }
 
     // Campo: Fecha Traspaso
     if (!this.validateFormatDate(this.socioModal.fec_tra_date)) {
-      this.erroresNewEdit.push('Error con fec_tra -> Fecha Traspaso');
+      errores.push('Error con fec_tra -> Fecha Traspaso');
     }
 
     // Campo: Acciones Traspaso
     if (typeof this.socioModal.acc_tra === 'undefined' || this.socioModal.acc_tra < 0) {
-      this.erroresNewEdit.push('Error con acc_tra -> Acciones Traspaso');
+      errores.push('Error con acc_tra -> Acciones Traspaso');
     }
 
     // Campo: Acciones Retiro
     if (typeof this.socioModal.acc_ret === 'undefined' || this.socioModal.acc_ret < 0) {
-      this.erroresNewEdit.push('Error con acc_ret -> Acciones Retiro');
+      errores.push('Error con acc_ret -> Acciones Retiro');
     }
 
     // Campo: Acciones Aporte
     if (typeof this.socioModal.acc_apo === 'undefined' || this.socioModal.acc_apo < 0) {
-      this.erroresNewEdit.push('Error con acc_apo -> Acciones Aporte');
+      errores.push('Error con acc_apo -> Acciones Aporte');
     }
 
     // Campo: Actualización
     if (!this.validateFormatDate(this.socioModal.fec_act_date)) {
-      this.erroresNewEdit.push('Error con fec_act -> Actualización');
+      errores.push('Error con fec_act -> Actualización');
     }
 
     // Campo: Estado Traspao
     if (typeof this.socioModal.est_tra === 'undefined' || this.socioModal.est_tra === '') {
-      this.erroresNewEdit.push('Error con est_tra -> Estado Traspao');
+      errores.push('Error con est_tra -> Estado Traspao');
     }
 
     // Campo: Estado del Bono
     if (typeof this.socioModal.est_bon === 'undefined' || this.socioModal.est_bon < 0) {
-      this.erroresNewEdit.push('Error con est_bon -> Estado del Bono');
+      errores.push('Error con est_bon -> Estado del Bono');
     }
 
     // Campo: Dirección Postal
     if (typeof this.socioModal.dir_pos !== 'undefined') {
       // TODO: validar formato de ser requeido
-      // this.erroresNewEdit.push('Error con dir_pos -> Dirección Postal');
+      // errores.push('Error con dir_pos -> Dirección Postal');
     }
 
     // Campo: Nro Teléfono 1
     if (typeof this.socioModal.nro_te1 !== 'undefined') {
       // TODO: validar formato de ser requeido
-      // this.erroresNewEdit.push('Error con nro_te1 -> Nro Teléfono 1');
+      // errores.push('Error con nro_te1 -> Nro Teléfono 1');
     }
 
     // Campo: Nro Teléfono 2
     if (typeof this.socioModal.nro_te2 !== 'undefined') {
       // TODO: validar formato de ser requeido
-      // this.erroresNewEdit.push('Error con nro_te2 -> Nro Teléfono 2');
+      // errores.push('Error con nro_te2 -> Nro Teléfono 2');
     }
 
     // Campo: Nro Teléfono 3
     if (typeof this.socioModal.nro_te3 !== 'undefined') {
       // TODO: validar formato de ser requeido
-      // this.erroresNewEdit.push('Error con nro_te3 -> Nro Teléfono 3');
+      // errores.push('Error con nro_te3 -> Nro Teléfono 3');
     }
 
     // Campo: Nro Teléfono 4
     if (typeof this.socioModal.nro_te4 !== 'undefined') {
       // TODO: validar formato de ser requeido
-      // this.erroresNewEdit.push('Error con nro_te4 -> Nro Teléfono 4');
+      // errores.push('Error con nro_te4 -> Nro Teléfono 4');
     }
 
     // Campo: Comuna
     if (typeof this.socioModal.com_pos === 'undefined') {
-      this.erroresNewEdit.push('Error con com_pos -> Comuna');
+      errores.push('Error con com_pos -> Comuna');
     }
 
     // Campo: Observación
     if (typeof this.socioModal.obs_cap === 'undefined') {
-      this.erroresNewEdit.push('Error con obs_cap -> Observación');
+      errores.push('Error con obs_cap -> Observación');
     }
 
     // ************************************************************************************************
@@ -620,66 +631,63 @@ export class KapmaeComponent implements OnInit {
     //if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
     if (typeof this.socioModal.nro_sol !== 'undefined') {
       // TODO: validar formato de ser requeido
-      // this.erroresNewEdit.push('Error con nro_sol');
+      // errores.push('Error con nro_sol');
     }
 
     // Campo: fec_sol
     if (!this.validateFormatDate(this.socioModal.fec_sol_date)) {
-      this.erroresNewEdit.push('Error con fec_sol');
+      errores.push('Error con fec_sol');
     }
 
     // Campo: fec_apr
     if (!this.validateFormatDate(this.socioModal.fec_apr_date)) {
-      this.erroresNewEdit.push('Error con fec_apr');
+      errores.push('Error con fec_apr');
     }
 
     // Campo: fec_can
     if (!this.validateFormatDate(this.socioModal.fec_can_date)) {
-      this.erroresNewEdit.push('Error con fec_can');
+      errores.push('Error con fec_can');
     }
 
     // Campo: est_sol 
     if (typeof this.socioModal.est_sol === 'undefined') {
-      this.erroresNewEdit.push('Error con est_sol');
+      errores.push('Error con est_sol');
     }
 
     // Campo: sec_cte 
     if (typeof this.socioModal.sec_cte === 'undefined' || this.socioModal.sec_cte < 0) {
-      this.erroresNewEdit.push('Error con sec_cte');
+      errores.push('Error con sec_cte');
     }
 
     // Campo: area 
     if (typeof this.socioModal.area === 'undefined' || this.socioModal.area < 0) {
-      this.erroresNewEdit.push('Error con area');
+      errores.push('Error con area');
     }
 
     // Campo: sec_imp 
     if (typeof this.socioModal.sec_imp === 'undefined' || this.socioModal.sec_imp < 0) {
-      this.erroresNewEdit.push('Error con sec_imp');
+      errores.push('Error con sec_imp');
     }
 
     // Campo: est_reg 
     if (typeof this.socioModal.est_reg === 'undefined') {
-      this.erroresNewEdit.push('Error con est_reg');
+      errores.push('Error con est_reg');
     }
 
     // Campo: acc_con 
     if (typeof this.socioModal.acc_con === 'undefined' || this.socioModal.acc_con < 0) {
-      this.erroresNewEdit.push('Error con acc_con');
+      errores.push('Error con acc_con');
     }
 
     // Campo: aju_acc 
     if (typeof this.socioModal.aju_acc === 'undefined' || this.socioModal.aju_acc < 0) {
-      this.erroresNewEdit.push('Error con aju_acc');
+      errores.push('Error con aju_acc');
     }
-    if (this.erroresNewEdit.length > 0) {
+    if (this.erroresList.length > 0) {
       return false;
     }
-    return true;
-  }
-
-  public validateActionEdit(selectedItem: DataSocio): boolean {
-    return true;
+    return false;*/
+        return errores;
   }
 
   private validateFormatDate(inputDate: DatepickerModel | undefined): boolean {
@@ -692,6 +700,22 @@ export class KapmaeComponent implements OnInit {
         return false;
       }
     }
+  }
+
+  public cleanFieldRutCop(): void {
+    this.socioModal.rut_cop = this.socioModal.rut_cop.trim();
+  }
+
+  public cleanFieldNombres(): void {
+    this.socioModal.nombres = this.socioModal.nombres!.trim();
+  }
+
+  public cleanFieldApePat(): void {
+    this.socioModal.ape_pat = this.socioModal.ape_pat!.trim();
+  }
+
+  public cleanFieldApeMat(): void {
+    this.socioModal.ape_mat = this.socioModal.ape_mat!.trim();
   }
 
 }

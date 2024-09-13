@@ -295,7 +295,7 @@
                                     (click)="volverDetalle()">Volver</button>
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
-                                <button type="button" class="btn btn-primary w100" (click)="guardar(socioModal)">
+                                <button type="button" class="btn btn-primary w100" (click)="guardar()">
                                     @if (isEdit) {
                                     Editar
                                     } @else {
@@ -307,10 +307,22 @@
                     </div>
                 </div>
 
-                <div class="row">
-
+                @if (isErroresList) {
+                <div class="row mt15 mb15" style="overflow-y: auto;max-height: 250px;">
                     <div class="col-xs-12 col-sm-12">
+                        <div class="container p25" style="background-color:#ffffff; border-radius: 15px;">
+                            @for (error of erroresList; track error; let index = $index) {
+                            <div class="col-12">
+                                <label class="col-form-label col-form-label-sm error">{{error}}</label>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                }
 
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
                         <div class="container p25" style="background-color:#ffffff; border-radius: 15px;">
 
                             <div class="row mb15">
@@ -322,28 +334,32 @@
                                                 Rut Socio
                                             </label>
                                             <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="rut_cop" [(ngModel)]="socioModal.rut_cop">
+                                                id="rut_cop" [(ngModel)]="socioModal.rut_cop"
+                                                (blur)="cleanFieldRutCop()">
                                         </div>
                                         <div class="col-6 col-sn-3 col-lg-4 col-xl-3">
                                             <label class="col-form-label col-form-label-sm" for="nombres">
                                                 Nombres
                                             </label>
                                             <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="nombres" [(ngModel)]="socioModal.nombres">
+                                                id="nombres" [(ngModel)]="socioModal.nombres"
+                                                (blur)="cleanFieldNombres()">
                                         </div>
                                         <div class="col-6 col-sn-3 col-lg-4 col-xl-3">
                                             <label class="col-form-label col-form-label-sm" for="ape_pat">
                                                 Apellido Paterno
                                             </label>
                                             <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="ape_pat" [(ngModel)]="socioModal.ape_pat">
+                                                id="ape_pat" [(ngModel)]="socioModal.ape_pat"
+                                                (blur)="cleanFieldApePat()">
                                         </div>
                                         <div class="col-6 col-sn-3 col-lg-4 col-xl-3">
                                             <label class="col-form-label col-form-label-sm" for="ape_mat">
                                                 Apellido Materno
                                             </label>
                                             <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="ape_mat" [(ngModel)]="socioModal.ape_mat">
+                                                id="ape_mat" [(ngModel)]="socioModal.ape_mat"
+                                                (blur)="cleanFieldApeMat()">
                                         </div>
                                         <div class="col-6 col-sn-3 col-lg-4 col-xl-3">
                                             <label class="col-form-label col-form-label-sm" for="cod_cop">
@@ -667,16 +683,26 @@
                                             <input class="form-control form-control-sm" type="number" placeholder=""
                                                 id="aju_acc" [(ngModel)]="socioModal.aju_acc">
                                         </div>
-
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
-
                 </div>
+
+                @if (isErroresList) {
+                <div class="row mt15 mb15" style="overflow-y: auto;max-height: 250px;">
+                    <div class="col-xs-12 col-sm-12">
+                        <div class="container p25" style="background-color:#ffffff; border-radius: 15px;">
+                            @for (error of erroresList; track error; let index = $index) {
+                            <div class="col-12">
+                                <label class="col-form-label col-form-label-sm error">{{error}}</label>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                }
 
                 <div class="row mt15 mb15">
                     <div class="col-12">
@@ -686,7 +712,7 @@
                                     (click)="volverDetalle()">Volver</button>
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15">
-                                <button type="button" class="btn btn-primary w100" (click)="guardar(socioModal)">
+                                <button type="button" class="btn btn-primary w100" (click)="guardar()">
                                     @if (isEdit) {
                                     Editar
                                     } @else {
@@ -912,7 +938,8 @@
                             }
                             @if(showBoton) {
                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                                <button type="button" class="btn btn-primary w100" (click)="imprimirImg(socioSelectImgModal.rut_cop, socioSelectImgModal.cod_cop)">
+                                <button type="button" class="btn btn-primary w100"
+                                    (click)="imprimirImg(socioSelectImgModal.rut_cop, socioSelectImgModal.cod_cop)">
                                     Imprimir
                                 </button>
                             </div>
