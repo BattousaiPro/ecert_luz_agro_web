@@ -422,18 +422,6 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
-  private showErrorNewEdit(): void {
-    let salida = '';
-    for (let index = 0; index < this.erroresList.length; index++) {
-      const element = this.erroresList[index];
-      salida += '[' + index + '] error----- : ' + element;
-      //console.log('error[' + index + ']: ' + element);
-    }
-    this.modals.info('Algunos de los campos no se ingreso correctamente,---- '
-      + '----------------------------- [' + this.erroresList.length + '] Errores ----------------------------- ' +
-      salida);
-  }
-
   public volverDetalle(): void {
     this.principalContainer = true;
   }
@@ -467,25 +455,25 @@ export class KapmaeComponent implements OnInit {
     // Campo: Rut Socio
     if (typeof this.socioModal.rut_cop === 'undefined' || this.socioModal.rut_cop === '') {
       //distinto de vacio o indefinido.
-      errores.push('Error con rut_cop -> Rut Socio-------------- ');
+      errores.push('Rut Cliente es Obligatorio');
     }
 
     // Campo: Nombres
     if (typeof this.socioModal.nombres === 'undefined' || this.socioModal.nombres === '') {
       //distinto de vacio o indefinido.
-      errores.push('Error con nombres -> Nombres-------------- ');
+      errores.push('Nombres es Obligatorio');
     }
 
     // Campo: Apellido Paterno
     if (typeof this.socioModal.ape_pat === 'undefined' || this.socioModal.ape_pat === '') {
       //distinto de vacio o indefinido.
-      errores.push('Error con ape_pat -> Apellido Paterno------ ');
+      errores.push('Apellido Paterno es Obligatorio');
     }
 
     // Campo: Apellido Materno
     if (typeof this.socioModal.ape_mat === 'undefined' || this.socioModal.ape_mat === '') {
       //distinto de vacio o indefinido.
-      errores.push('Error con ape_mat -> Apellido Materno------ ');
+      errores.push('Apellido Materno es Obligatorio');
     }
 
     /*// Campo: Código Luzagro
