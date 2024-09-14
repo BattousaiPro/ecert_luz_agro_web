@@ -619,21 +619,21 @@ export class KapmaeComponent implements OnInit {
       }
     }
 
-    /*// Campo: Comuna
+    // Campo: Comuna
     if (typeof this.socioModal.com_pos === 'undefined') {
-      errores.push('Error con com_pos -> Comuna');
+      errores.push('Comuna es Obligatorio');
     }
 
     // Campo: Observación
     if (typeof this.socioModal.obs_cap === 'undefined') {
-      errores.push('Error con obs_cap -> Observación');
+      errores.push('Observación es Obligatorio');
     }
 
     // ************************************************************************************************
     // Campos ocultro en la tabla de socios.
     // Campo: nro_sol
     //if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
-    if (typeof this.socioModal.nro_sol !== 'undefined') {
+    /*if (typeof this.socioModal.nro_sol !== 'undefined') {
       // TODO: validar formato de ser requeido
       // errores.push('Error con nro_sol');
     }
