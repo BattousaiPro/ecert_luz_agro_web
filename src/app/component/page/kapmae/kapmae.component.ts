@@ -327,13 +327,13 @@ export class KapmaeComponent implements OnInit {
           this.modals.success('Socio Creado Con Éxito!');
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
+          this.modals.error('Error con la respuesta de servicios de agregar Socio');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de eliminar Sectotes');
+        this.modals.error('Error con el servicio de agregar Socio');
         this.cargar = false;
       });
   }
@@ -348,13 +348,13 @@ export class KapmaeComponent implements OnInit {
           this.modals.success('Socio Modificado Con Éxito!');
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
+          this.modals.error('Error con la respuesta de servicios de editar Socio');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de eliminar Sectotes');
+        this.modals.error('Error con el servicio de editar Socio');
         this.cargar = false;
       });
   }
@@ -523,87 +523,103 @@ export class KapmaeComponent implements OnInit {
       errores.push('Monto Inscripción es Obligatorio');
     }
 
-    /*// Campo: Fecha Inscripción
+    // Campo: Fecha Inscripción
     if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
-      errores.push('Error con fec_inc -> Fecha Inscripción');
+      errores.push('Fecha Inscripción es Obligatorio');
     }
 
     // Campo: Año Traspaso
     if (typeof this.socioModal.ano_tra === 'undefined' || this.socioModal.ano_tra < 0) {
-      errores.push('Error con ano_tra -> Año Traspaso');
+      errores.push('Año Traspaso es Obligatorio');
     }
 
     // Campo: Capital Traspaso
     if (typeof this.socioModal.kap_tra === 'undefined' || this.socioModal.kap_tra < 0) {
-      errores.push('Error con kap_tra -> Capital Traspaso');
+      errores.push('Capital Traspaso es Obligatorio');
     }
 
     // Campo: Fecha Traspaso
     if (!this.validateFormatDate(this.socioModal.fec_tra_date)) {
-      errores.push('Error con fec_tra -> Fecha Traspaso');
+      errores.push('Fecha Traspaso es Obligatorio');
     }
 
     // Campo: Acciones Traspaso
     if (typeof this.socioModal.acc_tra === 'undefined' || this.socioModal.acc_tra < 0) {
-      errores.push('Error con acc_tra -> Acciones Traspaso');
+      errores.push('Acciones Traspaso es Obligatorio');
     }
 
     // Campo: Acciones Retiro
     if (typeof this.socioModal.acc_ret === 'undefined' || this.socioModal.acc_ret < 0) {
-      errores.push('Error con acc_ret -> Acciones Retiro');
+      errores.push('Acciones Retiro es Obligatorio');
     }
 
     // Campo: Acciones Aporte
     if (typeof this.socioModal.acc_apo === 'undefined' || this.socioModal.acc_apo < 0) {
-      errores.push('Error con acc_apo -> Acciones Aporte');
+      errores.push('Acciones Aporte es Obligatorio');
     }
 
     // Campo: Actualización
     if (!this.validateFormatDate(this.socioModal.fec_act_date)) {
-      errores.push('Error con fec_act -> Actualización');
+      errores.push('Actualización es Obligatorio');
     }
 
     // Campo: Estado Traspao
     if (typeof this.socioModal.est_tra === 'undefined' || this.socioModal.est_tra === '') {
-      errores.push('Error con est_tra -> Estado Traspao');
+      errores.push('Estado Traspao es Obligatorio');
     }
 
     // Campo: Estado del Bono
     if (typeof this.socioModal.est_bon === 'undefined' || this.socioModal.est_bon < 0) {
-      errores.push('Error con est_bon -> Estado del Bono');
+      errores.push('Estado del Bono es Obligatorio');
     }
 
     // Campo: Dirección Postal
-    if (typeof this.socioModal.dir_pos !== 'undefined') {
+    if (typeof this.socioModal.dir_pos === 'undefined' || this.socioModal.rut_cop === '') {
       // TODO: validar formato de ser requeido
-      // errores.push('Error con dir_pos -> Dirección Postal');
+      errores.push('Dirección Postal es Obligatorio');
     }
 
     // Campo: Nro Teléfono 1
     if (typeof this.socioModal.nro_te1 !== 'undefined') {
-      // TODO: validar formato de ser requeido
-      // errores.push('Error con nro_te1 -> Nro Teléfono 1');
+      if (this.socioModal.nro_te1 !== '') {
+        if (9 < this.socioModal.nro_te1.length) {
+          // TODO: validar formato de ser requeido
+          errores.push('Nro Teléfono 1 no debe tener mas de 9 Caracteres');
+        }
+      }
     }
 
     // Campo: Nro Teléfono 2
     if (typeof this.socioModal.nro_te2 !== 'undefined') {
-      // TODO: validar formato de ser requeido
-      // errores.push('Error con nro_te2 -> Nro Teléfono 2');
+      if (this.socioModal.nro_te2 !== '') {
+        if (9 < this.socioModal.nro_te2.length) {
+          // TODO: validar formato de ser requeido
+          errores.push('Nro Teléfono 2 no debe tener mas de 9 Caracteres');
+        }
+      }
     }
 
     // Campo: Nro Teléfono 3
     if (typeof this.socioModal.nro_te3 !== 'undefined') {
-      // TODO: validar formato de ser requeido
-      // errores.push('Error con nro_te3 -> Nro Teléfono 3');
+      if (this.socioModal.nro_te3 !== '') {
+        if (9 < this.socioModal.nro_te3.length) {
+          // TODO: validar formato de ser requeido
+          errores.push('Nro Teléfono 3 no debe tener mas de 9 Caracteres');
+        }
+      }
     }
 
     // Campo: Nro Teléfono 4
     if (typeof this.socioModal.nro_te4 !== 'undefined') {
-      // TODO: validar formato de ser requeido
-      // errores.push('Error con nro_te4 -> Nro Teléfono 4');
+      if (this.socioModal.nro_te4 !== '') {
+        if (9 < this.socioModal.nro_te4.length) {
+          // TODO: validar formato de ser requeido
+          errores.push('Nro Teléfono 4 no debe tener mas de 9 Caracteres');
+        }
+      }
     }
 
-    // Campo: Comuna
+    /*// Campo: Comuna
     if (typeof this.socioModal.com_pos === 'undefined') {
       errores.push('Error con com_pos -> Comuna');
     }
@@ -675,7 +691,7 @@ export class KapmaeComponent implements OnInit {
       return false;
     }
     return false;*/
-        return errores;
+    return errores;
   }
 
   private validateFormatDate(inputDate: DatepickerModel | undefined): boolean {
