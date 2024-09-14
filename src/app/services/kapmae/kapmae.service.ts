@@ -4,16 +4,19 @@ import { Observable } from 'rxjs';
 import { KapmaeRequest } from '../../component/page/kapmae/model/KapmaeRequest';
 import { DataSocio } from '../../component/page/kapmae/model/DataSocio';
 import { ImgLista } from '../../component/page/kapmae/kapmae.component';
+import { Utility } from '../../utils/utility';
 
 @Injectable({
   providedIn: 'root'
 })
 export class KapmaeService {
 
+  public utility = new Utility;
+
   constructor(private http: HttpClient) { }
 
   public new(userData: DataSocio): Observable<any> {
-    let url = 'http://localhost:3000/kapmae';
+    let url = this.utility.getBasePath() + '/kapmae';
     const ladata: Observable<any> = this.http.post(
       url,
       userData
@@ -22,7 +25,7 @@ export class KapmaeService {
   }
 
   public edit(userData: DataSocio): Observable<any> {
-    let url = 'http://localhost:3000/kapmae';
+    let url = this.utility.getBasePath() + '/kapmae';
     const ladata: Observable<any> = this.http.patch(
       url,
       userData
@@ -31,7 +34,7 @@ export class KapmaeService {
   }
 
   public delete(rut_cop: string, cod_cop: number): Observable<any> {
-    let url = 'http://localhost:3000/kapmae/delete';
+    let url = this.utility.getBasePath() + '/kapmae/delete';
     const ladata: Observable<any> = this.http.post(
       url,
       {
@@ -43,7 +46,7 @@ export class KapmaeService {
   }
 
   public obtenerByFilter(req: KapmaeRequest): Observable<any> {
-    let url = 'http://localhost:3000/kapmae/findByFilter';
+    let url = this.utility.getBasePath() + '/kapmae/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,
       req
@@ -52,7 +55,7 @@ export class KapmaeService {
   }
 
   public findImgByCodCop(codCop: number): Observable<any> {
-    let url = 'http://localhost:3000/kapmae/findImgByCodCop/' + codCop;
+    let url = this.utility.getBasePath() + '/kapmae/findImgByCodCop/' + codCop;
     const ladata: Observable<any> = this.http.get(
       url
     );
@@ -60,7 +63,7 @@ export class KapmaeService {
   }
 
   public impromirPdfImagens(imgHabilitados: ReqImg): Observable<any> {
-    let url = 'http://localhost:3000/kapmae/getPdfDocumentImg';
+    let url = this.utility.getBasePath() + '/kapmae/getPdfDocumentImg';
     const ladata: Observable<any> = this.http.post(
       url,
       imgHabilitados

@@ -2,16 +2,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PermisosRequest } from '../../component/perfilamiento/permisos/model/PermisosRequest';
+import { Utility } from '../../utils/utility';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PermisosService {
 
+  public utility = new Utility;
+
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<any> {
-    let url = 'http://localhost:3000/permisos';
+    let url = this.utility.getBasePath() + '/permisos';
     const ladata: Observable<any> = this.http.get(
       url
     );
@@ -19,7 +22,7 @@ export class PermisosService {
   }
 
   public new(name: string, descrip: string, code: string, estado: boolean): Observable<any> {
-    let url = 'http://localhost:3000/permisos';
+    let url = this.utility.getBasePath() + '/permisos';
     const ladata: Observable<any> = this.http.post(
       url,
       {
@@ -33,7 +36,7 @@ export class PermisosService {
   }
 
   public update(id: number, name: string, descrip: string, code: string, estado: boolean): Observable<any> {
-    let url = 'http://localhost:3000/permisos/' + id;
+    let url = this.utility.getBasePath() + '/permisos/' + id;
     let userData: any = {
       name,
       descrip,
@@ -48,7 +51,7 @@ export class PermisosService {
   }
 
   public delete(id: number): Observable<any> {
-    let url = 'http://localhost:3000/permisos/' + id;
+    let url = this.utility.getBasePath() + '/permisos/' + id;
     const ladata: Observable<any> = this.http.delete(
       url
     );
@@ -56,7 +59,7 @@ export class PermisosService {
   }
 
   public obtenerByFilter(req: PermisosRequest): Observable<any> {
-    let url = 'http://localhost:3000/permisos/findByFilter';
+    let url = this.utility.getBasePath() + '/permisos/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,
       req

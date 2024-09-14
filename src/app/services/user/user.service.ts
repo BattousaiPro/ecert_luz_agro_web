@@ -24,7 +24,7 @@ export class UserService {
   }
 
   public getAll(): Observable<any> {
-    let url = 'http://localhost:3000/users';
+    let url = this.utility.getBasePath() + '/users';
     const ladata: Observable<any> = this.http.get(
       url
     );
@@ -32,7 +32,7 @@ export class UserService {
   }
 
   public login(username: string, password: string): Observable<any> {
-    let url = 'http://localhost:3000/auth/login';
+    let url = this.utility.getBasePath() + '/auth/login';
     let userData: any = {
       ctaUserName: username,
       ctaPassWord: password
@@ -45,7 +45,7 @@ export class UserService {
   }
 
   public new(ctaUserName: string, ctaPassWord: string, ctaEmail: string): Observable<any> {
-    let url = 'http://localhost:3000/users';
+    let url = this.utility.getBasePath() + '/users';
     const ladata: Observable<any> = this.http.post(
       url,
       {
@@ -58,7 +58,7 @@ export class UserService {
   }
 
   public update(id: number, ctaUserName: string, ctaPassWord: string, ctaEmail: string, estado: boolean): Observable<any> {
-    let url = 'http://localhost:3000/users/' + id;
+    let url = this.utility.getBasePath() + '/users/' + id;
     let userData: any = {
       ctaUserName,
       ctaPassWord,
@@ -73,7 +73,7 @@ export class UserService {
   }
 
   public delete(id: number): Observable<any> {
-    let url = 'http://localhost:3000/users/' + id;
+    let url = this.utility.getBasePath() + '/users/' + id;
     const ladata: Observable<any> = this.http.delete(
       url
     );
@@ -81,7 +81,7 @@ export class UserService {
   }
 
   public obtenerByFilter(req: UsuariosRequest): Observable<any> {
-    let url = 'http://localhost:3000/users/findByFilter';
+    let url = this.utility.getBasePath() + '/users/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,
       req

@@ -1,6 +1,7 @@
 export class Utility {
 
     public datatoken?: any;
+    private basePath?: string = 'http://localhost:3000';
 
     constructor() { }
 
@@ -61,6 +62,14 @@ export class Utility {
             }
         }
         return resp;
+    }
+
+    public setBasePath(basePath: string) {
+        this.basePath = basePath;
+    }
+
+    public getBasePath() {
+        return this.basePath;
     }
 
 }

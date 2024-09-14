@@ -2,16 +2,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RolesRequest } from '../../component/perfilamiento/roles/model/RolesRequest';
+import { Utility } from '../../utils/utility';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RolesService {
 
+  public utility = new Utility;
+
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<any> {
-    let url = 'http://localhost:3000/roles';
+    let url = this.utility.getBasePath() + '/roles';
     const ladata: Observable<any> = this.http.get(
       url
     );
@@ -19,7 +22,7 @@ export class RolesService {
   }
 
   public new(name: string, descrip: string, code: string): Observable<any> {
-    let url = 'http://localhost:3000/roles';
+    let url = this.utility.getBasePath() + '/roles';
     const ladata: Observable<any> = this.http.post(
       url,
       {
@@ -32,7 +35,7 @@ export class RolesService {
   }
 
   public update(id: number, name: string, descrip: string, code: string, estado: boolean): Observable<any> {
-    let url = 'http://localhost:3000/roles/' + id;
+    let url = this.utility.getBasePath() + '/roles/' + id;
     let userData: any = {
       name,
       descrip,
@@ -47,7 +50,7 @@ export class RolesService {
   }
 
   public delete(id: number): Observable<any> {
-    let url = 'http://localhost:3000/roles/' + id;
+    let url = this.utility.getBasePath() + '/roles/' + id;
     const ladata: Observable<any> = this.http.delete(
       url
     );
@@ -55,7 +58,7 @@ export class RolesService {
   }
 
   public obtenerByFilter(req: RolesRequest): Observable<any> {
-    let url = 'http://localhost:3000/roles/findByFilter';
+    let url = this.utility.getBasePath() + '/roles/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,
       req

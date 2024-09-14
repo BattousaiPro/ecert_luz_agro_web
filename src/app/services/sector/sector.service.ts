@@ -2,16 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SectoresRequest } from '../../component/page/sectores/model/SectoresRequest';
+import { Utility } from '../../utils/utility';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SectorService {
 
+  public utility = new Utility;
+
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<any> {
-    let url = 'http://localhost:3000/sector';
+    let url = this.utility.getBasePath() + '/sector';
     const ladata: Observable<any> = this.http.get(
       url
     );
@@ -19,7 +22,7 @@ export class SectorService {
   }
 
   public new(codigo: number, descrip: string, estado: boolean): Observable<any> {
-    let url = 'http://localhost:3000/sector';
+    let url = this.utility.getBasePath() + '/sector';
     const ladata: Observable<any> = this.http.post(
       url,
       {
@@ -32,7 +35,7 @@ export class SectorService {
   }
 
   public update(id: number, codigo: number, descrip: string, estado: boolean): Observable<any> {
-    let url = 'http://localhost:3000/sector/' + id;
+    let url = this.utility.getBasePath() + '/sector/' + id;
     let userData: any = {
       codigo,
       descrip,
@@ -46,7 +49,7 @@ export class SectorService {
   }
 
   public delete(id: number): Observable<any> {
-    let url = 'http://localhost:3000/sector/' + id;
+    let url = this.utility.getBasePath() + '/sector/' + id;
     const ladata: Observable<any> = this.http.delete(
       url
     );
@@ -54,7 +57,7 @@ export class SectorService {
   }
 
   public obtenerByFilter(req: SectoresRequest): Observable<any> {
-    let url = 'http://localhost:3000/sector/findByFilter';
+    let url = this.utility.getBasePath() + '/sector/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,
       req
