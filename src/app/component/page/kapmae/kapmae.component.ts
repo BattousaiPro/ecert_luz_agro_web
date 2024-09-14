@@ -574,16 +574,18 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Dirección Postal
-    if (typeof this.socioModal.dir_pos === 'undefined' || this.socioModal.rut_cop === '') {
-      // TODO: validar formato de ser requeido
-      errores.push('Dirección Postal es Obligatorio');
+    if (typeof this.socioModal.dir_pos !== 'undefined') {
+      if (this.socioModal.dir_pos !== '') {
+        if (7 < this.socioModal.dir_pos.length) {
+          errores.push('Dirección Postal es Obligatorio');
+        }
+      }
     }
 
     // Campo: Nro Teléfono 1
     if (typeof this.socioModal.nro_te1 !== 'undefined') {
       if (this.socioModal.nro_te1 !== '') {
         if (9 < this.socioModal.nro_te1.length) {
-          // TODO: validar formato de ser requeido
           errores.push('Nro Teléfono 1 no debe tener mas de 9 Caracteres');
         }
       }
@@ -593,7 +595,6 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.nro_te2 !== 'undefined') {
       if (this.socioModal.nro_te2 !== '') {
         if (9 < this.socioModal.nro_te2.length) {
-          // TODO: validar formato de ser requeido
           errores.push('Nro Teléfono 2 no debe tener mas de 9 Caracteres');
         }
       }
@@ -603,7 +604,6 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.nro_te3 !== 'undefined') {
       if (this.socioModal.nro_te3 !== '') {
         if (9 < this.socioModal.nro_te3.length) {
-          // TODO: validar formato de ser requeido
           errores.push('Nro Teléfono 3 no debe tener mas de 9 Caracteres');
         }
       }
@@ -613,7 +613,6 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.nro_te4 !== 'undefined') {
       if (this.socioModal.nro_te4 !== '') {
         if (9 < this.socioModal.nro_te4.length) {
-          // TODO: validar formato de ser requeido
           errores.push('Nro Teléfono 4 no debe tener mas de 9 Caracteres');
         }
       }
@@ -630,7 +629,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // ************************************************************************************************
-    // Campos ocultro en la tabla de socios.
+    // Campos ocultos en la tabla de socios.
     // Campo: nro_sol
     //if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
     /*if (typeof this.socioModal.nro_sol !== 'undefined') {
