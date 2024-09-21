@@ -413,27 +413,27 @@ export class KapmaeComponent implements OnInit {
 
   private setDateField() {
     // let fecIncDateStg: string = fecIncDate.getFullYear() + '-' + (fecIncDate.getMonth() + 1) + '-' + fecIncDate.getDate() + 'T' + fecIncDate.getDay() + ':' + fecIncDate.getMinutes() + ':' + fecIncDate.getSeconds();
-    if (typeof this.socioModal.fec_inc !== 'undefined') {
+    if (typeof this.socioModal.fec_inc !== 'undefined' && this.socioModal.fec_inc !== null) {
       console.log('socioModal.fec_inc_date');
       this.socioModal.fec_inc_date = this.formatDateInput(this.socioModal.fec_inc);
     }
-    if (typeof this.socioModal.fec_tra !== 'undefined') {
+    if (typeof this.socioModal.fec_tra !== 'undefined' && this.socioModal.fec_tra !== null) {
       console.log('socioModal.fec_tra_date');
       this.socioModal.fec_tra_date = this.formatDateInput(this.socioModal.fec_tra);
     }
-    if (typeof this.socioModal.fec_act !== 'undefined') {
+    if (typeof this.socioModal.fec_act !== 'undefined' && this.socioModal.fec_act !== null) {
       console.log('socioModal.fec_act_date');
       this.socioModal.fec_act_date = this.formatDateInput(this.socioModal.fec_act);
     }
-    if (typeof this.socioModal.fec_sol !== 'undefined') {
+    if (typeof this.socioModal.fec_sol !== 'undefined' && this.socioModal.fec_sol !== null) {
       console.log('socioModal.fec_sol_date');
       this.socioModal.fec_sol_date = this.formatDateInput(this.socioModal.fec_sol);
     }
-    if (typeof this.socioModal.fec_apr !== 'undefined') {
+    if (typeof this.socioModal.fec_apr !== 'undefined' && this.socioModal.fec_apr !== null) {
       console.log('socioModal.fec_apr_date');
       this.socioModal.fec_apr_date = this.formatDateInput(this.socioModal.fec_apr);
     }
-    if (typeof this.socioModal.fec_can !== 'undefined') {
+    if (typeof this.socioModal.fec_can !== 'undefined' && this.socioModal.fec_can !== null) {
       console.log('socioModal.fec_can_date');
       this.socioModal.fec_can_date = this.formatDateInput(this.socioModal.fec_can);
     }
