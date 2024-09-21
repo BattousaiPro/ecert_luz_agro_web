@@ -391,6 +391,7 @@ export class KapmaeComponent implements OnInit {
     this.socioModal = JSON.parse(JSON.stringify(selectedItem));
     this.currentItem = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
+    this.setDateField();
     this.erroresList = [];
     this.setIsErroresList(false);
     this.principalContainer = false;
@@ -403,6 +404,39 @@ export class KapmaeComponent implements OnInit {
     this.erroresList = [];
     this.setIsErroresList(false);
     this.principalContainer = false;
+  }
+
+  private formatDateInput(inputDate: Date) {
+    let fecIncDate: Date = new Date(inputDate);
+    return { "year": fecIncDate.getFullYear(), "month": (fecIncDate.getMonth() + 1), "day": fecIncDate.getDate() };
+  }
+
+  private setDateField() {
+    // let fecIncDateStg: string = fecIncDate.getFullYear() + '-' + (fecIncDate.getMonth() + 1) + '-' + fecIncDate.getDate() + 'T' + fecIncDate.getDay() + ':' + fecIncDate.getMinutes() + ':' + fecIncDate.getSeconds();
+    if (typeof this.socioModal.fec_inc !== 'undefined') {
+      console.log('socioModal.fec_inc_date');
+      this.socioModal.fec_inc_date = this.formatDateInput(this.socioModal.fec_inc);
+    }
+    if (typeof this.socioModal.fec_tra !== 'undefined') {
+      console.log('socioModal.fec_tra_date');
+      this.socioModal.fec_tra_date = this.formatDateInput(this.socioModal.fec_tra);
+    }
+    if (typeof this.socioModal.fec_act !== 'undefined') {
+      console.log('socioModal.fec_act_date');
+      this.socioModal.fec_act_date = this.formatDateInput(this.socioModal.fec_act);
+    }
+    if (typeof this.socioModal.fec_sol !== 'undefined') {
+      console.log('socioModal.fec_sol_date');
+      this.socioModal.fec_sol_date = this.formatDateInput(this.socioModal.fec_sol);
+    }
+    if (typeof this.socioModal.fec_apr !== 'undefined') {
+      console.log('socioModal.fec_apr_date');
+      this.socioModal.fec_apr_date = this.formatDateInput(this.socioModal.fec_apr);
+    }
+    if (typeof this.socioModal.fec_can !== 'undefined') {
+      console.log('socioModal.fec_can_date');
+      this.socioModal.fec_can_date = this.formatDateInput(this.socioModal.fec_can);
+    }
   }
 
   public guardar(): void {
@@ -524,8 +558,10 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Fecha Inscripción
-    if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
-      errores.push('Fecha Inscripción es Obligatorio');
+    if (typeof this.socioModal.fec_inc_date != 'undefined') {
+      if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
+        errores.push('Fecha Inscripción es Obligatorio');
+      }
     }
 
     // Campo: Año Traspaso
@@ -539,8 +575,10 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Fecha Traspaso
-    if (!this.validateFormatDate(this.socioModal.fec_tra_date)) {
-      errores.push('Fecha Traspaso es Obligatorio');
+    if (typeof this.socioModal.fec_tra_date != 'undefined') {
+      if (!this.validateFormatDate(this.socioModal.fec_tra_date)) {
+        errores.push('Fecha Traspaso es Obligatorio');
+      }
     }
 
     // Campo: Acciones Traspaso
@@ -559,8 +597,10 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Actualización
-    if (!this.validateFormatDate(this.socioModal.fec_act_date)) {
-      errores.push('Actualización es Obligatorio');
+    if (typeof this.socioModal.fec_act_date != 'undefined') {
+      if (!this.validateFormatDate(this.socioModal.fec_act_date)) {
+        errores.push('Actualización es Obligatorio');
+      }
     }
 
     // Campo: Estado Traspao
@@ -574,7 +614,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Dirección Postal
-    if (typeof this.socioModal.dir_pos !== 'undefined') {
+    if (typeof this.socioModal.dir_pos !== 'undefined' && this.socioModal.dir_pos !== null) {
       if (this.socioModal.dir_pos !== '') {
         if (7 < this.socioModal.dir_pos.length) {
           errores.push('Dirección Postal es Obligatorio');
@@ -583,7 +623,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Nro Teléfono 1
-    if (typeof this.socioModal.nro_te1 !== 'undefined') {
+    if (typeof this.socioModal.nro_te1 !== 'undefined' && this.socioModal.nro_te1 !== null) {
       if (this.socioModal.nro_te1 !== '') {
         if (9 < this.socioModal.nro_te1.length) {
           errores.push('Nro Teléfono 1 no debe tener mas de 9 Caracteres');
@@ -592,7 +632,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Nro Teléfono 2
-    if (typeof this.socioModal.nro_te2 !== 'undefined') {
+    if (typeof this.socioModal.nro_te2 !== 'undefined' && this.socioModal.nro_te2 !== null) {
       if (this.socioModal.nro_te2 !== '') {
         if (9 < this.socioModal.nro_te2.length) {
           errores.push('Nro Teléfono 2 no debe tener mas de 9 Caracteres');
@@ -601,7 +641,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Nro Teléfono 3
-    if (typeof this.socioModal.nro_te3 !== 'undefined') {
+    if (typeof this.socioModal.nro_te3 !== 'undefined' && this.socioModal.nro_te3 !== null) {
       if (this.socioModal.nro_te3 !== '') {
         if (9 < this.socioModal.nro_te3.length) {
           errores.push('Nro Teléfono 3 no debe tener mas de 9 Caracteres');
@@ -610,7 +650,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Nro Teléfono 4
-    if (typeof this.socioModal.nro_te4 !== 'undefined') {
+    if (typeof this.socioModal.nro_te4 !== 'undefined' && this.socioModal.nro_te4 !== null) {
       if (this.socioModal.nro_te4 !== '') {
         if (9 < this.socioModal.nro_te4.length) {
           errores.push('Nro Teléfono 4 no debe tener mas de 9 Caracteres');
