@@ -614,12 +614,10 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Dirección Postal
-    if (typeof this.socioModal.dir_pos !== 'undefined' && this.socioModal.dir_pos !== null) {
-      if (this.socioModal.dir_pos !== '') {
-        if (7 < this.socioModal.dir_pos.length) {
-          errores.push('Dirección Postal es Obligatorio');
-        }
-      }
+    if (typeof this.socioModal.dir_pos === 'undefined'
+      || this.socioModal.dir_pos === null
+      || this.socioModal.dir_pos === '') {
+      errores.push('Dirección Postal es Obligatorio');
     }
 
     // Campo: Nro Teléfono 1
