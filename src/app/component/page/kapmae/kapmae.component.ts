@@ -667,31 +667,39 @@ export class KapmaeComponent implements OnInit {
     }
 
     // ************************************************************************************************
-    // Campos ocultos en la tabla de socios.
+    // ************************************************************************************************
+    // ***************************  Campos ocultos en la tabla de socios  *****************************
+    // ************************************************************************************************
+    // ************************************************************************************************
+    // .
     // Campo: nro_sol
     //if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
     /*if (typeof this.socioModal.nro_sol !== 'undefined') {
       // TODO: validar formato de ser requeido
       // errores.push('Error con nro_sol');
-    }
+    }*/
 
     // Campo: fec_sol
-    if (!this.validateFormatDate(this.socioModal.fec_sol_date)) {
-      errores.push('Error con fec_sol');
+    if (typeof this.socioModal.fec_sol_date != 'undefined') {
+      if (!this.validateFormatDate(this.socioModal.fec_sol_date)) {
+        errores.push('fec_sol es Obligatorio');
+      }
     }
-
     // Campo: fec_apr
-    if (!this.validateFormatDate(this.socioModal.fec_apr_date)) {
-      errores.push('Error con fec_apr');
+    if (typeof this.socioModal.fec_apr_date != 'undefined') {
+      if (!this.validateFormatDate(this.socioModal.fec_apr_date)) {
+        errores.push('fec_apr es Obligatorio');
+      }
     }
-
     // Campo: fec_can
-    if (!this.validateFormatDate(this.socioModal.fec_can_date)) {
-      errores.push('Error con fec_can');
+    if (typeof this.socioModal.fec_can_date != 'undefined') {
+      if (!this.validateFormatDate(this.socioModal.fec_can_date)) {
+        errores.push('fec_can es Obligatorio');
+      }
     }
 
     // Campo: est_sol 
-    if (typeof this.socioModal.est_sol === 'undefined') {
+    /*if (typeof this.socioModal.est_sol === 'undefined') {
       errores.push('Error con est_sol');
     }
 
@@ -723,11 +731,11 @@ export class KapmaeComponent implements OnInit {
     // Campo: aju_acc 
     if (typeof this.socioModal.aju_acc === 'undefined' || this.socioModal.aju_acc < 0) {
       errores.push('Error con aju_acc');
-    }
-    if (this.erroresList.length > 0) {
-      return false;
-    }
-    return false;*/
+    }*/
+    // ************************************************************************************************
+    // ************************************************************************************************
+    // ************************************************************************************************
+    // ************************************************************************************************
     return errores;
   }
 
