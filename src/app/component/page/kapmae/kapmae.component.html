@@ -399,7 +399,7 @@
                                             <label class="col-form-label col-form-label-sm" for="sec_cop">
                                                 Sector
                                             </label>
-                                            <select class="form-select w100">
+                                            <select class="form-select w100" [(ngModel)]="socioModal.sec_cop!.codigo">
                                                 <option value="" selected>Seleccionar</option>
                                                 @if (isEdit) {
                                                 @for (sector of sectores; track sector.codigo; let index = $index) {
@@ -560,7 +560,7 @@
                                             <label class="col-form-label col-form-label-sm" for="com_pos">
                                                 Comuna
                                             </label>
-                                            <select class="form-select w100">
+                                            <select class="form-select w100" [(ngModel)]="socioModal.com_pos!.codigo">
                                                 <option value="" selected>Seleccionar</option>
                                                 @if (isEdit) {
                                                 @for (comuna of comunas; track comuna.codigo; let index = $index) {

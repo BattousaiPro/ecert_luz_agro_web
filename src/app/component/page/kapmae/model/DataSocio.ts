@@ -54,6 +54,8 @@ export interface DataSocio {
 export class DataSocio {
   constructor() {
     this.selected = false;
+    this.sec_cop = new Sector();
+    this.com_pos = new Comunas();
   }
 }
 
