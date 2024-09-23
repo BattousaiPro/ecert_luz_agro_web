@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataSocio, DatepickerModel } from './model/DataSocio';
 import { DetailSocioComponent } from './detail-socio/detail-socio.component';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { NgbModal, NgbPaginationModule, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
@@ -7,12 +6,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { KapmaeService, ReqImg } from '../../../services/kapmae/kapmae.service';
 import { ModalOptions } from '../../../utils/modalOptions';
-import { KapmaeRequest } from './model/KapmaeRequest';
 import { SectorService } from '../../../services/sector/sector.service';
 import { ComunasService } from '../../../services/comunas/comunas.service';
-import { Sector } from '../sectores/sectores.component';
-import { Comunas } from '../comunas/comunas.component';
 import { Utility } from '../../../utils/utility';
+import { ComunasVO, DataSocioVO, DatepickerModelVO, DocumentosImgVO, ImgListaVO, KapmaeRequestVO, SectorVO } from '../../../utils/modelsVos';
 
 @Component({
   selector: 'app-kapmae',
@@ -29,19 +26,19 @@ import { Utility } from '../../../utils/utility';
 })
 export class KapmaeComponent implements OnInit {
 
-  sectores: Sector[] = [];
-  comunas: Comunas[] = [];
+  sectores: SectorVO[] = [];
+  comunas: ComunasVO[] = [];
 
-  docsImg: DocumentosImg = new DocumentosImg();
+  docsImg: DocumentosImgVO = new DocumentosImgVO();
   // listaImagenes: ImgLista[] = [];
   showBoton: boolean = false;
 
-  socios: DataSocio[] = [];
-  socioModal: DataSocio = new DataSocio();
-  socioSelectImgModal: DataSocio = new DataSocio();
-  socioDeleteModal: DataSocio = new DataSocio();
-  currentItem: DataSocio = new DataSocio();
-  req: KapmaeRequest = new KapmaeRequest();
+  socios: DataSocioVO[] = [];
+  socioModal: DataSocioVO = new DataSocioVO();
+  socioSelectImgModal: DataSocioVO = new DataSocioVO();
+  socioDeleteModal: DataSocioVO = new DataSocioVO();
+  currentItem: DataSocioVO = new DataSocioVO();
+  req: KapmaeRequestVO = new KapmaeRequestVO();
 
   cargar: boolean = false;
   isEdit: boolean = false;
@@ -102,7 +99,7 @@ export class KapmaeComponent implements OnInit {
           this.docsImg.imagenes = [];
           if (typeof data.data.imgs !== 'undefined') {
             for (let index = 0; index < data.data.imgs.length; index++) {
-              let img: ImgLista = new ImgLista();
+              let img: ImgListaVO = new ImgListaVO();
               img.imagen = data.data.imgs[index];
               img.estado = false;
               this.docsImg.imagenes.push(img);
@@ -199,7 +196,7 @@ export class KapmaeComponent implements OnInit {
     );
   }
 
-  public statusChange(socio: DataSocio, id: string = ''): void {
+  public statusChange(socio: DataSocioVO, id: string = ''): void {
     console.log('Method cambioEstado.');
     if (id === '') {
       socio.selected = !socio.selected;
@@ -211,13 +208,13 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
-  public openDetails(socio: DataSocio, content: any): void {
+  public openDetails(socio: DataSocioVO, content: any): void {
     console.log('Method openDetails.');
     this.socioModal = socio;
     this.openModalFunction(content);
   }
 
-  private validaSelected(): DataSocio | null {
+  private validaSelected(): DataSocioVO | null {
     for (let index = 0; index < this.socios.length; index++) {
       if (this.socios[index].selected) {
         return this.socios[index];
@@ -380,13 +377,13 @@ export class KapmaeComponent implements OnInit {
       });
   }
 
-  public deleteModal(content: any, selectedItem: DataSocio): void {
+  public deleteModal(content: any, selectedItem: DataSocioVO): void {
     console.log('Method deleteModal');
     this.socioDeleteModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
   }
 
-  public editarModal(selectedItem: DataSocio): void {
+  public editarModal(selectedItem: DataSocioVO): void {
     console.log('Method editarModal');
     this.socioModal = JSON.parse(JSON.stringify(selectedItem));
     this.currentItem = JSON.parse(JSON.stringify(selectedItem));
@@ -399,7 +396,7 @@ export class KapmaeComponent implements OnInit {
 
   public agregaModal(): void {
     console.log('Method agregaModal.');
-    this.socioModal = new DataSocio();
+    this.socioModal = new DataSocioVO();
     this.isEdit = false;
     this.erroresList = [];
     this.setIsErroresList(false);
@@ -446,6 +443,7 @@ export class KapmaeComponent implements OnInit {
     if (this.erroresList.length > 0) {
       this.setIsErroresList(true);
     } else {
+      // console.log('this.socioModal: ' + JSON.stringify(this.socioModal));
       if (!this.isEdit) {
         // console.log('this.new()');
         this.new();
@@ -541,7 +539,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Sector
-    if (typeof this.socioModal.sec_cop === 'undefined') {
+    if (typeof this.socioModal.sec_cop?.codigo === 'undefined' || (typeof this.socioModal.sec_cop?.codigo === 'string' && this.socioModal.sec_cop?.codigo === '')) {
       //distinto de vacio o indefinido.
       errores.push('Sector es Obligatorio');
     }
@@ -657,7 +655,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Comuna
-    if (typeof this.socioModal.com_pos === 'undefined') {
+    if (typeof this.socioModal.com_pos?.codigo === 'undefined' || (typeof this.socioModal.com_pos?.codigo === 'string' && this.socioModal.com_pos?.codigo === '')) {
       errores.push('Comuna es Obligatorio');
     }
 
@@ -739,7 +737,7 @@ export class KapmaeComponent implements OnInit {
     return errores;
   }
 
-  private validateFormatDate(inputDate: DatepickerModel | undefined): boolean {
+  private validateFormatDate(inputDate: DatepickerModelVO | undefined): boolean {
     if (typeof inputDate === 'undefined') {
       return false;
     } else {
@@ -767,29 +765,4 @@ export class KapmaeComponent implements OnInit {
     this.socioModal.ape_mat = this.socioModal.ape_mat!.trim();
   }
 
-}
-
-export interface DocumentosImg {
-  imagenes: ImgLista[];
-  basePath: string;
-}
-export class DocumentosImg {
-  constructor() {
-  }
-}
-export interface ImgLista {
-  imagen: imgVO;
-  estado: boolean;
-}
-export class ImgLista {
-  constructor() {
-    this.estado = false;
-  }
-}
-export interface imgVO {
-  pathImg: string;
-  base64: string;
-}
-export class imgVO {
-  constructor() { }
 }

@@ -1,8 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { KapmaeRequest } from '../../component/page/kapmae/model/KapmaeRequest';
-import { DataSocio } from '../../component/page/kapmae/model/DataSocio';
 import { Utility } from '../../utils/utility';
 
 @Injectable({

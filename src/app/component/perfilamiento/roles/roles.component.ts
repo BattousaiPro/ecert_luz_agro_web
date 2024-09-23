@@ -5,11 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { ModalOptions } from '../../../utils/modalOptions';
-import { Permiso } from '../permisos/permisos.component';
 import { PermisosService } from '../../../services/permisos/permisos.service';
-import { RolesRequest } from './model/RolesRequest';
 import { RolPermisoService } from '../../../services/rol-permiso/rol-permiso.service';
 import { Utility } from '../../../utils/utility';
+import { PermisoVO, RoleVO, RolesRequestVO } from '../../../utils/modelsVos';
 
 @Component({
   selector: 'app-roles',
@@ -24,11 +23,11 @@ import { Utility } from '../../../utils/utility';
 })
 export class RolesComponent implements OnInit {
 
-  roles: Role[] = [];
+  roles: RoleVO[] = [];
   //permisos: Permiso[] = [];
-  rolModal: Role = new Role();
-  rolDeleteModal: Role = new Role();
-  req: RolesRequest = new RolesRequest();
+  rolModal: RoleVO = new RoleVO();
+  rolDeleteModal: RoleVO = new RoleVO();
+  req: RolesRequestVO = new RolesRequestVO();
 
   cargar: boolean = false;
   isEdit: boolean = false;
@@ -116,9 +115,9 @@ export class RolesComponent implements OnInit {
     );
   }
 
-  private setOptionValidate(data: Permiso[]): void {
+  private setOptionValidate(data: PermisoVO[]): void {
     for (let index = 0; index < this.roles.length; index++) {
-      const permisosList: Permiso[] = JSON.parse(JSON.stringify(data));
+      const permisosList: PermisoVO[] = JSON.parse(JSON.stringify(data));
       this.roles[index].permisosDisponibeles = [];
       this.roles[index].permisosDisponibeles.push(...permisosList);
     }
@@ -141,14 +140,14 @@ export class RolesComponent implements OnInit {
 
   public agregaModal(content: any): void {
     console.log('Method agregaModal.');
-    this.rolModal = new Role();
+    this.rolModal = new RoleVO();
     this.rolModal.estado = true;
     this.isEdit = false;
     this.isErroresList = false;
     this.openModalFunction(content);
   }
 
-  public editarModal(content: any, selectedItem: Role): void {
+  public editarModal(content: any, selectedItem: RoleVO): void {
     console.log('Method editarModal.');
     this.rolModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
@@ -157,7 +156,7 @@ export class RolesComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public deleteModal(content: any, selectedItem: Role): void {
+  public deleteModal(content: any, selectedItem: RoleVO): void {
     console.log('Method deleteesModal');
     this.rolDeleteModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
@@ -166,7 +165,7 @@ export class RolesComponent implements OnInit {
   public addModal(content: any, index: number): void {
     this.roles[index].addRol = !this.roles[index].addRol;
     console.log('Method agregarRol.');
-    this.rolModal = new Role();
+    this.rolModal = new RoleVO();
     this.rolModal.estado = true;
     this.isEdit = false;
     this.erroresList = [];
@@ -393,30 +392,4 @@ export class RolesComponent implements OnInit {
     }, 10);
   }
 
-}
-
-export interface Role {
-  id: number;
-  name: string;
-  descrip: string;
-  code: string;
-  estado: boolean;
-  permisos: Permiso[];
-  permisosDisponibeles: Permiso[];
-  addRol: boolean;
-  addPermisos: boolean;
-
-  showAtributeOption: boolean;
-  idSelectedPermiso: string;
-}
-export class Role {
-  constructor() {
-    this.name = '';
-    this.descrip = '';
-    this.code = '';
-    this.addPermisos = false;
-
-    this.showAtributeOption = true;
-    this.idSelectedPermiso = '';
-  }
 }

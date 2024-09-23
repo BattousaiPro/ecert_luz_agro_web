@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ComunasRequest } from '../../component/page/comunas/model/ComunasRequest';
+import { ComunasRequestVO } from '../../utils/modelsVos';
 import { Utility } from '../../utils/utility';
 
 @Injectable({
@@ -64,7 +64,7 @@ export class ComunasService {
     return ladata;
   }
 
-  public obtenerByFilter(req: ComunasRequest): Observable<any> {
+  public obtenerByFilter(req: ComunasRequestVO): Observable<any> {
     let url = this.utility.getBasePath() + '/comunas/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,

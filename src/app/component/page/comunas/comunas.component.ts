@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComunasService } from '../../../services/comunas/comunas.service';
-import { ComunasRequest } from './model/ComunasRequest';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { Utility } from '../../../utils/utility';
+import { ComunasVO, ComunasRequestVO } from '../../../utils/modelsVos';
 
 @Component({
   selector: 'app-comunas',
@@ -20,9 +20,9 @@ import { Utility } from '../../../utils/utility';
 })
 export class ComunasComponent implements OnInit {
 
-  comunas: Comunas[] = [];
-  comunasModal: Comunas = new Comunas();
-  req: ComunasRequest = new ComunasRequest();
+  comunas: ComunasVO[] = [];
+  comunasModal: ComunasVO = new ComunasVO();
+  req: ComunasRequestVO = new ComunasRequestVO();
 
   cargar: boolean = false;
   isEdit: boolean = false;
@@ -82,7 +82,7 @@ export class ComunasComponent implements OnInit {
 
   public agregaModal(content: any): void {
     console.log('Method agregaModal.');
-    this.comunasModal = new Comunas();
+    this.comunasModal = new ComunasVO();
     this.comunasModal.estado = true;
     this.isEdit = false;
     this.erroresList = [];
@@ -90,7 +90,7 @@ export class ComunasComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public editarModal(content: any, selectedItem: Comunas): void {
+  public editarModal(content: any, selectedItem: ComunasVO): void {
     console.log('Method editarModal');
     this.comunasModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
@@ -99,7 +99,7 @@ export class ComunasComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public deleteModal(content: any, selectedItem: Comunas): void {
+  public deleteModal(content: any, selectedItem: ComunasVO): void {
     console.log('Method deleteModal');
     this.comunasModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
@@ -226,18 +226,4 @@ export class ComunasComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-}
-export interface Comunas {
-  id: number;
-  codigo: number;
-  descrip: string;
-  estado: boolean;
-  addComuna: boolean;
-
-}
-export class Comunas {
-  constructor() {
-    this.descrip = '';
-    this.addComuna = false;
-  }
 }

@@ -5,11 +5,10 @@ import { UserService } from '../../../services/user/user.service';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalOptions } from '../../../utils/modalOptions';
-import { UsuariosRequest } from './model/UsuariosRequest';
-import { Role } from '../roles/roles.component';
 import { RolesService } from '../../../services/roles/roles.service';
 import { UserRolService } from '../../../services/user-rol/user-rol.service';
 import { Utility } from '../../../utils/utility';
+import { RoleVO, UsuariosRequestVO } from '../../../utils/modelsVos';
 
 @Component({
   selector: 'app-usuarios',
@@ -29,7 +28,7 @@ export class UsuariosComponent implements OnInit {
   //roles: Role[] = [];
   userModal: Usuario = new Usuario();
   userDeleteModal: Usuario = new Usuario();
-  req: UsuariosRequest = new UsuariosRequest();
+  req: UsuariosRequestVO = new UsuariosRequestVO();
 
   cargar: boolean = false;
   isEdit: boolean = false;
@@ -121,9 +120,9 @@ export class UsuariosComponent implements OnInit {
       });
   }
 
-  private setOptionValidate(data: Role[]): void {
+  private setOptionValidate(data: RoleVO[]): void {
     for (let index = 0; index < this.usuarios.length; index++) {
-      const rolesList: Role[] = JSON.parse(JSON.stringify(data));
+      const rolesList: RoleVO[] = JSON.parse(JSON.stringify(data));
       this.usuarios[index].rolesDisponibeles = [];
       this.usuarios[index].rolesDisponibeles.push(...rolesList);
     }
@@ -433,8 +432,8 @@ export interface Usuario {
   ctaPassWord: string;
   ctaEmail: string;
   estado: boolean;
-  roles: Role[];
-  rolesDisponibeles: Role[];
+  roles: RoleVO[];
+  rolesDisponibeles: RoleVO[];
   addUser: boolean;
   addRol: boolean;
 

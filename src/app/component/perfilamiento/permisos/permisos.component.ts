@@ -5,8 +5,8 @@ import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalOptions } from '../../../utils/modalOptions';
-import { PermisosRequest } from './model/PermisosRequest';
 import { Utility } from '../../../utils/utility';
+import { PermisoVO, PermisosRequestVO } from '../../../utils/modelsVos';
 
 @Component({
   selector: 'app-permisos',
@@ -20,10 +20,10 @@ import { Utility } from '../../../utils/utility';
 })
 export class PermisosComponent implements OnInit {
 
-  permisos: Permiso[] = [];
-  permisosModal: Permiso = new Permiso();
-  permisoDeleteModal: Permiso = new Permiso();
-  req: PermisosRequest = new PermisosRequest();
+  permisos: PermisoVO[] = [];
+  permisosModal: PermisoVO = new PermisoVO();
+  permisoDeleteModal: PermisoVO = new PermisoVO();
+  req: PermisosRequestVO = new PermisosRequestVO();
 
   cargar: boolean = false;
   isEdit: boolean = false;
@@ -83,7 +83,7 @@ export class PermisosComponent implements OnInit {
 
   public agregaModal(content: any): void {
     console.log('Method agregarRolModal.');
-    this.permisosModal = new Permiso();
+    this.permisosModal = new PermisoVO();
     this.permisosModal.estado = true;
     this.isEdit = false;
     this.erroresList = [];
@@ -91,7 +91,7 @@ export class PermisosComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public editarModal(content: any, selectedItem: Permiso): void {
+  public editarModal(content: any, selectedItem: PermisoVO): void {
     console.log('Method editarUserModal');
     this.permisosModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
@@ -100,7 +100,7 @@ export class PermisosComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public deleteModal(content: any, selectedItem: Permiso): void {
+  public deleteModal(content: any, selectedItem: PermisoVO): void {
     console.log('Method deleteUserModal');
     this.permisosModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
@@ -230,23 +230,4 @@ export class PermisosComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-}
-
-export interface Permiso {
-  id: number;
-  name: string;
-  descrip: string;
-  code: string;
-  estado: boolean;
-
-  showAtributeOption: boolean;
-}
-export class Permiso {
-  constructor() {
-    this.name = '';
-    this.descrip = '';
-    this.code = '';
-
-    this.showAtributeOption = true;
-  }
 }

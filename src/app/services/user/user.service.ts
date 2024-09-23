@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
-import { UsuariosRequest } from '../../component/perfilamiento/usuarios/model/UsuariosRequest';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Utility } from '../../utils/utility';
+import { UsuariosRequestVO } from '../../utils/modelsVos';
 
 const helper = new JwtHelperService();
 
@@ -80,7 +80,7 @@ export class UserService {
     return ladata;
   }
 
-  public obtenerByFilter(req: UsuariosRequest): Observable<any> {
+  public obtenerByFilter(req: UsuariosRequestVO): Observable<any> {
     let url = this.utility.getBasePath() + '/users/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,

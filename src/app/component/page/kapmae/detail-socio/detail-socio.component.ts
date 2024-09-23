@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { DataSocio } from '../model/DataSocio';
 import { CommonModule } from '@angular/common';
+import { DataSocioVO } from '../../../../utils/modelsVos';
 
 @Component({
   selector: 'app-detail-socio',
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class DetailSocioComponent {
 
-  @Input() socio!: DataSocio;
+  @Input() socio!: DataSocioVO;
   constructor() { }
 
 }

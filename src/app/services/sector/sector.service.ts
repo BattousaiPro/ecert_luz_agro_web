@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SectoresRequest } from '../../component/page/sectores/model/SectoresRequest';
 import { Utility } from '../../utils/utility';
+import { SectoresRequestVO } from '../../utils/modelsVos';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +56,7 @@ export class SectorService {
     return ladata;
   }
 
-  public obtenerByFilter(req: SectoresRequest): Observable<any> {
+  public obtenerByFilter(req: SectoresRequestVO): Observable<any> {
     let url = this.utility.getBasePath() + '/sector/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,

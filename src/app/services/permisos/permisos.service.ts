@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PermisosRequest } from '../../component/perfilamiento/permisos/model/PermisosRequest';
 import { Utility } from '../../utils/utility';
+import { PermisosRequestVO } from '../../utils/modelsVos';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +58,7 @@ export class PermisosService {
     return ladata;
   }
 
-  public obtenerByFilter(req: PermisosRequest): Observable<any> {
+  public obtenerByFilter(req: PermisosRequestVO): Observable<any> {
     let url = this.utility.getBasePath() + '/permisos/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,

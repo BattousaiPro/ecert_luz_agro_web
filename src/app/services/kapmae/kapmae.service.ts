@@ -1,10 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { KapmaeRequest } from '../../component/page/kapmae/model/KapmaeRequest';
-import { DataSocio } from '../../component/page/kapmae/model/DataSocio';
-import { ImgLista } from '../../component/page/kapmae/kapmae.component';
 import { Utility } from '../../utils/utility';
+import { DataSocioVO, KapmaeRequestVO } from '../../utils/modelsVos';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +13,7 @@ export class KapmaeService {
 
   constructor(private http: HttpClient) { }
 
-  public new(userData: DataSocio): Observable<any> {
+  public new(userData: DataSocioVO): Observable<any> {
     let url = this.utility.getBasePath() + '/kapmae';
     const ladata: Observable<any> = this.http.post(
       url,
@@ -24,7 +22,7 @@ export class KapmaeService {
     return ladata;
   }
 
-  public edit(userData: DataSocio): Observable<any> {
+  public edit(userData: DataSocioVO): Observable<any> {
     let url = this.utility.getBasePath() + '/kapmae';
     const ladata: Observable<any> = this.http.patch(
       url,
@@ -45,7 +43,7 @@ export class KapmaeService {
     return ladata;
   }
 
-  public obtenerByFilter(req: KapmaeRequest): Observable<any> {
+  public obtenerByFilter(req: KapmaeRequestVO): Observable<any> {
     let url = this.utility.getBasePath() + '/kapmae/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,

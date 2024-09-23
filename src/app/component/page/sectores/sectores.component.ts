@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-import { SectoresRequest } from './model/SectoresRequest';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { SectorService } from '../../../services/sector/sector.service';
 import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Utility } from '../../../utils/utility';
+import { SectorVO, SectoresRequestVO } from '../../../utils/modelsVos';
 
 @Component({
   selector: 'app-sectores',
@@ -20,9 +20,9 @@ import { Utility } from '../../../utils/utility';
 })
 export class SectoresComponent implements OnInit {
 
-  sectores: Sector[] = [];
-  sectoresModal: Sector = new Sector();
-  req: SectoresRequest = new SectoresRequest();
+  sectores: SectorVO[] = [];
+  sectoresModal: SectorVO = new SectorVO();
+  req: SectoresRequestVO = new SectoresRequestVO();
 
   cargar: boolean = false;
   isEdit: boolean = false;
@@ -82,7 +82,7 @@ export class SectoresComponent implements OnInit {
 
   public agregaModal(content: any): void {
     console.log('Method agregaModal.');
-    this.sectoresModal = new Sector();
+    this.sectoresModal = new SectorVO();
     this.sectoresModal.estado = true;
     this.isEdit = false;
     this.erroresList = [];
@@ -90,7 +90,7 @@ export class SectoresComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public editarModal(content: any, selectedItem: Sector): void {
+  public editarModal(content: any, selectedItem: SectorVO): void {
     console.log('Method editarModal');
     this.sectoresModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
@@ -99,7 +99,7 @@ export class SectoresComponent implements OnInit {
     this.openModalFunction(content);
   }
 
-  public deleteModal(content: any, selectedItem: Sector): void {
+  public deleteModal(content: any, selectedItem: SectorVO): void {
     console.log('Method deleteModal');
     this.sectoresModal = JSON.parse(JSON.stringify(selectedItem));
     this.openModalFunction(content);
@@ -224,16 +224,4 @@ export class SectoresComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-}
-export interface Sector {
-  codigo: number;
-  descrip: string;
-  diaCar: number;
-  codCob: number;
-  estado: boolean;
-}
-export class Sector {
-  constructor() {
-    this.descrip = '';
-  }
 }

@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RolesRequest } from '../../component/perfilamiento/roles/model/RolesRequest';
 import { Utility } from '../../utils/utility';
+import { RolesRequestVO } from '../../utils/modelsVos';
 
 @Injectable({
   providedIn: 'root'
@@ -57,7 +57,7 @@ export class RolesService {
     return ladata;
   }
 
-  public obtenerByFilter(req: RolesRequest): Observable<any> {
+  public obtenerByFilter(req: RolesRequestVO): Observable<any> {
     let url = this.utility.getBasePath() + '/roles/findByFilter';
     const ladata: Observable<any> = this.http.post(
       url,
