@@ -460,14 +460,28 @@ export class KapmaeComponent implements OnInit {
   }
 
   private setAttrApoyo(): void {
-    this.socioModal.sec_cop = new SectorVO();
-    this.socioModal.com_pos = new ComunasVO();
-    this.socioModal.fec_inc = new Date();
-    this.socioModal.fec_tra = new Date();
-    this.socioModal.fec_act = new Date();
-    this.socioModal.fec_sol = new Date();
-    this.socioModal.fec_apr = new Date();
-    this.socioModal.fec_can = new Date();
+    this.socioModal.sec_cop = this.sectores.find((x: SectorVO) => ('' + x.codigo) === this.socioModal.sec_cop_codigo);
+    this.socioModal.com_pos = this.comunas.find((x: ComunasVO) => ('' + x.codigo) === this.socioModal.com_pos_codigo);
+
+    if (typeof this.socioModal.fec_inc_date != 'undefined') {
+      this.socioModal.fec_inc = new Date(this.socioModal.fec_inc_date!.year + '/' + this.socioModal.fec_inc_date!.month + '/' + this.socioModal.fec_inc_date!.day);
+    }
+    if (typeof this.socioModal.fec_tra_date != 'undefined') {
+      this.socioModal.fec_tra = new Date(this.socioModal.fec_tra_date!.year + '/' + this.socioModal.fec_tra_date!.month + '/' + this.socioModal.fec_tra_date!.day);
+    }
+    if (typeof this.socioModal.fec_act_date != 'undefined') {
+      this.socioModal.fec_act = new Date(this.socioModal.fec_act_date!.year + '/' + this.socioModal.fec_act_date!.month + '/' + this.socioModal.fec_act_date!.day);
+    }
+    if (typeof this.socioModal.fec_sol_date != 'undefined') {
+      this.socioModal.fec_sol = new Date(this.socioModal.fec_sol_date!.year + '/' + this.socioModal.fec_sol_date!.month + '/' + this.socioModal.fec_sol_date!.day);
+    }
+    if (typeof this.socioModal.fec_apr_date != 'undefined') {
+      this.socioModal.fec_apr = new Date(this.socioModal.fec_apr_date!.year + '/' + this.socioModal.fec_apr_date!.month + '/' + this.socioModal.fec_apr_date!.day);
+    }
+    if (typeof this.socioModal.fec_can_date != 'undefined') {
+      this.socioModal.fec_can = new Date(this.socioModal.fec_can_date!.year + '/' + this.socioModal.fec_can_date!.month + '/' + this.socioModal.fec_can_date!.day);
+    }
+    console.log('fin');
   }
 
   public volverDetalle(): void {
@@ -555,7 +569,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Sector
-    if (typeof this.socioModal.sec_cop?.codigo === 'undefined' || (typeof this.socioModal.sec_cop?.codigo === 'string' && this.socioModal.sec_cop?.codigo === '')) {
+    if (typeof this.socioModal.sec_cop_codigo === 'undefined' || (typeof this.socioModal.sec_cop_codigo === 'string' && this.socioModal.sec_cop_codigo === '')) {
       //distinto de vacio o indefinido.
       errores.push('Sector es Obligatorio');
     }
@@ -628,10 +642,12 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Dirección Postal
-    if (typeof this.socioModal.dir_pos === 'undefined'
-      || this.socioModal.dir_pos === null
-      || this.socioModal.dir_pos === '') {
-      errores.push('Dirección Postal es Obligatorio');
+    if (typeof this.socioModal.dir_pos !== 'undefined' && this.socioModal.dir_pos !== null) {
+      if (this.socioModal.dir_pos !== '') {
+        if (9 < this.socioModal.dir_pos.length) {
+          errores.push('Dirección Postal es Obligatorio');
+        }
+      }
     }
 
     // Campo: Nro Teléfono 1
@@ -671,7 +687,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Comuna
-    if (typeof this.socioModal.com_pos?.codigo === 'undefined' || (typeof this.socioModal.com_pos?.codigo === 'string' && this.socioModal.com_pos?.codigo === '')) {
+    if (typeof this.socioModal.com_pos_codigo === 'undefined' || (typeof this.socioModal.com_pos_codigo === 'string' && this.socioModal.com_pos_codigo === '')) {
       errores.push('Comuna es Obligatorio');
     }
 
