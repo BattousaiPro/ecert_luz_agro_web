@@ -399,12 +399,12 @@
                                             <label class="col-form-label col-form-label-sm" for="sec_cop">
                                                 Sector
                                             </label>
-                                            <select class="form-select w100" [(ngModel)]="socioModal.sec_cop!.codigo">
-                                                <option value="" selected>Seleccionar</option>
+                                            <select class="form-select w100" [(ngModel)]="socioModal.sec_cop_codigo">
+                                                <option value="">Seleccionar</option>
                                                 @if (isEdit) {
                                                 @for (sector of sectores; track sector.codigo; let index = $index) {
                                                 @if (sector.codigo == socioModal!.sec_cop!.codigo) {
-                                                <option value="{{sector.codigo}}" selected>{{ sector.descrip }}</option>
+                                                <option value="{{sector.codigo}}">{{ sector.descrip }}</option>
                                                 } @else {
                                                 <option value="{{sector.codigo}}">{{ sector.descrip }}</option>
                                                 }
@@ -560,12 +560,12 @@
                                             <label class="col-form-label col-form-label-sm" for="com_pos">
                                                 Comuna
                                             </label>
-                                            <select class="form-select w100" [(ngModel)]="socioModal.com_pos!.codigo">
-                                                <option value="" selected>Seleccionar</option>
+                                            <select class="form-select w100" [(ngModel)]="socioModal.com_pos_codigo">
+                                                <option value="">Seleccionar</option>
                                                 @if (isEdit) {
                                                 @for (comuna of comunas; track comuna.codigo; let index = $index) {
                                                 @if (comuna.codigo == socioModal!.com_pos!.codigo) {
-                                                <option value="{{comuna.codigo}}" selected>{{ comuna.descrip }}</option>
+                                                <option value="{{comuna.codigo}}">{{ comuna.descrip }}</option>
                                                 } @else {
                                                 <option value="{{comuna.codigo}}">{{ comuna.descrip }}</option>
                                                 }

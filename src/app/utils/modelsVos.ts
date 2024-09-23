@@ -12,16 +12,13 @@ export interface DataSocioVO {
   ano_inc?: number;
   mto_inc?: number;
   fec_inc?: Date;
-  fec_inc_date?: DatepickerModelVO;
   ano_tra?: number;
   kap_tra?: number;
   fec_tra?: Date;
-  fec_tra_date?: DatepickerModelVO;
   acc_tra?: number;
   acc_ret?: number;
   acc_apo?: number;
   fec_act?: Date;
-  fec_act_date?: DatepickerModelVO;
   est_tra?: string;
   est_bon?: number;
   dir_pos?: string;
@@ -33,11 +30,8 @@ export interface DataSocioVO {
   obs_cap?: string;
   nro_sol?: number;
   fec_sol?: Date;
-  fec_sol_date?: DatepickerModelVO;
   fec_apr?: Date;
-  fec_apr_date?: DatepickerModelVO;
   fec_can?: Date;
-  fec_can_date?: DatepickerModelVO;
   est_sol?: string;
   sec_cte?: number;
   area?: number;
@@ -46,6 +40,17 @@ export interface DataSocioVO {
   acc_con?: number;
   aju_acc?: number;
   selected?: boolean;
+
+  // Attr de apoyo
+  sec_cop_codigo?: string;
+  com_pos_codigo?: string;
+  fec_inc_date?: DatepickerModelVO;
+  fec_tra_date?: DatepickerModelVO;
+  fec_act_date?: DatepickerModelVO;
+  fec_sol_date?: DatepickerModelVO;
+  fec_apr_date?: DatepickerModelVO;
+  fec_can_date?: DatepickerModelVO;
+
 }
 export class DataSocioVO {
   constructor() {

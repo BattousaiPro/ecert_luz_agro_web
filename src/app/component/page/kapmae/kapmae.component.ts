@@ -138,6 +138,8 @@ export class KapmaeComponent implements OnInit {
           this.collectionSize = data.data.totalReg;
           for (let index = 0; index < this.socios.length; index++) {
             this.socios[index].selected = false;
+            this.socios[index].sec_cop_codigo = '';
+            this.socios[index].com_pos_codigo = '';
           }
           this.loadCargarSector();
         } else {
@@ -385,6 +387,8 @@ export class KapmaeComponent implements OnInit {
 
   public editarModal(selectedItem: DataSocioVO): void {
     console.log('Method editarModal');
+    selectedItem.com_pos_codigo = '' + selectedItem.com_pos!.codigo;
+    selectedItem.sec_cop_codigo = '' + selectedItem.sec_cop!.codigo;
     this.socioModal = JSON.parse(JSON.stringify(selectedItem));
     this.currentItem = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
@@ -443,15 +447,27 @@ export class KapmaeComponent implements OnInit {
     if (this.erroresList.length > 0) {
       this.setIsErroresList(true);
     } else {
+      this.setAttrApoyo();
       // console.log('this.socioModal: ' + JSON.stringify(this.socioModal));
       if (!this.isEdit) {
-        // console.log('this.new()');
+        console.log('this.new()');
         this.new();
       } else {
-        // console.log('this.edit()');
+        console.log('this.edit()');
         this.edit();
       }
     }
+  }
+
+  private setAttrApoyo(): void {
+    this.socioModal.sec_cop = new SectorVO();
+    this.socioModal.com_pos = new ComunasVO();
+    this.socioModal.fec_inc = new Date();
+    this.socioModal.fec_tra = new Date();
+    this.socioModal.fec_act = new Date();
+    this.socioModal.fec_sol = new Date();
+    this.socioModal.fec_apr = new Date();
+    this.socioModal.fec_can = new Date();
   }
 
   public volverDetalle(): void {
