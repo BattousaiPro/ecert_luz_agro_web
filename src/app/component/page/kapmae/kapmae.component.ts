@@ -462,26 +462,29 @@ export class KapmaeComponent implements OnInit {
   private setAttrApoyo(): void {
     this.socioModal.sec_cop = this.sectores.find((x: SectorVO) => ('' + x.codigo) === this.socioModal.sec_cop_codigo);
     this.socioModal.com_pos = this.comunas.find((x: ComunasVO) => ('' + x.codigo) === this.socioModal.com_pos_codigo);
-
     if (typeof this.socioModal.fec_inc_date != 'undefined') {
-      this.socioModal.fec_inc = new Date(this.socioModal.fec_inc_date!.year + '/' + this.socioModal.fec_inc_date!.month + '/' + this.socioModal.fec_inc_date!.day);
+      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_inc_date);
     }
     if (typeof this.socioModal.fec_tra_date != 'undefined') {
-      this.socioModal.fec_tra = new Date(this.socioModal.fec_tra_date!.year + '/' + this.socioModal.fec_tra_date!.month + '/' + this.socioModal.fec_tra_date!.day);
+      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_tra_date);
     }
     if (typeof this.socioModal.fec_act_date != 'undefined') {
-      this.socioModal.fec_act = new Date(this.socioModal.fec_act_date!.year + '/' + this.socioModal.fec_act_date!.month + '/' + this.socioModal.fec_act_date!.day);
+      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_act_date);
     }
     if (typeof this.socioModal.fec_sol_date != 'undefined') {
-      this.socioModal.fec_sol = new Date(this.socioModal.fec_sol_date!.year + '/' + this.socioModal.fec_sol_date!.month + '/' + this.socioModal.fec_sol_date!.day);
+      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_sol_date);
     }
     if (typeof this.socioModal.fec_apr_date != 'undefined') {
-      this.socioModal.fec_apr = new Date(this.socioModal.fec_apr_date!.year + '/' + this.socioModal.fec_apr_date!.month + '/' + this.socioModal.fec_apr_date!.day);
+      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_apr_date);
     }
     if (typeof this.socioModal.fec_can_date != 'undefined') {
-      this.socioModal.fec_can = new Date(this.socioModal.fec_can_date!.year + '/' + this.socioModal.fec_can_date!.month + '/' + this.socioModal.fec_can_date!.day);
+      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_can_date);
     }
     console.log('fin');
+  }
+
+  private formatDateStg(input: DatepickerModelVO): Date {
+    return new Date(input.year + '/' + input.month + '/' + input.day);
   }
 
   public volverDetalle(): void {
