@@ -325,6 +325,8 @@ export class KapmaeComponent implements OnInit {
           this.closeModal();
           this.modals.success('Socio Creado Con Éxito!');
           this.loadCargar();
+        } else if (data.code === '-4') {
+          this.modals.error('Socio ya existe (Rut Socio y Código Luzagro)');
         } else {
           this.modals.error('Error con la respuesta de servicios de agregar Socio');
         }
@@ -346,6 +348,8 @@ export class KapmaeComponent implements OnInit {
           this.closeModal();
           this.modals.success('Socio Modificado Con Éxito!');
           this.loadCargar();
+        } else if (data.code === '-3') {
+          this.modals.error('Socio no existe (Rut Socio y Código Luzagro)');
         } else {
           this.modals.error('Error con la respuesta de servicios de editar Socio');
         }
