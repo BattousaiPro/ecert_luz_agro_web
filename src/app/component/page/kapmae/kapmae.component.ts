@@ -466,19 +466,19 @@ export class KapmaeComponent implements OnInit {
       this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_inc_date);
     }
     if (typeof this.socioModal.fec_tra_date != 'undefined') {
-      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_tra_date);
+      this.socioModal.fec_tra = this.formatDateStg(this.socioModal.fec_tra_date);
     }
     if (typeof this.socioModal.fec_act_date != 'undefined') {
-      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_act_date);
+      this.socioModal.fec_act = this.formatDateStg(this.socioModal.fec_act_date);
     }
     if (typeof this.socioModal.fec_sol_date != 'undefined') {
-      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_sol_date);
+      this.socioModal.fec_sol = this.formatDateStg(this.socioModal.fec_sol_date);
     }
     if (typeof this.socioModal.fec_apr_date != 'undefined') {
-      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_apr_date);
+      this.socioModal.fec_apr = this.formatDateStg(this.socioModal.fec_apr_date);
     }
     if (typeof this.socioModal.fec_can_date != 'undefined') {
-      this.socioModal.fec_inc = this.formatDateStg(this.socioModal.fec_can_date);
+      this.socioModal.fec_can = this.formatDateStg(this.socioModal.fec_can_date);
     }
     console.log('fin');
   }
