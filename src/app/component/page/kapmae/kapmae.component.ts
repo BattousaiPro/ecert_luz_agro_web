@@ -47,8 +47,7 @@ export class KapmaeComponent implements OnInit {
   collectionSize: number = 0;
 
   principalContainer: boolean = true;
-  erroresList: string[] = [];
-  isErroresList: boolean = false;
+  hashMapError = new Map<string, string>();
 
   public utility = new Utility;
   isPermisoVerLista: boolean = false;
@@ -397,8 +396,7 @@ export class KapmaeComponent implements OnInit {
     this.currentItem = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
     this.setDateField();
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.principalContainer = false;
   }
 
@@ -406,8 +404,7 @@ export class KapmaeComponent implements OnInit {
     console.log('Method agregaModal.');
     this.socioModal = new DataSocioVO();
     this.isEdit = false;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.principalContainer = false;
   }
 
@@ -445,12 +442,9 @@ export class KapmaeComponent implements OnInit {
   }
 
   public guardar(): void {
-    this.erroresList = [];
-    this.isErroresList = false;
-    this.erroresList = this.validateNew();
-    if (this.erroresList.length > 0) {
-      this.setIsErroresList(true);
-    } else {
+    this.hashMapError.clear();
+    this.validateNew();
+    if (this.hashMapError.size === 0) {
       this.setAttrApoyo();
       // console.log('this.socioModal: ' + JSON.stringify(this.socioModal));
       if (!this.isEdit) {
@@ -495,12 +489,7 @@ export class KapmaeComponent implements OnInit {
     this.principalContainer = true;
   }
 
-  private setIsErroresList(isErroresList: boolean): void {
-    this.isErroresList = isErroresList;
-  }
-
-  public validateNew(): string[] {
-    let errores: string[] = [];
+  private validateNew(): void {
     /* Campos Opcionales, TODO: cambiar validación de obligtorio.
       -> Dirección Postal *
       -> Nro Teléfono 1 *
@@ -524,135 +513,142 @@ export class KapmaeComponent implements OnInit {
     // Campo: Rut Socio
     if (typeof this.socioModal.rut_cop === 'undefined' || this.socioModal.rut_cop === '') {
       //distinto de vacio o indefinido.
-      errores.push('Rut Cliente es Obligatorio');
+      this.hashMapError.set('val_rut_cop', 'Rut Cliente es Obligatorio');
     }
 
     // Campo: Nombres
     if (typeof this.socioModal.nombres === 'undefined' || this.socioModal.nombres === '') {
       //distinto de vacio o indefinido.
-      errores.push('Nombres es Obligatorio');
+      this.hashMapError.set('val_nombres', 'Nombres es Obligatorio');
     }
 
     // Campo: Apellido Paterno
     if (typeof this.socioModal.ape_pat === 'undefined' || this.socioModal.ape_pat === '') {
       //distinto de vacio o indefinido.
-      errores.push('Apellido Paterno es Obligatorio');
+      this.hashMapError.set('val_ape_pat', 'Apellido Paterno es Obligatorio');
     }
 
     // Campo: Apellido Materno
     if (typeof this.socioModal.ape_mat === 'undefined' || this.socioModal.ape_mat === '') {
       //distinto de vacio o indefinido.
-      errores.push('Apellido Materno es Obligatorio');
+      this.hashMapError.set('val_ape_mat', 'Apellido Materno es Obligatorio');
     }
 
     // Campo: Código Luzagro
     if (typeof this.socioModal.cod_cop === 'undefined' || this.socioModal.cod_cop < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Código Luzagro es Obligatorio');
+      this.hashMapError.set('val_cod_cop', 'Código Luzagro es Obligatorio');
     }
 
     // Campo: Código Luzlinares
     if (typeof this.socioModal.cod_lli === 'undefined' || this.socioModal.cod_lli < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Código Luzlinares es Obligatorio');
+      this.hashMapError.set('val_cod_lli', 'Código Luzlinares es Obligatorio');
     }
 
     // Campo: Código Anterior
     if (typeof this.socioModal.cod_ant === 'undefined' || this.socioModal.cod_ant < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Código Anterior es Obligatorio');
+      this.hashMapError.set('val_cod_ant', 'Código Anterior es Obligatorio');
     }
 
     // Campo: Código Nuevo
     if (typeof this.socioModal.cod_nvo === 'undefined' || this.socioModal.cod_nvo < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Código Nuevo es Obligatorio');
+      this.hashMapError.set('val_cod_nvo', 'Código Nuevo es Obligatorio');
     }
 
     // Campo: Código Original
     if (typeof this.socioModal.cod_ori === 'undefined' || this.socioModal.cod_ori < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Código Original es Obligatorio');
+      this.hashMapError.set('val_cod_ori', 'Código Original es Obligatorio');
     }
 
     // Campo: Sector
     if (typeof this.socioModal.sec_cop_codigo === 'undefined' || (typeof this.socioModal.sec_cop_codigo === 'string' && this.socioModal.sec_cop_codigo === '')) {
       //distinto de vacio o indefinido.
-      errores.push('Sector es Obligatorio');
+      this.hashMapError.set('val_sec_cop_codigo', 'Sector es Obligatorio');
     }
 
     // Campo: Año Inscripción
     if (typeof this.socioModal.ano_inc === 'undefined' || this.socioModal.ano_inc < 0) {
       //distinto de vacio o indefinido.
-      errores.push('Año Inscripción es Obligatorio');
+      this.hashMapError.set('val_ano_inc', 'Año Inscripción es Obligatorio');
     }
 
     // Campo: Monto Inscripción
     if (typeof this.socioModal.mto_inc === 'undefined' || this.socioModal.mto_inc < 0) {
-      errores.push('Monto Inscripción es Obligatorio');
+      this.hashMapError.set('val_mto_inc', 'Monto Inscripción es Obligatorio');
     }
 
     // Campo: Fecha Inscripción
-    if (typeof this.socioModal.fec_inc_date != 'undefined') {
+    if (typeof this.socioModal.fec_inc_date == 'undefined') {
       if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
-        errores.push('Fecha Inscripción es Obligatorio');
+        this.hashMapError.set('val_fec_inc_date', 'Fecha Inscripción es Obligatorio');
       }
+    } else if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
+      this.hashMapError.set('val_fec_inc_date', 'Fecha Inscripción es Obligatorio');
     }
 
     // Campo: Año Traspaso
     if (typeof this.socioModal.ano_tra === 'undefined' || this.socioModal.ano_tra < 0) {
-      errores.push('Año Traspaso es Obligatorio');
+      this.hashMapError.set('val_ano_tra', 'Año Traspaso es Obligatorio');
     }
 
     // Campo: Capital Traspaso
     if (typeof this.socioModal.kap_tra === 'undefined' || this.socioModal.kap_tra < 0) {
-      errores.push('Capital Traspaso es Obligatorio');
+      this.hashMapError.set('val_kap_tra', 'Capital Traspaso es Obligatorio');
     }
 
     // Campo: Fecha Traspaso
-    if (typeof this.socioModal.fec_tra_date != 'undefined') {
+    if (typeof this.socioModal.fec_tra_date == 'undefined') {
       if (!this.validateFormatDate(this.socioModal.fec_tra_date)) {
-        errores.push('Fecha Traspaso es Obligatorio');
+        this.hashMapError.set('val_fec_tra_date', 'Fecha Traspaso es Obligatorio');
       }
+    } else if (!this.validateFormatDate(this.socioModal.fec_tra_date)) {
+      this.hashMapError.set('val_fec_tra_date', 'Fecha Traspaso es Obligatorio');
     }
+
 
     // Campo: Acciones Traspaso
     if (typeof this.socioModal.acc_tra === 'undefined' || this.socioModal.acc_tra < 0) {
-      errores.push('Acciones Traspaso es Obligatorio');
+      this.hashMapError.set('val_acc_tra', 'Acciones Traspaso es Obligatorio');
     }
 
     // Campo: Acciones Retiro
     if (typeof this.socioModal.acc_ret === 'undefined' || this.socioModal.acc_ret < 0) {
-      errores.push('Acciones Retiro es Obligatorio');
+      this.hashMapError.set('val_acc_ret', 'Acciones Retiro es Obligatorio');
     }
 
     // Campo: Acciones Aporte
     if (typeof this.socioModal.acc_apo === 'undefined' || this.socioModal.acc_apo < 0) {
-      errores.push('Acciones Aporte es Obligatorio');
+      this.hashMapError.set('val_acc_apo', 'Acciones Aporte es Obligatorio');
     }
 
     // Campo: Actualización
-    if (typeof this.socioModal.fec_act_date != 'undefined') {
+    if (typeof this.socioModal.fec_act_date == 'undefined') {
       if (!this.validateFormatDate(this.socioModal.fec_act_date)) {
-        errores.push('Actualización es Obligatorio');
+        this.hashMapError.set('val_fec_act_date', 'Actualización es Obligatorio');
       }
+    } else if (!this.validateFormatDate(this.socioModal.fec_act_date)) {
+      this.hashMapError.set('val_fec_act_date', 'Actualización es Obligatorio');
     }
 
     // Campo: Estado Traspao
     if (typeof this.socioModal.est_tra === 'undefined' || this.socioModal.est_tra === '') {
-      errores.push('Estado Traspao es Obligatorio');
+      this.hashMapError.set('val_est_tra', 'Estado Traspao es Obligatorio');
     }
 
     // Campo: Estado del Bono
     if (typeof this.socioModal.est_bon === 'undefined' || this.socioModal.est_bon < 0) {
-      errores.push('Estado del Bono es Obligatorio');
+      this.hashMapError.set('val_est_bon', 'Estado del Bono es Obligatorio');
     }
 
     // Campo: Dirección Postal
     if (typeof this.socioModal.dir_pos !== 'undefined' && this.socioModal.dir_pos !== null) {
       if (this.socioModal.dir_pos !== '') {
         if (9 < this.socioModal.dir_pos.length) {
-          errores.push('Dirección Postal es Obligatorio');
+          this.hashMapError.set('val_dir_pos', 'Dirección Postal es Obligatorio');
         }
       }
     }
@@ -661,7 +657,7 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.nro_te1 !== 'undefined' && this.socioModal.nro_te1 !== null) {
       if (this.socioModal.nro_te1 !== '') {
         if (9 < this.socioModal.nro_te1.length) {
-          errores.push('Nro Teléfono 1 no debe tener mas de 9 Caracteres');
+          this.hashMapError.set('val_nro_te1', 'Nro Teléfono 1 no debe tener mas de 9 Caracteres');
         }
       }
     }
@@ -670,7 +666,7 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.nro_te2 !== 'undefined' && this.socioModal.nro_te2 !== null) {
       if (this.socioModal.nro_te2 !== '') {
         if (9 < this.socioModal.nro_te2.length) {
-          errores.push('Nro Teléfono 2 no debe tener mas de 9 Caracteres');
+          this.hashMapError.set('val_nro_te2', 'Nro Teléfono 2 no debe tener mas de 9 Caracteres');
         }
       }
     }
@@ -679,7 +675,7 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.nro_te3 !== 'undefined' && this.socioModal.nro_te3 !== null) {
       if (this.socioModal.nro_te3 !== '') {
         if (9 < this.socioModal.nro_te3.length) {
-          errores.push('Nro Teléfono 3 no debe tener mas de 9 Caracteres');
+          this.hashMapError.set('val_nro_te3', 'Nro Teléfono 3 no debe tener mas de 9 Caracteres');
         }
       }
     }
@@ -688,19 +684,20 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.nro_te4 !== 'undefined' && this.socioModal.nro_te4 !== null) {
       if (this.socioModal.nro_te4 !== '') {
         if (9 < this.socioModal.nro_te4.length) {
-          errores.push('Nro Teléfono 4 no debe tener mas de 9 Caracteres');
+          this.hashMapError.set('val_nro_te4', 'Nro Teléfono 4 no debe tener mas de 9 Caracteres');
         }
       }
     }
 
     // Campo: Comuna
-    if (typeof this.socioModal.com_pos_codigo === 'undefined' || (typeof this.socioModal.com_pos_codigo === 'string' && this.socioModal.com_pos_codigo === '')) {
-      errores.push('Comuna es Obligatorio');
+    if (typeof this.socioModal.com_pos_codigo === 'undefined'
+      || (typeof this.socioModal.com_pos_codigo === 'string' && this.socioModal.com_pos_codigo === '')) {
+      this.hashMapError.set('val_com_pos_codigo', 'Comuna es Obligatorio');
     }
 
     // Campo: Observación
     if (typeof this.socioModal.obs_cap === 'undefined') {
-      errores.push('Observación es Obligatorio');
+      this.hashMapError.set('val_obs_cap', 'Observación es Obligatorio');
     }
 
     // ************************************************************************************************
@@ -717,22 +714,30 @@ export class KapmaeComponent implements OnInit {
     }*/
 
     // Campo: fec_sol
-    if (typeof this.socioModal.fec_sol_date != 'undefined') {
+    if (typeof this.socioModal.fec_sol_date == 'undefined') {
       if (!this.validateFormatDate(this.socioModal.fec_sol_date)) {
-        errores.push('fec_sol es Obligatorio');
+        this.hashMapError.set('val_fec_sol_date', 'fec_sol es Obligatorio');
       }
+    } else if (!this.validateFormatDate(this.socioModal.fec_sol_date)) {
+      this.hashMapError.set('val_fec_sol_date', 'fec_sol es Obligatorio');
     }
+
     // Campo: fec_apr
-    if (typeof this.socioModal.fec_apr_date != 'undefined') {
+    if (typeof this.socioModal.fec_apr_date == 'undefined') {
       if (!this.validateFormatDate(this.socioModal.fec_apr_date)) {
-        errores.push('fec_apr es Obligatorio');
+        this.hashMapError.set('val_fec_apr_date', 'fec_apr es Obligatorio');
       }
+    } else if (!this.validateFormatDate(this.socioModal.fec_apr_date)) {
+      this.hashMapError.set('val_fec_apr_date', 'fec_apr es Obligatorio');
     }
+
     // Campo: fec_can
-    if (typeof this.socioModal.fec_can_date != 'undefined') {
+    if (typeof this.socioModal.fec_can_date == 'undefined') {
       if (!this.validateFormatDate(this.socioModal.fec_can_date)) {
-        errores.push('fec_can es Obligatorio');
+        this.hashMapError.set('val_fec_can_date', 'fec_can es Obligatorio');
       }
+    } else if (!this.validateFormatDate(this.socioModal.fec_can_date)) {
+      this.hashMapError.set('val_fec_can_date', 'fec_can es Obligatorio');
     }
 
     // Campo: est_sol 
@@ -773,7 +778,6 @@ export class KapmaeComponent implements OnInit {
     // ************************************************************************************************
     // ************************************************************************************************
     // ************************************************************************************************
-    return errores;
   }
 
   private validateFormatDate(inputDate: DatepickerModelVO | undefined): boolean {

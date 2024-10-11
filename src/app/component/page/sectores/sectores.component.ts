@@ -29,8 +29,7 @@ export class SectoresComponent implements OnInit {
   modals = new ModalOptions();
   collectionSize: number = 0;
 
-  erroresList: string[] = [];
-  isErroresList: boolean = false;
+  hashMapError = new Map<string, string>();
 
   public utility = new Utility;
   isPermisoVerLista: boolean = false;
@@ -85,8 +84,7 @@ export class SectoresComponent implements OnInit {
     this.sectoresModal = new SectorVO();
     this.sectoresModal.estado = true;
     this.isEdit = false;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.openModalFunction(content);
   }
 
@@ -94,8 +92,7 @@ export class SectoresComponent implements OnInit {
     console.log('Method editarModal');
     this.sectoresModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.openModalFunction(content);
   }
 
@@ -110,12 +107,9 @@ export class SectoresComponent implements OnInit {
   }
 
   public guardar(): void {
-    this.erroresList = [];
-    this.isErroresList = false;
-    this.erroresList = this.validateNew();
-    if (this.erroresList.length > 0) {
-      this.setIsErroresList(true);
-    } else {
+    this.hashMapError.clear();
+    this.validateNew();
+    if (this.hashMapError.size === 0) {
       if (!this.isEdit) {
         // console.log('this.new()');
         this.new();
@@ -126,24 +120,18 @@ export class SectoresComponent implements OnInit {
     }
   }
 
-  private setIsErroresList(isErroresList: boolean): void {
-    this.isErroresList = isErroresList;
-  }
-
-  private validateNew(): string[] {
-    let errores: string[] = [];
+  private validateNew(): void {
     this.sectoresModal.descrip = this.sectoresModal.descrip.trim();
     if (this.sectoresModal.descrip === null || typeof this.sectoresModal.descrip === 'undefined' || this.sectoresModal.descrip === '') {
-      errores.push('Descripción es Obligatorio');
+      this.hashMapError.set('val_descrip', 'Descripción es Obligatorio');
     }
 
     this.sectoresModal.codigo = this.sectoresModal.codigo;
     if (this.sectoresModal.codigo === null || typeof this.sectoresModal.codigo === 'undefined') {
-      errores.push('Código es Obligatorio');
+      this.hashMapError.set('val_codigo', 'Código es Obligatorio');
     } else if (this.sectoresModal.codigo !== null && typeof this.sectoresModal.codigo !== 'undefined' && this.sectoresModal.codigo < 0) {
-      errores.push('Código debe ser mayor a 0');
+      this.hashMapError.set('val_codigo', 'Código debe ser mayor a 0');
     }
-    return errores;
   }
 
   private new(): void {

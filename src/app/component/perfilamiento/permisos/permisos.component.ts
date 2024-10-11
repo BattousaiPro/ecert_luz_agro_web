@@ -30,8 +30,7 @@ export class PermisosComponent implements OnInit {
   modals = new ModalOptions();
   collectionSize: number = 0;
 
-  erroresList: string[] = [];
-  isErroresList: boolean = false;
+  hashMapError = new Map<string, string>();
 
   public utility = new Utility;
   isPermisoVerLista: boolean = false;
@@ -86,8 +85,7 @@ export class PermisosComponent implements OnInit {
     this.permisosModal = new PermisoVO();
     this.permisosModal.estado = true;
     this.isEdit = false;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.openModalFunction(content);
   }
 
@@ -95,8 +93,7 @@ export class PermisosComponent implements OnInit {
     console.log('Method editarUserModal');
     this.permisosModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.openModalFunction(content);
   }
 
@@ -111,12 +108,9 @@ export class PermisosComponent implements OnInit {
   }
 
   public guardar(): void {
-    this.erroresList = [];
-    this.setIsErroresList(false);
-    this.erroresList = this.validateNew();
-    if (this.erroresList.length > 0) {
-      this.setIsErroresList(true);
-    } else {
+    this.hashMapError.clear();
+    this.validateNew();
+    if (this.hashMapError.size === 0) {
       if (!this.isEdit) {
         // console.log('this.new()');
         this.new();
@@ -127,27 +121,21 @@ export class PermisosComponent implements OnInit {
     }
   }
 
-  private setIsErroresList(isErroresList: boolean): void {
-    this.isErroresList = isErroresList;
-  }
-
-  private validateNew(): string[] {
-    let errores: string[] = [];
+  private validateNew(): void {
     this.permisosModal.name = this.permisosModal.name.trim();
     if (this.permisosModal.name === null || typeof this.permisosModal.name === 'undefined' || this.permisosModal.name === '') {
-      errores.push('Nombre es Obligatorio');
+      this.hashMapError.set('val_name', 'Nombre es Obligatorio');
     }
 
     this.permisosModal.descrip = this.permisosModal.descrip.trim();
     if (this.permisosModal.descrip === null || typeof this.permisosModal.descrip === 'undefined' || this.permisosModal.descrip === '') {
-      errores.push('Descripción es Obligatorio');
+      this.hashMapError.set('val_descrip', 'Descripción es Obligatorio');
     }
 
     this.permisosModal.code = this.permisosModal.code.trim();
     if (this.permisosModal.code === null || typeof this.permisosModal.code === 'undefined' || this.permisosModal.code === '') {
-      errores.push('Código es Obligatorio');
+      this.hashMapError.set('val_code', 'Código es Obligatorio');
     }
-    return errores;
   }
 
   private new(): void {

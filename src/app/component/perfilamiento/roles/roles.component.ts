@@ -34,8 +34,7 @@ export class RolesComponent implements OnInit {
   modals = new ModalOptions();
   collectionSize: number = 0;
 
-  erroresList: string[] = [];
-  isErroresList: boolean = false;
+  hashMapError = new Map<string, string>();
 
   public utility = new Utility;
   isPermisoVerLista: boolean = false;
@@ -143,7 +142,6 @@ export class RolesComponent implements OnInit {
     this.rolModal = new RoleVO();
     this.rolModal.estado = true;
     this.isEdit = false;
-    this.isErroresList = false;
     this.openModalFunction(content);
   }
 
@@ -151,8 +149,7 @@ export class RolesComponent implements OnInit {
     console.log('Method editarModal.');
     this.rolModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.openModalFunction(content);
   }
 
@@ -168,8 +165,7 @@ export class RolesComponent implements OnInit {
     this.rolModal = new RoleVO();
     this.rolModal.estado = true;
     this.isEdit = false;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.openModalFunction(content);
   }
 
@@ -189,12 +185,9 @@ export class RolesComponent implements OnInit {
   }
 
   public guardar(): void {
-    this.erroresList = [];
-    this.setIsErroresList(false);
-    this.erroresList = this.validateNew();
-    if (this.erroresList.length > 0) {
-      this.setIsErroresList(true);
-    } else {
+    this.hashMapError.clear();
+    this.validateNew();
+    if (this.hashMapError.size === 0) {
       if (!this.isEdit) {
         // console.log('this.new()');
         this.new();
@@ -205,27 +198,21 @@ export class RolesComponent implements OnInit {
     }
   }
 
-  private setIsErroresList(isErroresList: boolean): void {
-    this.isErroresList = isErroresList;
-  }
-
-  private validateNew(): string[] {
-    let errores: string[] = [];
+  private validateNew(): void {
     this.rolModal.name = this.rolModal.name.trim();
     if (this.rolModal.name === null || typeof this.rolModal.name === 'undefined' || this.rolModal.name === '') {
-      errores.push('Nombre es Obligatorio');
+      this.hashMapError.set('val_name', 'Nombre es Obligatorio');
     }
 
     this.rolModal.descrip = this.rolModal.descrip.trim();
     if (this.rolModal.descrip === null || typeof this.rolModal.descrip === 'undefined' || this.rolModal.descrip === '') {
-      errores.push('Descripción es Obligatorio');
+      this.hashMapError.set('val_descrip', 'Descripción es Obligatorio');
     }
 
     this.rolModal.code = this.rolModal.code.trim();
     if (this.rolModal.code === null || typeof this.rolModal.code === 'undefined' || this.rolModal.code === '') {
-      errores.push('Código es Obligatorio');
+      this.hashMapError.set('val_code', 'Código es Obligatorio');
     }
-    return errores;
   }
 
   private new(): void {

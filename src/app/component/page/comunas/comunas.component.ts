@@ -29,8 +29,7 @@ export class ComunasComponent implements OnInit {
   modals = new ModalOptions();
   collectionSize: number = 0;
 
-  erroresList: string[] = [];
-  isErroresList: boolean = false;
+  hashMapError = new Map<string, string>();
 
   public utility = new Utility;
   isPermisoVerLista: boolean = false;
@@ -85,8 +84,7 @@ export class ComunasComponent implements OnInit {
     this.comunasModal = new ComunasVO();
     this.comunasModal.estado = true;
     this.isEdit = false;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.openModalFunction(content);
   }
 
@@ -94,8 +92,7 @@ export class ComunasComponent implements OnInit {
     console.log('Method editarModal');
     this.comunasModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.openModalFunction(content);
   }
 
@@ -110,12 +107,9 @@ export class ComunasComponent implements OnInit {
   }
 
   public guardar(): void {
-    this.erroresList = [];
-    this.isErroresList = false;
-    this.erroresList = this.validateNew();
-    if (this.erroresList.length > 0) {
-      this.setIsErroresList(true);
-    } else {
+    this.hashMapError.clear();
+    this.validateNew();
+    if (this.hashMapError.size === 0) {
       if (!this.isEdit) {
         // console.log('this.new()');
         this.new();
@@ -126,26 +120,17 @@ export class ComunasComponent implements OnInit {
     }
   }
 
-  private setIsErroresList(isErroresList: boolean): void {
-    this.isErroresList = isErroresList;
-  }
-
-  private validateNew(): string[] {
-    let errores: string[] = [];
+  private validateNew(): void {
     this.comunasModal.descrip = this.comunasModal.descrip.trim();
-    /*
     if (this.comunasModal.descrip === null || typeof this.comunasModal.descrip === 'undefined' || this.comunasModal.descrip === '') {
-      errores.push('Descripción es Obligatorio');
+      this.hashMapError.set('val_descrip', 'Descripción es Obligatorio');
     }
-    */
-
     this.comunasModal.codigo = this.comunasModal.codigo;
     if (this.comunasModal.codigo === null || typeof this.comunasModal.codigo === 'undefined') {
-      errores.push('Código es Obligatorio');
+      this.hashMapError.set('val_codigo', 'Código es Obligatorio');
     } else if (this.comunasModal.codigo !== null && typeof this.comunasModal.codigo !== 'undefined' && this.comunasModal.codigo < 0) {
-      errores.push('Código debe ser mayor a 0');
+      this.hashMapError.set('val_codigo', 'Código debe ser mayor a 0');
     }
-    return errores;
   }
 
   private new(): void {

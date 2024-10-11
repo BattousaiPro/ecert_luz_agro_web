@@ -37,8 +37,7 @@ export class UsuariosComponent implements OnInit {
 
   passConfirm: string = '';
 
-  erroresList: string[] = [];
-  isErroresList: boolean = false;
+  hashMapError = new Map<string, string>();
 
   public utility = new Utility;
   isPermisoVerLista: boolean = false;
@@ -155,8 +154,7 @@ export class UsuariosComponent implements OnInit {
     console.log('Method editarModal');
     this.userModal = JSON.parse(JSON.stringify(selectedItem));
     this.isEdit = true;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.openModalFunction(content);
   }
 
@@ -172,8 +170,7 @@ export class UsuariosComponent implements OnInit {
     this.userModal = new Usuario();
     this.userModal.estado = true;
     this.isEdit = false;
-    this.erroresList = [];
-    this.setIsErroresList(false);
+    this.hashMapError.clear();
     this.openModalFunction(content);
   }
 
@@ -193,12 +190,9 @@ export class UsuariosComponent implements OnInit {
   }
 
   public guardar(): void {
-    this.erroresList = [];
-    this.setIsErroresList(false);
-    this.erroresList = this.validateNew();
-    if (this.erroresList.length > 0) {
-      this.setIsErroresList(true);
-    } else {
+    this.hashMapError.clear();
+    this.validateNew();
+    if (this.hashMapError.size === 0) {
       if (!this.isEdit) {
         // console.log('this.new()');
         this.new();
@@ -209,20 +203,15 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
-  private setIsErroresList(isErroresList: boolean): void {
-    this.isErroresList = isErroresList;
-  }
-
-  private validateNew(): string[] {
-    let errores: string[] = [];
+  private validateNew(): void {
     this.userModal.ctaUserName = this.userModal.ctaUserName.trim();
     if (this.userModal.ctaUserName === null || typeof this.userModal.ctaUserName === 'undefined' || this.userModal.ctaUserName === '') {
-      errores.push('Nombre es Obligatorio');
+      this.hashMapError.set('val_ctaUserName', 'Nombre es Obligatorio');
     }
 
     this.userModal.ctaEmail = this.userModal.ctaEmail.trim();
     if (this.userModal.ctaEmail === null || typeof this.userModal.ctaEmail === 'undefined' || this.userModal.ctaEmail === '') {
-      errores.push('Email es Obligatorio');
+      this.hashMapError.set('val_ctaEmail', 'Email es Obligatorio');
     }
     // TODO: validar con expresión regutar
     /*else if (false) {
@@ -231,26 +220,25 @@ export class UsuariosComponent implements OnInit {
 
     if (!this.isEdit) {
       if (this.userModal.ctaPassWord === null || typeof this.userModal.ctaPassWord === 'undefined' || this.userModal.ctaPassWord === '') {
-        errores.push('Contraseña es Obligatorio');
+        this.hashMapError.set('val_ctaPassWord', 'Contraseña es Obligatorio');
       } else if (this.passConfirm === null || typeof this.passConfirm === 'undefined' || this.passConfirm === '') {
-        errores.push('Confirmación de contraseña es Obligatorio');
+        this.hashMapError.set('val_ctaPassWord', 'Confirmación de contraseña es Obligatorio');
       } else if (this.userModal.ctaPassWord !== this.passConfirm) {
-        errores.push('La contraseña debe coincidir');
+        this.hashMapError.set('val_ctaPassWord', 'La contraseña debe coincidir');
       }
     } else {
       if (this.userModal.ctaPassWord !== null && typeof this.userModal.ctaPassWord !== 'undefined' && this.userModal.ctaPassWord !== '') {
         if (this.passConfirm === null || typeof this.passConfirm === 'undefined' || this.passConfirm === '') {
-          errores.push('Confirmación de contraseña es Obligatorio');
+          this.hashMapError.set('val_val_ctaPassWord', 'Confirmación de contraseña es Obligatorio');
         } else if (this.userModal.ctaPassWord !== this.passConfirm) {
-          errores.push('La contraseña debe coincidir');
+          this.hashMapError.set('val_val_ctaPassWord', 'La contraseña debe coincidir');
         }
       } else if (this.passConfirm !== null && typeof this.passConfirm !== 'undefined' && this.passConfirm !== '') {
         if (this.userModal.ctaPassWord === null || typeof this.userModal.ctaPassWord === 'undefined' || this.userModal.ctaPassWord === '') {
-          errores.push('Contraseña es Obligatorio');
+          this.hashMapError.set('val_val_ctaPassWord', 'Contraseña es Obligatorio');
         }
       }
     }
-    return errores;
   }
 
   private new(): void {
