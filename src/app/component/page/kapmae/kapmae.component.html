@@ -318,8 +318,9 @@
                                             <label class="col-form-label col-form-label-sm" for="rut_cop">
                                                 Rut Socio
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="rut_cop" [(ngModel)]="socioModal.rut_cop"
+                                            <input
+                                                [ngClass]="hashMapError.has('val_rut_cop') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="rut_cop" [(ngModel)]="socioModal.rut_cop"
                                                 (blur)="cleanFieldRutCop()" disabled="{{isEdit}}">
                                             @if(hashMapError.has('val_rut_cop')) {
                                             <span class="errorInputText">{{hashMapError.get('val_rut_cop')}}</span>
@@ -329,8 +330,9 @@
                                             <label class="col-form-label col-form-label-sm" for="nombres">
                                                 Nombres
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="nombres" [(ngModel)]="socioModal.nombres"
+                                            <input
+                                                [ngClass]="hashMapError.has('val_nombres') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="nombres" [(ngModel)]="socioModal.nombres"
                                                 (blur)="cleanFieldNombres()">
                                             @if(hashMapError.has('val_nombres')) {
                                             <span class="errorInputText">{{hashMapError.get('val_nombres')}}</span>
@@ -340,8 +342,9 @@
                                             <label class="col-form-label col-form-label-sm" for="ape_pat">
                                                 Apellido Paterno
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="ape_pat" [(ngModel)]="socioModal.ape_pat"
+                                            <input
+                                                [ngClass]="hashMapError.has('val_ape_pat') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="ape_pat" [(ngModel)]="socioModal.ape_pat"
                                                 (blur)="cleanFieldApePat()">
                                             @if(hashMapError.has('val_ape_pat')) {
                                             <span class="errorInputText">{{hashMapError.get('val_ape_pat')}}</span>
@@ -351,8 +354,9 @@
                                             <label class="col-form-label col-form-label-sm" for="ape_mat">
                                                 Apellido Materno
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="ape_mat" [(ngModel)]="socioModal.ape_mat"
+                                            <input
+                                                [ngClass]="hashMapError.has('val_ape_mat') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="ape_mat" [(ngModel)]="socioModal.ape_mat"
                                                 (blur)="cleanFieldApeMat()">
                                             @if(hashMapError.has('val_ape_mat')) {
                                             <span class="errorInputText">{{hashMapError.get('val_ape_mat')}}</span>
@@ -362,8 +366,10 @@
                                             <label class="col-form-label col-form-label-sm" for="cod_cop">
                                                 Código Luzagro
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="cod_cop" [(ngModel)]="socioModal.cod_cop" disabled="{{isEdit}}">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_cod_cop') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="cod_cop"
+                                                [(ngModel)]="socioModal.cod_cop" disabled="{{isEdit}}">
                                             @if(hashMapError.has('val_cod_cop')) {
                                             <span class="errorInputText">{{hashMapError.get('val_cod_cop')}}</span>
                                             }
@@ -372,8 +378,10 @@
                                             <label class="col-form-label col-form-label-sm" for="cod_lli">
                                                 Código Luzlinares
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="cod_lli" [(ngModel)]="socioModal.cod_lli">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_cod_lli') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="cod_lli"
+                                                [(ngModel)]="socioModal.cod_lli">
                                             @if(hashMapError.has('val_cod_lli')) {
                                             <span class="errorInputText">{{hashMapError.get('val_cod_lli')}}</span>
                                             }
@@ -382,8 +390,10 @@
                                             <label class="col-form-label col-form-label-sm" for="cod_ant">
                                                 Código Anterior
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="cod_ant" [(ngModel)]="socioModal.cod_ant">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_cod_ant') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="cod_ant"
+                                                [(ngModel)]="socioModal.cod_ant">
                                             @if(hashMapError.has('val_cod_ant')) {
                                             <span class="errorInputText">{{hashMapError.get('val_cod_ant')}}</span>
                                             }
@@ -392,8 +402,10 @@
                                             <label class="col-form-label col-form-label-sm" for="cod_nvo">
                                                 Código Nuevo
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="cod_nvo" [(ngModel)]="socioModal.cod_nvo">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_cod_nvo') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="cod_nvo"
+                                                [(ngModel)]="socioModal.cod_nvo">
                                             @if(hashMapError.has('val_cod_nvo')) {
                                             <span class="errorInputText">{{hashMapError.get('val_cod_nvo')}}</span>
                                             }
@@ -402,8 +414,10 @@
                                             <label class="col-form-label col-form-label-sm" for="cod_ori">
                                                 Código Original
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="cod_ori" [(ngModel)]="socioModal.cod_ori">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_cod_ori') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="cod_ori"
+                                                [(ngModel)]="socioModal.cod_ori">
                                             @if(hashMapError.has('val_cod_ori')) {
                                             <span class="errorInputText">{{hashMapError.get('val_cod_ori')}}</span>
                                             }
@@ -412,7 +426,9 @@
                                             <label class="col-form-label col-form-label-sm" for="sec_cop">
                                                 Sector
                                             </label>
-                                            <select class="form-select w100" [(ngModel)]="socioModal.sec_cop_codigo">
+                                            <select
+                                                [ngClass]="hashMapError.has('val_sec_cop_codigo') ? 'form-select w100 errorInputElement ' : 'form-select w100 '"
+                                                [(ngModel)]="socioModal.sec_cop_codigo">
                                                 <option value="">Seleccionar</option>
                                                 @if (isEdit) {
                                                 @for (sector of sectores; track sector.codigo; let index = $index) {
@@ -429,15 +445,18 @@
                                                 }
                                             </select>
                                             @if(hashMapError.has('val_sec_cop_codigo')) {
-                                            <span class="errorInputText">{{hashMapError.get('val_sec_cop_codigo')}}</span>
+                                            <span
+                                                class="errorInputText">{{hashMapError.get('val_sec_cop_codigo')}}</span>
                                             }
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
                                             <label class="col-form-label col-form-label-sm" for="ano_inc">
                                                 Año Inscripción
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="ano_inc" [(ngModel)]="socioModal.ano_inc">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_ano_inc') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="ano_inc"
+                                                [(ngModel)]="socioModal.ano_inc">
                                             @if(hashMapError.has('val_ano_inc')) {
                                             <span class="errorInputText">{{hashMapError.get('val_ano_inc')}}</span>
                                             }
@@ -446,8 +465,10 @@
                                             <label class="col-form-label col-form-label-sm" for="mto_inc">
                                                 Monto Inscripción
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="mto_inc" [(ngModel)]="socioModal.mto_inc">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_mto_inc') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="mto_inc"
+                                                [(ngModel)]="socioModal.mto_inc">
                                             @if(hashMapError.has('val_mto_inc')) {
                                             <span class="errorInputText">{{hashMapError.get('val_mto_inc')}}</span>
                                             }
@@ -456,10 +477,12 @@
                                             <label class="col-form-label col-form-label-sm" for="fec_inc">
                                                 Fecha Inscripción
                                             </label>
-                                            <!--<input class="form-control form-control-sm" type="text" placeholder=""
+                                            <!--<input [ngClass]="hashMapError.has('val_fec_inc_date') ? 'form-control form-control-sm pr6 pl6 errorInputElement ' : 'form-control pr6 pl6 form-control-sm '" type="text" placeholder=""
                                                     id="fec_inc" [(ngModel)]="socioModal.fec_inc | date: 'd-M-y'">-->
                                             <div class="input-group">
-                                                <input class="form-control pr6 pl6" placeholder="yyyy-m-dd" name="dp"
+                                                <input
+                                                    [ngClass]="hashMapError.has('val_fec_can_date') ? 'form-control pr6 pl6 form-control-sm errorInputElement ' : 'form-control pr6 pl6 form-control-sm '"
+                                                    placeholder="yyyy-m-dd" name="dp"
                                                     [(ngModel)]="socioModal.fec_inc_date" ngbDatepicker
                                                     #d_fec_inc_date="ngbDatepicker" />
                                                 <button class="btn btn-outline-secondary bi bi-calendar3"
@@ -473,8 +496,10 @@
                                             <label class="col-form-label col-form-label-sm" for="ano_tra">
                                                 Año Traspaso
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="ano_tra" [(ngModel)]="socioModal.ano_tra">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_ano_tra') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="ano_tra"
+                                                [(ngModel)]="socioModal.ano_tra">
                                             @if(hashMapError.has('val_ano_tra')) {
                                             <span class="errorInputText">{{hashMapError.get('val_ano_tra')}}</span>
                                             }
@@ -483,8 +508,10 @@
                                             <label class="col-form-label col-form-label-sm" for="kap_tra">
                                                 Capital Traspaso
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="kap_tra" [(ngModel)]="socioModal.kap_tra">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_kap_tra') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="kap_tra"
+                                                [(ngModel)]="socioModal.kap_tra">
                                             @if(hashMapError.has('val_kap_tra')) {
                                             <span class="errorInputText">{{hashMapError.get('val_kap_tra')}}</span>
                                             }
@@ -493,25 +520,30 @@
                                             <label class="col-form-label col-form-label-sm" for="fec_tra">
                                                 Fecha Traspaso
                                             </label>
-                                            <!--<input class="form-control form-control-sm" type="text" placeholder=""
+                                            <!--<input [ngClass]="hashMapError.has('val_fec_tra_date') ? 'form-control form-control-sm pr6 pl6 errorInputElement ' : 'form-control pr6 pl6 form-control-sm '" type="text" placeholder=""
                                                     id="fec_tra" [(ngModel)]="socioModal.fec_tra | date: 'd-M-y'">-->
                                             <div class="input-group">
-                                                <input class="form-control pr6 pl6" placeholder="yyyy-m-dd" name="dp"
+                                                <input
+                                                    [ngClass]="hashMapError.has('val_fec_can_date') ? 'form-control pr6 pl6 form-control-sm errorInputElement ' : 'form-control pr6 pl6 form-control-sm '"
+                                                    placeholder="yyyy-m-dd" name="dp"
                                                     [(ngModel)]="socioModal.fec_tra_date" ngbDatepicker
                                                     #d_fec_tra_date="ngbDatepicker" />
                                                 <button class="btn btn-outline-secondary bi bi-calendar3"
                                                     (click)="d_fec_tra_date.toggle()" type="button"></button>
-                                                @if(hashMapError.has('val_fec_tra_date')) {
-                                                <span class="errorInputText">{{hashMapError.get('val_fec_tra_date')}}</span>
-                                                }
+
                                             </div>
+                                            @if(hashMapError.has('val_fec_tra_date')) {
+                                            <span class="errorInputText">{{hashMapError.get('val_fec_tra_date')}}</span>
+                                            }
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
                                             <label class="col-form-label col-form-label-sm" for="acc_tra">
                                                 Acciones Traspaso
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="acc_tra" [(ngModel)]="socioModal.acc_tra">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_acc_tra') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="acc_tra"
+                                                [(ngModel)]="socioModal.acc_tra">
                                             @if(hashMapError.has('val_acc_tra')) {
                                             <span class="errorInputText">{{hashMapError.get('val_acc_tra')}}</span>
                                             }
@@ -520,8 +552,10 @@
                                             <label class="col-form-label col-form-label-sm" for="acc_ret">
                                                 Acciones Retiro
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="acc_ret" [(ngModel)]="socioModal.acc_ret">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_acc_ret') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="acc_ret"
+                                                [(ngModel)]="socioModal.acc_ret">
                                             @if(hashMapError.has('val_acc_ret')) {
                                             <span class="errorInputText">{{hashMapError.get('val_acc_ret')}}</span>
                                             }
@@ -530,8 +564,10 @@
                                             <label class="col-form-label col-form-label-sm" for="acc_apo">
                                                 Acciones Aporte
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="acc_apo" [(ngModel)]="socioModal.acc_apo">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_acc_apo') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="acc_apo"
+                                                [(ngModel)]="socioModal.acc_apo">
                                             @if(hashMapError.has('val_acc_apo')) {
                                             <span class="errorInputText">{{hashMapError.get('val_acc_apo')}}</span>
                                             }
@@ -540,25 +576,29 @@
                                             <label class="col-form-label col-form-label-sm" for="fec_act">
                                                 Actualización
                                             </label>
-                                            <!--<input class="form-control form-control-sm" type="text" placeholder=""
+                                            <!--<input [ngClass]="hashMapError.has('val_fec_act_date') ? 'form-control form-control-sm pr6 pl6 errorInputElement ' : 'form-control pr6 pl6 form-control-sm '" type="text" placeholder=""
                                                     id="fec_act" [(ngModel)]="socioModal.fec_act | date: 'd-M-y'">-->
                                             <div class="input-group">
-                                                <input class="form-control pr6 pl6" placeholder="yyyy-m-dd" name="dp"
+                                                <input
+                                                    [ngClass]="hashMapError.has('val_fec_can_date') ? 'form-control pr6 pl6 form-control-sm errorInputElement ' : 'form-control pr6 pl6 form-control-sm '"
+                                                    placeholder="yyyy-m-dd" name="dp"
                                                     [(ngModel)]="socioModal.fec_act_date" ngbDatepicker
                                                     #d_fec_act_date="ngbDatepicker" />
                                                 <button class="btn btn-outline-secondary bi bi-calendar3"
                                                     (click)="d_fec_act_date.toggle()" type="button"></button>
-                                                @if(hashMapError.has('val_fec_act_date')) {
-                                                <span class="errorInputText">{{hashMapError.get('val_fec_act_date')}}</span>
-                                                }
                                             </div>
+                                            @if(hashMapError.has('val_fec_act_date')) {
+                                            <span class="errorInputText">{{hashMapError.get('val_fec_act_date')}}</span>
+                                            }
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
                                             <label class="col-form-label col-form-label-sm" for="est_tra">
                                                 Estado Traspao
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="est_tra" [(ngModel)]="socioModal.est_tra">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_est_tra') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="est_tra"
+                                                [(ngModel)]="socioModal.est_tra">
                                             @if(hashMapError.has('val_est_tra')) {
                                             <span class="errorInputText">{{hashMapError.get('val_est_tra')}}</span>
                                             }
@@ -567,8 +607,10 @@
                                             <label class="col-form-label col-form-label-sm" for="est_bon">
                                                 Estado del Bono
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="est_bon" [(ngModel)]="socioModal.est_bon">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_est_bon') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="est_bon"
+                                                [(ngModel)]="socioModal.est_bon">
                                             @if(hashMapError.has('val_est_bon')) {
                                             <span class="errorInputText">{{hashMapError.get('val_est_bon')}}</span>
                                             }
@@ -577,8 +619,10 @@
                                             <label class="col-form-label col-form-label-sm" for="dir_pos">
                                                 Dirección Postal
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="dir_pos" [(ngModel)]="socioModal.dir_pos">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_dir_pos') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="dir_pos"
+                                                [(ngModel)]="socioModal.dir_pos">
                                             @if(hashMapError.has('val_dir_pos')) {
                                             <span class="errorInputText">{{hashMapError.get('val_dir_pos')}}</span>
                                             }
@@ -587,8 +631,10 @@
                                             <label class="col-form-label col-form-label-sm" for="nro_te1">
                                                 Nro Teléfono 1
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="nro_te1" [(ngModel)]="socioModal.nro_te1">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_nro_te1') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="nro_te1"
+                                                [(ngModel)]="socioModal.nro_te1">
                                             @if(hashMapError.has('val_nro_te1')) {
                                             <span class="errorInputText">{{hashMapError.get('val_nro_te1')}}</span>
                                             }
@@ -597,8 +643,10 @@
                                             <label class="col-form-label col-form-label-sm" for="nro_te2">
                                                 Nro Teléfono 2
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="nro_te2" [(ngModel)]="socioModal.nro_te2">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_nro_te2') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="nro_te2"
+                                                [(ngModel)]="socioModal.nro_te2">
                                             @if(hashMapError.has('val_nro_te2')) {
                                             <span class="errorInputText">{{hashMapError.get('val_nro_te2')}}</span>
                                             }
@@ -607,8 +655,10 @@
                                             <label class="col-form-label col-form-label-sm" for="nro_te3">
                                                 Nro Teléfono 3
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="nro_te3" [(ngModel)]="socioModal.nro_te3">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_nro_te3') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="nro_te3"
+                                                [(ngModel)]="socioModal.nro_te3">
                                             @if(hashMapError.has('val_nro_te3')) {
                                             <span class="errorInputText">{{hashMapError.get('val_nro_te3')}}</span>
                                             }
@@ -617,8 +667,10 @@
                                             <label class="col-form-label col-form-label-sm" for="nro_te4">
                                                 Nro Teléfono 4
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="nro_te4" [(ngModel)]="socioModal.nro_te4">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_nro_te4') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="nro_te4"
+                                                [(ngModel)]="socioModal.nro_te4">
                                             @if(hashMapError.has('val_nro_te4')) {
                                             <span class="errorInputText">{{hashMapError.get('val_nro_te4')}}</span>
                                             }
@@ -627,7 +679,9 @@
                                             <label class="col-form-label col-form-label-sm" for="com_pos">
                                                 Comuna
                                             </label>
-                                            <select class="form-select w100" [(ngModel)]="socioModal.com_pos_codigo">
+                                            <select
+                                                [ngClass]="hashMapError.has('val_com_pos_codigo') ? 'form-select w100 errorInputElement ' : 'form-select w100 '"
+                                                [(ngModel)]="socioModal.com_pos_codigo">
                                                 <option value="">Seleccionar</option>
                                                 @if (isEdit) {
                                                 @for (comuna of comunas; track comuna.codigo; let index = $index) {
@@ -644,15 +698,18 @@
                                                 }
                                             </select>
                                             @if(hashMapError.has('val_com_pos_codigo')) {
-                                            <span class="errorInputText">{{hashMapError.get('val_com_pos_codigo')}}</span>
+                                            <span
+                                                class="errorInputText">{{hashMapError.get('val_com_pos_codigo')}}</span>
                                             }
                                         </div>
                                         <div class="col-12">
                                             <label class="col-form-label col-form-label-sm" for="obs_cap">
                                                 Observación
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="obs_cap" [(ngModel)]="socioModal.obs_cap">
+                                            <input
+                                                [ngClass]="hashMapError.has('val_obs_cap') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="obs_cap"
+                                                [(ngModel)]="socioModal.obs_cap">
                                             @if(hashMapError.has('val_obs_cap')) {
                                             <span class="errorInputText">{{hashMapError.get('val_obs_cap')}}</span>
                                             }
@@ -661,8 +718,10 @@
                                             <label class="col-form-label col-form-label-sm" for="nro_sol">
                                                 nro_sol
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="nro_sol" [(ngModel)]="socioModal.nro_sol">
+                                            <input
+                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="nro_sol"
+                                                [(ngModel)]="socioModal.nro_sol">
                                             @if(hashMapError.has('')) {
                                             <span class="errorInputText">{{hashMapError.get('')}}</span>
                                             }
@@ -671,10 +730,12 @@
                                             <label class="col-form-label col-form-label-sm" for="fec_sol">
                                                 fec_sol
                                             </label>
-                                            <!--<input class="form-control form-control-sm" type="text" placeholder=""
+                                            <!--<input [ngClass]="hashMapError.has('val_fec_sol_date') ? 'form-control pr6 pl6 form-control-sm errorInputElement ' : 'form-control pr6 pl6 form-control-sm '" type="text" placeholder=""
                                                     id="fec_sol" [(ngModel)]="socioModal.fec_sol | date: 'd-M-y'">-->
                                             <div class="input-group">
-                                                <input class="form-control pr6 pl6" placeholder="yyyy-m-dd" name="dp"
+                                                <input
+                                                    [ngClass]="hashMapError.has('val_fec_can_date') ? 'form-control pr6 pl6 form-control-sm errorInputElement ' : 'form-control pr6 pl6 form-control-sm '"
+                                                    placeholder="yyyy-m-dd" name="dp"
                                                     [(ngModel)]="socioModal.fec_sol_date" ngbDatepicker
                                                     #d_fec_sol_date="ngbDatepicker" />
                                                 <button class="btn btn-outline-secondary bi bi-calendar3"
@@ -688,10 +749,12 @@
                                             <label class="col-form-label col-form-label-sm" for="fec_apr">
                                                 fec_apr
                                             </label>
-                                            <!--<input class="form-control form-control-sm" type="text" placeholder=""
+                                            <!--<input [ngClass]="hashMapError.has('val_fec_apr_date') ? 'form-control pr6 pl6 form-control-sm errorInputElement ' : 'form-control pr6 pl6 form-control-sm '" type="text" placeholder=""
                                                     id="fec_apr" [(ngModel)]="socioModal.fec_apr | date: 'd-M-y'">-->
                                             <div class="input-group">
-                                                <input class="form-control pr6 pl6" placeholder="yyyy-m-dd" name="dp"
+                                                <input
+                                                    [ngClass]="hashMapError.has('val_fec_can_date') ? 'form-control pr6 pl6 form-control-sm errorInputElement ' : 'form-control pr6 pl6 form-control-sm '"
+                                                    placeholder="yyyy-m-dd" name="dp"
                                                     [(ngModel)]="socioModal.fec_apr_date" ngbDatepicker
                                                     #d_fec_apr_date="ngbDatepicker" />
                                                 <button class="btn btn-outline-secondary bi bi-calendar3"
@@ -705,10 +768,12 @@
                                             <label class="col-form-label col-form-label-sm" for="fec_can">
                                                 fec_can
                                             </label>
-                                            <!--<input class="form-control form-control-sm" type="text" placeholder=""
+                                            <!--<input [ngClass]="hashMapError.has('val_fec_can_date') ? 'form-control pr6 pl6 form-control-sm errorInputElement ' : 'form-control pr6 pl6 form-control-sm '" type="text" placeholder=""
                                                     id="fec_can" [(ngModel)]="socioModal.fec_can | date: 'd-M-y'">-->
                                             <div class="input-group">
-                                                <input class="form-control pr6 pl6" placeholder="yyyy-m-dd" name="dp"
+                                                <input
+                                                    [ngClass]="hashMapError.has('val_fec_can_date') ? 'form-control pr6 pl6 form-control-sm errorInputElement ' : 'form-control pr6 pl6 form-control-sm '"
+                                                    placeholder="yyyy-m-dd" name="dp"
                                                     [(ngModel)]="socioModal.fec_can_date" ngbDatepicker
                                                     #d_fec_can_date="ngbDatepicker" />
                                                 <button class="btn btn-outline-secondary bi bi-calendar3"
@@ -722,8 +787,10 @@
                                             <label class="col-form-label col-form-label-sm" for="est_sol">
                                                 est_sol
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="est_sol" [(ngModel)]="socioModal.est_sol">
+                                            <input
+                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="est_sol"
+                                                [(ngModel)]="socioModal.est_sol">
                                             @if(hashMapError.has('')) {
                                             <span class="errorInputText">{{hashMapError.get('')}}</span>
                                             }
@@ -732,8 +799,10 @@
                                             <label class="col-form-label col-form-label-sm" for="sec_cte">
                                                 sec_cte
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="sec_cte" [(ngModel)]="socioModal.sec_cte">
+                                            <input
+                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="sec_cte"
+                                                [(ngModel)]="socioModal.sec_cte">
                                             @if(hashMapError.has('')) {
                                             <span class="errorInputText">{{hashMapError.get('')}}</span>
                                             }
@@ -742,8 +811,9 @@
                                             <label class="col-form-label col-form-label-sm" for="area">
                                                 area
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="area" [(ngModel)]="socioModal.area">
+                                            <input
+                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="area" [(ngModel)]="socioModal.area">
                                             @if(hashMapError.has('')) {
                                             <span class="errorInputText">{{hashMapError.get('')}}</span>
                                             }
@@ -752,8 +822,10 @@
                                             <label class="col-form-label col-form-label-sm" for="sec_imp">
                                                 sec_imp
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="sec_imp" [(ngModel)]="socioModal.sec_imp">
+                                            <input
+                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="sec_imp"
+                                                [(ngModel)]="socioModal.sec_imp">
                                             @if(hashMapError.has('')) {
                                             <span class="errorInputText">{{hashMapError.get('')}}</span>
                                             }
@@ -762,8 +834,10 @@
                                             <label class="col-form-label col-form-label-sm" for="est_reg">
                                                 est_reg
                                             </label>
-                                            <input class="form-control form-control-sm" type="text" placeholder=""
-                                                id="est_reg" [(ngModel)]="socioModal.est_reg">
+                                            <input
+                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="text" placeholder="" id="est_reg"
+                                                [(ngModel)]="socioModal.est_reg">
                                             @if(hashMapError.has('')) {
                                             <span class="errorInputText">{{hashMapError.get('')}}</span>
                                             }
@@ -772,8 +846,10 @@
                                             <label class="col-form-label col-form-label-sm" for="acc_con">
                                                 acc_con
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="acc_con" [(ngModel)]="socioModal.acc_con">
+                                            <input
+                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="acc_con"
+                                                [(ngModel)]="socioModal.acc_con">
                                             @if(hashMapError.has('')) {
                                             <span class="errorInputText">{{hashMapError.get('')}}</span>
                                             }
@@ -782,8 +858,10 @@
                                             <label class="col-form-label col-form-label-sm" for="aju_acc">
                                                 aju_acc
                                             </label>
-                                            <input class="form-control form-control-sm" type="number" placeholder=""
-                                                id="aju_acc" [(ngModel)]="socioModal.aju_acc">
+                                            <input
+                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                type="number" placeholder="" id="aju_acc"
+                                                [(ngModel)]="socioModal.aju_acc">
                                             @if(hashMapError.has('')) {
                                             <span class="errorInputText">{{hashMapError.get('')}}</span>
                                             }
