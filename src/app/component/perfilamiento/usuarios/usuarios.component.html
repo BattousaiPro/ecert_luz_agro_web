@@ -220,7 +220,7 @@
                         <input class="form-control form-control-sm" type="text" placeholder="" id="ctaUserName"
                             [(ngModel)]="userModal.ctaUserName">
                             @if(hashMapError.has('val_ctaUserName')) {
-                            <span class="errorInput">{{hashMapError.get('val_ctaUserName')}}</span>
+                            <span class="errorInputText">{{hashMapError.get('val_ctaUserName')}}</span>
                             }
                     </div>
                     <div class="col-xs-12 col-sm-6">
@@ -228,7 +228,7 @@
                         <input class="form-control form-control-sm" type="email" placeholder="" id="ctaEmail"
                             [(ngModel)]="userModal.ctaEmail">
                             @if(hashMapError.has('val_ctaEmail')) {
-                            <span class="errorInput">{{hashMapError.get('val_ctaEmail')}}</span>
+                            <span class="errorInputText">{{hashMapError.get('val_ctaEmail')}}</span>
                             }
                     </div>
                     <div class="col-xs-12 col-sm-6">
@@ -236,7 +236,7 @@
                         <input class="form-control form-control-sm" type="password" placeholder="" id="Contrasena"
                             [(ngModel)]="userModal.ctaPassWord">
                             @if(hashMapError.has('val_ctaPassWord')) {
-                            <span class="errorInput">{{hashMapError.get('val_ctaPassWord')}}</span>
+                            <span class="errorInputText">{{hashMapError.get('val_ctaPassWord')}}</span>
                             }
                     </div>
                     <div class="col-xs-12 col-sm-6">

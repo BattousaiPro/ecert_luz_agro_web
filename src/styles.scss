@@ -74,15 +74,14 @@ div.emptyReg {
     }
 }
 
-.errorInput {
-    border: 2px dashed #ff0000 !important;
-    width: 100%;
-    display: flex;
+.errorInputText {
     padding-left: 10px;
-    margin-top: 5px;
     font-size: 11px;
     font-style: italic;
     font-weight: bold;
-    border-radius: 15px !important;
     color: #9d0c0c;
+}
+
+.errorInputElement {
+    border: 2px dashed #ff0000 !important;
 }

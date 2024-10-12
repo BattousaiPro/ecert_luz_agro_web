@@ -140,7 +140,7 @@
                         <input class="form-control form-control-sm" type="number" placeholder="" id="name"
                             [(ngModel)]="sectoresModal.codigo" [disabled]="isEdit">
                             @if(hashMapError.has('val_codigo')) {
-                            <span class="errorInput">{{hashMapError.get('val_codigo')}}</span>
+                            <span class="errorInputText">{{hashMapError.get('val_codigo')}}</span>
                             }
                     </div>
                     <div class="col-xs-12 col-sm-6">
@@ -148,7 +148,7 @@
                         <input class="form-control form-control-sm" type="text" placeholder="" id="descrip"
                             [(ngModel)]="sectoresModal.descrip">
                             @if(hashMapError.has('val_descrip')) {
-                            <span class="errorInput">{{hashMapError.get('val_descrip')}}</span>
+                            <span class="errorInputText">{{hashMapError.get('val_descrip')}}</span>
                             }
                     </div>
                     <div class="col-xs-12 col-sm-6">
