@@ -211,27 +211,30 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="name">Nombre</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="name"
-                            [(ngModel)]="rolModal.name">
-                            @if(hashMapError.has('val_name')) {
-                            <span class="errorInputText">{{hashMapError.get('val_name')}}</span>
-                            }
+                        <input
+                            [ngClass]="hashMapError.has('val_name') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                            type="text" placeholder="" id="name" [(ngModel)]="rolModal.name">
+                        @if(hashMapError.has('val_name')) {
+                        <span class="errorInputText">{{hashMapError.get('val_name')}}</span>
+                        }
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="descrip">Descripción</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="descrip"
-                            [(ngModel)]="rolModal.descrip">
-                            @if(hashMapError.has('val_descrip')) {
-                            <span class="errorInputText">{{hashMapError.get('val_descrip')}}</span>
-                            }
+                        <input
+                            [ngClass]="hashMapError.has('val_descrip') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                            type="text" placeholder="" id="descrip" [(ngModel)]="rolModal.descrip">
+                        @if(hashMapError.has('val_descrip')) {
+                        <span class="errorInputText">{{hashMapError.get('val_descrip')}}</span>
+                        }
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="code">Código</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="" id="code"
-                            [(ngModel)]="rolModal.code">
-                            @if(hashMapError.has('val_code')) {
-                            <span class="errorInputText">{{hashMapError.get('val_code')}}</span>
-                            }
+                        <input
+                            [ngClass]="hashMapError.has('val_code') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                            type="text" placeholder="" id="code" [(ngModel)]="rolModal.code">
+                        @if(hashMapError.has('val_code')) {
+                        <span class="errorInputText">{{hashMapError.get('val_code')}}</span>
+                        }
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
