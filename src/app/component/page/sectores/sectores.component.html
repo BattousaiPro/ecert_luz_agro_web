@@ -141,18 +141,18 @@
                             [ngClass]="hashMapError.has('val_codigo') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
                             type="number" placeholder="" id="name" [(ngModel)]="sectoresModal.codigo"
                             [disabled]="isEdit">
-                            @if(hashMapError.has('val_codigo')) {
-                            <span class="errorInputText">{{hashMapError.get('val_codigo')}}</span>
-                            }
+                        @if(hashMapError.has('val_codigo')) {
+                        <span class="errorInputText">{{hashMapError.get('val_codigo')}}</span>
+                        }
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="descrip">Descripción</label>
                         <input
                             [ngClass]="hashMapError.has('val_descrip') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
                             type="text" placeholder="" id="descrip" [(ngModel)]="sectoresModal.descrip">
-                            @if(hashMapError.has('val_descrip')) {
-                            <span class="errorInputText">{{hashMapError.get('val_descrip')}}</span>
-                            }
+                        @if(hashMapError.has('val_descrip')) {
+                        <span class="errorInputText">{{hashMapError.get('val_descrip')}}</span>
+                        }
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <label class="col-form-label col-form-label-sm" for="estado">Estado</label>
