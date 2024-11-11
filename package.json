@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "build-prod": "ng build --configuration production",
     "test": "ng test",
     "serve:ssr:ecert_web": "node dist/ecert_web/server/server.mjs"
   },
@@ -49,5 +50,17 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BattousaiPro/ecert_luz_agro_web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BattousaiPro/ecert_luz_agro_web/issues"
+  },
+  "homepage": "https://github.com/BattousaiPro/ecert_luz_agro_web#readme",
+  "engines": {
+    "node": "v18.13.0",
+    "npm": "8.19.3"
   }
 }
