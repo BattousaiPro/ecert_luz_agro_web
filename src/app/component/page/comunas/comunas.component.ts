@@ -68,12 +68,12 @@ export class ComunasComponent implements OnInit {
           this.comunas.push(...data.data.results);
           this.collectionSize = data.data.totalReg;
         } else {
-          this.modals.success('Algo paso con la obtención de los Sectotes');
+          this.modals.success('Algo paso con la obtención de las Comunas');
         }
         this.cargar = false;
       },
       (err: any) => {
-        this.modals.error('Error con el servicio de Sectotes');
+        this.modals.error('Error con el servicio de Comunas');
         this.cargar = false;
       }
     );
@@ -149,13 +149,13 @@ export class ComunasComponent implements OnInit {
         } else if (data.code === '-4') {
           this.modals.warning(data.message);
         } else {
-          this.modals.error('Error con la respuesta de servicios para crear Sectotes');
+          this.modals.error('Error con la respuesta de servicios para crear Comunas');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de crear Sectotes');
+        this.modals.error('Error con el servicio de crear Comunas');
         this.cargar = false;
       });
   }
@@ -175,13 +175,13 @@ export class ComunasComponent implements OnInit {
           this.modals.success('Comuna Modificado Con Éxito!');
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de actualizar Sectotes');
+          this.modals.error('Error con la respuesta de servicios de actualizar Comuna');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de actualizar Sectotes');
+        this.modals.error('Error con el servicio de actualizar Comuna');
         this.cargar = false;
       });
   }
@@ -196,13 +196,13 @@ export class ComunasComponent implements OnInit {
           this.modals.success('Comuna Eliminado Con Éxito!');
           this.loadCargar();
         } else {
-          this.modals.error('Error con la respuesta de servicios de eliminar Sectotes');
+          this.modals.error('Error con la respuesta de servicios de eliminar Comunas');
         }
         this.cargar = false;
       },
       (err: any) => {
         this.closeModal();
-        this.modals.error('Error con el servicio de eliminar Sectotes');
+        this.modals.error('Error con el servicio de eliminar Comunas');
         this.cargar = false;
       });
   }
