@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Utility } from '../../utils/utility';
@@ -13,12 +13,16 @@ export class RolPermisoService {
   constructor(private http: HttpClient) { }
 
   public setPermisoToRol(idRol: number, listPermisosId: number[]): Observable<any> {
-    let url = this.utility.getBasePath() + '/rol-permiso/' + idRol;
+    let url = this.utility.getBasePathNew() + '/rol-permiso/' + idRol;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
       {
         listPermisosId: listPermisosId
-      }
+      },
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }

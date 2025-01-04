@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Utility } from '../../utils/utility';
@@ -15,56 +15,80 @@ export class KapmaeService {
 
   public new(userData: DataSocioVO): Observable<any> {
     let url = this.utility.getBasePath() + '/kapmae';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
-      userData
+      userData,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public edit(userData: DataSocioVO): Observable<any> {
     let url = this.utility.getBasePath() + '/kapmae';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.patch(
       url,
-      userData
+      userData,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public delete(rut_cop: string, cod_cop: number): Observable<any> {
     let url = this.utility.getBasePath() + '/kapmae/delete';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
       {
         rut_cop: rut_cop,
         cod_cop: cod_cop,
-      }
+      },
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
-  public obtenerByFilter(req: KapmaeRequestVO): Observable<any> {
+  public findByFilter(req: KapmaeRequestVO): Observable<any> {
     let url = this.utility.getBasePath() + '/kapmae/findByFilter';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
-      req
+      req,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public findImgByCodCop(codCop: number): Observable<any> {
     let url = this.utility.getBasePath() + '/kapmae/findImgByCodCop/' + codCop;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.get(
-      url
+      url,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public impromirPdfImagens(imgHabilitados: ReqImg): Observable<any> {
     let url = this.utility.getBasePath() + '/kapmae/getPdfDocumentImg';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
-      imgHabilitados
+      imgHabilitados,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }

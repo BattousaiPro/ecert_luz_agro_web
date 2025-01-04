@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ComunasRequestVO } from '../../utils/modelsVos';
@@ -14,36 +14,51 @@ export class ComunasService {
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<any> {
-    let url = this.utility.getBasePath() + '/comunas';
+    let url = this.utility.getBasePathNew() + '/comuna';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.get(
-      url
+      url,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public obtenerComunById(id: number): Observable<any> {
-    let url = this.utility.getBasePath() + '/comunas/' + id;
+    let url = this.utility.getBasePathNew() + '/comuna/' + id;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.get(
-      url
+      url,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public new(codigo: number, descrip: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePath() + '/comunas';
+    let url = this.utility.getBasePathNew() + '/comuna';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
       {
         codigo,
         descrip,
         estado
-      }
+      },
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public update(id: number, codigo: number, descrip: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePath() + '/comunas/' + id;
+    let url = this.utility.getBasePathNew() + '/comuna/' + id;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     let userData: any = {
       codigo,
       descrip,
@@ -51,24 +66,33 @@ export class ComunasService {
     };
     const ladata: Observable<any> = this.http.patch(
       url,
-      userData
+      userData,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public delete(id: number): Observable<any> {
-    let url = this.utility.getBasePath() + '/comunas/' + id;
+    let url = this.utility.getBasePathNew() + '/comuna/' + id;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.delete(
-      url
+      url,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
-  public obtenerByFilter(req: ComunasRequestVO): Observable<any> {
-    let url = this.utility.getBasePath() + '/comunas/findByFilter';
+  public findByFilter(req: ComunasRequestVO): Observable<any> {
+    let url = this.utility.getBasePathNew() + '/comuna/findByFilter';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
-      req
+      req,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user/user.service';
 import { SpinnerComponent } from '../utilitarios/spinner/spinner.component';
 import { ModalOptions } from '../../utils/modalOptions';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent {
 
   modals = new ModalOptions();
 
-  constructor(private userService: UserService,
+  constructor(private authService: AuthService,
     private router: Router) { }
 
   validarFormulario() {
@@ -39,12 +39,12 @@ export class LoginComponent {
     console.log('Cargando loadCargarRoles');
     this.cargar = true;
     localStorage.removeItem('datatoken');
-    this.userService.login(this.username, this.password).subscribe(
+    this.authService.login(this.username, this.password).subscribe(
       (data: any) => {
         // console.log(JSON.stringify(data));
         if (data.code === '0') {
           localStorage.setItem('datatoken', JSON.stringify(data.data));
-          this.userService.logIn();
+          this.authService.logIn();
           this.router.navigate(['home']);
         } else if (data.code === '-1' || data.code === '-2' || data.code === '-3') {
           console.log(data.message);

@@ -125,16 +125,15 @@ export class KapmaeComponent implements OnInit {
     console.log('Cargando loadCargar');
     this.cargar = true;
     this.req.clear();
-    this.kapmaeService.obtenerByFilter(this.req).subscribe(
+    this.kapmaeService.findByFilter(this.req).subscribe(
       (data: any) => {
         // console.log(JSON.stringify(data));
-        if (data.code === '0'
-          && data.data != null
-          && data.data.results != null) {
+        if (data.body.code === '0'
+          && data.body.data != null
+          && data.body.data.results != null) {
           this.socios = [];
-          this.socios.push(...data.data.results);
-          //this.socios.push(...listaSocios);
-          this.collectionSize = data.data.totalReg;
+          this.socios.push(...data.body.data.results);
+          this.collectionSize = data.body.data.totalReg;
           for (let index = 0; index < this.socios.length; index++) {
             this.socios[index].selected = false;
             this.socios[index].sec_cop_codigo = '';
@@ -157,11 +156,11 @@ export class KapmaeComponent implements OnInit {
     this.cargar = true;
     this.sectorService.getAll().subscribe(
       (data: any) => {
-        if (data.code === '0'
-          && data.data != null) {
+        if (data.body.code === '0'
+          && data.body.data != null) {
           this.closeModal();
           this.sectores = [];
-          this.sectores.push(...data.data);
+          this.sectores.push(...data.body.data);
           this.loadCargarComunas();
         } else {
           this.cargar = false;
@@ -180,11 +179,11 @@ export class KapmaeComponent implements OnInit {
     this.cargar = true;
     this.comunasService.getAll().subscribe(
       (data: any) => {
-        if (data.code === '0'
-          && data.data != null) {
+        if (data.body.code === '0'
+          && data.body.data != null) {
           this.closeModal();
           this.comunas = [];
-          this.comunas.push(...data.data);
+          this.comunas.push(...data.body.data);
         } else {
           this.modals.error('Error con la respuesta de servicios de Comunas');
         }

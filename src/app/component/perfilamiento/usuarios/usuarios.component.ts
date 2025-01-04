@@ -70,15 +70,15 @@ export class UsuariosComponent implements OnInit {
   public loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
-    this.userService.obtenerByFilter(this.req).subscribe(
+    this.userService.findByFilter(this.req).subscribe(
       (data: any) => {
-        if (data.code === '0'
-          && data.data != null
-          && data.data.results != null) {
+        if (data.body.code === '0'
+          && data.body.data != null
+          && data.body.data.results != null) {
           this.closeModal();
           this.usuarios = [];
-          this.usuarios.push(...data.data.results);
-          this.collectionSize = data.data.totalReg;
+          this.usuarios.push(...data.body.data.results);
+          this.collectionSize = data.body.data.totalReg;
           this.passConfirm = '';
           for (let index = 0; index < this.usuarios.length; index++) {
             this.usuarios[index].idSelectedRol = '';
@@ -101,12 +101,12 @@ export class UsuariosComponent implements OnInit {
     this.cargar = true;
     this.rolesService.getAll().subscribe(
       (data: any) => {
-        if (data.code === '0'
-          && data.data != null) {
+        if (data.body.code === '0'
+          && data.body.data != null) {
           this.closeModal();
           //this.roles = [];
-          //this.roles.push(...data.data);
-          this.setOptionValidate(data.data);
+          //this.roles.push(...data.body.data);
+          this.setOptionValidate(data.body.data);
         } else {
           this.modals.info('Algo paso con la obtención de los Roles');
         }

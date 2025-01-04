@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Utility } from '../../utils/utility';
@@ -14,28 +14,39 @@ export class RolesService {
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<any> {
-    let url = this.utility.getBasePath() + '/roles';
+    let url = this.utility.getBasePathNew() + '/rol';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.get(
-      url
+      url,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public new(name: string, descrip: string, code: string): Observable<any> {
-    let url = this.utility.getBasePath() + '/roles';
+    let url = this.utility.getBasePathNew() + '/rol';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
       {
         name,
         descrip,
         code,
-      }
+      },
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public update(id: number, name: string, descrip: string, code: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePath() + '/roles/' + id;
+    let url = this.utility.getBasePathNew() + '/rol/' + id;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     let userData: any = {
       name,
       descrip,
@@ -44,24 +55,33 @@ export class RolesService {
     };
     const ladata: Observable<any> = this.http.patch(
       url,
-      userData
+      userData,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public delete(id: number): Observable<any> {
-    let url = this.utility.getBasePath() + '/roles/' + id;
+    let url = this.utility.getBasePathNew() + '/rol/' + id;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.delete(
-      url
+      url,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
-  public obtenerByFilter(req: RolesRequestVO): Observable<any> {
-    let url = this.utility.getBasePath() + '/roles/findByFilter';
+  public findByFilter(req: RolesRequestVO): Observable<any> {
+    let url = this.utility.getBasePathNew() + '/rol/findByFilter';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
-      req
+      req,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }

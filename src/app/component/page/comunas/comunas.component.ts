@@ -58,15 +58,15 @@ export class ComunasComponent implements OnInit {
   public loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
-    this.comunasService.obtenerByFilter(this.req).subscribe(
+    this.comunasService.findByFilter(this.req).subscribe(
       (data: any) => {
-        if (data.code === '0'
-          && data.data != null
-          && data.data.results != null) {
+        if (data.body.code === '0'
+          && data.body.data != null
+          && data.body.data.results != null) {
           this.closeModal();
           this.comunas = [];
-          this.comunas.push(...data.data.results);
-          this.collectionSize = data.data.totalReg;
+          this.comunas.push(...data.body.data.results);
+          this.collectionSize = data.body.data.totalReg;
         } else {
           this.modals.success('Algo paso con la obtención de las Comunas');
         }

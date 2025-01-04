@@ -12,24 +12,24 @@ import { Utility } from '../../utils/utility';
 export class HomeComponent implements OnInit {
 
   public utility = new Utility;
-  isPermisoSocio: boolean = false;
-  isPermisoFicha: boolean = false;
-  isPermisoSector: boolean = false;
-  isPermisoComuna: boolean = false;
-  isPermisoUser: boolean = false;
-  isPermisoRol: boolean = false;
-  isPermisoPermiso: boolean = false;
+  isSocio: boolean = false;
+  isFicha: boolean = false;
+  isSector: boolean = false;
+  isComuna: boolean = false;
+  isUser: boolean = false;
+  isRol: boolean = false;
+  isPermiso: boolean = false;
 
   constructor() { }
 
   setPermiso(): void {
-    this.isPermisoSocio = this.utility.consultar('LUZ_AGRO_MENU_SOCIO');
-    this.isPermisoFicha = this.utility.consultar('LUZ_AGRO_MENU_FICHA');
-    this.isPermisoSector = this.utility.consultar('LUZ_AGRO_MENU_SECTOR');
-    this.isPermisoComuna = this.utility.consultar('LUZ_AGRO_MENU_COMUNA');
-    this.isPermisoUser = this.utility.consultar('LUZ_AGRO_MENU_USUARIO');
-    this.isPermisoRol = this.utility.consultar('LUZ_AGRO_MENU_ROL');
-    this.isPermisoPermiso = this.utility.consultar('LUZ_AGRO_MENU_PERMISO');
+    this.isSocio = this.utility.consultar('LUZ_AGRO_MENU_SOCIO');
+    this.isFicha = this.utility.consultar('LUZ_AGRO_MENU_FICHA');
+    this.isSector = this.utility.consultar('LUZ_AGRO_MENU_SECTOR');
+    this.isComuna = this.utility.consultar('LUZ_AGRO_MENU_COMUNA');
+    this.isUser = this.utility.consultar('LUZ_AGRO_MENU_USUARIO');
+    this.isRol = this.utility.consultar('LUZ_AGRO_MENU_ROL');
+    this.isPermiso = this.utility.consultar('LUZ_AGRO_MENU_PERMISO');
   }
 
   ngOnInit(): void {

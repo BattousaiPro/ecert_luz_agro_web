@@ -58,15 +58,15 @@ export class SectoresComponent implements OnInit {
   public loadCargar(): void {
     console.log('Cargando loadCargar');
     this.cargar = true;
-    this.sectorService.obtenerByFilter(this.req).subscribe(
+    this.sectorService.findByFilter(this.req).subscribe(
       (data: any) => {
-        if (data.code === '0'
-          && data.data != null
-          && data.data.results != null) {
+        if (data.body.code === '0'
+          && data.body.data != null
+          && data.body.data.results != null) {
           this.closeModal();
           this.sectores = [];
-          this.sectores.push(...data.data.results);
-          this.collectionSize = data.data.totalReg;
+          this.sectores.push(...data.body.data.results);
+          this.collectionSize = data.body.data.totalReg;
         } else {
           this.modals.success('Algo paso con la obtención de los Sectotes');
         }

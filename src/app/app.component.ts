@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { SidebarComponent } from './component/utilitarios/sidebar/sidebar.component';
 import { Utility } from './utils/utility';
 import { Router } from '@angular/router';
-import { UserService } from './services/user/user.service';
 import { ModalOptions } from './utils/modalOptions';
+import { AuthService } from './services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, SidebarComponent, RouterModule],
+  imports: [RouterOutlet, CommonModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -23,12 +22,12 @@ export class AppComponent {
   modals = new ModalOptions();
 
   constructor(private router: Router,
-    public userService: UserService) { }
+    public authService: AuthService) { }
 
   async setPermiso(): Promise<void> {
     this.isPermisoSidebar = this.utility.verificarToken();
     console.log('this.isPermisoSidebar: ' + this.isPermisoSidebar);
-    await this.userService.isLogged.subscribe(
+    await this.authService.isLogged.subscribe(
       (data: any) => {
         if (!data) {
           //this.modals.warning('Se ha perdido la sesión');
@@ -46,7 +45,7 @@ export class AppComponent {
 
   logput() {
     localStorage.removeItem('datatoken');
-    this.userService.logOut();
+    this.authService.logOut();
     this.isPermisoSidebar = false;
     this.router.navigate(['']);
   }

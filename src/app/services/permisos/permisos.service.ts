@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Utility } from '../../utils/utility';
@@ -14,15 +14,22 @@ export class PermisosService {
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<any> {
-    let url = this.utility.getBasePath() + '/permisos';
+    let url = this.utility.getBasePathNew() + '/permiso';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.get(
-      url
+      url,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public new(name: string, descrip: string, code: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePath() + '/permisos';
+    let url = this.utility.getBasePathNew() + '/permiso';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
       {
@@ -30,13 +37,17 @@ export class PermisosService {
         descrip,
         code,
         estado
-      }
+      },
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public update(id: number, name: string, descrip: string, code: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePath() + '/permisos/' + id;
+    let url = this.utility.getBasePathNew() + '/permiso/' + id;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     let userData: any = {
       name,
       descrip,
@@ -45,24 +56,33 @@ export class PermisosService {
     };
     const ladata: Observable<any> = this.http.patch(
       url,
-      userData
+      userData,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public delete(id: number): Observable<any> {
-    let url = this.utility.getBasePath() + '/permisos/' + id;
+    let url = this.utility.getBasePathNew() + '/permiso/' + id;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.delete(
-      url
+      url,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
-  public obtenerByFilter(req: PermisosRequestVO): Observable<any> {
-    let url = this.utility.getBasePath() + '/permisos/findByFilter';
+  public findByFilter(req: PermisosRequestVO): Observable<any> {
+    let url = this.utility.getBasePathNew() + '/permiso/findByFilter';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
-      req
+      req,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }

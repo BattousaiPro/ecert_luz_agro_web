@@ -7,7 +7,7 @@
         <div class="row styoleBorder">
             <div class="col-12">
                 <div class="row">
-                    @if (isPermisoSocio) {
+                    @if (isSocio) {
                     <div class="col-xs-12 col-md-3">
                         <button [routerLink]="['/kapmae']" type="text" class="btn btn-primary mb10 formatCard">
                             <i class="bi bi-gear-wide-connected formatCardIcon"></i>
@@ -16,7 +16,7 @@
                     </div>
                     }
 
-                    @if (isPermisoFicha) {
+                    @if (isFicha) {
                     <div class="col-xs-12 col-md-3">
                         <button [routerLink]="['/fichas/socios']" type="text" class="btn btn-primary mb10 formatCard">
                             <i class="bi bi-filetype-pdf formatCardIcon"></i>
@@ -25,45 +25,45 @@
                     </div>
                     }
 
-                    @if (isPermisoSector) {
+                    @if (isSector) {
                     <div class="col-xs-12 col-md-3">
-                        <button [routerLink]="['/sectores']" type="text" class="btn btn-primary mb10 formatCard">
+                        <button [routerLink]="['/sector']" type="text" class="btn btn-primary mb10 formatCard">
                             <!--<i class="bi bi-gear-wide-connected formatCardIcon"></i>-->
                             Sectores
                         </button>
                     </div>
                     }
 
-                    @if (isPermisoComuna) {
+                    @if (isComuna) {
                     <div class="col-xs-12 col-md-3">
-                        <button [routerLink]="['/comunas']" type="text" class="btn btn-primary mb10 formatCard">
+                        <button [routerLink]="['/comuna']" type="text" class="btn btn-primary mb10 formatCard">
                             <!--<i class="bi bi-filetype-pdf formatCardIcon"></i>-->
                             Comunas
                         </button>
                     </div>
                     }
 
-                    @if (isPermisoUser) {
+                    @if (isUser) {
                     <div class="col-xs-12 col-md-4">
-                        <button [routerLink]="['/usuarios']" type="text" class="btn btn-primary mb10 formatCard">
+                        <button [routerLink]="['/user']" type="text" class="btn btn-primary mb10 formatCard">
                             <i class="bi bi-person-up formatCardIcon"></i>
                             Usuarios
                         </button>
                     </div>
                     }
 
-                    @if (isPermisoRol) {
+                    @if (isRol) {
                     <div class="col-xs-12 col-md-4">
-                        <button [routerLink]="['/roles']" type="text" class="btn btn-primary mb10 formatCard">
+                        <button [routerLink]="['/rol']" type="text" class="btn btn-primary mb10 formatCard">
                             <i class="bi bi-person-rolodex formatCardIcon"></i>
                             Roles
                         </button>
                     </div>
                     }
 
-                    @if (isPermisoPermiso) {
+                    @if (isPermiso) {
                     <div class="col-xs-12 col-md-4">
-                        <button [routerLink]="['/permisos']" type="text" class="btn btn-primary mb10 formatCard">
+                        <button [routerLink]="['/permiso']" type="text" class="btn btn-primary mb10 formatCard">
                             <i class="bi bi-shield-lock formatCardIcon"></i>
                             Permisos
                         </button>
@@ -71,9 +71,9 @@
                     }
 
                     @if (
-                    !isPermisoSocio && !isPermisoFicha && !isPermisoSector &&
-                    !isPermisoComuna && !isPermisoUser && !isPermisoRol &&
-                    !isPermisoPermiso
+                    !isSocio && !isFicha && !isSector &&
+                    !isComuna && !isUser && !isRol &&
+                    !isPermiso
                     ) {
                     <div class="col-xs-12 col-md-12 emptyReg">
                         <label>

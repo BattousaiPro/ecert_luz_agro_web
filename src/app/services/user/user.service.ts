@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -13,52 +13,43 @@ const helper = new JwtHelperService();
 export class UserService {
 
   public utility = new Utility;
-  private loggedin = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) {
-    this.checkToken();
-  }
-
-  get isLogged(): Observable<boolean> {
-    return this.loggedin.asObservable();
-  }
+  constructor(private http: HttpClient) { }
 
   public getAll(): Observable<any> {
-    let url = this.utility.getBasePath() + '/users';
+    let url = this.utility.getBasePathNew() + '/user';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.get(
-      url
-    );
-    return ladata;
-  }
-
-  public login(username: string, password: string): Observable<any> {
-    let url = this.utility.getBasePath() + '/auth/login';
-    let userData: any = {
-      ctaUserName: username,
-      ctaPassWord: password
-    };
-    const ladata: Observable<any> = this.http.post(
       url,
-      userData
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public new(ctaUserName: string, ctaPassWord: string, ctaEmail: string): Observable<any> {
-    let url = this.utility.getBasePath() + '/users';
+    let url = this.utility.getBasePathNew() + '/user';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
       {
         ctaUserName,
         ctaPassWord,
         ctaEmail
-      }
+      },
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public update(id: number, ctaUserName: string, ctaPassWord: string, ctaEmail: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePath() + '/users/' + id;
+    let url = this.utility.getBasePathNew() + '/user/' + id;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     let userData: any = {
       ctaUserName,
       ctaPassWord,
@@ -67,40 +58,35 @@ export class UserService {
     };
     const ladata: Observable<any> = this.http.patch(
       url,
-      userData
+      userData,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
   public delete(id: number): Observable<any> {
-    let url = this.utility.getBasePath() + '/users/' + id;
+    let url = this.utility.getBasePathNew() + '/user/' + id;
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.delete(
-      url
+      url,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
   }
 
-  public obtenerByFilter(req: UsuariosRequestVO): Observable<any> {
-    let url = this.utility.getBasePath() + '/users/findByFilter';
+  public findByFilter(req: UsuariosRequestVO): Observable<any> {
+    let url = this.utility.getBasePathNew() + '/user/findByFilter';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
     const ladata: Observable<any> = this.http.post(
       url,
-      req
+      req,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
     );
     return ladata;
-  }
-
-  public logIn(): void {
-    this.loggedin.next(true);
-  }
-
-  public logOut(): void {
-    this.loggedin.next(false);
-  }
-
-  checkToken(): void {
-    const token = this.utility.validateToken();
-    const iExpired = helper.isTokenExpired(token);
-    iExpired ? this.logOut() : this.loggedin.next(true);;
   }
 
 }
