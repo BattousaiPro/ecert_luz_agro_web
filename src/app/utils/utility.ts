@@ -1,10 +1,11 @@
 export class Utility {
 
     public datatoken?: any;
-    private basePath?: string = 'http://localhost:3000';
-    private basePathNew?: string = 'http://localhost:3000';
+    //private basePath?: string = 'http://localhost:3000';
+    //private basePathNew?: string = 'http://localhost:3000';
     //private basePathNew?: string = 'http://localhost:3500/api/v1';
-    //private basePath?: string = 'https://ecert-luz-agro-services.onrender.com';
+    private basePath?: string = 'https://ecert-luz-agro-services.onrender.com';
+    private basePathNew?: string = 'https://ecert-luz-agro-services.onrender.com';
 
     constructor() { }
 
