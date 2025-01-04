@@ -371,7 +371,7 @@ export class UsuariosComponent implements OnInit {
     this.cargar = true;
     this.userRolService.setRolToUser(userId, rolIds).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           setTimeout(() => {
             this.loadCargar();
           }, 10);

@@ -337,7 +337,7 @@ export class RolesComponent implements OnInit {
     this.cargar = true;
     this.rolPermisoService.setPermisoToRol(rolId, permisoIds).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           setTimeout(() => {
             this.loadCargar();
           }, 10);
