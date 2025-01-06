@@ -1,7 +1,9 @@
+import { environment } from "../../environments/environment.development";
+
 export class Utility {
 
     public datatoken?: any;
-    private basePath?: string = process.env['URL_SERVER_BACK'] || 'http://localhost:3000';
+    private basePath?: string = environment.URL_SERVER_BACK;
 
     constructor() { }
 
