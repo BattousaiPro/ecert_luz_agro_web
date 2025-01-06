@@ -28,7 +28,7 @@ export class Utility {
     }
 
     public verificarToken(): boolean {
-        console.log('verificarToken');
+        // console.log('verificarToken');
         try {
             if (typeof localStorage !== 'undefined' && localStorage !== null) {
                 let itemStorage = localStorage.getItem('datatoken');

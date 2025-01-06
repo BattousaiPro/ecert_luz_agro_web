@@ -26,7 +26,7 @@ export class AppComponent {
 
   async setPermiso(): Promise<void> {
     this.isPermisoSidebar = this.utility.verificarToken();
-    console.log('this.isPermisoSidebar: ' + this.isPermisoSidebar);
+    //  console.log('this.isPermisoSidebar: ' + this.isPermisoSidebar);
     await this.authService.isLogged.subscribe(
       (data: any) => {
         if (!data) {

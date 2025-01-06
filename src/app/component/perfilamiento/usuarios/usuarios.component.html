@@ -73,24 +73,24 @@
                             </td>
                             <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
                                 @if (isPermisoEdit) {
-                                <button type="button" class="btn btn-primary"
+                                <button type="button" class="btn btn-primary mt-1"
                                     (click)="editarModal(myModalContent, user)">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                                 }
                                 @if (isPermisoDelete) {
-                                <button type="button" class="btn btn-primary"
+                                <button type="button" class="btn btn-primary mt-1"
                                     (click)="deleteModal(myModalContentDelete, user)">
                                     <i class="bi bi-trash3"></i>
                                 </button>
                                 }
                                 @if (isPermisoAddRol) {
                                 @if (user.addUser) {
-                                <button type="button" class="btn btn-primary" (click)="setRoles(index)">
+                                <button type="button" class="btn btn-primary mt-1" (click)="setRoles(index)">
                                     <i class="bi bi-plus-square"></i>
                                 </button>
                                 } @else {
-                                <button type="button" class="btn btn-primary" (click)="setRoles(index)">
+                                <button type="button" class="btn btn-primary mt-1" (click)="setRoles(index)">
                                     <i class="bi bi-plus-square-fill"></i>
                                 </button>
                                 }
@@ -107,16 +107,16 @@
                                         <div class="row">
                                             @for (rol of user.rolesDisponibeles; track rol.id; let index = $index) {
                                             @if (!rol.showAtributeOption){
-                                            <div class="col-4">
+                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                                                 <div class="row mt15">
-                                                    <div class="col-2">
+                                                    <div class="col-3">
                                                         <button type="button" class="btn btn-primary"
                                                             (click)="deleteRoles(user.id, rol.id)">
                                                             <i class="bi bi-trash3"></i>
                                                         </button>
                                                     </div>
-                                                    <div class="col-10">
-                                                        [{{ rol.id }}] - {{ rol.name }} - {{ rol.code }}
+                                                    <div class="col-9" title="{{ rol.code }}">
+                                                        [{{ rol.id }}] - {{ rol.name }}
                                                     </div>
                                                 </div>
                                             </div>
