@@ -92,14 +92,14 @@ export class KapmaeComponent implements OnInit {
     this.kapmaeService.findImgByCodCop(codCop).subscribe(
       (data: any) => {
         // console.log(JSON.stringify(data));
-        if (data.code === '0'
-          && data.data != null) {
+        if (data.body.code === '0'
+          && data.body.data != null) {
           this.showBoton = false;
           this.docsImg.imagenes = [];
-          if (typeof data.data.imgs !== 'undefined') {
-            for (let index = 0; index < data.data.imgs.length; index++) {
+          if (typeof data.body.data.imgs !== 'undefined') {
+            for (let index = 0; index < data.body.data.imgs.length; index++) {
               let img: ImgListaVO = new ImgListaVO();
-              img.imagen = data.data.imgs[index];
+              img.imagen = data.body.data.imgs[index];
               img.estado = false;
               this.docsImg.imagenes.push(img);
             }
@@ -107,7 +107,7 @@ export class KapmaeComponent implements OnInit {
               this.showBoton = true;
             }
             this.docsImg.imagenes.sort();
-            this.docsImg.basePath = data.data.basepath;
+            this.docsImg.basePath = data.body.data.basepath;
           }
           this.openModalFunction(content);
         } else {
@@ -272,10 +272,10 @@ export class KapmaeComponent implements OnInit {
     this.cargar = true;
     this.kapmaeService.impromirPdfImagens(imgHabilitados).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           let dat = new Date();
           let fileName = 'imagenes_' + cod_cop + '_';
-          const linkSource = 'data:application/pdf;base64,' + data.data;
+          const linkSource = 'data:application/pdf;base64,' + data.body.data;
 
           const downloadLink = document.createElement('a');
           downloadLink.href = linkSource;
@@ -319,11 +319,11 @@ export class KapmaeComponent implements OnInit {
     this.cargar = true;
     this.kapmaeService.new(this.socioModal).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Socio Creado Con Éxito!');
           this.loadCargar();
-        } else if (data.code === '-4') {
+        } else if (data.body.code === '-4') {
           this.modals.error('Socio ya existe (Rut Socio y Código Luzagro)');
         } else {
           this.modals.error('Error con la respuesta de servicios de agregar Socio');
@@ -342,11 +342,11 @@ export class KapmaeComponent implements OnInit {
     this.cargar = true;
     this.kapmaeService.edit(this.socioModal).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Socio Modificado Con Éxito!');
           this.loadCargar();
-        } else if (data.code === '-3') {
+        } else if (data.body.code === '-3') {
           this.modals.error('Socio no existe (Rut Socio y Código Luzagro)');
         } else {
           this.modals.error('Error con la respuesta de servicios de editar Socio');
@@ -365,7 +365,7 @@ export class KapmaeComponent implements OnInit {
     this.cargar = true;
     this.kapmaeService.delete(this.socioDeleteModal.rut_cop, this.socioDeleteModal.cod_cop).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Socio Eliminado Con Éxito!');
           this.loadCargar();

@@ -13,7 +13,7 @@ export class RolPermisoService {
   constructor(private http: HttpClient) { }
 
   public setPermisoToRol(idRol: number, listPermisosId: number[]): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/rol-permiso/' + idRol;
+    let url = this.utility.getBasePath() + '/rol-permiso/' + idRol;
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;

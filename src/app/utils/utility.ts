@@ -1,11 +1,7 @@
 export class Utility {
 
     public datatoken?: any;
-    //private basePath?: string = 'http://localhost:3000';
-    //private basePathNew?: string = 'http://localhost:3000';
-    //private basePathNew?: string = 'http://localhost:3500/api/v1';
-    private basePath?: string = 'https://ecert-luz-agro-services.onrender.com';
-    private basePathNew?: string = 'https://ecert-luz-agro-services.onrender.com';
+    private basePath?: string = process.env['URL_SERVER_BACK'] || 'http://localhost:3000';
 
     constructor() { }
 
@@ -74,14 +70,6 @@ export class Utility {
 
     public getBasePath() {
         return this.basePath;
-    }
-
-    public setBasePathNew(basePathNew: string) {
-        this.basePathNew = basePathNew;
-    }
-
-    public getBasePathNew() {
-        return this.basePathNew;
     }
 
 }

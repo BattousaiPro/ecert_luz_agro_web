@@ -17,7 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/user';
+    let url = this.utility.getBasePath() + '/user';
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -29,7 +29,7 @@ export class UserService {
   }
 
   public new(ctaUserName: string, ctaPassWord: string, ctaEmail: string): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/user';
+    let url = this.utility.getBasePath() + '/user';
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -46,7 +46,7 @@ export class UserService {
   }
 
   public update(id: number, ctaUserName: string, ctaPassWord: string, ctaEmail: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/user/' + id;
+    let url = this.utility.getBasePath() + '/user/' + id;
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -65,7 +65,7 @@ export class UserService {
   }
 
   public delete(id: number): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/user/' + id;
+    let url = this.utility.getBasePath() + '/user/' + id;
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -77,7 +77,7 @@ export class UserService {
   }
 
   public findByFilter(req: UsuariosRequestVO): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/user/findByFilter';
+    let url = this.utility.getBasePath() + '/user/findByFilter';
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;

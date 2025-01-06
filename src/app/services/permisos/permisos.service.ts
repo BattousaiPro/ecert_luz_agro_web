@@ -14,7 +14,7 @@ export class PermisosService {
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/permiso';
+    let url = this.utility.getBasePath() + '/permiso';
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -26,7 +26,7 @@ export class PermisosService {
   }
 
   public new(name: string, descrip: string, code: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/permiso';
+    let url = this.utility.getBasePath() + '/permiso';
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -44,7 +44,7 @@ export class PermisosService {
   }
 
   public update(id: number, name: string, descrip: string, code: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/permiso/' + id;
+    let url = this.utility.getBasePath() + '/permiso/' + id;
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -63,7 +63,7 @@ export class PermisosService {
   }
 
   public delete(id: number): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/permiso/' + id;
+    let url = this.utility.getBasePath() + '/permiso/' + id;
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -75,7 +75,7 @@ export class PermisosService {
   }
 
   public findByFilter(req: PermisosRequestVO): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/permiso/findByFilter';
+    let url = this.utility.getBasePath() + '/permiso/findByFilter';
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;

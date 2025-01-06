@@ -224,12 +224,12 @@ export class RolesComponent implements OnInit {
       this.rolModal.code
     ).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Rol Creado Con Éxito!');
           this.loadCargar();
-        } else if (data.code === '-2') {
-          this.modals.warning(data.message);
+        } else if (data.body.code === '-2') {
+          this.modals.warning(data.body.message);
         } else {
           this.modals.error('Error con la respuesta de servicios para crear Roles');
         }
@@ -253,7 +253,7 @@ export class RolesComponent implements OnInit {
       this.rolModal.estado,
     ).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Rol Modificado Con Éxito!');
           this.loadCargar();

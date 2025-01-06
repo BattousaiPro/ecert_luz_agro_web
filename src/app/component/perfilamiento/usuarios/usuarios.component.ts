@@ -250,12 +250,12 @@ export class UsuariosComponent implements OnInit {
       this.userModal.ctaEmail
     ).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Usuario Creado Con Éxito!');
           this.loadCargar();
-        } else if (data.code === '-2') {
-          this.modals.warning(data.message);
+        } else if (data.body.code === '-2') {
+          this.modals.warning(data.body.message);
         } else {
           this.modals.error('Error con la respuesta de servicios para crear Usuarios');
         }
@@ -283,7 +283,7 @@ export class UsuariosComponent implements OnInit {
       this.userModal.estado
     ).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           if (passSend !== '') {
             this.modals.success('Usuario Modificado y Contraseña Con Éxito!');
@@ -308,7 +308,7 @@ export class UsuariosComponent implements OnInit {
     this.cargar = true;
     this.userService.delete(this.userDeleteModal.id).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Usuario Eliminado Con Éxito!');
           this.loadCargar();

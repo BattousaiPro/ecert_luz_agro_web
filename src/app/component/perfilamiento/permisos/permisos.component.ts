@@ -148,12 +148,12 @@ export class PermisosComponent implements OnInit {
       this.permisosModal.estado
     ).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Permiso Creado Con Éxito!');
           this.loadCargar();
-        } else if (data.code === '-2') {
-          this.modals.warning(data.message);
+        } else if (data.body.code === '-2') {
+          this.modals.warning(data.body.message);
         } else {
           this.modals.error('Error con la respuesta de servicios de crear Permisos');
         }
@@ -177,7 +177,7 @@ export class PermisosComponent implements OnInit {
       this.permisosModal.estado
     ).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Permiso Modificado Con Éxito!');
           this.loadCargar();
@@ -198,7 +198,7 @@ export class PermisosComponent implements OnInit {
     this.cargar = true;
     this.permisosService.delete(this.permisosModal.id).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Permiso Eliminado Con Éxito!');
           this.loadCargar();

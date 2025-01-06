@@ -13,7 +13,7 @@ export class UserRolService {
   constructor(private http: HttpClient) { }
 
   public setRolToUser(idUser: number, listRolesId: number[]): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/user-rol/' + idUser;
+    let url = this.utility.getBasePath() + '/user-rol/' + idUser;
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;

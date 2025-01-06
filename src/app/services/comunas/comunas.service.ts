@@ -14,7 +14,7 @@ export class ComunasService {
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/comuna';
+    let url = this.utility.getBasePath() + '/comuna';
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -26,7 +26,7 @@ export class ComunasService {
   }
 
   public obtenerComunById(id: number): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/comuna/' + id;
+    let url = this.utility.getBasePath() + '/comuna/' + id;
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -38,7 +38,7 @@ export class ComunasService {
   }
 
   public new(codigo: number, descrip: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/comuna';
+    let url = this.utility.getBasePath() + '/comuna';
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -55,7 +55,7 @@ export class ComunasService {
   }
 
   public update(id: number, codigo: number, descrip: string, estado: boolean): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/comuna/' + id;
+    let url = this.utility.getBasePath() + '/comuna/' + id;
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -73,7 +73,7 @@ export class ComunasService {
   }
 
   public delete(id: number): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/comuna/' + id;
+    let url = this.utility.getBasePath() + '/comuna/' + id;
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;
@@ -85,7 +85,7 @@ export class ComunasService {
   }
 
   public findByFilter(req: ComunasRequestVO): Observable<any> {
-    let url = this.utility.getBasePathNew() + '/comuna/findByFilter';
+    let url = this.utility.getBasePath() + '/comuna/findByFilter';
     let user = JSON.parse(localStorage.getItem('datatoken')!);
     let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
     headerParam.Authorization = 'Bearer ' + user.token;

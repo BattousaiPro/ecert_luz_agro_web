@@ -45,11 +45,11 @@ export class FichasSociosComponent implements OnInit {
     this.cargar = true;
     this.fichaService.getnios().subscribe(
       (data: any) => {
-        // console.log(JSON.stringify(data));
-        if (data.code === '0'
-          && data.data != null) {
+        // console.log(JSON.stringify(data.body));
+        if (data.body.code === '0'
+          && data.body.data != null) {
           this.anioList = [];
-          this.anioList.push(...data.data);
+          this.anioList.push(...data.body.data);
         } else {
           this.modals.error('Error con el servicio de obtener años');
         }

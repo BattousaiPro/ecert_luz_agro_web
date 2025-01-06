@@ -142,12 +142,12 @@ export class ComunasComponent implements OnInit {
       this.comunasModal.estado
     ).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Comuna Creado Con Éxito!');
           this.loadCargar();
-        } else if (data.code === '-4') {
-          this.modals.warning(data.message);
+        } else if (data.body.code === '-4') {
+          this.modals.warning(data.body.message);
         } else {
           this.modals.error('Error con la respuesta de servicios para crear Comunas');
         }
@@ -170,7 +170,7 @@ export class ComunasComponent implements OnInit {
       this.comunasModal.estado
     ).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Comuna Modificado Con Éxito!');
           this.loadCargar();
@@ -191,7 +191,7 @@ export class ComunasComponent implements OnInit {
     this.cargar = true;
     this.comunasService.delete(this.comunasModal.codigo).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Comuna Eliminado Con Éxito!');
           this.loadCargar();
