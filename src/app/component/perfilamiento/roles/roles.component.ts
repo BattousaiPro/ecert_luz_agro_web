@@ -274,7 +274,7 @@ export class RolesComponent implements OnInit {
     this.cargar = true;
     this.rolesService.delete(this.rolDeleteModal.id).subscribe(
       (data: any) => {
-        if (data.code === '0') {
+        if (data.body.code === '0') {
           this.closeModal();
           this.modals.success('Rol Eliminado Con Éxito!');
           this.loadCargar();
