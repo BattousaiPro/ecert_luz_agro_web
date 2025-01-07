@@ -44,7 +44,7 @@
                     <tr>
                         <th scope="col" class="mw-160">
                             <div><input type="text" class="form-control w100 mb10" placeholder="Nombre"
-                                    (blur)="loadCargar()" [(ngModel)]="req.name"></div>
+                                    (blur)="loadCargar()" [(ngModel)]="req.name" (keydown.enter)="loadCargar()"></div>
                         </th>
                         <th scope="col" class="mw-60"></th>
                         <th scope="col" class="mw-60"></th>

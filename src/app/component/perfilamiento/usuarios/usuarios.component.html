@@ -46,11 +46,11 @@
                         <tr>
                             <th scope="col" class="mw-160">
                                 <div><input type="text" class="form-control w100 mb10" placeholder="Nombre"
-                                        (blur)="loadCargar()" [(ngModel)]="req.ctaUserName"></div>
+                                        (blur)="loadCargar()" [(ngModel)]="req.ctaUserName" (keydown.enter)="loadCargar()"></div>
                             </th>
                             <th scope="col" class="mw-60">
                                 <div><input type="text" class="form-control w100 mb10" placeholder="Email"
-                                        (blur)="loadCargar()" [(ngModel)]="req.ctaEmail"></div>
+                                        (blur)="loadCargar()" [(ngModel)]="req.ctaEmail" (keydown.enter)="loadCargar()"></div>
                             </th>
                             <th scope="col" class="mw-60"></th>
                             <th scope="col" class="mw-60"></th>
