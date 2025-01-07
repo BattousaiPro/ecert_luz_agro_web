@@ -73,12 +73,12 @@
                         </td>
                         <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
                             @if (isPermisoEdit) {
-                            <button type="button" class="btn btn-primary" (click)="editarModal(myModalContent, comuna)">
+                            <button type="button" class="btn btn-primary mt-1" (click)="editarModal(myModalContent, comuna)">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                             }
                             @if (isPermisoDelete) {
-                            <button type="button" class="btn btn-primary"
+                            <button type="button" class="btn btn-primary mt-1"
                                 (click)="deleteModal(myModalContentDelete, comuna)">
                                 <i class="bi bi-trash3"></i>
                             </button>
