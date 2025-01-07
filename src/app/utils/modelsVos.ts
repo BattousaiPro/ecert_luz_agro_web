@@ -208,6 +208,7 @@ export class KapmaeRequestVO {
     this.nombres = '';
     this.ape_pat = '';
     this.ape_mat = '';
+    this.cod_cop = 7009;
     this.pageSize = 1;
     this.limit = 10;
   }
