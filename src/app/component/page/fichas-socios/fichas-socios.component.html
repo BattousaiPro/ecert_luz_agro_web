@@ -26,7 +26,7 @@
                         </select>
                     </div>
                     <div class="col-xs-12 col-md-6 col-xl-3">
-                        <input type="number" (keypress)="inpNum($event)" (blur)='buscarByNroPagina()' class="w100 mb10"
+                        <input type="number" (keypress)="inpNum($event)" (keydown.enter)='buscarByNroPagina()' class="w100 mb10"
                             [(ngModel)]="nroPagina" placeholder="Nro Pagina" required>
                     </div>
                 </div>
