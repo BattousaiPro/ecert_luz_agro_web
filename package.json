@@ -61,7 +61,7 @@
   },
   "homepage": "https://github.com/BattousaiPro/ecert_luz_agro_web#readme",
   "engines": {
-    "node": "v18.13.0",
-    "npm": "8.19.3"
+    "node": "v18.19.0",
+    "npm": "10.2.3"
   }
 }
