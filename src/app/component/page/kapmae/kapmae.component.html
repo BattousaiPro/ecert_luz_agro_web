@@ -269,6 +269,10 @@
     </div>
 
     <ng-template #myModalContent let-modal>
+        <div class="modal-header">
+            <h2 class="modal-title">Detalle Socio</h2>
+            <button type="button" class="btn-close" (click)="modal.dismiss( 'Cross click')"></button>
+        </div>
         <app-detail-socio [socio]="socioModal"></app-detail-socio>
     </ng-template>
 
