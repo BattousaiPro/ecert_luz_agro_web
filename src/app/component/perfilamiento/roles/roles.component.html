@@ -42,7 +42,7 @@
             <table class="table table-striped table-hover table-rol fz15">
                 <thead>
                     <tr>
-                        <th scope="col" class="mw-60"></th>
+                        <th scope="col" class="mw-60 sticky"></th>
                         <th scope="col" class="mw-160">
                             <div><input type="text" class="form-control w100 mb10" placeholder="Nombre"
                                     (keydown.enter)="loadCargar()" [(ngModel)]="req.name"></div>
@@ -52,7 +52,7 @@
                         <th scope="col" class="mw-60"></th>
                     </tr>
                     <tr>
-                        <th scope="col" class="mw-60">Acciones</th>
+                        <th scope="col" class="mw-60 sticky">Acciones</th>
                         <th scope="col" class="mw-60">Nombre</th>
                         <th scope="col" class="mw-60">Descripción</th>
                         <th scope="col" class="mw-60">Código</th>
@@ -62,7 +62,7 @@
                 <tbody>
                     @for (rol of roles; track rol.id; let index = $index) {
                     <tr>
-                        <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
+                        <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;" class="sticky">
                             @if (isPermisoEdit) {
                             <button type="button" class="btn btn-primary mt-1" (click)="editarModal(myModalContent, rol)">
                                 <i class="bi bi-pencil-square"></i>

@@ -30,6 +30,18 @@ label {
     padding-left: 12px;
 }
 
+.detail-table-rol {
+    max-width: 100%;
+    overflow-x: scroll;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+}
+
+.table-rol .sticky {
+    position: sticky;
+    left: 0;
+}
+
 label.error {
     color: red;
 }
