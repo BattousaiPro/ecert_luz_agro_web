@@ -12,14 +12,32 @@
     --bs-table-color: white;
 }
 
-.table-permiso th.mw-60,
-.table-permiso td.mw-60 {
-    min-width: 60px;
+@media (max-width: 575px) {
+    .action {
+        min-width: 70px;
+    }
 }
 
-.table-permiso th.mw-160,
-.table-permiso td.mw-160 {
-    min-width: 160px;
+@media (min-width: 576px) {
+    .action {
+        min-width: 120px;
+    }
+}
+
+.name {
+    min-width: 280px;
+}
+
+.desc {
+    min-width: 280px;
+}
+
+.code {
+    min-width: 100px;
+}
+
+.estado {
+    min-width: 60px;
 }
 
 label {
