@@ -12,14 +12,28 @@
     --bs-table-color: white;
 }
 
-.table-usuario th.mw-60,
-.table-usuario td.mw-60 {
-    min-width: 60px;
+@media (max-width: 575px) {
+    .action {
+        min-width: 70px;
+    }
 }
 
-.table-usuario th.mw-160,
-.table-usuario td.mw-160 {
-    min-width: 160px;
+@media (min-width: 576px) {
+    .action {
+        min-width: 160px;
+    }
+}
+
+.name {
+    min-width: 280px;
+}
+
+.email {
+    min-width: 280px;
+}
+
+.estado {
+    min-width: 60px;
 }
 
 label {

@@ -40,22 +40,22 @@
             <table class="table table-striped table-hover table-usuario fz12">
                 <thead>
                     <tr>
-                        <th scope="col" class="mw-60 sticky"></th>
-                        <th scope="col" class="mw-160">
+                        <th scope="col" class="action sticky"></th>
+                        <th scope="col" class="name">
                             <div><input type="text" class="form-control w100 mb10" placeholder="Nombre"
                                     (keydown.enter)="loadCargar()" [(ngModel)]="req.ctaUserName"></div>
                         </th>
-                        <th scope="col" class="mw-160">
+                        <th scope="col" class="email">
                             <div><input type="text" class="form-control w100 mb10" placeholder="Email"
                                     (keydown.enter)="loadCargar()" [(ngModel)]="req.ctaEmail"></div>
                         </th>
-                        <th scope="col" class="mw-60"></th>
+                        <th scope="col" class="estado"></th>
                     </tr>
                     <tr>
-                        <th scope="col" class="mw-60 sticky">Acciones</th>
-                        <th scope="col" class="mw-60">Nombre</th>
-                        <th scope="col" class="mw-160">Email</th>
-                        <th scope="col" class="mw-60">Estado</th>
+                        <th scope="col" class="sticky">Acciones</th>
+                        <th scope="col" class="">Nombre</th>
+                        <th scope="col" class="">Email</th>
+                        <th scope="col" class="">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,9 +86,9 @@
                             }
                             }
                         </td>
-                        <td>{{ user.ctaUserName }}</td>
-                        <td>{{ user.ctaEmail }}</td>
-                        <td>
+                        <td valign="middle">{{ user.ctaUserName }}</td>
+                        <td valign="middle"><b>{{ user.ctaEmail }}</b></td>
+                        <td align="center" valign="middle">
                             <input type="checkbox" [(ngModel)]="user.estado" id="user-table-{{ user.id }}"
                                 name="permissions-table-[{{ user.id }}][{{ user.estado }}]" disabled="" />
                         </td>
