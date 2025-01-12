@@ -18,15 +18,12 @@ export class AppComponent {
   title = 'ecert_web';
   sidebarExpanded = false;
   public utility = new Utility;
-  isPermisoSidebar: boolean = false;
   modals = new ModalOptions();
 
   constructor(private router: Router,
     public authService: AuthService) { }
 
   async setPermiso(): Promise<void> {
-    this.isPermisoSidebar = this.utility.verificarToken();
-    //  console.log('this.isPermisoSidebar: ' + this.isPermisoSidebar);
     await this.authService.isLogged.subscribe(
       (data: any) => {
         if (!data) {
@@ -46,7 +43,6 @@ export class AppComponent {
   logput() {
     localStorage.removeItem('datatoken');
     this.authService.logOut();
-    this.isPermisoSidebar = false;
     this.router.navigate(['']);
   }
 
