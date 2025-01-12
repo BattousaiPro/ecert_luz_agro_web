@@ -30,6 +30,7 @@
     "ecert_luz_agro_web": "file:",
     "express": "^4.21.0",
     "jspdf": "^2.5.1",
+    "ngx-device-detector": "~7.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.11.0",
     "tslib": "^2.3.0",
