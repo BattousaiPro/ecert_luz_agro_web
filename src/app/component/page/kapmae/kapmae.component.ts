@@ -10,7 +10,7 @@ import { SectorService } from '../../../services/sector/sector.service';
 import { ComunasService } from '../../../services/comunas/comunas.service';
 import { Utility } from '../../../utils/utility';
 import { ComunasVO, DataSocioVO, DatepickerModelVO, DocumentosImgVO, ImgListaVO, KapmaeRequestVO, SectorVO } from '../../../utils/modelsVos';
-//import { DeviceDetectorService } from 'ngx-device-detector';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-kapmae',
@@ -49,6 +49,7 @@ export class KapmaeComponent implements OnInit {
 
   principalContainer: boolean = true;
   hashMapError = new Map<string, string>();
+  browserDetected: string= '';
 
   public utility = new Utility;
   isPermisoVerLista: boolean = false;
@@ -62,8 +63,17 @@ export class KapmaeComponent implements OnInit {
     private kapmaeService: KapmaeService,
     private sectorService: SectorService,
     private comunasService: ComunasService,
-    //private _deviceService: DeviceDetectorService,
-  ) { }
+    private _deviceService: DeviceDetectorService,
+  ) {
+    this.browserDetected = this._deviceService.browser;
+    /*
+    if (this._deviceService.browser === 'Safari' && this._deviceService.device === 'iPhone') {
+      // open(linkSource, '_self');
+    } else {
+      // open(linkSource, '_blank');
+    }
+    */
+  }
 
   ngOnInit(): void {
     this.docsImg.imagenes = [];
@@ -285,11 +295,6 @@ export class KapmaeComponent implements OnInit {
             + dat.getFullYear() + '_' + dat.getHours() + '_' + dat.getMinutes() + '.pdf';
           downloadLink.download = fileName;
           downloadLink.click();
-          /*if (this._deviceService.browser === 'Safari' && this._deviceService.device === 'iPhone') {
-            // open(linkSource, '_self');
-          } else {
-            // open(linkSource, '_blank');
-          }*/
         } else {
           this.modals.error('Error con la respuesta de servicios de obtener Pdf Con Imagenes');
         }

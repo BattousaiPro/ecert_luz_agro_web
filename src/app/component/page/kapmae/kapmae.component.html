@@ -7,6 +7,12 @@
     @if (principalContainer) {
     <div class="title mt15">
 
+        @if (browserDetected) {
+        <div class="row">
+            <h6>El navegador utilizado es: {{ browserDetected }}</h6>
+        </div>
+        }
+
         <div class="row">
             <div class="col-12">
                 @if (isPermisoSeleccionar || isPermisoCertificado || isPermisoCreate) {
@@ -192,7 +198,8 @@
                                 <i class="bi bi-trash3"></i>
                             </button>
                             }
-                            <button type="button" class="btn btn-primary mt-1" (click)="openDetails(socio, myModalContent)">
+                            <button type="button" class="btn btn-primary mt-1"
+                                (click)="openDetails(socio, myModalContent)">
                                 <i class="bi bi-eye-fill"></i>
                             </button>
                         </td>
