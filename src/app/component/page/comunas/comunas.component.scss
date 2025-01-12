@@ -12,14 +12,32 @@
     --bs-table-color: white;
 }
 
-.table-comunas th.mw-60,
-.table-comunas td.mw-60 {
-    min-width: 60px;
+@media (max-width: 575px) {
+    .action {
+        min-width: 70px;
+    }
+
+    .code {
+        min-width: 75px;
+    }
 }
 
-.table-comunas th.mw-160,
-.table-comunas td.mw-160 {
-    min-width: 160px;
+@media (min-width: 576px) {
+    .action {
+        min-width: 120px;
+    }
+
+    .code {
+        min-width: 100px;
+    }
+}
+
+.desc {
+    min-width: 280px;
+}
+
+.estado {
+    min-width: 60px;
 }
 
 label {

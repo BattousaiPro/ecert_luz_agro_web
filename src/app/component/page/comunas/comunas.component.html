@@ -40,26 +40,26 @@
             <table class="table table-striped table-hover table-comunas fz15">
                 <thead>
                     <tr>
-                        <th scope="col" class="mw-60 sticky"></th>
-                        <th scope="col" class="mw-60">
+                        <th scope="col" class="action sticky"></th>
+                        <th scope="col" class="code">
                             <div>
                                 <input type="text" class="form-control w100 mb10" placeholder="Código"
                                     (keydown.enter)="loadCargar()" [(ngModel)]="req.codigo">
                             </div>
                         </th>
-                        <th scope="col" class="mw-160">
+                        <th scope="col" class="desc">
                             <div>
                                 <input type="text" class="form-control w100 mb10" placeholder="Descripción"
                                     (keydown.enter)="loadCargar()" [(ngModel)]="req.descrip">
                             </div>
                         </th>
-                        <th scope="col" class="mw-60"></th>
+                        <th scope="col" class="estado"></th>
                     </tr>
                     <tr>
-                        <th scope="col" class="mw-60 sticky">Acciones</th>
-                        <th scope="col" class="mw-60">Código</th>
-                        <th scope="col" class="mw-60">Descripción</th>
-                        <th scope="col" class="mw-60">Estado</th>
+                        <th scope="col" class=" sticky">Acciones</th>
+                        <th scope="col" class="">Código</th>
+                        <th scope="col" class="">Descripción</th>
+                        <th scope="col" class="">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,9 +79,9 @@
                             </button>
                             }
                         </td>
-                        <td>{{ comuna.codigo }}</td>
-                        <td>{{ comuna.descrip }}</td>
-                        <td>
+                        <td align="center" valign="middle"><b>{{ comuna.codigo }}</b></td>
+                        <td valign="middle">{{ comuna.descrip }}</td>
+                        <td align="center" valign="middle">
                             <input type="checkbox" [(ngModel)]="comuna.estado" id="user-table-{{ comuna.codigo }}"
                                 name="permissions-table-[{{ comuna.estado }}]" disabled="" />
                         </td>

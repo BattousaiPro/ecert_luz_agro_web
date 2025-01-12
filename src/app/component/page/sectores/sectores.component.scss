@@ -12,15 +12,34 @@
     --bs-table-color: white;
 }
 
-.table-sector th.mw-60,
-.table-sector td.mw-60 {
+@media (max-width: 575px) {
+    .action {
+        min-width: 70px;
+    }
+
+    .code {
+        min-width: 75px;
+    }
+}
+
+@media (min-width: 576px) {
+    .action {
+        min-width: 120px;
+    }
+
+    .code {
+        min-width: 100px;
+    }
+}
+
+.desc {
+    min-width: 280px;
+}
+
+.estado {
     min-width: 60px;
 }
 
-.table-sector th.mw-160,
-.table-sector td.mw-160 {
-    min-width: 160px;
-}
 
 label {
     color: #0d6efd;
