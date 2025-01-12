@@ -4,23 +4,21 @@
     </div>
 
     @if (isPermisoVerLista) {
-    <div class="row mt15">
-        <div class="col-12 text-right">
-            <div class="row justify-content-end">
-                <div class="col-12 ">
+    <div class="title mt15">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row justify-content-end containerButton">
                     @if (isPermisoCreate) {
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 mt15 fr">
-                        <button type="button" class="btn btn-primary w100" (click)="agregaModal(myModalContent)">Agregar
-                            Rol
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 mt15">
+                        <button type="button" class="btn btn-primary w100" (click)="agregaModal(myModalContent)">
+                            Agregar Rol
                         </button>
                     </div>
                     }
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row mt15">
 
         <div class="row justify-content-end">
             <div class="col-xs-12 col-sm-2 col-xl-2 mt15"><select class="form-select w100 tac" [(ngModel)]="req.limit"
@@ -48,7 +46,7 @@
                                     (keydown.enter)="loadCargar()" [(ngModel)]="req.name"></div>
                         </th>
                         <th scope="col" class="mw-60"></th>
-                        <th scope="col" class="mw-60"></th>
+                        <th scope="col" class="mw-160"></th>
                         <th scope="col" class="mw-60"></th>
                     </tr>
                     <tr>
@@ -64,7 +62,8 @@
                     <tr>
                         <td style="display: flex;justify-content: space-evenly;flex-wrap: wrap;" class="sticky">
                             @if (isPermisoEdit) {
-                            <button type="button" class="btn btn-primary mt-1" (click)="editarModal(myModalContent, rol)">
+                            <button type="button" class="btn btn-primary mt-1"
+                                (click)="editarModal(myModalContent, rol)">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                             }
@@ -185,6 +184,7 @@
                 </ngb-pagination>
             </div>
         </div>
+
     </div>
     } @else {
     <div class="col-xs-12 col-md-12 emptyReg">
