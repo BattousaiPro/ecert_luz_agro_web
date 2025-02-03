@@ -1,37 +1,54 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SpinnerComponent } from '../utilitarios/spinner/spinner.component';
 import { ModalOptions } from '../../utils/modalOptions';
 import { AuthService } from '../../services/auth/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, SpinnerComponent],
+  imports: [FormsModule, SpinnerComponent, ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  username: string = 'adminCop';
-  password: string = 'asd';
-  cargar: boolean = false;
 
+  formulario: FormGroup;
+  cargar: boolean = false;
+  isEjeShow: boolean = true;
   modals = new ModalOptions();
 
   constructor(private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private formBuilder: FormBuilder,) {
+    this.formulario = this.formBuilder.group({
+      username: ['adminCop', {
+        validators: [Validators.required, Validators.minLength(3), Validators.maxLength(12)], updateOn: 'blur'
+      }],
+      password: ['Asd1$G.j5', {
+        validators: [Validators.required, Validators.minLength(3), Validators.maxLength(10)
+          //, Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]$")
+        ]
+      }]
+    });
+  }
+  public ejePassword(): void {
+    this.isEjeShow = !this.isEjeShow;
+  }
 
   validarFormulario() {
-    if (this.username === '' || this.password === '') {
-      this.modals.info('Todos los campos son obligatorios');
-    } else {
-      //if (!this.password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)) {
-      //    this.modals.info('La contraseña debe ser alfanumérica y tener al menos 8 caracteres');
-      //} else {
-      //this.router.navigate(['home']);
+    console.log(this.formulario);
+    debugger
+    //form.controls.itemRePassword
+    if (this.formulario.valid == true) {
+      //console.log('Forulario Valido');
       this.login();
-      //}
+    } else {
+      // Canaliazar los mensajes error.
+      //console.log('Forulario No Valido');
+      this.modals.info('Error con lo datos del Formuladio.');
     }
   }
 
@@ -39,7 +56,7 @@ export class LoginComponent {
     console.log('Cargando loadCargarRoles');
     this.cargar = true;
     localStorage.removeItem('datatoken');
-    this.authService.login(this.username, this.password).subscribe(
+    this.authService.login(this.formulario.controls["username"].value, this.formulario.controls["password"].value).subscribe(
       (data: any) => {
         // console.log(JSON.stringify(data));
         if (data.code === '0') {

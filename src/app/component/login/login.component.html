@@ -7,25 +7,31 @@
                         <div class="col-md-12 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
 
-                                <form #loginForm="ngForm" novalidate>
+                                <form [formGroup]="formulario" (ngSubmit)="validarFormulario()">
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inicio de Sesión</h5>
 
                                     <div class="form-outline mb-4">
-                                        <input type="email" placeholder="usuario" class="form-control form-control-lg"
-                                            id="usuario" name="usuario" [(ngModel)]="username" />
+                                        <input formControlName="username" type="email" placeholder="usuario"
+                                            class="form-control form-control-lg" id="usuario" name="usuario" />
                                         <label class="form-label" for="usuario">Usuario</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" placeholder="Clave" class="form-control form-control-lg"
-                                            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" id="clave" name="clave"
-                                            [(ngModel)]="password" />
-                                        <label class="form-label" for="clave">Clave</label>
+                                        <div class="row">
+                                            <div class="col-md-12" style="display: flex;align-items: center;">
+                                                <input formControlName="password" [type]="isEjeShow ? 'password' : 'text'" placeholder="Clave"
+                                                    class="form-control form-control-lg" id="clave" name="clave" />
+                                                <i [ngClass]="isEjeShow ? 'fa fa-eye-slash' : 'fa fa-eye'"
+                                                    style="margin-left: -40px;font-size: 30px;"
+                                                    (click)="ejePassword()"></i>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="form-label" for="clave">Clave</label>
+                                            </div>
+                                        </div>
                                     </div>
-
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn btn-primary btn-lg btn-block" type="button"
-                                            (click)="validarFormulario()"> Entrar </button>
+                                        <button class="btn btn-primary btn-lg btn-block" type="submit"> Entrar </button>
                                     </div>
 
                                 </form>

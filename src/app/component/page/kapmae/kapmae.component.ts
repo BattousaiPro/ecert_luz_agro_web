@@ -49,7 +49,7 @@ export class KapmaeComponent implements OnInit {
 
   principalContainer: boolean = true;
   hashMapError = new Map<string, string>();
-  browserDetected: string= '';
+  browserDetected: string = '';
 
   public utility = new Utility;
   isPermisoVerLista: boolean = false;
