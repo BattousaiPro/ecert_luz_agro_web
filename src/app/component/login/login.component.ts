@@ -40,7 +40,6 @@ export class LoginComponent {
 
   validarFormulario() {
     console.log(this.formulario);
-    debugger
     //form.controls.itemRePassword
     if (this.formulario.valid == true) {
       //console.log('Forulario Valido');
