@@ -281,7 +281,7 @@ export class KapmaeComponent implements OnInit {
           let fileName = this.utility.getFileName('imagenes_' + cod_cop + '_', '.pdf');
           if (this._deviceService.browser === 'Safari'
             && this._deviceService.device === 'iPhone') {
-            this.downloadPdfSafari(fileName, data.body.data);
+            this.downloadPdfSafariV2(fileName, data.body.data);
           } else {
             this.downloadPdf(fileName, data.body.data);
           }
@@ -304,6 +304,7 @@ export class KapmaeComponent implements OnInit {
     downloadLink.href = linkSource;
     downloadLink.download = fileName;
     downloadLink.click();
+    document.body.removeChild(downloadLink);
   }
 
   public downloadPdfSafari(fileName: string, base64: string): void {
@@ -325,6 +326,18 @@ export class KapmaeComponent implements OnInit {
     downloadLink.download = fileName;
     //downloadLink.target = '_blank';
     downloadLink.click();
+    document.body.removeChild(downloadLink);
+  }
+
+  public downloadPdfSafariV2(fileName: string, base64: string): void {
+    console.log('Method downloadPdfSafariV2');
+    var clearUrl = base64.replace(/^data:image\/\w+;base64,/, '');
+    var downloadLink = document.createElement('a');
+    downloadLink.setAttribute('href', 'data:application/octet-stream;base64,' + encodeURIComponent(clearUrl));
+    downloadLink.setAttribute('download', fileName);
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
   }
 
   public openModalFunction(content: any): void {
