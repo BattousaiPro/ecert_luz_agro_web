@@ -323,7 +323,7 @@ export class KapmaeComponent implements OnInit {
     document.body.appendChild(downloadLink);
     downloadLink.href = url;
     downloadLink.download = fileName;
-    downloadLink.target = '_blank';
+    //downloadLink.target = '_blank';
     downloadLink.click();
   }
 
