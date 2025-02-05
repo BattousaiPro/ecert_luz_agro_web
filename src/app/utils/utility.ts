@@ -66,6 +66,14 @@ export class Utility {
         return resp;
     }
 
+    public getFileName(baseNameFile: string, extension: string): string {
+        let dat = new Date();
+        const dateName = dat.getFullYear() + '_' + (dat.getMonth() + 1) + '_' + dat.getDate() + '_' + dat.getHours() + '_' + dat.getMinutes();
+        let fileName: string = baseNameFile + '_' + dateName + extension;
+        // console.log('fileName: ' + fileName);
+        return fileName;
+    }
+
     public setBasePath(basePath: string) {
         this.basePath = basePath;
     }

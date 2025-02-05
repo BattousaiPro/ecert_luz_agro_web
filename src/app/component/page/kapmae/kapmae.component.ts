@@ -66,13 +66,6 @@ export class KapmaeComponent implements OnInit {
     private _deviceService: DeviceDetectorService,
   ) {
     this.browserDetected = this._deviceService.browser;
-    /*
-    if (this._deviceService.browser === 'Safari' && this._deviceService.device === 'iPhone') {
-      // open(linkSource, '_self');
-    } else {
-      // open(linkSource, '_blank');
-    }
-    */
   }
 
   ngOnInit(): void {
@@ -285,16 +278,13 @@ export class KapmaeComponent implements OnInit {
     this.kapmaeService.impromirPdfImagens(imgHabilitados).subscribe(
       (data: any) => {
         if (data.body.code === '0') {
-          let dat = new Date();
-          let fileName = 'imagenes_' + cod_cop + '_';
-          const linkSource = 'data:application/pdf;base64,' + data.body.data;
-
-          const downloadLink = document.createElement('a');
-          downloadLink.href = linkSource;
-          fileName = fileName + '_' + dat.getDate() + '_' + (dat.getMonth() + 1) + '_'
-            + dat.getFullYear() + '_' + dat.getHours() + '_' + dat.getMinutes() + '.pdf';
-          downloadLink.download = fileName;
-          downloadLink.click();
+          let fileName = this.utility.getFileName('imagenes_' + cod_cop + '_', '.pdf');
+          if (this._deviceService.browser === 'Safari'
+            && this._deviceService.device === 'iPhone') {
+            this.downloadPdfSafari(fileName, data.body.data);
+          } else {
+            this.downloadPdf(fileName, data.body.data);
+          }
         } else {
           this.modals.error('Error con la respuesta de servicios de obtener Pdf Con Imagenes');
         }
@@ -305,6 +295,36 @@ export class KapmaeComponent implements OnInit {
         this.modals.error('Error con el servicio de obtener Pdf Con Imagenes');
         this.cargar = false;
       });
+  }
+
+  public downloadPdf(fileName: string, base64: string): void {
+    console.log('Method downloadPdf');
+    const linkSource = 'data:application/pdf;base64,' + base64;
+    const downloadLink = document.createElement('a');
+    downloadLink.href = linkSource;
+    downloadLink.download = fileName;
+    downloadLink.click();
+  }
+
+  public downloadPdfSafari(fileName: string, base64: string): void {
+    console.log('Method downloadPdfSafari');
+    const base64URL = base64;
+    const binary = atob(base64URL.replace(/\s/g, ''));
+    const len = binary.length;
+    const buffer = new ArrayBuffer(len);
+    const view = new Uint8Array(buffer);
+    for (let i = 0; i < len; i += 1) {
+      view[i] = binary.charCodeAt(i);
+    }
+    // create the blob object with content-type "application/pdf"
+    const blob = new Blob([view], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    const downloadLink = document.createElement('a');
+    document.body.appendChild(downloadLink);
+    downloadLink.href = url;
+    downloadLink.download = fileName;
+    downloadLink.target = '_blank';
+    downloadLink.click();
   }
 
   public openModalFunction(content: any): void {
