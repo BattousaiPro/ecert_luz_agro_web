@@ -279,12 +279,15 @@ export class KapmaeComponent implements OnInit {
       (data: any) => {
         if (data.body.code === '0') {
           let fileName = this.utility.getFileName('imagenes_' + cod_cop + '_', '.pdf');
+          this.utility.downloadPdfByBase64(fileName, data.body.data, this._deviceService.browser, this._deviceService.device);
+          /*
           if (this._deviceService.browser === 'Safari'
             && this._deviceService.device === 'iPhone') {
             this.downloadPdfSafariV2(fileName, data.body.data);
           } else {
             this.downloadPdf(fileName, data.body.data);
           }
+          */
         } else {
           this.modals.error('Error con la respuesta de servicios de obtener Pdf Con Imagenes');
         }
@@ -307,6 +310,7 @@ export class KapmaeComponent implements OnInit {
     document.body.removeChild(downloadLink);
   }
 
+/*
   public downloadPdfSafari(fileName: string, base64: string): void {
     console.log('Method downloadPdfSafari');
     const base64URL = base64;
@@ -328,7 +332,9 @@ export class KapmaeComponent implements OnInit {
     downloadLink.click();
     document.body.removeChild(downloadLink);
   }
+  */
 
+  /*
   public downloadPdfSafariV2(fileName: string, base64: string): void {
     console.log('Method downloadPdfSafariV2');
     var clearUrl = base64.replace(/^data:image\/\w+;base64,/, '');
@@ -339,6 +345,7 @@ export class KapmaeComponent implements OnInit {
     downloadLink.click();
     document.body.removeChild(downloadLink);
   }
+  */
 
   public openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });

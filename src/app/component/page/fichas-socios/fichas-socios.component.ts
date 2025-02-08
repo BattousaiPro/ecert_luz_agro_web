@@ -103,8 +103,8 @@ export class FichasSociosComponent implements OnInit {
 
   public inpNum(event: any): void {
     event = event || window.event;
-    var charCode = (typeof event.which == 'undefined') ? event.keyCode : event.which;
-    var charStr = String.fromCharCode(charCode);
+    const charCode = (typeof event.which == 'undefined') ? event.keyCode : event.which;
+    const charStr = String.fromCharCode(charCode);
     if (!charStr.match(/^[0-9]+$/)) {
       event.preventDefault();
     }
