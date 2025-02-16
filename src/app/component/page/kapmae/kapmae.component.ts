@@ -239,14 +239,14 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
-  public cerfificado(rut_cop: string, cod_cop: number): void {
+  public cerfificado(): void {
     let selectItem = this.validaSelected();
     if (selectItem == null) {
-      this.modals.warning('debes seleccionar un Socio para cerfificado');
+      this.modals.warning('debes seleccionar un Socio para obtener su cerfificado');
     } else {
       let reqCertificado: ReqCertificado = new ReqCertificado();
-      reqCertificado.codCop = cod_cop;
-      reqCertificado.rutCop = rut_cop;
+      reqCertificado.codCop = selectItem.cod_cop;
+      reqCertificado.rutCop = selectItem.rut_cop;
       this.certificadoPdf(reqCertificado);
     }
   }
