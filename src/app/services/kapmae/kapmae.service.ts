@@ -80,6 +80,19 @@ export class KapmaeService {
     return ladata;
   }
 
+  public certificadoPdf(reqCert: ReqCertificado): Observable<any> {
+    let url = this.utility.getBasePath() + '/kapmae/getPdfCertificado';
+    let user = JSON.parse(localStorage.getItem('datatoken')!);
+    let headerParam = { 'Content-Type': 'application/json', 'Authorization': '', 'Accept': '' };
+    headerParam.Authorization = 'Bearer ' + user.token;
+    const ladata: Observable<any> = this.http.post(
+      url,
+      reqCert,
+      { headers: new HttpHeaders(headerParam), observe: 'response' }
+    );
+    return ladata;
+  }
+
   public impromirPdfImagens(imgHabilitados: ReqImg): Observable<any> {
     let url = this.utility.getBasePath() + '/kapmae/getPdfDocumentImg';
     let user = JSON.parse(localStorage.getItem('datatoken')!);
@@ -93,6 +106,13 @@ export class KapmaeService {
     return ladata;
   }
 
+}
+export interface ReqCertificado {
+  codCop: number;
+  rutCop: string;
+}
+export class ReqCertificado {
+  constructor() { }
 }
 export interface ReqImg {
   imgs: string[];

@@ -205,10 +205,10 @@ export interface KapmaeRequestVO extends PaginRequestVO {
 export class KapmaeRequestVO {
   constructor() {
     this.rut_cop = '';
-    this.nombres = '';
+    this.nombres = 'JO';
     this.ape_pat = '';
     this.ape_mat = '';
-    this.cod_cop = 7009;
+    // this.cod_cop = 7009;
     this.pageSize = 1;
     this.limit = 10;
   }

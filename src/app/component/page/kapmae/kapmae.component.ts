@@ -4,7 +4,7 @@ import { SpinnerComponent } from '../../utilitarios/spinner/spinner.component';
 import { NgbModal, NgbPaginationModule, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { KapmaeService, ReqImg } from '../../../services/kapmae/kapmae.service';
+import { KapmaeService, ReqCertificado, ReqImg } from '../../../services/kapmae/kapmae.service';
 import { ModalOptions } from '../../../utils/modalOptions';
 import { SectorService } from '../../../services/sector/sector.service';
 import { ComunasService } from '../../../services/comunas/comunas.service';
@@ -36,7 +36,7 @@ export class KapmaeComponent implements OnInit {
 
   socios: DataSocioVO[] = [];
   socioModal: DataSocioVO = new DataSocioVO();
-  socioSelectImgModal: DataSocioVO = new DataSocioVO();
+  socioSelectTable: DataSocioVO = new DataSocioVO();
   socioDeleteModal: DataSocioVO = new DataSocioVO();
   currentItem: DataSocioVO = new DataSocioVO();
   req: KapmaeRequestVO = new KapmaeRequestVO();
@@ -93,7 +93,7 @@ export class KapmaeComponent implements OnInit {
 
   public loadCargarImg(content: any): void {
     this.cargar = true;
-    let codCop = this.socioSelectImgModal.cod_cop;
+    let codCop = this.socioSelectTable.cod_cop;
     this.kapmaeService.findImgByCodCop(codCop).subscribe(
       (data: any) => {
         // console.log(JSON.stringify(data));
@@ -234,17 +234,20 @@ export class KapmaeComponent implements OnInit {
     if (selectItem == null) {
       this.modals.warning('debes seleccionar un Socio');
     } else {
-      this.socioSelectImgModal = JSON.parse(JSON.stringify(selectItem));
+      this.socioSelectTable = JSON.parse(JSON.stringify(selectItem));
       this.loadCargarImg(content);
     }
   }
 
-  public cerfificado(): void {
+  public cerfificado(rut_cop: string, cod_cop: number): void {
     let selectItem = this.validaSelected();
     if (selectItem == null) {
       this.modals.warning('debes seleccionar un Socio para cerfificado');
     } else {
-      this.modals.info('Funcionalidad No disponible');
+      let reqCertificado: ReqCertificado = new ReqCertificado();
+      reqCertificado.codCop = cod_cop;
+      reqCertificado.rutCop = rut_cop;
+      this.certificadoPdf(reqCertificado);
     }
   }
 
@@ -253,8 +256,7 @@ export class KapmaeComponent implements OnInit {
     if (imgHabilitados.imgs.length > 0) {
       imgHabilitados.codCop = cod_cop;
       imgHabilitados.rutCop = rut_cop;
-      this.impromirPdfImagens(imgHabilitados, cod_cop);
-      //this.modals.info('Funcionalidad No disponible');
+      this.impromirPdfImagens(imgHabilitados);
     } else {
       this.modals.info('Debe seleccionar a lo menos una Imagen.');
     }
@@ -272,22 +274,39 @@ export class KapmaeComponent implements OnInit {
     return imgHabilitados;
   }
 
-  private impromirPdfImagens(imgHabilitados: ReqImg, cod_cop: number): void {
+  private certificadoPdf(reqCertificado: ReqCertificado): void {
+    console.log('Method certificadoPdf');
+    this.cargar = true;
+    this.kapmaeService.certificadoPdf(reqCertificado).subscribe(
+      (data: any) => {
+        if (data.body.code === '22') {
+          this.modals.info('Funcionalidad para la descarga de Certificado en desarrollo.');
+        } else if (data.body.code === '20') {
+          this.modals.info('! Certificado No Encontrado ¡');
+        } else 
+          if (data.body.code === '0') {
+            let fileName = this.utility.getFileName('certificado_' + reqCertificado.codCop + '_', '.pdf');
+            this.utility.downloadPdfByBase64(fileName, data.body.data, this._deviceService.browser, this._deviceService.device);
+          } else {
+            this.modals.error('Error con la respuesta de servicios de obtener Pdf de Certificado');
+          }
+        this.cargar = false;
+      },
+      (err: any) => {
+        this.closeModal();
+        this.modals.error('Error con el servicio de obtener Pdf de Certificado');
+        this.cargar = false;
+      });
+  }
+
+  private impromirPdfImagens(imgHabilitados: ReqImg): void {
     console.log('Method impromirPdfImagens');
     this.cargar = true;
     this.kapmaeService.impromirPdfImagens(imgHabilitados).subscribe(
       (data: any) => {
         if (data.body.code === '0') {
-          let fileName = this.utility.getFileName('imagenes_' + cod_cop + '_', '.pdf');
+          let fileName = this.utility.getFileName('imagenes_' + imgHabilitados.codCop + '_', '.pdf');
           this.utility.downloadPdfByBase64(fileName, data.body.data, this._deviceService.browser, this._deviceService.device);
-          /*
-          if (this._deviceService.browser === 'Safari'
-            && this._deviceService.device === 'iPhone') {
-            this.downloadPdfSafariV2(fileName, data.body.data);
-          } else {
-            this.downloadPdf(fileName, data.body.data);
-          }
-          */
         } else {
           this.modals.error('Error con la respuesta de servicios de obtener Pdf Con Imagenes');
         }
@@ -299,53 +318,6 @@ export class KapmaeComponent implements OnInit {
         this.cargar = false;
       });
   }
-
-  public downloadPdf(fileName: string, base64: string): void {
-    console.log('Method downloadPdf');
-    const linkSource = 'data:application/pdf;base64,' + base64;
-    const downloadLink = document.createElement('a');
-    downloadLink.href = linkSource;
-    downloadLink.download = fileName;
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-  }
-
-/*
-  public downloadPdfSafari(fileName: string, base64: string): void {
-    console.log('Method downloadPdfSafari');
-    const base64URL = base64;
-    const binary = atob(base64URL.replace(/\s/g, ''));
-    const len = binary.length;
-    const buffer = new ArrayBuffer(len);
-    const view = new Uint8Array(buffer);
-    for (let i = 0; i < len; i += 1) {
-      view[i] = binary.charCodeAt(i);
-    }
-    // create the blob object with content-type "application/pdf"
-    const blob = new Blob([view], { type: 'application/pdf' });
-    const url = URL.createObjectURL(blob);
-    const downloadLink = document.createElement('a');
-    document.body.appendChild(downloadLink);
-    downloadLink.href = url;
-    downloadLink.download = fileName;
-    //downloadLink.target = '_blank';
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-  }
-  */
-
-  /*
-  public downloadPdfSafariV2(fileName: string, base64: string): void {
-    console.log('Method downloadPdfSafariV2');
-    var clearUrl = base64.replace(/^data:image\/\w+;base64,/, '');
-    var downloadLink = document.createElement('a');
-    downloadLink.setAttribute('href', 'data:application/octet-stream;base64,' + encodeURIComponent(clearUrl));
-    downloadLink.setAttribute('download', fileName);
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-  }
-  */
 
   public openModalFunction(content: any): void {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' });
