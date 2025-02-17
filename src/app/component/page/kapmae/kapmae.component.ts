@@ -279,11 +279,13 @@ export class KapmaeComponent implements OnInit {
     this.cargar = true;
     this.kapmaeService.certificadoPdf(reqCertificado).subscribe(
       (data: any) => {
+        /*
         if (data.body.code === '22') {
           this.modals.info('Funcionalidad para la descarga de Certificado en desarrollo.');
         } else if (data.body.code === '20') {
           this.modals.info('! Certificado No Encontrado ¡');
         } else 
+        */
           if (data.body.code === '0') {
             let fileName = this.utility.getFileName('certificado_' + reqCertificado.codCop + '_', '.pdf');
             this.utility.downloadPdfByBase64(fileName, data.body.data, this._deviceService.browser, this._deviceService.device);
