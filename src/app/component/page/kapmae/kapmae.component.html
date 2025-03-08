@@ -730,11 +730,11 @@
                                                 nro_sol
                                             </label>
                                             <input
-                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                [ngClass]="hashMapError.has('val_nro_sol') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
                                                 type="number" placeholder="" id="nro_sol"
                                                 [(ngModel)]="socioModal.nro_sol">
-                                            @if(hashMapError.has('')) {
-                                            <span class="errorInputText">{{hashMapError.get('')}}</span>
+                                            @if(hashMapError.has('val_nro_sol')) {
+                                            <span class="errorInputText">{{hashMapError.get('val_nro_sol')}}</span>
                                             }
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
@@ -799,11 +799,11 @@
                                                 est_sol
                                             </label>
                                             <input
-                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                [ngClass]="hashMapError.has('val_est_sol') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
                                                 type="text" placeholder="" id="est_sol"
                                                 [(ngModel)]="socioModal.est_sol">
-                                            @if(hashMapError.has('')) {
-                                            <span class="errorInputText">{{hashMapError.get('')}}</span>
+                                            @if(hashMapError.has('val_est_sol')) {
+                                            <span class="errorInputText">{{hashMapError.get('val_est_sol')}}</span>
                                             }
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
@@ -811,11 +811,11 @@
                                                 sec_cte
                                             </label>
                                             <input
-                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                [ngClass]="hashMapError.has('val_sec_cte') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
                                                 type="number" placeholder="" id="sec_cte"
                                                 [(ngModel)]="socioModal.sec_cte">
-                                            @if(hashMapError.has('')) {
-                                            <span class="errorInputText">{{hashMapError.get('')}}</span>
+                                            @if(hashMapError.has('val_sec_cte')) {
+                                            <span class="errorInputText">{{hashMapError.get('val_sec_cte')}}</span>
                                             }
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
@@ -823,10 +823,10 @@
                                                 area
                                             </label>
                                             <input
-                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                [ngClass]="hashMapError.has('val_area') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
                                                 type="number" placeholder="" id="area" [(ngModel)]="socioModal.area">
-                                            @if(hashMapError.has('')) {
-                                            <span class="errorInputText">{{hashMapError.get('')}}</span>
+                                            @if(hashMapError.has('val_area')) {
+                                            <span class="errorInputText">{{hashMapError.get('val_area')}}</span>
                                             }
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
@@ -834,11 +834,11 @@
                                                 sec_imp
                                             </label>
                                             <input
-                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                [ngClass]="hashMapError.has('val_sec_imp') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
                                                 type="number" placeholder="" id="sec_imp"
                                                 [(ngModel)]="socioModal.sec_imp">
-                                            @if(hashMapError.has('')) {
-                                            <span class="errorInputText">{{hashMapError.get('')}}</span>
+                                            @if(hashMapError.has('val_sec_imp')) {
+                                            <span class="errorInputText">{{hashMapError.get('val_sec_imp')}}</span>
                                             }
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
@@ -846,11 +846,11 @@
                                                 est_reg
                                             </label>
                                             <input
-                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                [ngClass]="hashMapError.has('val_est_reg') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
                                                 type="text" placeholder="" id="est_reg"
                                                 [(ngModel)]="socioModal.est_reg">
-                                            @if(hashMapError.has('')) {
-                                            <span class="errorInputText">{{hashMapError.get('')}}</span>
+                                            @if(hashMapError.has('val_est_reg')) {
+                                            <span class="errorInputText">{{hashMapError.get('val_est_reg')}}</span>
                                             }
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
@@ -858,11 +858,11 @@
                                                 acc_con
                                             </label>
                                             <input
-                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                [ngClass]="hashMapError.has('val_acc_con') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
                                                 type="number" placeholder="" id="acc_con"
                                                 [(ngModel)]="socioModal.acc_con">
-                                            @if(hashMapError.has('')) {
-                                            <span class="errorInputText">{{hashMapError.get('')}}</span>
+                                            @if(hashMapError.has('val_acc_con')) {
+                                            <span class="errorInputText">{{hashMapError.get('val_acc_con')}}</span>
                                             }
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
@@ -870,11 +870,11 @@
                                                 aju_acc
                                             </label>
                                             <input
-                                                [ngClass]="hashMapError.has('') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
+                                                [ngClass]="hashMapError.has('val_aju_acc') ? 'form-control form-control-sm errorInputElement ' : 'form-control form-control-sm '"
                                                 type="number" placeholder="" id="aju_acc"
                                                 [(ngModel)]="socioModal.aju_acc">
-                                            @if(hashMapError.has('')) {
-                                            <span class="errorInputText">{{hashMapError.get('')}}</span>
+                                            @if(hashMapError.has('val_aju_acc')) {
+                                            <span class="errorInputText">{{hashMapError.get('val_aju_acc')}}</span>
                                             }
                                         </div>
                                     </div>

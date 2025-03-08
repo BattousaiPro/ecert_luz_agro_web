@@ -470,7 +470,7 @@ export class KapmaeComponent implements OnInit {
     this.hashMapError.clear();
     this.validateNew();
     if (this.hashMapError.size === 0) {
-      this.setAttrApoyo();
+      this.setAttrFecha();
       // console.log('this.socioModal: ' + JSON.stringify(this.socioModal));
       if (!this.isEdit) {
         console.log('this.new()');
@@ -482,7 +482,7 @@ export class KapmaeComponent implements OnInit {
     }
   }
 
-  private setAttrApoyo(): void {
+  private setAttrFecha(): void {
     this.socioModal.sec_cop = this.sectores.find((x: SectorVO) => ('' + x.codigo) === this.socioModal.sec_cop_codigo);
     this.socioModal.com_pos = this.comunas.find((x: ComunasVO) => ('' + x.codigo) === this.socioModal.com_pos_codigo);
     if (typeof this.socioModal.fec_inc_date != 'undefined') {
@@ -613,6 +613,9 @@ export class KapmaeComponent implements OnInit {
       }
     } else if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
       this.hashMapError.set('val_fec_inc_date', 'Fecha Inscripción es Obligatorio');
+    } else {
+      // yyyy-mm-dd
+      this.socioModal.fec_inc = new Date(this.socioModal.fec_inc_date.year + '-' + this.socioModal.fec_inc_date.month + '-' + this.socioModal.fec_inc_date.day);
     }
 
     // Campo: Año Traspaso
@@ -632,6 +635,9 @@ export class KapmaeComponent implements OnInit {
       }
     } else if (!this.validateFormatDate(this.socioModal.fec_tra_date)) {
       this.hashMapError.set('val_fec_tra_date', 'Fecha Traspaso es Obligatorio');
+    } else {
+      // yyyy-mm-dd
+      this.socioModal.fec_tra = new Date(this.socioModal.fec_tra_date.year + '-' + this.socioModal.fec_tra_date.month + '-' + this.socioModal.fec_tra_date.day);
     }
 
 
@@ -657,6 +663,9 @@ export class KapmaeComponent implements OnInit {
       }
     } else if (!this.validateFormatDate(this.socioModal.fec_act_date)) {
       this.hashMapError.set('val_fec_act_date', 'Actualización es Obligatorio');
+    } else {
+      // yyyy-mm-dd
+      this.socioModal.fec_act = new Date(this.socioModal.fec_act_date.year + '-' + this.socioModal.fec_act_date.month + '-' + this.socioModal.fec_act_date.day);
     }
 
     // Campo: Estado Traspao
@@ -732,11 +741,10 @@ export class KapmaeComponent implements OnInit {
     // ************************************************************************************************
     // .
     // Campo: nro_sol
-    //if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
-    /*if (typeof this.socioModal.nro_sol !== 'undefined') {
+    if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
       // TODO: validar formato de ser requeido
-      // errores.push('Error con nro_sol');
-    }*/
+      this.hashMapError.set('val_nro_sol', 'nro_sol es Obligatorio');
+    }
 
     // Campo: fec_sol
     if (typeof this.socioModal.fec_sol_date == 'undefined') {
@@ -745,6 +753,9 @@ export class KapmaeComponent implements OnInit {
       }
     } else if (!this.validateFormatDate(this.socioModal.fec_sol_date)) {
       this.hashMapError.set('val_fec_sol_date', 'fec_sol es Obligatorio');
+    } else {
+      // yyyy-mm-dd
+      this.socioModal.fec_sol = new Date(this.socioModal.fec_sol_date.year + '-' + this.socioModal.fec_sol_date.month + '-' + this.socioModal.fec_sol_date.day);
     }
 
     // Campo: fec_apr
@@ -754,6 +765,9 @@ export class KapmaeComponent implements OnInit {
       }
     } else if (!this.validateFormatDate(this.socioModal.fec_apr_date)) {
       this.hashMapError.set('val_fec_apr_date', 'fec_apr es Obligatorio');
+    } else {
+      // yyyy-mm-dd
+      this.socioModal.fec_apr = new Date(this.socioModal.fec_apr_date.year + '-' + this.socioModal.fec_apr_date.month + '-' + this.socioModal.fec_apr_date.day);
     }
 
     // Campo: fec_can
@@ -763,42 +777,45 @@ export class KapmaeComponent implements OnInit {
       }
     } else if (!this.validateFormatDate(this.socioModal.fec_can_date)) {
       this.hashMapError.set('val_fec_can_date', 'fec_can es Obligatorio');
+    } else {
+      // yyyy-mm-dd
+      this.socioModal.fec_can = new Date(this.socioModal.fec_can_date.year + '-' + this.socioModal.fec_can_date.month + '-' + this.socioModal.fec_can_date.day);
     }
 
-    // Campo: est_sol 
-    /*if (typeof this.socioModal.est_sol === 'undefined') {
-      errores.push('Error con est_sol');
+    // Campo: est_sol
+    if (typeof this.socioModal.est_sol === 'undefined') {
+      this.hashMapError.set('val_est_sol', 'est_sol es Obligatorio');
     }
 
-    // Campo: sec_cte 
+    // Campo: sec_cte
     if (typeof this.socioModal.sec_cte === 'undefined' || this.socioModal.sec_cte < 0) {
-      errores.push('Error con sec_cte');
+      this.hashMapError.set('val_sec_cte', 'sec_cte es Obligatorio');
     }
 
-    // Campo: area 
+    // Campo: area
     if (typeof this.socioModal.area === 'undefined' || this.socioModal.area < 0) {
-      errores.push('Error con area');
+      this.hashMapError.set('val_area', 'area es Obligatorio');
     }
 
-    // Campo: sec_imp 
+    // Campo: sec_imp
     if (typeof this.socioModal.sec_imp === 'undefined' || this.socioModal.sec_imp < 0) {
-      errores.push('Error con sec_imp');
+      this.hashMapError.set('val_sec_imp', 'sec_imp es Obligatorio');
     }
 
-    // Campo: est_reg 
+    // Campo: est_reg
     if (typeof this.socioModal.est_reg === 'undefined') {
-      errores.push('Error con est_reg');
+      this.hashMapError.set('val_est_reg', 'est_reg es Obligatorio');
     }
 
-    // Campo: acc_con 
+    // Campo: acc_con
     if (typeof this.socioModal.acc_con === 'undefined' || this.socioModal.acc_con < 0) {
-      errores.push('Error con acc_con');
+      this.hashMapError.set('val_acc_con', 'acc_con es Obligatorio');
     }
 
-    // Campo: aju_acc 
+    // Campo: aju_acc
     if (typeof this.socioModal.aju_acc === 'undefined' || this.socioModal.aju_acc < 0) {
-      errores.push('Error con aju_acc');
-    }*/
+      this.hashMapError.set('val_aju_acc', 'aju_acc es Obligatorio');
+    }
     // ************************************************************************************************
     // ************************************************************************************************
     // ************************************************************************************************
