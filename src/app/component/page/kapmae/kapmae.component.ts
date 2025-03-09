@@ -779,9 +779,11 @@ export class KapmaeComponent implements OnInit {
     // ************************************************************************************************
     // .
     // Campo: nro_sol
-    if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol < 0) {
+    if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol === null || this.socioModal.nro_sol < 0) {
       // TODO: validar formato de ser requeido
       this.hashMapError.set('val_nro_sol', 'nro_sol es Obligatorio');
+    } else if (this.socioModal.nro_sol > 10) {
+      this.hashMapError.set('val_nro_sol', 'nro_sol tiene un largo superior al permitido');
     }
 
     // Campo: fec_sol
@@ -821,38 +823,52 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: est_sol
-    if (typeof this.socioModal.est_sol === 'undefined') {
+    if (typeof this.socioModal.est_sol === 'undefined' || this.socioModal.est_sol === null || this.socioModal.est_sol === '') {
       this.hashMapError.set('val_est_sol', 'est_sol es Obligatorio');
+    } else if (this.socioModal.est_sol.length > 13) {
+      this.hashMapError.set('val_est_sol', 'est_sol tiene un largo superior al permitido');
     }
 
     // Campo: sec_cte
-    if (typeof this.socioModal.sec_cte === 'undefined' || this.socioModal.sec_cte < 0) {
+    if (typeof this.socioModal.sec_cte === 'undefined' || this.socioModal.sec_cte === null || this.socioModal.sec_cte < 0) {
       this.hashMapError.set('val_sec_cte', 'sec_cte es Obligatorio');
+    } else if (this.socioModal.sec_cte > 10) {
+      this.hashMapError.set('val_sec_cte', 'sec_cte tiene un largo superior al permitido');
     }
 
     // Campo: area
-    if (typeof this.socioModal.area === 'undefined' || this.socioModal.area < 0) {
+    if (typeof this.socioModal.area === 'undefined' || this.socioModal.area === null || this.socioModal.area < 0) {
       this.hashMapError.set('val_area', 'area es Obligatorio');
+    } else if (this.socioModal.area > 10) {
+      this.hashMapError.set('val_area', 'area tiene un largo superior al permitido');
     }
 
     // Campo: sec_imp
-    if (typeof this.socioModal.sec_imp === 'undefined' || this.socioModal.sec_imp < 0) {
+    if (typeof this.socioModal.sec_imp === 'undefined' || this.socioModal.sec_imp === null || this.socioModal.sec_imp < 0) {
       this.hashMapError.set('val_sec_imp', 'sec_imp es Obligatorio');
+    } else if (this.socioModal.sec_imp > 10) {
+      this.hashMapError.set('val_sec_imp', 'sec_imp tiene un largo superior al permitido');
     }
 
     // Campo: est_reg
-    if (typeof this.socioModal.est_reg === 'undefined') {
+    if (typeof this.socioModal.est_reg === 'undefined' || this.socioModal.est_reg === null || this.socioModal.est_reg === '') {
       this.hashMapError.set('val_est_reg', 'est_reg es Obligatorio');
+    } else if (this.socioModal.est_reg.length > 13) {
+      this.hashMapError.set('val_est_reg', 'est_reg tiene un largo superior al permitido');
     }
 
     // Campo: acc_con
-    if (typeof this.socioModal.acc_con === 'undefined' || this.socioModal.acc_con < 0) {
+    if (typeof this.socioModal.acc_con === 'undefined' || this.socioModal.acc_con === null || this.socioModal.acc_con < 0) {
       this.hashMapError.set('val_acc_con', 'acc_con es Obligatorio');
+    } else if (this.socioModal.acc_con > 10) {
+      this.hashMapError.set('val_acc_con', 'acc_con tiene un largo superior al permitido');
     }
 
     // Campo: aju_acc
-    if (typeof this.socioModal.aju_acc === 'undefined' || this.socioModal.aju_acc < 0) {
+    if (typeof this.socioModal.aju_acc === 'undefined' || this.socioModal.aju_acc === null || this.socioModal.aju_acc < 0) {
       this.hashMapError.set('val_aju_acc', 'aju_acc es Obligatorio');
+    } else if (this.socioModal.aju_acc > 10) {
+      this.hashMapError.set('val_aju_acc', 'aju_acc tiene un largo superior al permitido');
     }
     // ************************************************************************************************
     // ************************************************************************************************
