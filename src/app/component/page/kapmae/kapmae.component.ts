@@ -435,7 +435,7 @@ export class KapmaeComponent implements OnInit {
 
   private formatDateInput(inputDate: Date) {
     let fecIncDate: Date = new Date(inputDate);
-    return { "year": fecIncDate.getFullYear(), "month": (fecIncDate.getMonth() + 1), "day": fecIncDate.getDate() };
+    return { 'year': fecIncDate.getFullYear(), 'month': (fecIncDate.getMonth() + 1), 'day': fecIncDate.getDate() };
   }
 
   private setDateField() {
@@ -536,57 +536,76 @@ export class KapmaeComponent implements OnInit {
     // TODO: validar cada uno de los campos.
 
     // Campo: Rut Socio
-    if (typeof this.socioModal.rut_cop === 'undefined' || this.socioModal.rut_cop === '') {
+    // TODO: Pendinete generar validació del formatorut.
+    if (typeof this.socioModal.rut_cop === 'undefined' || this.socioModal.rut_cop === null || this.socioModal.rut_cop === '') {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_rut_cop', 'Rut Cliente es Obligatorio');
+    } else if (this.socioModal.rut_cop.length > 13) {
+      this.hashMapError.set('val_rut_cop', 'Rut Cliente tiene un largo superior al permitido');
     }
 
     // Campo: Nombres
-    if (typeof this.socioModal.nombres === 'undefined' || this.socioModal.nombres === '') {
+    if (typeof this.socioModal.nombres === 'undefined' || this.socioModal.nombres === null || this.socioModal.nombres === '') {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_nombres', 'Nombres es Obligatorio');
+    } else if (this.socioModal.nombres.length > 70) {
+      this.hashMapError.set('val_nombres', 'Nombres tienen un largo superior al permitido');
     }
 
     // Campo: Apellido Paterno
-    if (typeof this.socioModal.ape_pat === 'undefined' || this.socioModal.ape_pat === '') {
+    if (typeof this.socioModal.ape_pat === 'undefined' || this.socioModal.ape_pat === null || this.socioModal.ape_pat === '') {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_ape_pat', 'Apellido Paterno es Obligatorio');
+    } else if (this.socioModal.ape_pat.length > 50) {
+      this.hashMapError.set('val_ape_pat', 'Apellido Paterno tiene un largo superior al permitido');
     }
 
     // Campo: Apellido Materno
-    if (typeof this.socioModal.ape_mat === 'undefined' || this.socioModal.ape_mat === '') {
+    if (typeof this.socioModal.ape_mat === 'undefined' || this.socioModal.ape_mat === null || this.socioModal.ape_mat === '') {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_ape_mat', 'Apellido Materno es Obligatorio');
+    } else if (this.socioModal.ape_mat.length > 50) {
+      this.hashMapError.set('val_ape_mat', 'Apellido Materno tiene un largo superior al permitido');
     }
 
     // Campo: Código Luzagro
-    if (typeof this.socioModal.cod_cop === 'undefined' || this.socioModal.cod_cop < 0) {
+    if (typeof this.socioModal.cod_cop === 'undefined' || this.socioModal.cod_cop === null || this.socioModal.cod_cop < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_cod_cop', 'Código Luzagro es Obligatorio');
+    } else if (this.socioModal.cod_cop > 10) {
+      this.hashMapError.set('val_cod_cop', 'Código Luzagro tiene un largo superior al permitido');
     }
 
     // Campo: Código Luzlinares
-    if (typeof this.socioModal.cod_lli === 'undefined' || this.socioModal.cod_lli < 0) {
+    if (typeof this.socioModal.cod_lli === 'undefined' || this.socioModal.cod_lli === null || this.socioModal.cod_lli < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_cod_lli', 'Código Luzlinares es Obligatorio');
+    } else if (this.socioModal.cod_lli > 100000000) {
+      this.hashMapError.set('val_cod_lli', 'Código Luzlinares tiene un largo superior al permitido');
     }
 
     // Campo: Código Anterior
-    if (typeof this.socioModal.cod_ant === 'undefined' || this.socioModal.cod_ant < 0) {
+    if (typeof this.socioModal.cod_ant === 'undefined' || this.socioModal.cod_ant === null || this.socioModal.cod_ant < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_cod_ant', 'Código Anterior es Obligatorio');
+    } else if (this.socioModal.cod_ant > 10) {
+      this.hashMapError.set('val_cod_ant', 'Código Anterior tiene un largo superior al permitido');
     }
 
     // Campo: Código Nuevo
-    if (typeof this.socioModal.cod_nvo === 'undefined' || this.socioModal.cod_nvo < 0) {
+    if (typeof this.socioModal.cod_nvo === 'undefined' || this.socioModal.cod_nvo === null || this.socioModal.cod_nvo < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_cod_nvo', 'Código Nuevo es Obligatorio');
+    } else if (this.socioModal.cod_nvo > 10) {
+      this.hashMapError.set('val_cod_nvo', 'Código Nuevo tiene un largo superior al permitido');
     }
 
     // Campo: Código Original
-    if (typeof this.socioModal.cod_ori === 'undefined' || this.socioModal.cod_ori < 0) {
+    if (typeof this.socioModal.cod_ori === 'undefined' || this.socioModal.cod_ori === null || this.socioModal.cod_ori < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_cod_ori', 'Código Original es Obligatorio');
+    } else if (this.socioModal.cod_ori > 10) {
+      this.hashMapError.set('val_cod_ori', 'Código Original tiene un largo superior al permitido');
     }
 
     // Campo: Sector
@@ -596,14 +615,18 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Año Inscripción
-    if (typeof this.socioModal.ano_inc === 'undefined' || this.socioModal.ano_inc < 0) {
+    if (typeof this.socioModal.ano_inc === 'undefined' || this.socioModal.ano_inc === null || this.socioModal.ano_inc < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_ano_inc', 'Año Inscripción es Obligatorio');
+    } else if (this.socioModal.ano_inc > 10) {
+      this.hashMapError.set('val_ano_inc', 'Año Inscripción tiene un largo superior al permitido');
     }
 
     // Campo: Monto Inscripción
-    if (typeof this.socioModal.mto_inc === 'undefined' || this.socioModal.mto_inc < 0) {
+    if (typeof this.socioModal.mto_inc === 'undefined' || this.socioModal.mto_inc === null || this.socioModal.mto_inc < 0) {
       this.hashMapError.set('val_mto_inc', 'Monto Inscripción es Obligatorio');
+    } else if (this.socioModal.mto_inc > 10) {
+      this.hashMapError.set('val_cod_ori', 'Monto Inscripción tiene un largo superior al permitido');
     }
 
     // Campo: Fecha Inscripción
@@ -619,13 +642,17 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Año Traspaso
-    if (typeof this.socioModal.ano_tra === 'undefined' || this.socioModal.ano_tra < 0) {
+    if (typeof this.socioModal.ano_tra === 'undefined' || this.socioModal.ano_tra === null || this.socioModal.ano_tra < 0) {
       this.hashMapError.set('val_ano_tra', 'Año Traspaso es Obligatorio');
+    } else if (this.socioModal.ano_tra > 10) {
+      this.hashMapError.set('val_ano_tra', 'Año Traspaso tiene un largo superior al permitido');
     }
 
     // Campo: Capital Traspaso
-    if (typeof this.socioModal.kap_tra === 'undefined' || this.socioModal.kap_tra < 0) {
+    if (typeof this.socioModal.kap_tra === 'undefined' || this.socioModal.kap_tra === null || this.socioModal.kap_tra < 0) {
       this.hashMapError.set('val_kap_tra', 'Capital Traspaso es Obligatorio');
+    } else if (this.socioModal.kap_tra > 10) {
+      this.hashMapError.set('val_ckap_tra', 'Capital Traspaso tiene un largo superior al permitido');
     }
 
     // Campo: Fecha Traspaso
@@ -640,20 +667,25 @@ export class KapmaeComponent implements OnInit {
       this.socioModal.fec_tra = new Date(this.socioModal.fec_tra_date.year + '-' + this.socioModal.fec_tra_date.month + '-' + this.socioModal.fec_tra_date.day);
     }
 
-
     // Campo: Acciones Traspaso
-    if (typeof this.socioModal.acc_tra === 'undefined' || this.socioModal.acc_tra < 0) {
+    if (typeof this.socioModal.acc_tra === 'undefined' || this.socioModal.acc_tra === null || this.socioModal.acc_tra < 0) {
       this.hashMapError.set('val_acc_tra', 'Acciones Traspaso es Obligatorio');
+    } else if (this.socioModal.acc_tra > 10) {
+      this.hashMapError.set('val_acc_tra', 'Acciones Traspaso tiene un largo superior al permitido');
     }
 
     // Campo: Acciones Retiro
-    if (typeof this.socioModal.acc_ret === 'undefined' || this.socioModal.acc_ret < 0) {
+    if (typeof this.socioModal.acc_ret === 'undefined' || this.socioModal.acc_ret === null || this.socioModal.acc_ret < 0) {
       this.hashMapError.set('val_acc_ret', 'Acciones Retiro es Obligatorio');
+    } else if (this.socioModal.acc_ret > 10) {
+      this.hashMapError.set('val_acc_ret', 'Acciones Retiro tiene un largo superior al permitido');
     }
 
     // Campo: Acciones Aporte
-    if (typeof this.socioModal.acc_apo === 'undefined' || this.socioModal.acc_apo < 0) {
+    if (typeof this.socioModal.acc_apo === 'undefined' || this.socioModal.acc_apo === null || this.socioModal.acc_apo < 0) {
       this.hashMapError.set('val_acc_apo', 'Acciones Aporte es Obligatorio');
+    } else if (this.socioModal.acc_apo > 10) {
+      this.hashMapError.set('val_acc_apo', 'Acciones Aporte tiene un largo superior al permitido');
     }
 
     // Campo: Actualización
@@ -669,13 +701,17 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Estado Traspao
-    if (typeof this.socioModal.est_tra === 'undefined' || this.socioModal.est_tra === '') {
+    if (typeof this.socioModal.est_tra === 'undefined' || this.socioModal.est_tra === null || this.socioModal.est_tra === '') {
       this.hashMapError.set('val_est_tra', 'Estado Traspao es Obligatorio');
+    } else if (this.socioModal.est_tra.length > 70) {
+      this.hashMapError.set('val_est_tra', 'Estado Traspao tiene un largo superior al permitido');
     }
 
     // Campo: Estado del Bono
-    if (typeof this.socioModal.est_bon === 'undefined' || this.socioModal.est_bon < 0) {
+    if (typeof this.socioModal.est_bon === 'undefined' || this.socioModal.est_bon === null || this.socioModal.est_bon < 0) {
       this.hashMapError.set('val_est_bon', 'Estado del Bono es Obligatorio');
+    } else if (this.socioModal.est_bon > 10) {
+      this.hashMapError.set('val_est_bon', 'Estado del Bono tiene un largo superior al permitido');
     }
 
     // Campo: Dirección Postal
@@ -730,8 +766,10 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Observación
-    if (typeof this.socioModal.obs_cap === 'undefined') {
+    if (typeof this.socioModal.obs_cap === 'undefined' || this.socioModal.obs_cap === null || this.socioModal.obs_cap === '') {
       this.hashMapError.set('val_obs_cap', 'Observación es Obligatorio');
+    } else if (this.socioModal.obs_cap.length > 120) {
+      this.hashMapError.set('val_obs_cap', 'Observación tiene un largo superior al permitido');
     }
 
     // ************************************************************************************************
