@@ -572,7 +572,7 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.cod_cop === 'undefined' || this.socioModal.cod_cop === null || this.socioModal.cod_cop < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_cod_cop', 'Código Luzagro es Obligatorio');
-    } else if (this.socioModal.cod_cop > 10) {
+    } else if (this.socioModal.cod_cop > 100000000) {
       this.hashMapError.set('val_cod_cop', 'Código Luzagro tiene un largo superior al permitido');
     }
 
@@ -588,7 +588,7 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.cod_ant === 'undefined' || this.socioModal.cod_ant === null || this.socioModal.cod_ant < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_cod_ant', 'Código Anterior es Obligatorio');
-    } else if (this.socioModal.cod_ant > 10) {
+    } else if (this.socioModal.cod_ant > 100000000) {
       this.hashMapError.set('val_cod_ant', 'Código Anterior tiene un largo superior al permitido');
     }
 
@@ -596,7 +596,7 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.cod_nvo === 'undefined' || this.socioModal.cod_nvo === null || this.socioModal.cod_nvo < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_cod_nvo', 'Código Nuevo es Obligatorio');
-    } else if (this.socioModal.cod_nvo > 10) {
+    } else if (this.socioModal.cod_nvo > 100000000) {
       this.hashMapError.set('val_cod_nvo', 'Código Nuevo tiene un largo superior al permitido');
     }
 
@@ -604,7 +604,7 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.cod_ori === 'undefined' || this.socioModal.cod_ori === null || this.socioModal.cod_ori < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_cod_ori', 'Código Original es Obligatorio');
-    } else if (this.socioModal.cod_ori > 10) {
+    } else if (this.socioModal.cod_ori > 100000000) {
       this.hashMapError.set('val_cod_ori', 'Código Original tiene un largo superior al permitido');
     }
 
@@ -618,14 +618,14 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.ano_inc === 'undefined' || this.socioModal.ano_inc === null || this.socioModal.ano_inc < 0) {
       //distinto de vacio o indefinido.
       this.hashMapError.set('val_ano_inc', 'Año Inscripción es Obligatorio');
-    } else if (this.socioModal.ano_inc > 10) {
+    } else if (this.socioModal.ano_inc > 9990) {
       this.hashMapError.set('val_ano_inc', 'Año Inscripción tiene un largo superior al permitido');
     }
 
     // Campo: Monto Inscripción
     if (typeof this.socioModal.mto_inc === 'undefined' || this.socioModal.mto_inc === null || this.socioModal.mto_inc < 0) {
       this.hashMapError.set('val_mto_inc', 'Monto Inscripción es Obligatorio');
-    } else if (this.socioModal.mto_inc > 10) {
+    } else if (this.socioModal.mto_inc > 100000000) {
       this.hashMapError.set('val_cod_ori', 'Monto Inscripción tiene un largo superior al permitido');
     }
 
@@ -644,14 +644,14 @@ export class KapmaeComponent implements OnInit {
     // Campo: Año Traspaso
     if (typeof this.socioModal.ano_tra === 'undefined' || this.socioModal.ano_tra === null || this.socioModal.ano_tra < 0) {
       this.hashMapError.set('val_ano_tra', 'Año Traspaso es Obligatorio');
-    } else if (this.socioModal.ano_tra > 10) {
+    } else if (this.socioModal.ano_tra > 9990) {
       this.hashMapError.set('val_ano_tra', 'Año Traspaso tiene un largo superior al permitido');
     }
 
     // Campo: Capital Traspaso
     if (typeof this.socioModal.kap_tra === 'undefined' || this.socioModal.kap_tra === null || this.socioModal.kap_tra < 0) {
       this.hashMapError.set('val_kap_tra', 'Capital Traspaso es Obligatorio');
-    } else if (this.socioModal.kap_tra > 10) {
+    } else if (this.socioModal.kap_tra > 100000000) {
       this.hashMapError.set('val_ckap_tra', 'Capital Traspaso tiene un largo superior al permitido');
     }
 
@@ -670,21 +670,21 @@ export class KapmaeComponent implements OnInit {
     // Campo: Acciones Traspaso
     if (typeof this.socioModal.acc_tra === 'undefined' || this.socioModal.acc_tra === null || this.socioModal.acc_tra < 0) {
       this.hashMapError.set('val_acc_tra', 'Acciones Traspaso es Obligatorio');
-    } else if (this.socioModal.acc_tra > 10) {
+    } else if (this.socioModal.acc_tra > 100000000) {
       this.hashMapError.set('val_acc_tra', 'Acciones Traspaso tiene un largo superior al permitido');
     }
 
     // Campo: Acciones Retiro
     if (typeof this.socioModal.acc_ret === 'undefined' || this.socioModal.acc_ret === null || this.socioModal.acc_ret < 0) {
       this.hashMapError.set('val_acc_ret', 'Acciones Retiro es Obligatorio');
-    } else if (this.socioModal.acc_ret > 10) {
+    } else if (this.socioModal.acc_ret > 100000000) {
       this.hashMapError.set('val_acc_ret', 'Acciones Retiro tiene un largo superior al permitido');
     }
 
     // Campo: Acciones Aporte
     if (typeof this.socioModal.acc_apo === 'undefined' || this.socioModal.acc_apo === null || this.socioModal.acc_apo < 0) {
       this.hashMapError.set('val_acc_apo', 'Acciones Aporte es Obligatorio');
-    } else if (this.socioModal.acc_apo > 10) {
+    } else if (this.socioModal.acc_apo > 100000000) {
       this.hashMapError.set('val_acc_apo', 'Acciones Aporte tiene un largo superior al permitido');
     }
 
@@ -710,17 +710,15 @@ export class KapmaeComponent implements OnInit {
     // Campo: Estado del Bono
     if (typeof this.socioModal.est_bon === 'undefined' || this.socioModal.est_bon === null || this.socioModal.est_bon < 0) {
       this.hashMapError.set('val_est_bon', 'Estado del Bono es Obligatorio');
-    } else if (this.socioModal.est_bon > 10) {
+    } else if (this.socioModal.est_bon > 100000000) {
       this.hashMapError.set('val_est_bon', 'Estado del Bono tiene un largo superior al permitido');
     }
 
     // Campo: Dirección Postal
-    if (typeof this.socioModal.dir_pos !== 'undefined' && this.socioModal.dir_pos !== null) {
-      if (this.socioModal.dir_pos !== '') {
-        if (9 < this.socioModal.dir_pos.length) {
-          this.hashMapError.set('val_dir_pos', 'Dirección Postal es Obligatorio');
-        }
-      }
+    if (typeof this.socioModal.dir_pos === 'undefined' || this.socioModal.dir_pos === null || this.socioModal.dir_pos === '') {
+      this.hashMapError.set('val_dir_pos', 'Dirección Postal es Obligatorio');
+    } else if (this.socioModal.dir_pos.length > 70) {
+      this.hashMapError.set('val_dir_pos', 'Dirección Postal tiene un largo superior al permitido');
     }
 
     // Campo: Nro Teléfono 1
@@ -782,7 +780,7 @@ export class KapmaeComponent implements OnInit {
     if (typeof this.socioModal.nro_sol === 'undefined' || this.socioModal.nro_sol === null || this.socioModal.nro_sol < 0) {
       // TODO: validar formato de ser requeido
       this.hashMapError.set('val_nro_sol', 'nro_sol es Obligatorio');
-    } else if (this.socioModal.nro_sol > 10) {
+    } else if (this.socioModal.nro_sol > 100000000) {
       this.hashMapError.set('val_nro_sol', 'nro_sol tiene un largo superior al permitido');
     }
 
@@ -832,21 +830,21 @@ export class KapmaeComponent implements OnInit {
     // Campo: sec_cte
     if (typeof this.socioModal.sec_cte === 'undefined' || this.socioModal.sec_cte === null || this.socioModal.sec_cte < 0) {
       this.hashMapError.set('val_sec_cte', 'sec_cte es Obligatorio');
-    } else if (this.socioModal.sec_cte > 10) {
+    } else if (this.socioModal.sec_cte > 100000000) {
       this.hashMapError.set('val_sec_cte', 'sec_cte tiene un largo superior al permitido');
     }
 
     // Campo: area
     if (typeof this.socioModal.area === 'undefined' || this.socioModal.area === null || this.socioModal.area < 0) {
       this.hashMapError.set('val_area', 'area es Obligatorio');
-    } else if (this.socioModal.area > 10) {
+    } else if (this.socioModal.area > 100000000) {
       this.hashMapError.set('val_area', 'area tiene un largo superior al permitido');
     }
 
     // Campo: sec_imp
     if (typeof this.socioModal.sec_imp === 'undefined' || this.socioModal.sec_imp === null || this.socioModal.sec_imp < 0) {
       this.hashMapError.set('val_sec_imp', 'sec_imp es Obligatorio');
-    } else if (this.socioModal.sec_imp > 10) {
+    } else if (this.socioModal.sec_imp > 100000000) {
       this.hashMapError.set('val_sec_imp', 'sec_imp tiene un largo superior al permitido');
     }
 
@@ -860,14 +858,14 @@ export class KapmaeComponent implements OnInit {
     // Campo: acc_con
     if (typeof this.socioModal.acc_con === 'undefined' || this.socioModal.acc_con === null || this.socioModal.acc_con < 0) {
       this.hashMapError.set('val_acc_con', 'acc_con es Obligatorio');
-    } else if (this.socioModal.acc_con > 10) {
+    } else if (this.socioModal.acc_con > 100000000) {
       this.hashMapError.set('val_acc_con', 'acc_con tiene un largo superior al permitido');
     }
 
     // Campo: aju_acc
     if (typeof this.socioModal.aju_acc === 'undefined' || this.socioModal.aju_acc === null || this.socioModal.aju_acc < 0) {
       this.hashMapError.set('val_aju_acc', 'aju_acc es Obligatorio');
-    } else if (this.socioModal.aju_acc > 10) {
+    } else if (this.socioModal.aju_acc > 100000000) {
       this.hashMapError.set('val_aju_acc', 'aju_acc tiene un largo superior al permitido');
     }
     // ************************************************************************************************
