@@ -630,7 +630,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Fecha Inscripción
-    if (typeof this.socioModal.fec_inc_date == 'undefined') {
+    if (typeof this.socioModal.fec_inc_date == 'undefined' || this.socioModal.fec_inc_date == null) {
       if (!this.validateFormatDate(this.socioModal.fec_inc_date)) {
         this.hashMapError.set('val_fec_inc_date', 'Fecha Inscripción es Obligatorio');
       }
@@ -656,7 +656,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Fecha Traspaso
-    if (typeof this.socioModal.fec_tra_date == 'undefined') {
+    if (typeof this.socioModal.fec_tra_date == 'undefined' || this.socioModal.fec_tra_date == null) {
       if (!this.validateFormatDate(this.socioModal.fec_tra_date)) {
         this.hashMapError.set('val_fec_tra_date', 'Fecha Traspaso es Obligatorio');
       }
@@ -689,7 +689,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: Actualización
-    if (typeof this.socioModal.fec_act_date == 'undefined') {
+    if (typeof this.socioModal.fec_act_date == 'undefined' || this.socioModal.fec_act_date == null) {
       if (!this.validateFormatDate(this.socioModal.fec_act_date)) {
         this.hashMapError.set('val_fec_act_date', 'Actualización es Obligatorio');
       }
@@ -785,7 +785,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: fec_sol
-    if (typeof this.socioModal.fec_sol_date == 'undefined') {
+    if (typeof this.socioModal.fec_sol_date == 'undefined' || this.socioModal.fec_sol_date == null) {
       if (!this.validateFormatDate(this.socioModal.fec_sol_date)) {
         this.hashMapError.set('val_fec_sol_date', 'fec_sol es Obligatorio');
       }
@@ -797,7 +797,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: fec_apr
-    if (typeof this.socioModal.fec_apr_date == 'undefined') {
+    if (typeof this.socioModal.fec_apr_date == 'undefined' || this.socioModal.fec_apr_date == null) {
       if (!this.validateFormatDate(this.socioModal.fec_apr_date)) {
         this.hashMapError.set('val_fec_apr_date', 'fec_apr es Obligatorio');
       }
@@ -809,7 +809,7 @@ export class KapmaeComponent implements OnInit {
     }
 
     // Campo: fec_can
-    if (typeof this.socioModal.fec_can_date == 'undefined') {
+    if (typeof this.socioModal.fec_can_date == 'undefined' || this.socioModal.fec_can_date == null) {
       if (!this.validateFormatDate(this.socioModal.fec_can_date)) {
         this.hashMapError.set('val_fec_can_date', 'fec_can es Obligatorio');
       }
