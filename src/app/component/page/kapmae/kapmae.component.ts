@@ -349,6 +349,7 @@ export class KapmaeComponent implements OnInit {
           this.closeModal();
           this.modals.success('Socio Creado Con Éxito!');
           this.loadCargar();
+          this.principalContainer = true;
         } else if (data.body.code === '-4') {
           this.modals.error('Socio ya existe (Rut Socio y Código Luzagro)');
         } else {
@@ -372,6 +373,7 @@ export class KapmaeComponent implements OnInit {
           this.closeModal();
           this.modals.success('Socio Modificado Con Éxito!');
           this.loadCargar();
+          this.principalContainer = true;
         } else if (data.body.code === '-3') {
           this.modals.error('Socio no existe (Rut Socio y Código Luzagro)');
         } else {
