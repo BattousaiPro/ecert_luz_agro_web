@@ -6,6 +6,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 #npm install --legacy-peer-deps
 
+Paletas de colores posibles:
+
+https://paletadecolores.com.mx/paleta/2b1719/02483e/057c46/9bb61b/f8be00/
+https://paletadecolores.com.mx/paleta/554236/f77825/d3ce3d/f1efa5/60b99a/
+
+
 https://github.com/BattousaiPro/ecert_luz_agro_web
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
